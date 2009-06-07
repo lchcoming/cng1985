@@ -10,6 +10,7 @@ namespace cng1985
         static void Main(string[] args)
         {
             Console.Write("haha");
+            Console.Write("hello ");
         }
     }
 }
