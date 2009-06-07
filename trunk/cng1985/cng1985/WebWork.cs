@@ -17,8 +17,11 @@ namespace cng1985
 	/// </summary>
 	public class WebWork
 	{
+        public event EventHandler Work;
+    
 		public WebWork()
 		{
+            _threads = new List<Thread>();
 			
 		}
 		public List<Thread> _threads;
@@ -29,5 +32,13 @@ namespace cng1985
 				item.Start();
 			}
 		}
+        public void Test()
+        {
+            if (Work != null)
+            {
+                Work(this,new EventArgs());
+            }
+        }
+        //public 
 	}
 }
