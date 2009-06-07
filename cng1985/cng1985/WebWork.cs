@@ -25,6 +25,11 @@ namespace cng1985
 			
 		}
 		public List<Thread> _threads;
+        public void AddThread(ThreadStart thread)
+        {
+            Thread threads = new Thread(thread);
+            _threads.Add(threads);
+        }
 		public void Run()
 		{
 			foreach(var item  in _threads)
