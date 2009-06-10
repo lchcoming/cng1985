@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="School.Design.Site" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>无标题页</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="../Content/mysite.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/lightbox.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .header
+        {
+            margin: auto;
+            width: 900px;
+            height: 181px;
+            background: url(../images/header.jpg) no-repeat center;
+        }
+        .logo
+        {
+            padding: 0 0 0 30px;
+        }
+        #left
+        {
+            width: 700px;
+            height: 800px;
+            background-color: #FFFFFF;
+            float: left;
+        }
+        #body
+        {
+            margin: 0px auto auto auto;
+            width: 900px;
+        }
+        #right
+        {
+            width: 200px;
+            height: 800px;
+            margin-left: 700px;
+            background-color: #CCCCFF;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="../images/logo.gif" alt="" title="" border="0" /></a>
+        </div>
+        <div id="menu">
+            <ul>
+                <li class="selected"><a href="index.html">home</a></li>
+                <li><a href="about.html">about us</a></li>
+                <li><a href="category.html">flowers</a></li>
+                <li><a href="specials.html">specials gifts</a></li>
+                <li><a href="myaccount.html">my accout</a></li>
+                <li><a href="register.html">register</a></li>
+                <li><a href="details.html">prices</a></li>
+                <li><a href="contact.html">contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            <div id="body">
+                <div id="left">
+                </div>
+                <div id="right">
+                </div>
+            </div>
+        </asp:ContentPlaceHolder>
+    </div>
+    <div id="foot">
+    </div>
+    </form>
+</body>
+</html>
