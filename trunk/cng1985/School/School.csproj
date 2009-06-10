@@ -61,10 +61,31 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Design\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Design\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Design\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Design\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
@@ -159,6 +180,66 @@
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\lightbox.css" />
+    <Content Include="Content\mysite.css" />
+    <Content Include="Design\Site.Master" />
+    <Content Include="Design\Test.aspx" />
+    <Content Include="images\about.gif" />
+    <Content Include="images\banner.gif" />
+    <Content Include="images\big_pic.jpg" />
+    <Content Include="images\blank.gif" />
+    <Content Include="images\border.gif" />
+    <Content Include="images\box_bottom.gif" />
+    <Content Include="images\box_center.gif" />
+    <Content Include="images\box_top.gif" />
+    <Content Include="images\bullet1.gif" />
+    <Content Include="images\bullet2.gif" />
+    <Content Include="images\bullet3.gif" />
+    <Content Include="images\bullet4.gif" />
+    <Content Include="images\bullet5.gif" />
+    <Content Include="images\bullet6.gif" />
+    <Content Include="images\cart.gif" />
+    <Content Include="images\cart_thumb.gif" />
+    <Content Include="images\center_bg.gif" />
+    <Content Include="images\close.gif" />
+    <Content Include="images\closelabel.gif" />
+    <Content Include="images\color1.gif" />
+    <Content Include="images\color2.gif" />
+    <Content Include="images\color3.gif" />
+    <Content Include="images\contact_bt.gif" />
+    <Content Include="images\csscreme.gif" />
+    <Content Include="images\de.gif" />
+    <Content Include="images\footer_bg.gif" />
+    <Content Include="images\footer_logo.gif" />
+    <Content Include="images\fr.gif" />
+    <Content Include="images\gb.gif" />
+    <Content Include="images\header.jpg" />
+    <Content Include="images\left_content_bg.gif" />
+    <Content Include="images\left_menu_bullet.gif" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\logo.gif" />
+    <Content Include="images\menu_bg.jpg" />
+    <Content Include="images\menu_bg.png" />
+    <Content Include="images\menu_bt_bg.gif" />
+    <Content Include="images\new_icon.gif" />
+    <Content Include="images\new_prod_box.gif" />
+    <Content Include="images\next.gif" />
+    <Content Include="images\nextlabel.gif" />
+    <Content Include="images\order_now.gif" />
+    <Content Include="images\prev.gif" />
+    <Content Include="images\prevlabel.gif" />
+    <Content Include="images\prod1.gif" />
+    <Content Include="images\prod2.gif" />
+    <Content Include="images\promo_icon.gif" />
+    <Content Include="images\register_bt.gif" />
+    <Content Include="images\special_icon.gif" />
+    <Content Include="images\thumb1.gif" />
+    <Content Include="images\thumb2.gif" />
+    <Content Include="images\thumb3.gif" />
+    <Content Include="images\zoom.gif" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
