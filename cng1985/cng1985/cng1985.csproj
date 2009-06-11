@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="DemoLib, Version=1.4.0.1, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Lucene.Net, Version=1.4.0.1, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -59,6 +60,7 @@
   <ItemGroup>
     <Content Include="Dll\DemoLib.dll" />
     <Content Include="Dll\Lucene.Net.dll" />
+    <Content Include="年高得意算法\数据库分页.txt" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="EARTHLib">
