@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Work.Properties;
+using Work.WorkData;
 namespace Work.UI
 {
     public partial class Login : Form
@@ -15,9 +16,9 @@ namespace Work.UI
         {
             InitializeComponent();
         }
-        private bool _loginStatus;
+        private int _loginStatus;
 
-        public bool LoginStatus
+        public int LoginStatus
         {
             get { return _loginStatus; }
             set { _loginStatus = value; }
@@ -39,22 +40,29 @@ namespace Work.UI
 
         private void Loginbutton_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "ada")
+            User user = new User();
+            if (user.Login(textBox1.Text, textBox2.Text))
             {
-                LoginStatus = true;
+
+                LoginStatus = 2;
                 Properties.Settings.Default.Name = textBox1.Text;
                 Properties.Settings.Default.Save();
                 this.Close();
             }
-            else {
-                
-                MessageBox.Show(this,"用户密码错误");
+            else
+            {
+                LoginStatus = 3;
+                label3.Text = "sds";
             }
+            this.Close();
+              //  return;
+               
+        
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            LoginStatus = false;
+            LoginStatus = 1;
             this.Close();
         }
     }
