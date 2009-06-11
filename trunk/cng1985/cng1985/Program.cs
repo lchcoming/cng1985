@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading;
 using System.Security.Cryptography;
 using System.IO;
+using Microsoft.VisualBasic;
 namespace cng1985
 {
     class Program
@@ -13,7 +14,10 @@ namespace cng1985
         static void Main(string[] args)
         {
             DESCryptoServiceProvider key = new DESCryptoServiceProvider();
-
+            string gb2312 = "国营农场";
+            string big5 = "";
+            big5 = Strings.StrConv(gb2312, VbStrConv.TraditionalChinese, 0);
+            Console.WriteLine(big5);
             // Encrypt a string to a byte array.
             byte[] buffer = Encrypt("This is some plaintext! 我是你爷爷", key);
             Console.WriteLine(Encoding.Unicode.GetString(buffer));
