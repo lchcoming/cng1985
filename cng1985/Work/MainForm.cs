@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Work.UI;
+using Work.WorkResource;
 namespace Work
 {
     public partial class MainForm : Form
@@ -25,7 +26,14 @@ namespace Work
             {
                 this.Close();
             }
+            this.Text = Work.Properties.Settings.Default.Name;
             
+        }
+
+        private void 关于AToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox about = new AboutBox();
+            about.ShowDialog(this);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using Work.Properties;
 namespace Work.UI
 {
     public partial class Login : Form
@@ -42,10 +42,13 @@ namespace Work.UI
             if (textBox2.Text == "ada")
             {
                 LoginStatus = true;
+                Properties.Settings.Default.Name = textBox1.Text;
+                Properties.Settings.Default.Save();
                 this.Close();
             }
             else {
-                MessageBox.Show("用户密码错误");
+                
+                MessageBox.Show(this,"用户密码错误");
             }
         }
 
