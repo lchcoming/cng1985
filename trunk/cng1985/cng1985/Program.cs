@@ -16,26 +16,25 @@ namespace cng1985
     {
         static void Main(string[] args)
         {
-<<<<<<< .mine
+
             WorkEntities entity = new WorkEntities();
-            //School aa = new School();
-            //aa.SchoolName = "重庆大学";
-            //entity.AddToSchool(aa);
-            entity.SaveChanges();
-            var r = from c in entity.College
-                    //where c.School.ID == 1
-                    select new {
-                    Name=c.CollegeName,
-                    School=(from ada in entity.School
-                             where ada.ID==c.School.ID
-                             select ada
-                                ).FirstOrDefault().SchoolName
-                    };
-            foreach (var item in r)
+            var resut = from c in entity.Province
+                       select c;
+                       //// where c.ID == 2
+                       // select new
+                       // {
+                       //     Name = c.CityName,
+                       //     Pname = c.Province.Name
+                       // };
+            foreach (var item in resut)
             {
-                Console.Write(item.School);
-                Console.Write(item.Name);
+                item.Name = item.Name.Trim();
+                Console.WriteLine(item.Name);
+                item.ModifiedDate = DateTime.Now;
+               // Console.WriteLine("你现在所在的城市是{0}省{1}市", item.Pname, item.Name);
             }
+            entity.SaveChanges();
+            //LinqDataTest();
             //DbConnection con = new MySql.Data.MySqlClient.MySqlConnection();
             //MySqlConnectionStringBuilder conb = new MySqlConnectionStringBuilder();
             //conb.Database = "work";
@@ -44,46 +43,34 @@ namespace cng1985
             //conb.Port = 3306;
             //conb.Server = "localhost";
             //con.ConnectionString = conb.ConnectionString;
-//            string sql = @"SELECT   LoginName, LoginPassword
-//          FROM      user
-//                WHERE   (LoginName = ?) AND (LoginPassword = ?)";
-//            DbCommand cmd = new MySqlCommand();
-//            cmd.Connection = con;
-//            cmd.CommandText = sql;
+            //            string sql = @"SELECT   LoginName, LoginPassword
+            //          FROM      user
+            //                WHERE   (LoginName = ?) AND (LoginPassword = ?)";
+            //            DbCommand cmd = new MySqlCommand();
+            //            cmd.Connection = con;
+            //            cmd.CommandText = sql;
             //con.Open();
             //DbDataReader reader = cmd.ExecuteReader();
 
-=======
-            WorkEntities entity = new WorkEntities();
-            //School aa = new School();
-            //aa.SchoolName = "重庆大学";
-            //entity.AddToSchool(aa);
-            entity.SaveChanges();
-            var r = from c in entity.School
-                    //where c.School.ID == 1
-                    select c;
-            foreach (var item in r)
-            {
-                Console.Write(item.SchoolName);
-            }
-            DbConnection con = new MySql.Data.MySqlClient.MySqlConnection();
-            MySqlConnectionStringBuilder conb = new MySqlConnectionStringBuilder();
-            conb.Database = "work";
-            conb.UserID = "root";
-            conb.Password = "root";
-            conb.Port = 3306;
-            conb.Server = "localhost";
-            con.ConnectionString = conb.ConnectionString;
-//            string sql = @"SELECT   LoginName, LoginPassword
-//          FROM      user
-//                WHERE   (LoginName = ?) AND (LoginPassword = ?)";
-//            DbCommand cmd = new MySqlCommand();
-//            cmd.Connection = con;
-//            cmd.CommandText = sql;
-            con.Open();
+
+            //DbConnection con = new MySql.Data.MySqlClient.MySqlConnection();
+            //MySqlConnectionStringBuilder conb = new MySqlConnectionStringBuilder();
+            //conb.Database = "work";
+            //conb.UserID = "root";
+            //conb.Password = "root";
+            //conb.Port = 3306;
+            //conb.Server = "localhost";
+            //con.ConnectionString = conb.ConnectionString;
+            //            string sql = @"SELECT   LoginName, LoginPassword
+            //          FROM      user
+            //                WHERE   (LoginName = ?) AND (LoginPassword = ?)";
+            //            DbCommand cmd = new MySqlCommand();
+            //            cmd.Connection = con;
+            //            cmd.CommandText = sql;
+            //con.Open();
             //DbDataReader reader = cmd.ExecuteReader();
 
->>>>>>> .r27
+
             DESCryptoServiceProvider key = new DESCryptoServiceProvider();
             string gb2312 = "国营农场";
             string big5 = "";
@@ -126,6 +113,41 @@ namespace cng1985
             Console.WriteLine(getMd5HashSHA512Cng(source));
             Console.Read();
         }
+
+        //private static void LinqDataTest()
+        //{
+          
+        //    DataClasses1DataContext entity = new DataClasses1DataContext();
+        //    var r = from c in entity.CountryRegion
+        //            //where c.School.ID == 1
+        //            select new
+        //            {
+        //                Name = c.Name,
+        //                School = (from ada in entity.Province
+        //                          where ada.CountryRegion == c.ID
+        //                          select ada
+        //                            )
+        //            };
+        //    foreach (var item in r)
+        //    {
+        //        Console.WriteLine(item.Name);
+        //        //Console.Write(item.School);
+        //        foreach (var itemd in item.School)
+        //        {
+        //            Console.WriteLine(itemd.Name);
+        //            var ss = from df in entity.City
+        //                     where df.ProvinceID == itemd.ID
+        //                     select df;
+        //            foreach (var itemc in ss)
+        //            {
+        //                Console.WriteLine(itemc.CityName);
+        //            }
+        //            Console.WriteLine("++++++++++");
+        //        }
+
+
+        //    }
+        //}
 
         private static void Visiat(WebWork web)
         {

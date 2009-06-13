@@ -12,9 +12,11 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("WorkModel", "FK_College_School", "School", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(cng1985.Modle.School), "College", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(cng1985.Modle.College))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("WorkModel", "FK_Department_College", "College", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(cng1985.Modle.College), "Department", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(cng1985.Modle.Department))]
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("WorkModel", "FK_Major_Department", "Department", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(cng1985.Modle.Department), "Major", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(cng1985.Modle.Major))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("WorkModel", "FK_City_Province", "Province", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(cng1985.Modle.Province), "City", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(cng1985.Modle.City))]
+[assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("WorkModel", "FK_Province_CountryRegion", "CountryRegion", global::System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(cng1985.Modle.CountryRegion), "Province", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(cng1985.Modle.Province))]
 
 // 原始文件名:
-// 生成日期: 2009/6/13 17:13:37
+// 生成日期: 2009/6/13 23:20:55
 namespace cng1985.Modle
 {
     
@@ -139,6 +141,51 @@ namespace cng1985.Modle
         }
         private global::System.Data.Objects.ObjectQuery<VCollege> _VCollege;
         /// <summary>
+        /// 架构中不存在 City 的注释。
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<City> City
+        {
+            get
+            {
+                if ((this._City == null))
+                {
+                    this._City = base.CreateQuery<City>("[City]");
+                }
+                return this._City;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<City> _City;
+        /// <summary>
+        /// 架构中不存在 CountryRegion 的注释。
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<CountryRegion> CountryRegion
+        {
+            get
+            {
+                if ((this._CountryRegion == null))
+                {
+                    this._CountryRegion = base.CreateQuery<CountryRegion>("[CountryRegion]");
+                }
+                return this._CountryRegion;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<CountryRegion> _CountryRegion;
+        /// <summary>
+        /// 架构中不存在 Province 的注释。
+        /// </summary>
+        public global::System.Data.Objects.ObjectQuery<Province> Province
+        {
+            get
+            {
+                if ((this._Province == null))
+                {
+                    this._Province = base.CreateQuery<Province>("[Province]");
+                }
+                return this._Province;
+            }
+        }
+        private global::System.Data.Objects.ObjectQuery<Province> _Province;
+        /// <summary>
         /// 架构中不存在 College 的注释。
         /// </summary>
         public void AddToCollege(College college)
@@ -179,6 +226,27 @@ namespace cng1985.Modle
         public void AddToVCollege(VCollege vCollege)
         {
             base.AddObject("VCollege", vCollege);
+        }
+        /// <summary>
+        /// 架构中不存在 City 的注释。
+        /// </summary>
+        public void AddToCity(City city)
+        {
+            base.AddObject("City", city);
+        }
+        /// <summary>
+        /// 架构中不存在 CountryRegion 的注释。
+        /// </summary>
+        public void AddToCountryRegion(CountryRegion countryRegion)
+        {
+            base.AddObject("CountryRegion", countryRegion);
+        }
+        /// <summary>
+        /// 架构中不存在 Province 的注释。
+        /// </summary>
+        public void AddToProvince(Province province)
+        {
+            base.AddObject("Province", province);
         }
     }
     /// <summary>
@@ -858,5 +926,394 @@ namespace cng1985.Modle
         private string _SchoolName;
         partial void OnSchoolNameChanging(string value);
         partial void OnSchoolNameChanged();
+    }
+    /// <summary>
+    /// 架构中不存在 WorkModel.City 的注释。
+    /// </summary>
+    /// <KeyProperties>
+    /// ID
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="WorkModel", Name="City")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class City : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// 创建新的 City 对象。
+        /// </summary>
+        /// <param name="id">ID 的初始值。</param>
+        public static City CreateCity(int id)
+        {
+            City city = new City();
+            city.ID = id;
+            return city;
+        }
+        /// <summary>
+        /// 架构中不存在属性 ID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID
+        {
+            get
+            {
+                return this._ID;
+            }
+            set
+            {
+                this.OnIDChanging(value);
+                this.ReportPropertyChanging("ID");
+                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ID");
+                this.OnIDChanged();
+            }
+        }
+        private int _ID;
+        partial void OnIDChanging(int value);
+        partial void OnIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 CityName 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName
+        {
+            get
+            {
+                return this._CityName;
+            }
+            set
+            {
+                this.OnCityNameChanging(value);
+                this.ReportPropertyChanging("CityName");
+                this._CityName = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("CityName");
+                this.OnCityNameChanged();
+            }
+        }
+        private string _CityName;
+        partial void OnCityNameChanging(string value);
+        partial void OnCityNameChanged();
+        /// <summary>
+        /// 架构中不存在属性 ModifiedDate 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Nullable<global::System.DateTime> ModifiedDate
+        {
+            get
+            {
+                return this._ModifiedDate;
+            }
+            set
+            {
+                this.OnModifiedDateChanging(value);
+                this.ReportPropertyChanging("ModifiedDate");
+                this._ModifiedDate = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ModifiedDate");
+                this.OnModifiedDateChanged();
+            }
+        }
+        private global::System.Nullable<global::System.DateTime> _ModifiedDate;
+        partial void OnModifiedDateChanging(global::System.Nullable<global::System.DateTime> value);
+        partial void OnModifiedDateChanged();
+        /// <summary>
+        /// 架构中不存在 Province 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("WorkModel", "FK_City_Province", "Province")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public Province Province
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Province>("WorkModel.FK_City_Province", "Province").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Province>("WorkModel.FK_City_Province", "Province").Value = value;
+            }
+        }
+        /// <summary>
+        /// 架构中不存在 Province 的注释。
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<Province> ProvinceReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<Province>("WorkModel.FK_City_Province", "Province");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<Province>("WorkModel.FK_City_Province", "Province", value);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// 架构中不存在 WorkModel.CountryRegion 的注释。
+    /// </summary>
+    /// <KeyProperties>
+    /// ID
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="WorkModel", Name="CountryRegion")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class CountryRegion : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// 创建新的 CountryRegion 对象。
+        /// </summary>
+        /// <param name="id">ID 的初始值。</param>
+        public static CountryRegion CreateCountryRegion(int id)
+        {
+            CountryRegion countryRegion = new CountryRegion();
+            countryRegion.ID = id;
+            return countryRegion;
+        }
+        /// <summary>
+        /// 架构中不存在属性 ID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID
+        {
+            get
+            {
+                return this._ID;
+            }
+            set
+            {
+                this.OnIDChanging(value);
+                this.ReportPropertyChanging("ID");
+                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ID");
+                this.OnIDChanged();
+            }
+        }
+        private int _ID;
+        partial void OnIDChanging(int value);
+        partial void OnIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 Name 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this.ReportPropertyChanging("Name");
+                this._Name = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Name");
+                this.OnNameChanged();
+            }
+        }
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// 架构中不存在属性 ModifiedDate 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Nullable<global::System.DateTime> ModifiedDate
+        {
+            get
+            {
+                return this._ModifiedDate;
+            }
+            set
+            {
+                this.OnModifiedDateChanging(value);
+                this.ReportPropertyChanging("ModifiedDate");
+                this._ModifiedDate = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ModifiedDate");
+                this.OnModifiedDateChanged();
+            }
+        }
+        private global::System.Nullable<global::System.DateTime> _ModifiedDate;
+        partial void OnModifiedDateChanging(global::System.Nullable<global::System.DateTime> value);
+        partial void OnModifiedDateChanged();
+        /// <summary>
+        /// 架构中不存在 Province 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("WorkModel", "FK_Province_CountryRegion", "Province")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<Province> Province
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<Province>("WorkModel.FK_Province_CountryRegion", "Province");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<Province>("WorkModel.FK_Province_CountryRegion", "Province", value);
+                }
+            }
+        }
+    }
+    /// <summary>
+    /// 架构中不存在 WorkModel.Province 的注释。
+    /// </summary>
+    /// <KeyProperties>
+    /// ID
+    /// </KeyProperties>
+    [global::System.Data.Objects.DataClasses.EdmEntityTypeAttribute(NamespaceName="WorkModel", Name="Province")]
+    [global::System.Runtime.Serialization.DataContractAttribute(IsReference=true)]
+    [global::System.Serializable()]
+    public partial class Province : global::System.Data.Objects.DataClasses.EntityObject
+    {
+        /// <summary>
+        /// 创建新的 Province 对象。
+        /// </summary>
+        /// <param name="id">ID 的初始值。</param>
+        public static Province CreateProvince(int id)
+        {
+            Province province = new Province();
+            province.ID = id;
+            return province;
+        }
+        /// <summary>
+        /// 架构中不存在属性 ID 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID
+        {
+            get
+            {
+                return this._ID;
+            }
+            set
+            {
+                this.OnIDChanging(value);
+                this.ReportPropertyChanging("ID");
+                this._ID = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ID");
+                this.OnIDChanged();
+            }
+        }
+        private int _ID;
+        partial void OnIDChanging(int value);
+        partial void OnIDChanged();
+        /// <summary>
+        /// 架构中不存在属性 Name 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this._Name;
+            }
+            set
+            {
+                this.OnNameChanging(value);
+                this.ReportPropertyChanging("Name");
+                this._Name = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("Name");
+                this.OnNameChanged();
+            }
+        }
+        private string _Name;
+        partial void OnNameChanging(string value);
+        partial void OnNameChanged();
+        /// <summary>
+        /// 架构中不存在属性 ModifiedDate 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Nullable<global::System.DateTime> ModifiedDate
+        {
+            get
+            {
+                return this._ModifiedDate;
+            }
+            set
+            {
+                this.OnModifiedDateChanging(value);
+                this.ReportPropertyChanging("ModifiedDate");
+                this._ModifiedDate = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value);
+                this.ReportPropertyChanged("ModifiedDate");
+                this.OnModifiedDateChanged();
+            }
+        }
+        private global::System.Nullable<global::System.DateTime> _ModifiedDate;
+        partial void OnModifiedDateChanging(global::System.Nullable<global::System.DateTime> value);
+        partial void OnModifiedDateChanged();
+        /// <summary>
+        /// 架构中不存在 City 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("WorkModel", "FK_City_Province", "City")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityCollection<City> City
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedCollection<City>("WorkModel.FK_City_Province", "City");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedCollection<City>("WorkModel.FK_City_Province", "City", value);
+                }
+            }
+        }
+        /// <summary>
+        /// 架构中不存在 CountryRegion 的注释。
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmRelationshipNavigationPropertyAttribute("WorkModel", "FK_Province_CountryRegion", "CountryRegion")]
+        [global::System.Xml.Serialization.XmlIgnoreAttribute()]
+        [global::System.Xml.Serialization.SoapIgnoreAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public CountryRegion CountryRegion
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<CountryRegion>("WorkModel.FK_Province_CountryRegion", "CountryRegion").Value;
+            }
+            set
+            {
+                ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<CountryRegion>("WorkModel.FK_Province_CountryRegion", "CountryRegion").Value = value;
+            }
+        }
+        /// <summary>
+        /// 架构中不存在 CountryRegion 的注释。
+        /// </summary>
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public global::System.Data.Objects.DataClasses.EntityReference<CountryRegion> CountryRegionReference
+        {
+            get
+            {
+                return ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.GetRelatedReference<CountryRegion>("WorkModel.FK_Province_CountryRegion", "CountryRegion");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((global::System.Data.Objects.DataClasses.IEntityWithRelationships)(this)).RelationshipManager.InitializeRelatedReference<CountryRegion>("WorkModel.FK_Province_CountryRegion", "CountryRegion", value);
+                }
+            }
+        }
     }
 }

@@ -42,6 +42,15 @@ namespace cng1985.LinqModle
     partial void InsertSchool(School instance);
     partial void UpdateSchool(School instance);
     partial void DeleteSchool(School instance);
+    partial void InsertCity(City instance);
+    partial void UpdateCity(City instance);
+    partial void DeleteCity(City instance);
+    partial void InsertProvince(Province instance);
+    partial void UpdateProvince(Province instance);
+    partial void DeleteProvince(Province instance);
+    partial void InsertCountryRegion(CountryRegion instance);
+    partial void UpdateCountryRegion(CountryRegion instance);
+    partial void DeleteCountryRegion(CountryRegion instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -103,6 +112,30 @@ namespace cng1985.LinqModle
 			get
 			{
 				return this.GetTable<School>();
+			}
+		}
+		
+		public System.Data.Linq.Table<City> City
+		{
+			get
+			{
+				return this.GetTable<City>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Province> Province
+		{
+			get
+			{
+				return this.GetTable<Province>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CountryRegion> CountryRegion
+		{
+			get
+			{
+				return this.GetTable<CountryRegion>();
 			}
 		}
 	}
@@ -727,6 +760,498 @@ namespace cng1985.LinqModle
 		{
 			this.SendPropertyChanging();
 			entity.School = null;
+		}
+	}
+	
+	[Table(Name="dbo.City")]
+	public partial class City : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _CityName;
+		
+		private System.Nullable<System.DateTime> _ModifiedDate;
+		
+		private System.Nullable<int> _ProvinceID;
+		
+		private EntityRef<Province> _Province;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnCityNameChanging(string value);
+    partial void OnCityNameChanged();
+    partial void OnModifiedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifiedDateChanged();
+    partial void OnProvinceIDChanging(System.Nullable<int> value);
+    partial void OnProvinceIDChanged();
+    #endregion
+		
+		public City()
+		{
+			this._Province = default(EntityRef<Province>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_CityName", DbType="NVarChar(50)")]
+		public string CityName
+		{
+			get
+			{
+				return this._CityName;
+			}
+			set
+			{
+				if ((this._CityName != value))
+				{
+					this.OnCityNameChanging(value);
+					this.SendPropertyChanging();
+					this._CityName = value;
+					this.SendPropertyChanged("CityName");
+					this.OnCityNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ModifiedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifiedDate
+		{
+			get
+			{
+				return this._ModifiedDate;
+			}
+			set
+			{
+				if ((this._ModifiedDate != value))
+				{
+					this.OnModifiedDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedDate = value;
+					this.SendPropertyChanged("ModifiedDate");
+					this.OnModifiedDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ProvinceID", DbType="Int")]
+		public System.Nullable<int> ProvinceID
+		{
+			get
+			{
+				return this._ProvinceID;
+			}
+			set
+			{
+				if ((this._ProvinceID != value))
+				{
+					if (this._Province.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnProvinceIDChanging(value);
+					this.SendPropertyChanging();
+					this._ProvinceID = value;
+					this.SendPropertyChanged("ProvinceID");
+					this.OnProvinceIDChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Province_City", Storage="_Province", ThisKey="ProvinceID", OtherKey="ID", IsForeignKey=true)]
+		public Province Province
+		{
+			get
+			{
+				return this._Province.Entity;
+			}
+			set
+			{
+				Province previousValue = this._Province.Entity;
+				if (((previousValue != value) 
+							|| (this._Province.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Province.Entity = null;
+						previousValue.City.Remove(this);
+					}
+					this._Province.Entity = value;
+					if ((value != null))
+					{
+						value.City.Add(this);
+						this._ProvinceID = value.ID;
+					}
+					else
+					{
+						this._ProvinceID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Province");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Province")]
+	public partial class Province : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private System.Nullable<int> _CountryRegion;
+		
+		private EntitySet<City> _City;
+		
+		private EntityRef<CountryRegion> _CountryRegion1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnCountryRegionChanging(System.Nullable<int> value);
+    partial void OnCountryRegionChanged();
+    #endregion
+		
+		public Province()
+		{
+			this._City = new EntitySet<City>(new Action<City>(this.attach_City), new Action<City>(this.detach_City));
+			this._CountryRegion1 = default(EntityRef<CountryRegion>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Name", DbType="NChar(10)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_CountryRegion", DbType="Int")]
+		public System.Nullable<int> CountryRegion
+		{
+			get
+			{
+				return this._CountryRegion;
+			}
+			set
+			{
+				if ((this._CountryRegion != value))
+				{
+					if (this._CountryRegion1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCountryRegionChanging(value);
+					this.SendPropertyChanging();
+					this._CountryRegion = value;
+					this.SendPropertyChanged("CountryRegion");
+					this.OnCountryRegionChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Province_City", Storage="_City", ThisKey="ID", OtherKey="ProvinceID")]
+		public EntitySet<City> City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				this._City.Assign(value);
+			}
+		}
+		
+		[Association(Name="CountryRegion_Province", Storage="_CountryRegion1", ThisKey="CountryRegion", OtherKey="ID", IsForeignKey=true, DeleteRule="CASCADE")]
+		public CountryRegion CountryRegion1
+		{
+			get
+			{
+				return this._CountryRegion1.Entity;
+			}
+			set
+			{
+				CountryRegion previousValue = this._CountryRegion1.Entity;
+				if (((previousValue != value) 
+							|| (this._CountryRegion1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._CountryRegion1.Entity = null;
+						previousValue.Province.Remove(this);
+					}
+					this._CountryRegion1.Entity = value;
+					if ((value != null))
+					{
+						value.Province.Add(this);
+						this._CountryRegion = value.ID;
+					}
+					else
+					{
+						this._CountryRegion = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("CountryRegion1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_City(City entity)
+		{
+			this.SendPropertyChanging();
+			entity.Province = this;
+		}
+		
+		private void detach_City(City entity)
+		{
+			this.SendPropertyChanging();
+			entity.Province = null;
+		}
+	}
+	
+	[Table(Name="dbo.CountryRegion")]
+	public partial class CountryRegion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Name;
+		
+		private System.Nullable<System.DateTime> _ModifiedDate;
+		
+		private EntitySet<Province> _Province;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnModifiedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifiedDateChanged();
+    #endregion
+		
+		public CountryRegion()
+		{
+			this._Province = new EntitySet<Province>(new Action<Province>(this.attach_Province), new Action<Province>(this.detach_Province));
+			OnCreated();
+		}
+		
+		[Column(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Name", DbType="NChar(10)")]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ModifiedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifiedDate
+		{
+			get
+			{
+				return this._ModifiedDate;
+			}
+			set
+			{
+				if ((this._ModifiedDate != value))
+				{
+					this.OnModifiedDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedDate = value;
+					this.SendPropertyChanged("ModifiedDate");
+					this.OnModifiedDateChanged();
+				}
+			}
+		}
+		
+		[Association(Name="CountryRegion_Province", Storage="_Province", ThisKey="ID", OtherKey="CountryRegion")]
+		public EntitySet<Province> Province
+		{
+			get
+			{
+				return this._Province;
+			}
+			set
+			{
+				this._Province.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Province(Province entity)
+		{
+			this.SendPropertyChanging();
+			entity.CountryRegion1 = this;
+		}
+		
+		private void detach_Province(Province entity)
+		{
+			this.SendPropertyChanging();
+			entity.CountryRegion1 = null;
 		}
 	}
 }

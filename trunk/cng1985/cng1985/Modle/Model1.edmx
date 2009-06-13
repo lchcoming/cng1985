@@ -4,11 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WorkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="WorkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="WorkModelStoreContainer">
+          <EntitySet Name="City" EntityType="WorkModel.Store.City" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="College" EntityType="WorkModel.Store.College" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CountryRegion" EntityType="WorkModel.Store.CountryRegion" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Department" EntityType="WorkModel.Store.Department" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Major" EntityType="WorkModel.Store.Major" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Province" EntityType="WorkModel.Store.Province" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="School" EntityType="WorkModel.Store.School" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="sysdiagrams" EntityType="WorkModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="VCollege" EntityType="WorkModel.Store.VCollege" store:Type="Views" store:Schema="dbo" store:Name="VCollege">
@@ -18,6 +21,10 @@
       [VCollege].[SchoolName] AS [SchoolName]
       FROM [dbo].[VCollege] AS [VCollege]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_City_Province" Association="WorkModel.Store.FK_City_Province">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
           <AssociationSet Name="FK_College_School" Association="WorkModel.Store.FK_College_School">
             <End Role="School" EntitySet="School" />
             <End Role="College" EntitySet="College" />
@@ -30,7 +37,20 @@
             <End Role="Department" EntitySet="Department" />
             <End Role="Major" EntitySet="Major" />
           </AssociationSet>
+          <AssociationSet Name="FK_Province_CountryRegion" Association="WorkModel.Store.FK_Province_CountryRegion">
+            <End Role="CountryRegion" EntitySet="CountryRegion" />
+            <End Role="Province" EntitySet="Province" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ProvinceID" Type="int" />
+        </EntityType>
         <EntityType Name="College">
           <Key>
             <PropertyRef Name="ID" />
@@ -38,6 +58,14 @@
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CollegeName" Type="nvarchar" MaxLength="50" />
           <Property Name="SchoolID" Type="int" />
+        </EntityType>
+        <EntityType Name="CountryRegion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -54,6 +82,15 @@
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MajorName" Type="nvarchar" MaxLength="50" />
           <Property Name="DepartmentID" Type="int" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryRegion" Type="int" />
+          <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="School">
           <Key>
@@ -83,6 +120,18 @@
           <Property Name="CollegeName" Type="nvarchar" MaxLength="50" />
           <Property Name="SchoolName" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_City_Province">
+          <End Role="Province" Type="WorkModel.Store.Province" Multiplicity="0..1" />
+          <End Role="City" Type="WorkModel.Store.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_College_School">
           <End Role="School" Type="WorkModel.Store.School" Multiplicity="0..1" />
           <End Role="College" Type="WorkModel.Store.College" Multiplicity="*" />
@@ -119,8 +168,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+        <Association Name="FK_Province_CountryRegion">
+          <End Role="CountryRegion" Type="WorkModel.Store.CountryRegion" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Province" Type="WorkModel.Store.Province" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryRegion">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Province">
+              <PropertyRef Name="CountryRegion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WorkModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
@@ -143,7 +205,15 @@
             <End Role="Department" EntitySet="Department" />
             <End Role="Major" EntitySet="Major" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="City" EntityType="WorkModel.City" />
+          <EntitySet Name="CountryRegion" EntityType="WorkModel.CountryRegion" />
+          <EntitySet Name="Province" EntityType="WorkModel.Province" />
+          <AssociationSet Name="FK_City_Province" Association="WorkModel.FK_City_Province">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="City" EntitySet="City" /></AssociationSet>
+          <AssociationSet Name="FK_Province_CountryRegion" Association="WorkModel.FK_Province_CountryRegion">
+            <End Role="CountryRegion" EntitySet="CountryRegion" />
+            <End Role="Province" EntitySet="Province" /></AssociationSet></EntityContainer>
         <EntityType Name="College">
           <Key>
             <PropertyRef Name="ID" />
@@ -208,7 +278,34 @@
           <End Role="Department" Type="WorkModel.Department" Multiplicity="0..1" />
           <End Role="Major" Type="WorkModel.Major" Multiplicity="*" />
         </Association>
-      </Schema>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" /></Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" Nullable="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="Province" Relationship="WorkModel.FK_City_Province" FromRole="City" ToRole="Province" /></EntityType>
+        <EntityType Name="CountryRegion">
+          <Key>
+            <PropertyRef Name="ID" /></Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="Province" Relationship="WorkModel.FK_Province_CountryRegion" FromRole="CountryRegion" ToRole="Province" /></EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="ID" /></Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="true" />
+          <NavigationProperty Name="City" Relationship="WorkModel.FK_City_Province" FromRole="Province" ToRole="City" />
+          <NavigationProperty Name="CountryRegion" Relationship="WorkModel.FK_Province_CountryRegion" FromRole="Province" ToRole="CountryRegion" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="true" /></EntityType>
+        <Association Name="FK_City_Province">
+          <End Type="WorkModel.Province" Role="Province" Multiplicity="0..1" />
+          <End Type="WorkModel.City" Role="City" Multiplicity="*" /></Association>
+        <Association Name="FK_Province_CountryRegion">
+          <End Type="WorkModel.CountryRegion" Role="CountryRegion" Multiplicity="0..1" />
+          <End Type="WorkModel.Province" Role="Province" Multiplicity="*" /></Association></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -293,7 +390,36 @@
             </EndProperty>
             <Condition ColumnName="DepartmentID" IsNull="false" />
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="IsTypeOf(WorkModel.City)">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="ID" ColumnName="ID" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CountryRegion">
+            <EntityTypeMapping TypeName="IsTypeOf(WorkModel.CountryRegion)">
+              <MappingFragment StoreEntitySet="CountryRegion">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Province">
+            <EntityTypeMapping TypeName="IsTypeOf(WorkModel.Province)">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" /></MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="FK_City_Province" TypeName="WorkModel.FK_City_Province" StoreEntitySet="City">
+            <EndProperty Name="City">
+              <ScalarProperty Name="ID" ColumnName="ID" /></EndProperty>
+            <EndProperty Name="Province">
+              <ScalarProperty Name="ID" ColumnName="ProvinceID" /></EndProperty>
+            <Condition ColumnName="ProvinceID" IsNull="false" /></AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Province_CountryRegion" TypeName="WorkModel.FK_Province_CountryRegion" StoreEntitySet="Province">
+            <EndProperty Name="Province">
+              <ScalarProperty Name="ID" ColumnName="ID" /></EndProperty>
+            <EndProperty Name="CountryRegion">
+              <ScalarProperty Name="ID" ColumnName="CountryRegion" /></EndProperty>
+            <Condition ColumnName="CountryRegion" IsNull="false" /></AssociationSetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
@@ -326,6 +452,16 @@
           <ConnectorPoint PointX="5.25" PointY="1.7645064290364583" /></AssociationConnector>
         <AssociationConnector Association="WorkModel.FK_Major_Department" ManuallyRouted="false">
           <ConnectorPoint PointX="6.75" PointY="1.79399658203125" />
-          <ConnectorPoint PointX="7.5" PointY="1.79399658203125" /></AssociationConnector></Diagram></edmx:Diagrams>
+          <ConnectorPoint PointX="7.5" PointY="1.79399658203125" /></AssociationConnector>
+        <EntityTypeShape EntityType="WorkModel.City" Width="1.5" PointX="9.125" PointY="3.875" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="WorkModel.CountryRegion" Width="1.5" PointX="4.875" PointY="3.625" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="WorkModel.Province" Width="1.5" PointX="7.25" PointY="3.75" Height="1.7790128580729161" />
+        <AssociationConnector Association="WorkModel.FK_City_Province" >
+          <ConnectorPoint PointX="8.75" PointY="4.7020064290364578" />
+          <ConnectorPoint PointX="9.125" PointY="4.7020064290364578" />
+          </AssociationConnector>
+        <AssociationConnector Association="WorkModel.FK_Province_CountryRegion" >
+          <ConnectorPoint PointX="6.375" PointY="4.5770064290364587" />
+          <ConnectorPoint PointX="7.25" PointY="4.5770064290364587" /></AssociationConnector></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
