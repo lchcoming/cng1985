@@ -3,22 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.OleDb;
+using System.Data.Common;
+using MySql.Data.MySqlClient;
 namespace Work.WorkData
 {
    public class User
     {
         public bool Login(string name, string password)
         {
-            string c = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\Data\papaonline.mdb;Persist Security Info=True";
-            OleDbConnection con = new OleDbConnection(c);
+            DbConnection con = new MySql.Data.MySqlClient.MySqlConnection();
+            MySqlConnectionStringBuilder conb = new MySqlConnectionStringBuilder();
+            conb.Database = "work";
+            conb.UserID = "root";
+            conb.Password = "root";
+            conb.Port = 3306;
+            conb.Server = "localhost";
+            con.ConnectionString = conb.ConnectionString;
             string sql = @"SELECT   LoginName, LoginPassword
           FROM      [User]
                 WHERE   (LoginName = ?) AND (LoginPassword = ?)";
-            OleDbCommand cmd = new OleDbCommand();
+             DbCommand cmd = new MySqlCommand();
             cmd.Connection = con;
             cmd.CommandText = sql;
             con.Open();
-          OleDbDataReader reader=cmd.ExecuteReader();
+          DbDataReader reader=cmd.ExecuteReader();
           if (reader.Read())
           {
               con.Close();
