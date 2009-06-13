@@ -16,6 +16,44 @@ namespace cng1985
     {
         static void Main(string[] args)
         {
+<<<<<<< .mine
+            WorkEntities entity = new WorkEntities();
+            //School aa = new School();
+            //aa.SchoolName = "重庆大学";
+            //entity.AddToSchool(aa);
+            entity.SaveChanges();
+            var r = from c in entity.College
+                    //where c.School.ID == 1
+                    select new {
+                    Name=c.CollegeName,
+                    School=(from ada in entity.School
+                             where ada.ID==c.School.ID
+                             select ada
+                                ).FirstOrDefault().SchoolName
+                    };
+            foreach (var item in r)
+            {
+                Console.Write(item.School);
+                Console.Write(item.Name);
+            }
+            //DbConnection con = new MySql.Data.MySqlClient.MySqlConnection();
+            //MySqlConnectionStringBuilder conb = new MySqlConnectionStringBuilder();
+            //conb.Database = "work";
+            //conb.UserID = "root";
+            //conb.Password = "root";
+            //conb.Port = 3306;
+            //conb.Server = "localhost";
+            //con.ConnectionString = conb.ConnectionString;
+//            string sql = @"SELECT   LoginName, LoginPassword
+//          FROM      user
+//                WHERE   (LoginName = ?) AND (LoginPassword = ?)";
+//            DbCommand cmd = new MySqlCommand();
+//            cmd.Connection = con;
+//            cmd.CommandText = sql;
+            //con.Open();
+            //DbDataReader reader = cmd.ExecuteReader();
+
+=======
             WorkEntities entity = new WorkEntities();
             //School aa = new School();
             //aa.SchoolName = "重庆大学";
@@ -45,6 +83,7 @@ namespace cng1985
             con.Open();
             //DbDataReader reader = cmd.ExecuteReader();
 
+>>>>>>> .r27
             DESCryptoServiceProvider key = new DESCryptoServiceProvider();
             string gb2312 = "国营农场";
             string big5 = "";
