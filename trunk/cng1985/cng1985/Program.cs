@@ -7,12 +7,44 @@ using System.Threading;
 using System.Security.Cryptography;
 using System.IO;
 using Microsoft.VisualBasic;
+using System.Data.Common;
+using MySql.Data.MySqlClient;
+using cng1985.Modle;
 namespace cng1985
 {
     class Program
     {
         static void Main(string[] args)
         {
+            WorkEntities entity = new WorkEntities();
+            //School aa = new School();
+            //aa.SchoolName = "重庆大学";
+            //entity.AddToSchool(aa);
+            entity.SaveChanges();
+            var r = from c in entity.School
+                    //where c.School.ID == 1
+                    select c;
+            foreach (var item in r)
+            {
+                Console.Write(item.SchoolName);
+            }
+            DbConnection con = new MySql.Data.MySqlClient.MySqlConnection();
+            MySqlConnectionStringBuilder conb = new MySqlConnectionStringBuilder();
+            conb.Database = "work";
+            conb.UserID = "root";
+            conb.Password = "root";
+            conb.Port = 3306;
+            conb.Server = "localhost";
+            con.ConnectionString = conb.ConnectionString;
+//            string sql = @"SELECT   LoginName, LoginPassword
+//          FROM      user
+//                WHERE   (LoginName = ?) AND (LoginPassword = ?)";
+//            DbCommand cmd = new MySqlCommand();
+//            cmd.Connection = con;
+//            cmd.CommandText = sql;
+            con.Open();
+            //DbDataReader reader = cmd.ExecuteReader();
+
             DESCryptoServiceProvider key = new DESCryptoServiceProvider();
             string gb2312 = "国营农场";
             string big5 = "";

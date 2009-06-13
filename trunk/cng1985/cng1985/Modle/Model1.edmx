@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WorkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="WorkModelStoreContainer">
+          <EntitySet Name="College" EntityType="WorkModel.Store.College" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Department" EntityType="WorkModel.Store.Department" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Major" EntityType="WorkModel.Store.Major" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="School" EntityType="WorkModel.Store.School" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="WorkModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VCollege" EntityType="WorkModel.Store.VCollege" store:Type="Views" store:Schema="dbo" store:Name="VCollege">
+            <DefiningQuery>SELECT 
+      [VCollege].[ID] AS [ID], 
+      [VCollege].[CollegeName] AS [CollegeName], 
+      [VCollege].[SchoolName] AS [SchoolName]
+      FROM [dbo].[VCollege] AS [VCollege]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_College_School" Association="WorkModel.Store.FK_College_School">
+            <End Role="School" EntitySet="School" />
+            <End Role="College" EntitySet="College" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_College" Association="WorkModel.Store.FK_Department_College">
+            <End Role="College" EntitySet="College" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Major_Department" Association="WorkModel.Store.FK_Major_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Major" EntitySet="Major" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SchoolID" Type="int" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CollegeID" Type="int" />
+        </EntityType>
+        <EntityType Name="Major">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MajorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentID" Type="int" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--生成过程中发现错误:
+      警告 6002: 表/视图“E:\SOURCE\CNG1985\CNG1985\DATA\WORK.MDF.dbo.VCollege”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      -->
+        <EntityType Name="VCollege">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CollegeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SchoolName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_College_School">
+          <End Role="School" Type="WorkModel.Store.School" Multiplicity="0..1" />
+          <End Role="College" Type="WorkModel.Store.College" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="School">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="College">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_College">
+          <End Role="College" Type="WorkModel.Store.College" Multiplicity="0..1" />
+          <End Role="Department" Type="WorkModel.Store.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="College">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="CollegeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Major_Department">
+          <End Role="Department" Type="WorkModel.Store.Department" Multiplicity="0..1" />
+          <End Role="Major" Type="WorkModel.Store.Major" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Major">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorkModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="WorkEntities">
+          <EntitySet Name="College" EntityType="WorkModel.College" />
+          <EntitySet Name="Department" EntityType="WorkModel.Department" />
+          <EntitySet Name="Major" EntityType="WorkModel.Major" />
+          <EntitySet Name="School" EntityType="WorkModel.School" />
+          <EntitySet Name="sysdiagrams" EntityType="WorkModel.sysdiagrams" />
+          <EntitySet Name="VCollege" EntityType="WorkModel.VCollege" />
+          <AssociationSet Name="FK_College_School" Association="WorkModel.FK_College_School">
+            <End Role="School" EntitySet="School" />
+            <End Role="College" EntitySet="College" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_College" Association="WorkModel.FK_Department_College">
+            <End Role="College" EntitySet="College" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Major_Department" Association="WorkModel.FK_Major_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Major" EntitySet="Major" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="College">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CollegeName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="School" Relationship="WorkModel.FK_College_School" FromRole="College" ToRole="School" />
+          <NavigationProperty Name="Department" Relationship="WorkModel.FK_Department_College" FromRole="College" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="College" Relationship="WorkModel.FK_Department_College" FromRole="Department" ToRole="College" />
+          <NavigationProperty Name="Major" Relationship="WorkModel.FK_Major_Department" FromRole="Department" ToRole="Major" />
+        </EntityType>
+        <EntityType Name="Major">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MajorName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Department" Relationship="WorkModel.FK_Major_Department" FromRole="Major" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="School">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="SchoolName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="College" Relationship="WorkModel.FK_College_School" FromRole="School" ToRole="College" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="VCollege">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CollegeName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SchoolName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_College_School">
+          <End Role="School" Type="WorkModel.School" Multiplicity="0..1" />
+          <End Role="College" Type="WorkModel.College" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Department_College">
+          <End Role="College" Type="WorkModel.College" Multiplicity="0..1" />
+          <End Role="Department" Type="WorkModel.Department" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Major_Department">
+          <End Role="Department" Type="WorkModel.Department" Multiplicity="0..1" />
+          <End Role="Major" Type="WorkModel.Major" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="WorkModelStoreContainer" CdmEntityContainer="WorkEntities">
+          <EntitySetMapping Name="College">
+            <EntityTypeMapping TypeName="IsTypeOf(WorkModel.College)">
+              <MappingFragment StoreEntitySet="College">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="IsTypeOf(WorkModel.Department)">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Major">
+            <EntityTypeMapping TypeName="IsTypeOf(WorkModel.Major)">
+              <MappingFragment StoreEntitySet="Major">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MajorName" ColumnName="MajorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="School">
+            <EntityTypeMapping TypeName="IsTypeOf(WorkModel.School)">
+              <MappingFragment StoreEntitySet="School">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="IsTypeOf(WorkModel.sysdiagrams)">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VCollege">
+            <EntityTypeMapping TypeName="IsTypeOf(WorkModel.VCollege)">
+              <MappingFragment StoreEntitySet="VCollege">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_College_School" TypeName="WorkModel.FK_College_School" StoreEntitySet="College">
+            <EndProperty Name="School">
+              <ScalarProperty Name="ID" ColumnName="SchoolID" />
+            </EndProperty>
+            <EndProperty Name="College">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <Condition ColumnName="SchoolID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Department_College" TypeName="WorkModel.FK_Department_College" StoreEntitySet="Department">
+            <EndProperty Name="College">
+              <ScalarProperty Name="ID" ColumnName="CollegeID" />
+            </EndProperty>
+            <EndProperty Name="Department">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <Condition ColumnName="CollegeID" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Major_Department" TypeName="WorkModel.FK_Major_Department" StoreEntitySet="Major">
+            <EndProperty Name="Department">
+              <ScalarProperty Name="ID" ColumnName="DepartmentID" />
+            </EndProperty>
+            <EndProperty Name="Major">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <Condition ColumnName="DepartmentID" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="WorkModel.College" Width="1.5" PointX="3" PointY="0.875" Height="1.7790128580729163" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkModel.Department" Width="1.5" PointX="5.25" PointY="0.875" Height="1.7790128580729163" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkModel.Major" Width="1.5" PointX="7.5" PointY="1" Height="1.5879931640625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkModel.School" Width="1.5" PointX="0.75" PointY="1" Height="1.5879931640625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" Height="1.9700325520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkModel.VCollege" Width="1.5" PointX="2.75" PointY="3.75" Height="1.5879931640624996" IsExpanded="true" />
+        <AssociationConnector Association="WorkModel.FK_College_School" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="1.79399658203125" />
+          <ConnectorPoint PointX="3" PointY="1.79399658203125" /></AssociationConnector>
+        <AssociationConnector Association="WorkModel.FK_Department_College" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="1.7645064290364583" />
+          <ConnectorPoint PointX="5.25" PointY="1.7645064290364583" /></AssociationConnector>
+        <AssociationConnector Association="WorkModel.FK_Major_Department" ManuallyRouted="false">
+          <ConnectorPoint PointX="6.75" PointY="1.79399658203125" />
+          <ConnectorPoint PointX="7.5" PointY="1.79399658203125" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

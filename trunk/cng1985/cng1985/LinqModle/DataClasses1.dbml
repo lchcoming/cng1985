@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Work" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Data\Work.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="cng1985.Properties.Settings" SettingsPropertyName="WorkConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.College" Member="College">
+    <Type Name="College">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CollegeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SchoolID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="College_Department" Member="Department" ThisKey="ID" OtherKey="CollegeID" Type="Department" />
+      <Association Name="School_College" Member="School" ThisKey="SchoolID" OtherKey="ID" Type="School" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Department" Member="Department">
+    <Type Name="Department">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DepartmentName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CollegeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Department_Major" Member="Major" ThisKey="ID" OtherKey="DepartmentID" Type="Major" />
+      <Association Name="College_Department" Member="College" ThisKey="CollegeID" OtherKey="ID" Type="College" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Major" Member="Major">
+    <Type Name="Major">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MajorName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Department_Major" Member="Department" ThisKey="DepartmentID" OtherKey="ID" Type="Department" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.School" Member="School">
+    <Type Name="School">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SchoolName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="School_College" Member="College" ThisKey="ID" OtherKey="SchoolID" Type="College" />
+    </Type>
+  </Table>
+</Database>

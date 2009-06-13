@@ -25,21 +25,25 @@ using System.Text;
 using System.Windows.Forms;
 using Work.UI;
 using Work.WorkResource;
+using EARTHLib;
 namespace Work
 {
     public partial class MainForm : Form
     {
         public MainForm()
         {
-            NewMethod();
+            //NewMethod();
             InitializeComponent();
         }
         private Login login;
-
         private void MainForm_Load(object sender, EventArgs e)
         {
+            // TODO: 这行代码将数据加载到表“papaonlineDataSet.User”中。您可以根据需要移动或移除它。
+            this.userTableAdapter.Fill(this.papaonlineDataSet.User);
+            while (Loging())
+            { 
             
-            
+            }
         }
 
         private void NewMethod()
@@ -66,6 +70,23 @@ namespace Work
         {
             AboutBox about = new AboutBox();
             about.ShowDialog(this);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private bool Loging() {
+            Login ad = new Login();
+            if (ad.ShowDialog() == DialogResult.OK) { 
+            
+            }
+            return true;
         }
     }
 }
