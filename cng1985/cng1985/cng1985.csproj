@@ -12,6 +12,7 @@
     <AssemblyName>cng1985</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -48,6 +48,9 @@
   <ItemGroup>
     <Reference Include="DemoLib, Version=1.4.0.1, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Lucene.Net, Version=1.4.0.1, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Synchronization.Data, Version=1.0.0.0" />
+    <Reference Include="Microsoft.Synchronization.Data.Server, Version=1.0.0.0" />
+    <Reference Include="Microsoft.Synchronization.Data.SqlServerCe, Version=3.5.0.0" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySql.Data, Version=5.2.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -78,6 +81,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Chinese.cs" />
+    <Compile Include="Data\LocalDataCache1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalDataCache1.sync</DependentUpon>
+    </Compile>
     <Compile Include="Data\WorkDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,6 +96,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="LocalModle\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Modle\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -139,6 +152,9 @@
     </Content>
     <Content Include="Dll\DemoLib.dll" />
     <Content Include="Dll\Lucene.Net.dll" />
+    <Content Include="WORK.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="年高得意算法\数据库分页.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +217,11 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
       <Visible>False</Visible>
       <ProductName>Windows Installer 3.1</ProductName>
@@ -211,9 +232,46 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\LocalDataCache1.sync">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSyncGenerator</Generator>
+      <LastGenOutput>LocalDataCache1.Designer.cs</LastGenOutput>
+    </None>
     <None Include="LinqModle\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
+    <EntityDeploy Include="LocalModle\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SQLScripts\LocalDataCache1.dbo.Address.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.City.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.College.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.Contact.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.CountryRegion.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.Department.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.Employee.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.EmployeeAddress.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.Major.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.ProductCategory.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.ProductSubcategory.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.Province.sql" />
+    <None Include="SQLScripts\LocalDataCache1.dbo.School.sql" />
+    <None Include="SQLScripts\LocalDataCache1.WORK.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.Address.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.City.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.College.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.Contact.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.CountryRegion.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.Department.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.Employee.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.EmployeeAddress.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.Major.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.ProductCategory.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.ProductSubcategory.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.Province.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.dbo.School.disable.sql" />
+    <None Include="SQLUndoScripts\LocalDataCache1.WORK.disable.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

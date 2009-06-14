@@ -33,5 +33,15 @@ namespace cng1985.Properties {
                 return ((string)(this["WorkConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\WORK.sdf;Max Database Size=2047")]
+        public string ClientWORKConnectionString {
+            get {
+                return ((string)(this["ClientWORKConnectionString"]));
+            }
+        }
     }
 }

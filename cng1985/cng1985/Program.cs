@@ -18,20 +18,21 @@ namespace cng1985
         {
 
             WorkEntities entity = new WorkEntities();
-            var resut = from c in entity.Province
-                       select c;
+            var resut = from c in entity.City
+                       //select c;
                        //// where c.ID == 2
-                       // select new
-                       // {
-                       //     Name = c.CityName,
-                       //     Pname = c.Province.Name
-                       // };
+                        select new
+                        {
+                            Name = c.CityName,
+                            Pname = c.Province.Name
+                        };
             foreach (var item in resut)
             {
-                item.Name = item.Name.Trim();
-                Console.WriteLine(item.Name);
-                item.ModifiedDate = DateTime.Now;
-               // Console.WriteLine("你现在所在的城市是{0}省{1}市", item.Pname, item.Name);
+                //item.Name = item.Name.Trim();
+                //Console.WriteLine(item.Name);
+                //Console.WriteLine(item.ModifiedDate);  
+                // item.ModifiedDate = DateTime.Now;
+               Console.WriteLine("你现在所在的城市是{0}省{1}市\n+++", item.Pname, item.Name);
             }
             entity.SaveChanges();
             //LinqDataTest();

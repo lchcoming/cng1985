@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses1">
+  <DataContextMoniker Name="/DataClasses1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="a7fdcb60-b898-4823-ad4a-2700d572f1bb" absoluteBounds="4.625, 2.5, 2, 1.3805261230468751">
+      <DataClassMoniker Name="/DataClasses1DataContext/NewsSubType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="626d0da7-fadd-41bd-a3e5-1e1e9ccbdd5f" absoluteBounds="4.64, 2.96, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cc66c545-0b7d-4d5a-8ccc-da3b2edd51b3" absoluteBounds="8.375, 0.875, 2, 1.3805261230468751">
+      <DataClassMoniker Name="/DataClasses1DataContext/NewsType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="64b7cc56-2ff1-4671-8c1b-3cbdf337c552" absoluteBounds="8.39, 1.335, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.375 : 1.56526306152344); (5.625 : 1.56526306152344); (5.625 : 2.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataClasses1DataContext/NewsType/NewsType_NewsSubType" />
+      <nodes>
+        <classShapeMoniker Id="cc66c545-0b7d-4d5a-8ccc-da3b2edd51b3" />
+        <classShapeMoniker Id="a7fdcb60-b898-4823-ad4a-2700d572f1bb" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a11d3395-3276-4be4-9566-d42d6f270604" absoluteBounds="4, 5.25, 2, 1.7625655110677081">
+      <DataClassMoniker Name="/DataClasses1DataContext/News" />
+      <nestedChildShapes>
+        <elementListCompartment Id="acd0cdf0-8a07-40e8-b1dc-c1c0b8a40a02" absoluteBounds="4.015, 5.71, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.3125 : 3.88052612304688); (5.3125 : 5.25)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/NewsSubType/NewsSubType_News" />
+      <nodes>
+        <classShapeMoniker Id="a7fdcb60-b898-4823-ad4a-2700d572f1bb" />
+        <classShapeMoniker Id="a11d3395-3276-4be4-9566-d42d6f270604" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
