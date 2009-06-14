@@ -81,6 +81,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\NewManagerController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -437,6 +438,7 @@
     <Content Include="Views\NewManager\AddNews.aspx" />
     <Content Include="Views\NewManager\AddType.aspx" />
     <Content Include="Views\NewManager\Index.aspx" />
+    <Content Include="Views\News\Index.aspx" />
     <Content Include="Views\User\Index.aspx" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>

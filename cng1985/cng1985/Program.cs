@@ -10,6 +10,7 @@ using Microsoft.VisualBasic;
 using System.Data.Common;
 using MySql.Data.MySqlClient;
 using cng1985.Modle;
+using cng1985.SqlWork;
 namespace cng1985
 {
     class Program
@@ -17,24 +18,8 @@ namespace cng1985
         static void Main(string[] args)
         {
 
-            WorkEntities entity = new WorkEntities();
-            var resut = from c in entity.City
-                       //select c;
-                       //// where c.ID == 2
-                        select new
-                        {
-                            Name = c.CityName,
-                            Pname = c.Province.Name
-                        };
-            foreach (var item in resut)
-            {
-                //item.Name = item.Name.Trim();
-                //Console.WriteLine(item.Name);
-                //Console.WriteLine(item.ModifiedDate);  
-                // item.ModifiedDate = DateTime.Now;
-               Console.WriteLine("你现在所在的城市是{0}省{1}市\n+++", item.Pname, item.Name);
-            }
-            entity.SaveChanges();
+            Work work = new Work();
+            work.Run();
             //LinqDataTest();
             //DbConnection con = new MySql.Data.MySqlClient.MySqlConnection();
             //MySqlConnectionStringBuilder conb = new MySqlConnectionStringBuilder();
@@ -113,6 +98,28 @@ namespace cng1985
             }
             Console.WriteLine(getMd5HashSHA512Cng(source));
             Console.Read();
+        }
+
+        private static void DateEntity()
+        {
+            WorkEntities entity = new WorkEntities();
+            var resut = from c in entity.City
+                        //select c;
+                        //// where c.ID == 2
+                        select new
+                        {
+                            Name = c.CityName,
+                            Pname = c.Province.Name
+                        };
+            foreach (var item in resut)
+            {
+                //item.Name = item.Name.Trim();
+                //Console.WriteLine(item.Name);
+                //Console.WriteLine(item.ModifiedDate);  
+                // item.ModifiedDate = DateTime.Now;
+                Console.WriteLine("你现在所在的城市是{0}省{1}市\n+++", item.Pname, item.Name);
+            }
+            entity.SaveChanges();
         }
 
         //private static void LinqDataTest()
