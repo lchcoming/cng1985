@@ -78,10 +78,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FriendInfoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\MessageInfoController.cs" />
     <Compile Include="Controllers\NewManagerController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PlanInfoController.cs" />
+    <Compile Include="Controllers\ProjectInfoController.cs" />
+    <Compile Include="Controllers\SchoolHomeController.cs" />
+    <Compile Include="Controllers\StudyInfoController.cs" />
+    <Compile Include="Controllers\TodayInfoController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -115,6 +122,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchoolModle\FriendInfo.cs" />
+    <Compile Include="SchoolModle\MessageInfo.cs" />
+    <Compile Include="SchoolModle\PlanInfo.cs" />
+    <Compile Include="SchoolModle\ProjectInfo.cs" />
+    <Compile Include="SchoolModle\SchoolHome.cs" />
+    <Compile Include="SchoolModle\StudyInfo.cs" />
+    <Compile Include="SchoolModle\TodayInfo.cs" />
     <Compile Include="Service\WebDataService1.svc.cs">
       <DependentUpon>WebDataService1.svc</DependentUpon>
     </Compile>
@@ -459,7 +473,17 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\myworld.css" />
     <Content Include="Design\Designone.Master" />
+    <Content Include="HtmlDesign\HTMLPage1.htm" />
+    <Content Include="HtmlDesign\image\3.png" />
+    <Content Include="Views\FriendInfo\Index.aspx" />
+    <Content Include="Views\MessageInfo\Index.aspx" />
+    <Content Include="Views\PlanInfo\Index.aspx" />
+    <Content Include="Views\ProjectInfo\Index.aspx" />
+    <Content Include="Views\SchoolHome\Index.aspx" />
+    <Content Include="Views\StudyInfo\Index.aspx" />
+    <Content Include="Views\TodayInfo\Index.aspx" />
     <None Include="LinqModle\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>

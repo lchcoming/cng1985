@@ -20,6 +20,9 @@
             </div>
             <div id="menucontainer">
                 <ul id="menu">
+                <li>
+                        <%= Html.ActionLink("学校系统", "Index", "SchoolHome")%></li>
+                    <li>
                     <li>
                         <%= Html.ActionLink("新闻管理", "Index", "NewManager")%></li>
                     <li>
