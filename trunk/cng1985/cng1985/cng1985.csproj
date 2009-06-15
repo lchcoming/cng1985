@@ -97,11 +97,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
-    <Compile Include="LocalModle\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Modle\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -114,6 +109,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SqlWork\PageWork.cs" />
     <Compile Include="SqlWork\Work.cs" />
     <Compile Include="WebWork.cs" />
   </ItemGroup>
@@ -241,10 +237,6 @@
     <None Include="LinqModle\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
-    <EntityDeploy Include="LocalModle\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="SQLScripts\LocalDataCache1.dbo.Address.sql" />
     <None Include="SQLScripts\LocalDataCache1.dbo.City.sql" />
     <None Include="SQLScripts\LocalDataCache1.dbo.College.sql" />
@@ -273,6 +265,9 @@
     <None Include="SQLUndoScripts\LocalDataCache1.dbo.Province.disable.sql" />
     <None Include="SQLUndoScripts\LocalDataCache1.dbo.School.disable.sql" />
     <None Include="SQLUndoScripts\LocalDataCache1.WORK.disable.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LocalModle\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

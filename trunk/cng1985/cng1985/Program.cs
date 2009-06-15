@@ -9,7 +9,7 @@ using System.IO;
 using Microsoft.VisualBasic;
 using System.Data.Common;
 using MySql.Data.MySqlClient;
-using cng1985.Modle;
+using cng1985.LinqModle;
 using cng1985.SqlWork;
 namespace cng1985
 {
@@ -19,7 +19,41 @@ namespace cng1985
         {
 
             Work work = new Work();
-            work.Run();
+           // work.Run();
+            int show = 19968;
+            StringBuilder b = new StringBuilder();
+            for (int i = 0; i < 1000; i++)
+            {
+                Random generator = new Random((int)DateTime.Now.Ticks);
+                int randomValue;
+
+                randomValue = generator.Next(19968, 40869);
+                Thread.Sleep(1);
+                char ss = (char)randomValue;
+                b.Append(ss);
+            }
+            //for (int i = 19968; i < 25000; i++)
+            //{
+            //    Random generator = new Random((int)DateTime.Now.Ticks);
+            //    int randomValue;
+
+            //    randomValue = generator.Next(19968, 40869);
+            //    Thread.Sleep(1);
+            //    char ss = (char)i;
+            //    Console.WriteLine(ss);
+            //}
+            Console.WriteLine(Strings.StrConv(b.ToString(), VbStrConv.SimplifiedChinese, 0));
+            PageWork page = new PageWork();
+            for (int i = 1; i < 5; i++)
+            {
+                List<Province> a = page.GetPage(i);
+                foreach (var item in a)
+                {
+                    Console.WriteLine(item.Name);
+                }
+                Console.WriteLine("++++++++++++++++++++++++++++++++++++");
+            }
+            
             //LinqDataTest();
             //DbConnection con = new MySql.Data.MySqlClient.MySqlConnection();
             //MySqlConnectionStringBuilder conb = new MySqlConnectionStringBuilder();
@@ -102,24 +136,24 @@ namespace cng1985
 
         private static void DateEntity()
         {
-            WorkEntities entity = new WorkEntities();
-            var resut = from c in entity.City
-                        //select c;
-                        //// where c.ID == 2
-                        select new
-                        {
-                            Name = c.CityName,
-                            Pname = c.Province.Name
-                        };
-            foreach (var item in resut)
-            {
-                //item.Name = item.Name.Trim();
-                //Console.WriteLine(item.Name);
-                //Console.WriteLine(item.ModifiedDate);  
-                // item.ModifiedDate = DateTime.Now;
-                Console.WriteLine("你现在所在的城市是{0}省{1}市\n+++", item.Pname, item.Name);
-            }
-            entity.SaveChanges();
+        //    WorkEntities entity = new WorkEntities();
+        //    var resut = from c in entity.City
+        //                //select c;
+        //                //// where c.ID == 2
+        //                select new
+        //                {
+        //                    Name = c.CityName,
+        //                    Pname = c.Province.Name
+        //                };
+        //    foreach (var item in resut)
+        //    {
+        //        //item.Name = item.Name.Trim();
+        //        //Console.WriteLine(item.Name);
+        //        //Console.WriteLine(item.ModifiedDate);  
+        //        // item.ModifiedDate = DateTime.Now;
+        //        Console.WriteLine("你现在所在的城市是{0}省{1}市\n+++", item.Pname, item.Name);
+        //    }
+        //    entity.SaveChanges();
         }
 
         //private static void LinqDataTest()
