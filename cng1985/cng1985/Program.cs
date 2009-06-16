@@ -11,13 +11,15 @@ using System.Data.Common;
 using MySql.Data.MySqlClient;
 using cng1985.LinqModle;
 using cng1985.SqlWork;
+using cng1985.MySqlWork;
 namespace cng1985
 {
     class Program
     {
         static void Main(string[] args)
         {
-
+            cng1985.MySqlWork.PageWork ww =new cng1985.MySqlWork.PageWork();
+            ww.run();
             Work work = new Work();
            // work.Run();
             int show = 19968;
@@ -32,6 +34,7 @@ namespace cng1985
                 char ss = (char)randomValue;
                 b.Append(ss);
             }
+
             //for (int i = 19968; i < 25000; i++)
             //{
             //    Random generator = new Random((int)DateTime.Now.Ticks);
@@ -43,7 +46,7 @@ namespace cng1985
             //    Console.WriteLine(ss);
             //}
             Console.WriteLine(Strings.StrConv(b.ToString(), VbStrConv.SimplifiedChinese, 0));
-            PageWork page = new PageWork();
+            cng1985.SqlWork.PageWork page = new cng1985.SqlWork.PageWork();
             for (int i = 1; i < 5; i++)
             {
                 List<Province> a = page.GetPage(i);
