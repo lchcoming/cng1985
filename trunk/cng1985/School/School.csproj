@@ -132,6 +132,13 @@
     <Compile Include="Service\WebDataService1.svc.cs">
       <DependentUpon>WebDataService1.svc</DependentUpon>
     </Compile>
+    <Compile Include="tool\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tool\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -463,13 +470,6 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="LinqModle\DataClasses1.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
@@ -477,13 +477,28 @@
     <Content Include="Design\Designone.Master" />
     <Content Include="HtmlDesign\HTMLPage1.htm" />
     <Content Include="HtmlDesign\image\3.png" />
+    <Content Include="tool\WebForm1.aspx" />
     <Content Include="Views\FriendInfo\Index.aspx" />
     <Content Include="Views\MessageInfo\Index.aspx" />
+    <Content Include="Views\Message\Create.aspx" />
+    <Content Include="Views\Message\Details.aspx" />
+    <Content Include="Views\Message\Edit.aspx" />
+    <Content Include="Views\Message\Index.aspx" />
+    <Content Include="Views\Message\List.aspx" />
     <Content Include="Views\PlanInfo\Index.aspx" />
     <Content Include="Views\ProjectInfo\Index.aspx" />
     <Content Include="Views\SchoolHome\Index.aspx" />
     <Content Include="Views\StudyInfo\Index.aspx" />
     <Content Include="Views\TodayInfo\Index.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LinqModle\DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="LinqModle\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
