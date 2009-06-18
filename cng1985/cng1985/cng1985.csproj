@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdaMd5.cs" />
     <Compile Include="Chinese.cs" />
     <Compile Include="Data\LocalDataCache1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -97,11 +98,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
+    <Compile Include="MakeSafe.cs" />
+    <Compile Include="MakeString.cs" />
     <Compile Include="Modle\Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MySafe.cs" />
     <Compile Include="MySqlWork\MySqlWork.cs" />
     <Compile Include="MySqlWork\PageWork.cs" />
     <Compile Include="Program.cs" />

@@ -18,22 +18,26 @@ namespace cng1985
     {
         static void Main(string[] args)
         {
+            MySafe mys = new MySafe();
+            Console.WriteLine(mys.EncryptString("ada.young"));
+            Console.WriteLine(mys.DecryptString(mys.EncryptString("ada.young")));
+            MakeSafe safe = new MakeSafe();
+            Console.WriteLine(safe.EncryptString("ada"));
+            Console.WriteLine(safe.DecryptString(safe.EncryptString("ada")));
+            AdaMd5 mds = new AdaMd5();
+            mds.Md5Source = new SHA512Cng();
+            Console.WriteLine(mds.getMd5Hash("ada"));
+            Console.WriteLine(mds.verifyMd5Hash("ada", mds.getMd5Hash("ada")));
             cng1985.MySqlWork.PageWork ww =new cng1985.MySqlWork.PageWork();
             ww.run();
             Work work = new Work();
            // work.Run();
             int show = 19968;
-            StringBuilder b = new StringBuilder();
-            for (int i = 0; i < 1000; i++)
-            {
-                Random generator = new Random((int)DateTime.Now.Ticks);
-                int randomValue;
-
-                randomValue = generator.Next(19968, 40869);
-                Thread.Sleep(1);
-                char ss = (char)randomValue;
-                b.Append(ss);
-            }
+            //for (int i = 900; i < 1000; i++)
+            //{
+            //    MakeString s = new MakeString();
+            //    Console.WriteLine(s.GetString(i));
+            //}
 
             //for (int i = 19968; i < 25000; i++)
             //{
@@ -45,7 +49,7 @@ namespace cng1985
             //    char ss = (char)i;
             //    Console.WriteLine(ss);
             //}
-            Console.WriteLine(Strings.StrConv(b.ToString(), VbStrConv.SimplifiedChinese, 0));
+           // Console.WriteLine(Strings.StrConv(b.ToString(), VbStrConv.SimplifiedChinese, 0));
             cng1985.SqlWork.PageWork page = new cng1985.SqlWork.PageWork();
             for (int i = 1; i < 5; i++)
             {
@@ -95,10 +99,6 @@ namespace cng1985
 
 
             DESCryptoServiceProvider key = new DESCryptoServiceProvider();
-            string gb2312 = "国营农场";
-            string big5 = "";
-            big5 = Strings.StrConv(gb2312, VbStrConv.TraditionalChinese, 0);
-            Console.WriteLine(big5);
             // Encrypt a string to a byte array.
             byte[] buffer = Encrypt("This is some plaintext! 我是你爷爷", key);
             Console.WriteLine(Encoding.Unicode.GetString(buffer));
