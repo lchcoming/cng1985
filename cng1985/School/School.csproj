@@ -493,6 +493,31 @@
     <Content Include="Design\Designone.Master" />
     <Content Include="HtmlDesign\HTMLPage1.htm" />
     <Content Include="HtmlDesign\image\3.png" />
+    <Content Include="tank\img\1.gif" />
+    <Content Include="tank\img\ball.gif" />
+    <Content Include="tank\img\bg.gif" />
+    <Content Include="tank\img\bg.jpg" />
+    <Content Include="tank\img\defense.jpg" />
+    <Content Include="tank\img\etank.gif" />
+    <Content Include="tank\img\explode.gif" />
+    <Content Include="tank\img\gameOver.gif" />
+    <Content Include="tank\img\gameOver.jpg" />
+    <Content Include="tank\img\hide.jpg" />
+    <Content Include="tank\img\life.jpg" />
+    <Content Include="tank\img\play11.jpg" />
+    <Content Include="tank\img\play12.jpg" />
+    <Content Include="tank\img\play21.jpg" />
+    <Content Include="tank\img\play22.jpg" />
+    <Content Include="tank\img\power.jpg" />
+    <Content Include="tank\img\sea.gif" />
+    <Content Include="tank\img\speed.jpg" />
+    <Content Include="tank\img\steel.gif" />
+    <Content Include="tank\img\ston.gif" />
+    <Content Include="tank\img\tank.gif" />
+    <Content Include="tank\img\wall.gif" />
+    <Content Include="tank\jquery-1.3.2.min.js" />
+    <Content Include="tank\map.js" />
+    <Content Include="tank\tank.html" />
     <Content Include="tool\WebForm1.aspx" />
     <Content Include="tool\WebForm2.aspx" />
     <Content Include="Views\FriendInfo\Index.aspx" />
@@ -520,6 +545,7 @@
     <None Include="LinqModle\DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
+    <None Include="tank\img\Thumbs.db" />
     <None Include="webworkDataSet.xsc">
       <DependentUpon>webworkDataSet.xsd</DependentUpon>
     </None>
