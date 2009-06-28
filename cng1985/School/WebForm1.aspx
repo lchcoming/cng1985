@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Design/Site.Master" AutoEventWireup="true"
     CodeBehind="WebForm1.aspx.cs" Inherits="School.WebForm1" Title="无标题页" %>
 
+<%@ Register assembly="AdaControl" namespace="AdaControl" tagprefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -20,6 +22,7 @@
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                             exercitation.</p>
+                        <cc1:HotProducts ID="HotProducts1" runat="server" />
                         <a href="details.html" class="more">- more details -</a>
                         <div class="clear">
                         </div>
