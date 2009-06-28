@@ -92,6 +92,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Html\HtmlWork.cs" />
     <Compile Include="IndexHtml.cs" />
     <Compile Include="LinqModle\DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
