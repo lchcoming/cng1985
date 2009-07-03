@@ -18,6 +18,20 @@ namespace cng1985
     {
         static void Main(string[] args)
         {
+            DataClasses1DataContext entity = new DataClasses1DataContext();
+            var result = from c in entity.City
+                         select c;
+           var a= result.Skip(10).Take(2);
+           var b = a.Take(10);
+           foreach (var item in b)
+           {
+               Console.WriteLine(item.CityName);
+           }
+            Console.Read();
+        }
+
+        private static void NewMethod()
+        {
             MySafe mys = new MySafe();
             Console.WriteLine(mys.EncryptString("ada.young"));
             Console.WriteLine(mys.DecryptString(mys.EncryptString("ada.young")));
@@ -28,10 +42,10 @@ namespace cng1985
             mds.Md5Source = new SHA512Cng();
             Console.WriteLine(mds.getMd5Hash("ada"));
             Console.WriteLine(mds.verifyMd5Hash("ada", mds.getMd5Hash("ada")));
-            cng1985.MySqlWork.PageWork ww =new cng1985.MySqlWork.PageWork();
+            cng1985.MySqlWork.PageWork ww = new cng1985.MySqlWork.PageWork();
             ww.run();
             Work work = new Work();
-           // work.Run();
+            // work.Run();
             int show = 19968;
             //for (int i = 900; i < 1000; i++)
             //{
@@ -49,7 +63,7 @@ namespace cng1985
             //    char ss = (char)i;
             //    Console.WriteLine(ss);
             //}
-           // Console.WriteLine(Strings.StrConv(b.ToString(), VbStrConv.SimplifiedChinese, 0));
+            // Console.WriteLine(Strings.StrConv(b.ToString(), VbStrConv.SimplifiedChinese, 0));
             cng1985.SqlWork.PageWork page = new cng1985.SqlWork.PageWork();
             for (int i = 1; i < 5; i++)
             {
@@ -60,7 +74,7 @@ namespace cng1985
                 }
                 Console.WriteLine("++++++++++++++++++++++++++++++++++++");
             }
-            
+
             //LinqDataTest();
             //DbConnection con = new MySql.Data.MySqlClient.MySqlConnection();
             //MySqlConnectionStringBuilder conb = new MySqlConnectionStringBuilder();
@@ -134,7 +148,6 @@ namespace cng1985
                 Console.WriteLine("The hashes are not same.");
             }
             Console.WriteLine(getMd5HashSHA512Cng(source));
-            Console.Read();
         }
 
         private static void DateEntity()
