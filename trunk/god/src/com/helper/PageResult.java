@@ -1,25 +1,25 @@
 package com.helper;
 import java.util.List;
 /**
- * 分页查询结果类
- * @author 陈海彬 
- * @email chenhaibin@3g.net.cn
- * @create time : 2009-2-12
+ * 
+ * @author ada
+ *
+ * @param <T>
  */
-public class PageResult
+public class PageResult<T>
 {
 	/**
 	 * 分页结果
 	 */
-	private List resultList;
+	private List<T> resultList;
 	/**
 	 * 分页信息
 	 */
 	private PageBean pageBean;
-	public List getResultList() {
+	public List<T> getResultList() {
 		return resultList;
 	}
-	public void setResultList(List resultList) {
+	public void setResultList(List<T> resultList) {
 		this.resultList = resultList;
 	}
 	public PageBean getPageBean() {

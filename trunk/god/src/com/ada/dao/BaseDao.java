@@ -17,7 +17,16 @@ public class BaseDao<T extends Object> {
 		}
 	}
 
-	public T findbyid(Long id, Class<T> arg0) {
+	public void delete(T entity) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			pm.deletePersistent(entity);
+		} finally {
+			pm.close();
+		}
+	}
+
+	protected T findbyid(Long id, Class<T> arg0) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		// Object item = pm.getObjectById(id);
 		T item = pm.getObjectById(arg0, id);
