@@ -63,7 +63,7 @@ li:hover ul, li.over ul { display: block; } /* The magic */
 <li><a href="http://www.google.com" target="main">世界管理</a></li> 
 <li><a href="http://www.google.com" target="main">机构管理</a></li>
 <li><a href="http://www.google.com" target="main">用户管理</a></li>
-<li><a href="http://www.google.com" target="main">留言管理</a></li> 
+<li><a href="http://www.google.com" target="main">新闻管理</a></li> 
 <li><a href="http://www.google.com" target="main">地区管理</a></li> 
 <li><a href="http://www.google.com" target="main">世界管理</a></li> 
 <li><a href="http://www.google.com" target="main">留言管理</a></li> 
