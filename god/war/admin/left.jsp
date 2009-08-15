@@ -57,13 +57,27 @@ li:hover ul, li.over ul { display: block; } /* The magic */
 <ul id="nav"> 
 <li><a href="articles.jsp" target="main">文章管理</a></li> 
 <li><a href="http://www.google.com" target="main">论坛管理</a></li> 
+<li><a href="http://www.google.com" target="main">问答管理</a></li> 
 <li><a href="http://www.google.com" target="main">留言管理</a></li> 
 <li><a href="http://www.google.com" target="main">地区管理</a></li> 
 <li><a href="http://www.google.com" target="main">世界管理</a></li> 
-<li><a href="http://www.google.com" target="main">机构管理</a></li> 
-<li><a href="http://www.google.com" target="main">工具箱</a></li> 
-<li><a href="http://www.google.com" target="main">推出登陆</a></li> 
-<li><a href="http://www.google.com" target="main">公司管理</a></li> 
+<li><a href="http://www.google.com" target="main">机构管理</a></li>
+<li><a href="http://www.google.com" target="main">用户管理</a></li>
+<li><a href="http://www.google.com" target="main">留言管理</a></li> 
+<li><a href="http://www.google.com" target="main">地区管理</a></li> 
+<li><a href="http://www.google.com" target="main">世界管理</a></li> 
+<li><a href="http://www.google.com" target="main">留言管理</a></li> 
+<li><a href="http://www.google.com" target="main">地区管理</a></li> 
+<li><a href="http://www.google.com" target="main">世界管理</a></li> 
+<li><a href="http://www.google.com" target="main">机构管理</a></li>
+<li><a href="http://www.google.com" target="main">用户管理</a></li> 
+<li><a href="http://www.google.com" target="main">机构管理</a></li>
+<li><a href="http://www.google.com" target="main">用户管理</a></li>   
+<li><a href="http://www.google.com" target="main">工具箱</a></li>
+<li><a href="http://www.google.com" target="main">帖子管理</a></li>
+<li><a href="http://www.google.com" target="main">回帖管理</a></li>   
+<li><a href="http://cng1985.appspot.com/" target="main">查看系统</a></li> 
+<li><a href="http://code.google.com/p/cng1985/updates/list" target="main">源代码管理</a></li> 
 </ul> 
 </body>
 </html>
