@@ -18,7 +18,7 @@ namespace god.test
 		[Test]
 		public void TestMethod()
 		{
-			// TODO: Add your test.
+			Assert.True(true);
 		}
 	}
 }
