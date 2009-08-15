@@ -1,13 +1,4 @@
-<!-- Indices written at Sun, 1 Nov 2009 09:12:53 UTC -->
+<!-- Indices written at Sun, 1 Nov 2009 12:05:42 UTC -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 1 time in query history -->
-    <datastore-index kind="Country" ancestor="true" source="auto"/>
-
-    <!-- Used 1 time in query history -->
-    <datastore-index kind="City" ancestor="true" source="auto">
-        <property name="citys_INTEGER_IDX" direction="asc"/>
-    </datastore-index>
-
-</datastore-indexes>
