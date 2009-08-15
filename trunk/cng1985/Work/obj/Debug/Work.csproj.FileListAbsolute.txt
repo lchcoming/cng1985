@@ -1,0 +1,13 @@
+G:\google开发\trunk\cng1985\Work\obj\Debug\ResolveAssemblyReference.cache
+G:\google开发\trunk\cng1985\Work\obj\Debug\Interop.MSSCTLB.dll
+G:\google开发\trunk\cng1985\Work\obj\Debug\Interop.MSSITLB.dll
+G:\google开发\trunk\cng1985\Work\obj\Debug\Interop.QQPHOTODRAWEXLib.dll
+G:\google开发\trunk\cng1985\Work\obj\Debug\Work.csproj.ResolveComReference.cache
+G:\google开发\trunk\cng1985\Work\obj\Debug\Work.MainForm.resources
+G:\google开发\trunk\cng1985\Work\obj\Debug\Work.Properties.Resources.resources
+G:\google开发\trunk\cng1985\Work\obj\Debug\Work.Test.Form1.resources
+G:\google开发\trunk\cng1985\Work\obj\Debug\Work.Test.Form2.resources
+G:\google开发\trunk\cng1985\Work\obj\Debug\Work.UI.AboutBox.resources
+G:\google开发\trunk\cng1985\Work\obj\Debug\Work.UI.Login.resources
+G:\google开发\trunk\cng1985\Work\obj\Debug\Work.WorkResource.ChineseResource.resources
+G:\google开发\trunk\cng1985\Work\obj\Debug\Work.csproj.GenerateResource.Cache
