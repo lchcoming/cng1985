@@ -8,6 +8,7 @@
  */
 using System;
 using System.Net;
+using System.IO;
 namespace god.net
 {
 	/// <summary>
@@ -19,8 +20,16 @@ namespace god.net
 		{
 		}
 		public void connect(){
-			HttpWebRequest request=WebRequest.Create("");
-			
+			HttpWebRequest request=(HttpWebRequest)WebRequest.Create("http://cng1985.appspot.com/");
+			HttpWebResponse response=(HttpWebResponse)request.GetResponse();
+			Stream stream=response.GetResponseStream();
+			StreamReader reader=new StreamReader(stream);
+			while(reader.Read()!=-1){
+				Console.WriteLine(reader.ReadLine());
+			}
+		String content=	reader.ReadToEnd();
+			Console.WriteLine(content.Length);
+			//StringReader read=new StringReader();
 		}
 	}
 }
