@@ -1,4 +1,16 @@
-<!-- Indices written at Sun, 1 Nov 2009 12:05:42 UTC -->
+<!-- Indices written at Mon, 2 Nov 2009 09:14:31 UTC -->
 
-<datastore-indexes/>
+<datastore-indexes>
 
+    <!-- Used 151 times in query history -->
+    <datastore-index kind="NewDetails" ancestor="true" source="auto"/>
+
+    <!-- Used 79 times in query history -->
+    <datastore-index kind="Discuss" ancestor="true" source="auto">
+        <property name="dilist_INTEGER_IDX" direction="asc"/>
+    </datastore-index>
+
+    <!-- Used 41 times in query history -->
+    <datastore-index kind="Discuss" ancestor="true" source="auto"/>
+
+</datastore-indexes>

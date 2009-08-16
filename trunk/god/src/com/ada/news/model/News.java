@@ -9,7 +9,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION,detachable="true")
 public class News {
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	@PrimaryKey
@@ -24,6 +24,10 @@ public class News {
 	private List<Discuss> dilist; 
 	@Persistent
 	private NewDetails details;
+	public News(){
+		visit=0;
+		putime=new Date();
+	}
 	public NewDetails getDetails() {
 		return details;
 	}
