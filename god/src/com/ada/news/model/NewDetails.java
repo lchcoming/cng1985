@@ -1,5 +1,6 @@
 package com.ada.news.model;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -14,7 +15,7 @@ public class NewDetails {
 
 	}
 	@PrimaryKey
-	@Persistent
+	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
 	private Key key;
 	@Persistent
 	private Text content;

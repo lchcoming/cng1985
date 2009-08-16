@@ -7,13 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="foot.jsp" %>
-<%=request.getServerName() %><br>
-<%=request.getProtocol() %><br>
-<%=request.getLocalPort() %><br>
-<%=request.getRemoteAddr() %><br>
-<%=request.getRemoteHost() %><br>
-<%=request.getRemoteUser() %><br>
-
+<form action="addnews.jsp" method="post">
+<input name="title" >
+<input name="content" >
+<input type="submit" value="添加新闻">
+</form>
 </body>
 </html>

@@ -37,7 +37,7 @@
 <body>
 <div class="login">
 <h3>后台登陆</h3>
-<form action="/servlet/Login" method="post">
+<form action="/service/login.jsp" method="post">
 用户名<input class="username" name="name"><br/>
 密&nbsp; 码<input class="password" name="password" type="password"><br/>
 <input type="submit" value="登陆">

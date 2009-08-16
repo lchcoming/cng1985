@@ -1,7 +1,9 @@
 package com.ada.daoimpl;
 
+import java.util.LinkedList;
 import java.util.List;
 
+import javax.jdo.Extent;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Transaction;
 import javax.persistence.EntityManager;
@@ -10,6 +12,7 @@ import javax.persistence.Query;
 import com.ada.dao.BaseDao;
 import com.ada.data.manager.EMF;
 import com.ada.data.manager.PMF;
+import com.ada.news.model.Discuss;
 import com.ada.news.model.News;
 import com.helper.PageBean;
 import com.helper.PageResult;
@@ -17,7 +20,21 @@ import com.helper.PageResult;
 public class NewDaoImpl extends BaseDao<News> {
 
 	public News findbyid(Long id) {
-		return findbyid(id, News.class);
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		//pm.setDetachAllOnCommit(true);
+		News news=new News();
+	   // try {
+	    	news= pm.getObjectById(News.class,id);
+//	     news.setVisit(ns.getVisit());
+//	     news.setTitle(ns.getTitle());
+//	     news.setDetails(ns.getDetails());
+//	     news.setDilist(ns.getDilist());
+//	     news.setId(ns.getId());
+//	     news.setPutime(ns.getPutime());
+	   // } finally {
+	     // pm.close();
+	   // }
+	    return news;
 	}
 
 	public News visit(Long id) {
@@ -84,4 +101,33 @@ public class NewDaoImpl extends BaseDao<News> {
 		return pagerResult;
 	}
 
+	public List<News> all() {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		List<News> result = new LinkedList<News>();
+		Extent<News> newst = pm.getExtent(News.class);
+		for (News item : newst) {
+			result.add(item);
+		}
+		pm.close();
+		return result;
+
+	}
+
+   public void adddiscuss(Discuss discuss,Long id){
+	   PersistenceManager pm = PMF.get().getPersistenceManager();
+		//pm.setDetachAllOnCommit(true);
+		News news=new News();
+	   // try {
+	    	news= pm.getObjectById(News.class,id);
+	    	news.getDilist().add(discuss);
+//	     news.setVisit(ns.getVisit());
+//	     news.setTitle(ns.getTitle());
+//	     news.setDetails(ns.getDetails());
+//	     news.setDilist(ns.getDilist());
+//	     news.setId(ns.getId());
+//	     news.setPutime(ns.getPutime());
+	   // } finally {
+	      pm.close();
+	   // }
+   }
 }

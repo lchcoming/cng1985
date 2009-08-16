@@ -21,7 +21,9 @@ public class Discuss {
 	private String content;
 	@Persistent
 	private Date putime;
-
+   public Discuss(){
+	   putime=new Date();
+   }
 	public Key getKey() {
 		return key;
 	}
