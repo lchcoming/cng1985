@@ -18,7 +18,7 @@
     	<%=item.getContent() %>
     	<%=item.getNews().getTitle() %>
     	<%=item.getPutime().toLocaleString()%>
-    	
+    	<a href="deletediscuss.jsp?id=<%=item.getKey().getId() %>&pid=<%=item.getKey().getParent().getId() %>">删除</a>
     	<br/>
     	<%
     }
