@@ -28,14 +28,14 @@ public class BaseDao<T extends Object> {
 		}
 	}
 
-	public void delete(T entity) {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		try {
-			pm.deletePersistent(entity);
-		} finally {
-			pm.close();
-		}
-	}
+//	public void delete(T entity) {
+//		PersistenceManager pm = PMF.get().getPersistenceManager();
+//		try {
+//			pm.deletePersistent(entity);
+//		} finally {
+//			pm.close();
+//		}
+//	}
 
 	protected T findbyid(Long id, Class<T> arg0) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();

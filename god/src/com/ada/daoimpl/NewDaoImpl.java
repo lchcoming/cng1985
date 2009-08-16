@@ -14,6 +14,8 @@ import com.ada.data.manager.EMF;
 import com.ada.data.manager.PMF;
 import com.ada.news.model.Discuss;
 import com.ada.news.model.News;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.helper.PageBean;
 import com.helper.PageResult;
 
@@ -32,7 +34,7 @@ public class NewDaoImpl extends BaseDao<News> {
 //	     news.setId(ns.getId());
 //	     news.setPutime(ns.getPutime());
 	   // } finally {
-	     // pm.close();
+	     pm.close();
 	   // }
 	    return news;
 	}
@@ -41,17 +43,25 @@ public class NewDaoImpl extends BaseDao<News> {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		tx.begin();
-		News news = pm.getObjectById(News.class, id);
+		News news =  pm.getObjectById(News.class,id);
 		long visit = news.getVisit();
 		news.setVisit(visit + 1);
+		
 		tx.commit();
 		try {
 		} finally {
 			if (tx.isActive()) {
 				tx.rollback();
 			}
+			news.getDetails();
+			news.getDilist().size();
+			for (Discuss it : news.getDilist()) {
+				System.out.println(it.getContent());
+			}
+			System.out.println(news.getDilist().size());
 			pm.close();
 		}
+		
 		return news;
 	}
 
@@ -130,4 +140,15 @@ public class NewDaoImpl extends BaseDao<News> {
 	      pm.close();
 	   // }
    }
+   public void delete(Long id) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+
+			News	news= pm.getObjectById(News.class,id);
+			pm.deletePersistent(news);
+		} finally {
+			pm.close();
+		}
+	}
+
 }

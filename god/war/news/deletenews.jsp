@@ -13,8 +13,7 @@
 		<%
 		String id=request.getParameter("newsid");
 		NewDaoImpl dao = new NewDaoImpl();
-		News news =dao.findbyid(Long.parseLong(id));
-	    dao.delete(news);
+	    dao.delete(Long.parseLong(id));
 	    response.sendRedirect("allnews.jsp");
 	
 		%>

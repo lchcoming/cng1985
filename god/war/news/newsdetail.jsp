@@ -15,14 +15,16 @@
 			id="1";
 		}
 			NewDaoImpl dao = new NewDaoImpl();
-			News news =dao.findbyid(Long.parseLong(id));
+			News news =dao.visit(Long.parseLong(id));
 		
 		%>
 		
 		
-		<%=news.getTitle() %>
-		<%=news.getDetails().getContent().getValue() %>
-		<%=news.getDilist().size()%>
+		标题:<%=news.getTitle() %>
+		<br/>
+		内容<%=news.getDetails().getContent().getValue() %>
+		<br/>
+		留言量:<%=news.getVisit()%>
 	<br/>评论如下
 	<br/>
 		<%
