@@ -20,8 +20,8 @@ namespace god.net
 		public HtmlWork()
 		{
 		}
-		public void connect(){
-			HttpWebRequest request=(HttpWebRequest)WebRequest.Create("http://cng1985.appspot.com/");
+		public void connect(String url){
+			HttpWebRequest request=(HttpWebRequest)WebRequest.Create(url);
 			HttpWebResponse response=(HttpWebResponse)request.GetResponse();
 			Stream stream=response.GetResponseStream();
 			StreamReader reader=new StreamReader(stream);
@@ -39,5 +39,11 @@ namespace god.net
 			Console.WriteLine(content.Length);
 			//StringReader read=new StringReader();
 		}
+		public void visits(String[] urls){
+			foreach(string item in urls){
+				connect(item);
+			}
+		}
+	
 	}
 }
