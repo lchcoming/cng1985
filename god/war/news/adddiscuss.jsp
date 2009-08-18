@@ -16,13 +16,13 @@
        
 		//News news =dao.findbyid(Long.parseLong(id));
 		String content=request.getParameter("content");
-		NewDetails details=new NewDetails();
+		NewsDetails details=new NewsDetails();
 		Discuss dis=new Discuss();
 		//dis.setNews(news);
 		dis.setContent(content);
-		dao.adddiscuss(dis,Long.parseLong(id));
+		//dao.adddiscuss(dis,Long.parseLong(id));
 		DiscussDaoImpl ddao=new DiscussDaoImpl();
-	    //ddao.adddiscuss(dis,Long.parseLong(id));
+	    ddao.adddiscuss(dis,Long.parseLong(id));
 		response.sendRedirect("newsdetail.jsp?id="+id);
 		%>
 	</body>

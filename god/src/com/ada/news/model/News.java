@@ -23,12 +23,12 @@ public class News {
 	@Persistent(mappedBy="news")
 	private List<Discuss> dilist; 
 	@Persistent
-	private NewDetails details;
+	private NewsDetails details;
 	public News(){
 		visit=0;
 		putime=new Date();
 	}
-	public NewDetails getDetails() {
+	public NewsDetails getDetails() {
 		return details;
 	}
 	public Long getId() {
@@ -43,7 +43,7 @@ public class News {
 	public long getVisit() {
 		return visit;
 	}
-	public void setDetails(NewDetails details) {
+	public void setDetails(NewsDetails details) {
 		this.details = details;
 	}
 	public void setId(Long id) {

@@ -12,18 +12,32 @@ request.setAttribute("aa",aa);
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>啪啪在线，中国最大的毕业设计网站</title>
+ <link href="/css/site.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
-<jsp:useBean id="a" class="com.ada.model.UserInfo"></jsp:useBean>
-<jsp:setProperty property="username" name="a" value="adddd"/>
-<jsp:getProperty property="username" name="a"/>
-${1}
-${q}
-${a.username}
-取的值
-${aa.username}
-${ada}
 
+<body>
+<%@include file="top.jsp" %>
+<div class="body">
+<div class="left">
+1
+</div>
+<div class="right">
+
+</div>
+<div class="left">
+2
+</div>
+<div class="right">
+${"呵呵"}
+</div>
+<div class="left">
+3
+</div>
+<div class="right">
+
+</div>
+</div>
+<%@include file="foot.jsp" %>
 </body>
 </html>

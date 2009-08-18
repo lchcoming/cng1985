@@ -16,10 +16,10 @@
 			String title=request.getParameter("title");
 			news.setTitle(title);
 			String content=request.getParameter("content");
-			NewDetails details=new NewDetails();
+			NewsDetails details=new NewsDetails();
 			details.setContent(new Text(content));
-			news.setDetails(details);
-			dao.add(news);
+			//news.setDetails(details);
+			dao.add(news,details);
 			response.sendRedirect("allnews.jsp");
 		%>
 	</body>

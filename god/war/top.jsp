@@ -1,71 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-		<div id="container">
-
-			<div id="logo">
-				<h1>
-					<a href="#">啪啪在线</a>
-				</h1>
-				<h2 id="tagline">
-					一个充满想象的地方
-				</h2>
-			</div>
-
-			<div id="menu">
-				<a href="#" id="login" title="login">login</a>
-				<a href="#" id="rss-entries" title="rss entries">rss entries</a>
-				<a href="#" id="rss-comments" title="rss comments">rss comments</a>
-			</div>
-
-			<div class="clearing">
-				&nbsp;
-			</div>
-
-			<ul id="nav">
-				<li>
-					<a href="/index.jsp" title="首页">首页</a>
-				</li>
-				<li>
-					<a href="/softnews.jsp" title="软件新闻">软件新闻</a>
-				</li>
-				<li>
-					<a href="/articles.jsp" title="编程思想">编程思想</a>
-				</li>
-				<li>
-					<a href="/common.jsp" title="啪啪社区">啪啪社区</a>
-				</li>
-				<li>
-					<a href="/search/main.jsp" title="搜索">搜索</a>
-				</li>
-					<li>
-					<a href="/message.jsp" title="留言板">留言板</a>
-				</li>
-				<li>
-					<a href="/contact.jsp" title="联系我">联系我</a>
-				</li>
-
-			</ul>
-
-			<div id="search">
-				<form method="get" action="http://cng1985.appspot.com/search/main.jsp" target="_top">
-					<div id="s-text">
-					
-						<input name="q" id="s" type="text" />
-						<input type="hidden" name="domains" value="cng1985.appspot.com"></input>
-						<input type="hidden" name="client" value="pub-5166549859484488"></input>
-<input type="hidden" name="forid" value="1"></input>
-<input type="hidden" name="ie" value="UTF-8"></input>
-<input type="hidden" name="oe" value="UTF-8"></input>
-<input type="hidden" name="cof" value="GALT:#0066CC;GL:1;DIV:#999999;VLC:336633;AH:center;BGC:fbf7f7;LBGC:FF9900;ALC:0066CC;LC:0066CC;T:000000;GFNT:666666;GIMP:666666;FORID:11"></input>
-<input type="hidden" name="hl" value="zh-CN"></input>
-						<label for="s">
-							Search
-						</label>
-					</div>
-					<div id="s-submit">
-						<input id="searchsubmit" value="" type="submit" />
-					</div>
-				</form>
-			</div>
-			</div>
+<div class="login">
+<form action="">
+<input name="name">
+<input name="password">
+<input type="submit" value="登陆">
+<a href="register.jsp">注册</a>
+</form>
+</div>
+<div class="nav">
+<a href="#">首页</a>
+<a href="#">新闻</a>
+<a href="#">问答</a>
+<a href="#">异常吧</a>
+<a href="#">知识库</a>
+<a href="#">google开发</a>
+<a href="#">实验室</a>
+<a href="#">毕业设计</a>
+<a href="#">社区</a>
+<a href="#">百科</a>
+<a href="#">网站当行</a>
+<a href="#">工作</a>
+<a href="#">编程思想</a>
+<a href="#">设计模式</a>
+<a href="#">google吧</a>
+</div>

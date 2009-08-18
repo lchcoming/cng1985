@@ -18,5 +18,14 @@
 out.println(item.getUsername());
 out.println(item.getContactInfo().getEmail());
 } %>
+<jsp:useBean id="a" class="com.ada.model.UserInfo"></jsp:useBean>
+<jsp:setProperty property="username" name="a" value="adddd"/>
+<jsp:getProperty property="username" name="a"/>
+${1}
+${q}
+${a.username}
+取的值
+${aa.username}
+${ada}
 </body>
 </html>

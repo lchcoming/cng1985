@@ -18,7 +18,7 @@ public class HtmlWork {
 		// TODO Auto-generated method stub
 		try {
 			work();
-			 name();
+			name();
 			System.out.println("+++++++");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -30,7 +30,8 @@ public class HtmlWork {
 		String message;
 		System.out.println("+++++++");
 		message = URLEncoder.encode("my message", "UTF-8");
-		URL url = new URL("http://cng1985.appspot.com/newforummessage.jsp?id=7007");
+		URL url = new URL(
+				"http://cng1985.appspot.com/newforummessage.jsp?id=7007");
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setDoOutput(true);
 		connection.setFollowRedirects(true);
@@ -41,9 +42,9 @@ public class HtmlWork {
 		writer.write("title=" + "ada");
 		writer.write("id=" + "7007");
 		writer.write("mothod=" + "new");
-		writer.write("content="+"ada2008");
+		writer.write("content=" + "ada2008");
 		writer.close();
-		
+
 		System.out.println(connection.getResponseMessage());
 		System.out.println(connection.getResponseCode());
 		if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
@@ -53,17 +54,24 @@ public class HtmlWork {
 		}
 
 	}
-   public static void name() throws IOException {
-	   URL url=new URL("http://cng1985.appspot.com/login.jsp");
-	   BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-       String line;
-       String message = null;
-       while ((line = reader.readLine()) != null) {
-           message+=line+"\n";
-       }
-       System.out.println(message);
-       reader.close();
-}
 
+	public static void name() {
+		String line;
+		String message = null;
+		try {
+			URL url = new URL("http://cng1985.appspot.com/login.jsp");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					url.openStream()));
+
+			while ((line = reader.readLine()) != null) {
+				message += line + "\n";
+			}
+			reader.close();
+		} catch (IOException e) {
+			// TODO: handle exception
+		}
+		System.out.println(message);
+
+	}
 
 }

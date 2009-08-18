@@ -16,11 +16,15 @@ import com.google.appengine.api.datastore.KeyFactory;
 
 public class DiscussDaoImpl extends BaseDao<Discuss> {
 	public List<Discuss> all() {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
 		List<Discuss> result = new LinkedList<Discuss>();
-		Extent<Discuss> newst = pm.getExtent(Discuss.class);
-		for (Discuss item : newst) {
-			result.add(item);
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			Extent<Discuss> newst = pm.getExtent(Discuss.class);
+			for (Discuss item : newst) {
+				result.add(item);
+			}
+		} finally {
+			pm.close();
 		}
 		return result;
 	}
@@ -32,7 +36,8 @@ public class DiscussDaoImpl extends BaseDao<Discuss> {
 		try {
 			News news = pm.getObjectById(News.class, newid);
 			dis.setNews(news);
-			pm.makePersistent(dis);
+			//pm.makePersistent(dis);
+			pm.makePersistentAll(dis);
 			tx.commit();
 		} finally {
 			if (tx.isActive()) {
@@ -41,21 +46,23 @@ public class DiscussDaoImpl extends BaseDao<Discuss> {
 			pm.close();
 		}
 	}
-    public void deletediscuss(Long id,Long pid){
-    	PersistenceManager pm = PMF.get().getPersistenceManager();
-     Transaction tx=	pm.currentTransaction();
-     tx.begin();
+
+	public void deletediscuss(Long id, Long pid) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		tx.begin();
 		try {
-			Key k = new KeyFactory.Builder(News.class.getSimpleName(), pid).addChild(Discuss.class.getSimpleName(), id).getKey();
-			//Key key=KeyFactory.createKey(Discuss.class.getSimpleName(), id)
-			Discuss	news= pm.getObjectById(Discuss.class,k);
+			Key k = new KeyFactory.Builder(News.class.getSimpleName(), pid)
+					.addChild(Discuss.class.getSimpleName(), id).getKey();
+			// Key key=KeyFactory.createKey(Discuss.class.getSimpleName(), id)
+			Discuss news = pm.getObjectById(Discuss.class, k);
 			pm.deletePersistent(news);
 			tx.commit();
 		} finally {
-			if(tx.isActive()){
+			if (tx.isActive()) {
 				tx.rollback();
 			}
 			pm.close();
 		}
-    }
+	}
 }
