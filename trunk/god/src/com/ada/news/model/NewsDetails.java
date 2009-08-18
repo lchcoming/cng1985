@@ -10,8 +10,8 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class NewDetails {
-	public NewDetails() {
+public class NewsDetails {
+	public NewsDetails() {
 
 	}
 	@PrimaryKey
@@ -31,4 +31,5 @@ public class NewDetails {
 	public void setContent(Text content) {
 		this.content = content;
 	}
+	
 }

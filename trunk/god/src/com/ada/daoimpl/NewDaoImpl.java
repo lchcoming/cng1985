@@ -14,39 +14,57 @@ import com.ada.data.manager.EMF;
 import com.ada.data.manager.PMF;
 import com.ada.news.model.Discuss;
 import com.ada.news.model.News;
+import com.ada.news.model.NewsDetails;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.helper.PageBean;
 import com.helper.PageResult;
 
-public class NewDaoImpl extends BaseDao<News> {
+public class NewDaoImpl {
+
+	public void add(News news, NewsDetails details) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		tx.begin();
+		try {
+			news.setDetails(details);
+			pm.makePersistent(news);
+			tx.commit();
+		} finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+
+	}
 
 	public News findbyid(Long id) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		//pm.setDetachAllOnCommit(true);
-		News news=new News();
-	   // try {
-	    	news= pm.getObjectById(News.class,id);
-//	     news.setVisit(ns.getVisit());
-//	     news.setTitle(ns.getTitle());
-//	     news.setDetails(ns.getDetails());
-//	     news.setDilist(ns.getDilist());
-//	     news.setId(ns.getId());
-//	     news.setPutime(ns.getPutime());
-	   // } finally {
-	     pm.close();
-	   // }
-	    return news;
+		// pm.setDetachAllOnCommit(true);
+		News news = new News();
+		// try {
+		news = pm.getObjectById(News.class, id);
+		// news.setVisit(ns.getVisit());
+		// news.setTitle(ns.getTitle());
+		// news.setDetails(ns.getDetails());
+		// news.setDilist(ns.getDilist());
+		// news.setId(ns.getId());
+		// news.setPutime(ns.getPutime());
+		// } finally {
+		pm.close();
+		// }
+		return news;
 	}
 
 	public News visit(Long id) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		tx.begin();
-		News news =  pm.getObjectById(News.class,id);
+		News news = pm.getObjectById(News.class, id);
 		long visit = news.getVisit();
 		news.setVisit(visit + 1);
-		
+
 		tx.commit();
 		try {
 		} finally {
@@ -61,7 +79,7 @@ public class NewDaoImpl extends BaseDao<News> {
 			System.out.println(news.getDilist().size());
 			pm.close();
 		}
-		
+
 		return news;
 	}
 
@@ -123,31 +141,39 @@ public class NewDaoImpl extends BaseDao<News> {
 
 	}
 
-   public void adddiscuss(Discuss discuss,Long id){
-	   PersistenceManager pm = PMF.get().getPersistenceManager();
-		//pm.setDetachAllOnCommit(true);
-		News news=new News();
-	   // try {
-	    	news= pm.getObjectById(News.class,id);
-	    	news.getDilist().add(discuss);
-//	     news.setVisit(ns.getVisit());
-//	     news.setTitle(ns.getTitle());
-//	     news.setDetails(ns.getDetails());
-//	     news.setDilist(ns.getDilist());
-//	     news.setId(ns.getId());
-//	     news.setPutime(ns.getPutime());
-	   // } finally {
-	      pm.close();
-	   // }
-   }
-   public void delete(Long id) {
+	public void adddiscuss(Discuss discuss, Long id) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
+		// pm.setDetachAllOnCommit(true);
+		News news = new News();
+		// try {
+		news = pm.getObjectById(News.class, id);
+		news.getDilist().add(discuss);
+		// news.setVisit(ns.getVisit());
+		// news.setTitle(ns.getTitle());
+		// news.setDetails(ns.getDetails());
+		// news.setDilist(ns.getDilist());
+		// news.setId(ns.getId());
+		// news.setPutime(ns.getPutime());
+		// } finally {
+		pm.close();
+		// }
+	}
+
+	public void delete(Long id) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		tx.begin();
 		try {
 
-			News	news= pm.getObjectById(News.class,id);
+			News news = pm.getObjectById(News.class, id);
 			pm.deletePersistent(news);
+			tx.commit();
 		} finally {
+			if (tx.isActive()) {
+				tx.rollback();
+			}
 			pm.close();
+
 		}
 	}
 

@@ -27,7 +27,7 @@ namespace god.test
 	   public void	TestConnect(){
 			HtmlWork work=new HtmlWork();
 			string[] urls=new string[]{"http://cng1985.appspot.com","http://cng1985.appspot.com/articles.jsp"};
-			work.visits(urls);
+			//work.visits(urls);
 		}
 		
 	}

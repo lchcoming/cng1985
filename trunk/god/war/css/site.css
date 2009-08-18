@@ -6,15 +6,19 @@ width:800px;
 }
 body
 {
+margin-top:0px;
+}
+
+.login{
+	 background-color:Silver;
+	width: 900px;
+	margin: 0px auto 0px auto;
 }
 .nav
 {
-	width: 873px;
-	height: 37px;
-	background-image: url('../images/header.jpg');
-	padding-top: 150px;
+	background-color:Silver;
+	width: 900px;
 	background-repeat: no-repeat;
-	padding-left: 27px;
 	margin: 0px auto 0px auto;
 	font-size: 15px;
 }
@@ -23,36 +27,37 @@ body
 	padding: 0px 5px 0px 0px;
 	text-decoration: none;
 }
-.foot
+.nav  a:hover
 {
-	background-image: url('../images/footer_bg.gif');
-	text-align: center;
-	background-repeat: no-repeat;
-	height: 48px;
-	width: 900px;
-	padding-top: 20px;
-	margin-right: auto;
-	margin-left: auto;
-	color: #3366CC;
+	padding: 0px 5px 0px 0px;
+	text-decoration: none;
+}
+.nav a:visited
+{
+	padding: 0px 5px 0px 0px;
+	text-decoration: none;
 }
 .body
 {
-	width: 768px;
+	width: 900px;
 	margin-right: auto;
-	margin-top:100px;
+	margin-top:10px;
 	margin-left: auto;
 	background-color:White;
 }
 .left
 {
-	width: 100px;
+	width: 200px;
+	height:200px;
 	float: left;
-	margin-left: 20px;
+	background-color:#9999FF;
 }
 .right
 {
+	background-color:Silver;
 	width: 700px;
-	margin-left: 180px;
+	height:200px;
+	margin-left:200px;
 }
 .product
 {
@@ -69,7 +74,7 @@ body
 .commentbox
 {
 	padding: 10px;
-	background-color: #ececec;
+	background-color:#ececec;
 	width: 748px;
 	font-size: 12px;
 	height: auto;
@@ -87,4 +92,13 @@ body
 }
 .message{
 	float: left;
+}
+.foot{
+	 background-color:Silver;
+	width: 900px;
+	margin: 0px auto 0px auto;
+}
+.foot a{
+	padding: 0px 5px 0px 0px;
+	text-decoration: none;
 }

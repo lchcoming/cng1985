@@ -9,6 +9,7 @@
 using System;
 using god.net;
 using System.Threading;
+using System.Collections.Generic;
 namespace god
 {
 	class Program
@@ -17,11 +18,20 @@ namespace god
 		{
 			Console.WriteLine("Hello World!");
 			while(true){
+				try{
 		    HtmlWork work=new HtmlWork();
-			string[] urls=new string[]{"http://cng1985.appspot.com","http://cng1985.appspot.com/articles.jsp"};
-			work.visits(urls);
+		    List<string> u=new List<string>();
+		    u.Add("http://cng1985.appspot.com");
+		    u.Add("http://cng1985.appspot.com/articles.jsp");
+		    u.Add("http://cng1985.appspot.com/search/msg.jsp?url=www.yahoo.com");
+		    u.Add("http://cng1985.appspot.com/search/msg.jsp");
+			work.visits(u);
+			Console.WriteLine("累了，该休息一下了，程序继续运行中！！！！！！！！");
 			Thread.Sleep(5000);
-			Console.WriteLine("+++++++++++++++++++++++");
+				}
+				catch(Exception e){
+					Console.WriteLine(e.Message);
+				}
 			}
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true);
