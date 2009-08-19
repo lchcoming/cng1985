@@ -1,13 +1,4 @@
-<!-- Indices written at Mon, 17 Aug 2009 10:28:16 UTC -->
+<!-- Indices written at Tue, 18 Aug 2009 08:58:08 UTC -->
 
-<datastore-indexes>
+<datastore-indexes/>
 
-    <!-- Used 3 times in query history -->
-    <datastore-index kind="NewsDetails" ancestor="true" source="auto"/>
-
-    <!-- Used 1 time in query history -->
-    <datastore-index kind="Discuss" ancestor="true" source="auto">
-        <property name="dilist_INTEGER_IDX" direction="asc"/>
-    </datastore-index>
-
-</datastore-indexes>

@@ -18,8 +18,8 @@
 			String content=request.getParameter("content");
 			NewsDetails details=new NewsDetails();
 			details.setContent(new Text(content));
-			//news.setDetails(details);
-			dao.add(news,details);
+			news.setDetails(details);
+			dao.add(news);
 			response.sendRedirect("allnews.jsp");
 		%>
 	</body>

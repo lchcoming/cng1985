@@ -22,14 +22,15 @@ import com.helper.PageResult;
 
 public class NewDaoImpl {
 
-	public void add(News news, NewsDetails details) {
+	public void add(News news) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
-		tx.begin();
 		try {
-			news.setDetails(details);
+		
+			tx.begin();
 			pm.makePersistent(news);
 			tx.commit();
+			
 		} finally {
 			if (tx.isActive()) {
 				tx.rollback();
