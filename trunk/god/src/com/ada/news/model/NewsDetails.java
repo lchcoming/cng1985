@@ -9,16 +9,25 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.Text;
 
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable(identityType = IdentityType.APPLICATION,detachable="true")
 public class NewsDetails {
 	public NewsDetails() {
-
+		news=null;
 	}
 	@PrimaryKey
 	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY)
 	private Key key;
 	@Persistent
 	private Text content;
+	@Persistent(mappedBy="details")
+	private News news;
+
+	public News getNews() {
+		return news;
+	}
+	public void setNews(News news) {
+		this.news = news;
+	}
 	public Key getKey() {
 		return key;
 	}

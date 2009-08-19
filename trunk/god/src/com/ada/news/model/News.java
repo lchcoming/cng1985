@@ -1,6 +1,7 @@
 package com.ada.news.model;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
@@ -27,6 +28,7 @@ public class News {
 	public News(){
 		visit=0;
 		putime=new Date();
+		dilist=new LinkedList<Discuss>();
 	}
 	public NewsDetails getDetails() {
 		return details;
