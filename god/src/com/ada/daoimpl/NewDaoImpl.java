@@ -22,7 +22,7 @@ import com.helper.PageResult;
 
 public class NewDaoImpl {
 
-	public void add(News news) {
+	public void add(News news,NewsDetails details) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
@@ -37,6 +37,11 @@ public class NewDaoImpl {
 			}
 			pm.close();
 		}
+		 pm = PMF.get().getPersistenceManager();
+		 tx = pm.currentTransaction();
+		 news.setDetails(details);
+		 tx.commit();
+		 pm.close();
 
 	}
 
