@@ -34,11 +34,11 @@ namespace Hope
 		
 		void Button1Click(object sender, EventArgs e)
 		{
-			string source="";
-			source+="subject"+textBox1.Text.Trim();
-			source+="source"+textBox2.Text.Trim();
-			string error;
-			GetPage("http://cng1985.appspot.com/reader",source,"UTF-8",out error);
+			string source="http://cng1985.appspot.com/reader";
+			source+="title="+textBox1.Text.Trim();
+			source+="&source="+textBox2.Text.Trim();
+			
+			pub(source);
 			MessageBox.Show("success");
 		}
 		public static string GetPage(string url, string postData,string encodeType,out string err)
@@ -80,6 +80,22 @@ namespace Hope
 				return string.Empty;
 			}
 		}
-	
+		public static void pub(String url){
+			HttpWebRequest request=(HttpWebRequest)WebRequest.Create(url);
+			HttpWebResponse response=(HttpWebResponse)request.GetResponse();
+			Stream stream=response.GetResponseStream();
+			StreamReader reader=new StreamReader(stream);
+			int i=1;
+			while(reader.ReadLine()!=null){
+				if(i%300==0){
+					//Console.WriteLine(i);
+				}
+				i++;
+			}
+		
+			String content=    reader.ReadToEnd();
+			//Console.WriteLine(content.Length);
+			//StringReader read=new StringReader();
+		}
 	}
 }

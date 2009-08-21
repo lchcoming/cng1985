@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.GregorianCalendar;
 
 public class HtmlWork {
 
@@ -16,14 +17,13 @@ public class HtmlWork {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		try {
-			work();
-			name();
+		GregorianCalendar calendar=new GregorianCalendar();
+		System.out.println(calendar.getActualMaximum(calendar.WEEK_OF_YEAR));
+		
+			//work();
+			//name();
 			System.out.println("+++++++");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
 	public static void work() throws IOException {

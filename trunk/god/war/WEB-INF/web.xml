@@ -8,10 +8,28 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>God</servlet-name>
 		<servlet-class>com.ada.service.GodServlet</servlet-class>
 	</servlet>
+  <servlet>
+    <servlet-name>UpFile</servlet-name>
+    <servlet-class>com.ada.service.UpFile</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ShowImage</servlet-name>
+    <servlet-class>com.ada.service.ShowImage</servlet-class>
+  </servlet>
+
+
 	<servlet-mapping>
 		<servlet-name>God</servlet-name>
 		<url-pattern>/god</url-pattern>
 	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpFile</servlet-name>
+    <url-pattern>/servlet/UpFile</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowImage</servlet-name>
+    <url-pattern>/servlet/ShowImage</url-pattern>
+  </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
