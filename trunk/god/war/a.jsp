@@ -20,8 +20,8 @@ request.setAttribute("show",a);
 <c:if test="a==a">
 haha
 </c:if>
-<c:forEach items="#show" var="item">
-<c:out value="item"></c:out>
+<c:forEach items="${show}" var="item">
+<c:out value="${item}"></c:out>
 </c:forEach>
 <form action="b.jsp">
 <input type="submit" >
