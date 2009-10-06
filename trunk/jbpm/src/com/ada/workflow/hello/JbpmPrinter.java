@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.jbpm.api.HistoryService;
+import org.jbpm.api.RepositoryService;
+import org.jbpm.api.TaskQuery;
 import org.jbpm.api.TaskService;
 import org.jbpm.api.history.HistoryActivityInstance;
 import org.jbpm.api.history.HistoryActivityInstanceQuery;
@@ -15,6 +17,8 @@ import org.jbpm.api.history.HistoryProcessInstanceQuery;
 import org.jbpm.api.history.HistoryTask;
 import org.jbpm.api.history.HistoryTaskQuery;
 import org.jbpm.api.task.Task;
+
+import com.ada.factory.JbpmFactory;
 
 /**
  * 
@@ -134,6 +138,31 @@ public class JbpmPrinter {
 		for(String item:set){
 			System.out.println(item);
 		}
+	}
+	
+	public void printtask(String user) {
+		TaskService taskService = JbpmFactory.createTaskService();
+		TaskQuery query = taskService.createTaskQuery();
+		query.assignee(user);
+		List<Task> list = query.list();
+		for (Task item : list) {
+			System.out.println("*************开始显示内容***********");
+			printstring("处理人    " + item.getAssignee());
+			printstring("流程实例ID        " + item.getExecutionId());
+			printstring("任务ＩＤ        " + item.getId());
+			printstring("流程名称        " + item.getActivityName());
+			printstring("开始时间        " + item.getCreateTime());
+			printstring("结束时间         " + item.getDuedate());
+			printstring("花费时间          " + item.getFormResourceName());
+			
+
+			System.out.println("*************显示内容结束***********");
+
+		}
+		RepositoryService service=	JbpmFactory.createRepositoryService();
+		service.createProcessDefinitionQuery();
+		
+		
 	}
 
 }
