@@ -1,4 +1,7 @@
 package com.ada.workflow.api;
+
+import com.ada.workflow.seal.JbpmModel;
+
 /** 
  * CopyRright (c)1985-2009: <br />                             
  * Project: jbpm<br />                                           
@@ -15,5 +18,5 @@ package com.ada.workflow.api;
  */
 
 public interface WrokService {
-
+void aduit(String taskid,JbpmModel model);
 }
