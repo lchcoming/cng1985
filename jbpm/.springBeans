@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.2.0.zmyeclipse75020090612]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/applicationContext.xml</config>
+		<config>src/springconfig/hello.xml</config>
+		<config>src/springconfig/hibernate.xml</config>
+		<config>src/springconfig/factory.xml</config>
+		<config>src/spring/workflow/hellowork.xml</config>
+	</configs>
+	<configSets>
+	</configSets>
+	<springVersion>2.5</springVersion>
+</beansProjectDescription>
