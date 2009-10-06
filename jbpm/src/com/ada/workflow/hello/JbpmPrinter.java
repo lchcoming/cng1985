@@ -63,7 +63,7 @@ public class JbpmPrinter {
 		}
 	}
 
-	private void printstring(String source) {
+	private static void printstring(String source) {
 		System.out.println(source);
 	}
 
@@ -172,9 +172,9 @@ public class JbpmPrinter {
 		ProcessDefinitionQuery query=	processService.createProcessDefinitionQuery();
 		List<ProcessDefinition>  list=	query.list();
 		for (ProcessDefinition processDefinition : list) {
-			System.out.println(processDefinition.getId());
-			System.out.println(processDefinition.getKey());
-			System.out.println(processDefinition.getName());
+			printstring("流程ID         "+processDefinition.getId());
+			printstring("流程Key        "+processDefinition.getKey());
+			printstring("流程名称                   "+processDefinition.getName());
 		}
 		
 		
