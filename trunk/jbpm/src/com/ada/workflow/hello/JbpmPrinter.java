@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+
 import org.jbpm.api.HistoryService;
+import org.jbpm.api.ProcessDefinition;
+import org.jbpm.api.ProcessDefinitionQuery;
 import org.jbpm.api.RepositoryService;
 import org.jbpm.api.TaskQuery;
 import org.jbpm.api.TaskService;
@@ -164,5 +167,16 @@ public class JbpmPrinter {
 		
 		
 	}
-
+	public static void printdef() {
+		RepositoryService  processService = JbpmFactory.createRepositoryService();
+		ProcessDefinitionQuery query=	processService.createProcessDefinitionQuery();
+		List<ProcessDefinition>  list=	query.list();
+		for (ProcessDefinition processDefinition : list) {
+			System.out.println(processDefinition.getId());
+			System.out.println(processDefinition.getKey());
+			System.out.println(processDefinition.getName());
+		}
+		
+		
+	}
 }
