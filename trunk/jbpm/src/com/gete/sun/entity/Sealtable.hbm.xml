@@ -16,7 +16,7 @@
         <property name="departid" type="java.lang.String">
             <column name="departid" length="32" />
         </property>
-        <property name="startime" type="java.sql.Timestamp">
+        <property name="startime" type="java.util.Date">
             <column name="startime" length="0" />
         </property>
         <property name="message" type="java.lang.String">
@@ -25,7 +25,7 @@
         <property name="usetype" type="java.lang.String">
             <column name="usetype" length="45" />
         </property>
-        <property name="outtime" type="java.sql.Timestamp">
+        <property name="outtime" type="java.util.Date">
             <column name="outtime" length="0" />
         </property>
         <property name="usemessage" type="java.lang.String">
@@ -46,8 +46,20 @@
         <property name="processid" type="java.lang.String">
             <column name="processid" length="45" />
         </property>
-        <property name="tsealitle" type="java.lang.String">
-            <column name="tsealitle" length="45" not-null="true" />
+        <property name="sealtitle" type="java.lang.String">
+            <column name="sealtitle" length="45" />
+        </property>
+        <property name="managemessage" type="java.lang.String">
+            <column name="managemessage" length="2000" />
+        </property>
+        <property name="ceomessage" type="java.lang.String">
+            <column name="ceomessage" length="2000" />
+        </property>
+        <property name="number" type="java.lang.String">
+            <column name="number" length="45" />
+        </property>
+        <property name="what" type="java.lang.String">
+            <column name="what" length="1000" />
         </property>
     </class>
 </hibernate-mapping>

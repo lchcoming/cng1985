@@ -1,6 +1,7 @@
 package com.gete.sun.entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Sealtable entity. @author MyEclipse Persistence Tools
@@ -13,17 +14,21 @@ public class Sealtable implements java.io.Serializable {
 	private String id;
 	private String userid;
 	private String departid;
-	private Timestamp startime;
+	private Date startime;
 	private String message;
 	private String usetype;
-	private Timestamp outtime;
+	private Date outtime;
 	private String usemessage;
 	private String managerid;
 	private String ceoid;
 	private Integer counts;
 	private String stateinfo;
 	private String processid;
-	private String tsealitle;
+	private String sealtitle;
+	private String managemessage;
+	private String ceomessage;
+	private String number;
+	private String what;
 
 	// Constructors
 
@@ -31,16 +36,12 @@ public class Sealtable implements java.io.Serializable {
 	public Sealtable() {
 	}
 
-	/** minimal constructor */
-	public Sealtable(String tsealitle) {
-		this.tsealitle = tsealitle;
-	}
-
 	/** full constructor */
-	public Sealtable(String userid, String departid, Timestamp startime,
-			String message, String usetype, Timestamp outtime,
+	public Sealtable(String userid, String departid, Date startime,
+			String message, String usetype, Date outtime,
 			String usemessage, String managerid, String ceoid, Integer counts,
-			String stateinfo, String processid, String tsealitle) {
+			String stateinfo, String processid, String sealtitle,
+			String managemessage, String ceomessage, String number, String what) {
 		this.userid = userid;
 		this.departid = departid;
 		this.startime = startime;
@@ -53,7 +54,11 @@ public class Sealtable implements java.io.Serializable {
 		this.counts = counts;
 		this.stateinfo = stateinfo;
 		this.processid = processid;
-		this.tsealitle = tsealitle;
+		this.sealtitle = sealtitle;
+		this.managemessage = managemessage;
+		this.ceomessage = ceomessage;
+		this.number = number;
+		this.what = what;
 	}
 
 	// Property accessors
@@ -82,9 +87,7 @@ public class Sealtable implements java.io.Serializable {
 		this.departid = departid;
 	}
 
-	public Timestamp getStartime() {
-		return this.startime;
-	}
+
 
 	public void setStartime(Timestamp startime) {
 		this.startime = startime;
@@ -106,8 +109,22 @@ public class Sealtable implements java.io.Serializable {
 		this.usetype = usetype;
 	}
 
-	public Timestamp getOuttime() {
-		return this.outtime;
+
+
+	public Date getStartime() {
+		return startime;
+	}
+
+	public void setStartime(Date startime) {
+		this.startime = startime;
+	}
+
+	public Date getOuttime() {
+		return outtime;
+	}
+
+	public void setOuttime(Date outtime) {
+		this.outtime = outtime;
 	}
 
 	public void setOuttime(Timestamp outtime) {
@@ -162,12 +179,44 @@ public class Sealtable implements java.io.Serializable {
 		this.processid = processid;
 	}
 
-	public String getTsealitle() {
-		return this.tsealitle;
+	public String getSealtitle() {
+		return this.sealtitle;
 	}
 
-	public void setTsealitle(String tsealitle) {
-		this.tsealitle = tsealitle;
+	public void setSealtitle(String sealtitle) {
+		this.sealtitle = sealtitle;
+	}
+
+	public String getManagemessage() {
+		return this.managemessage;
+	}
+
+	public void setManagemessage(String managemessage) {
+		this.managemessage = managemessage;
+	}
+
+	public String getCeomessage() {
+		return this.ceomessage;
+	}
+
+	public void setCeomessage(String ceomessage) {
+		this.ceomessage = ceomessage;
+	}
+
+	public String getNumber() {
+		return this.number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getWhat() {
+		return this.what;
+	}
+
+	public void setWhat(String what) {
+		this.what = what;
 	}
 
 }
