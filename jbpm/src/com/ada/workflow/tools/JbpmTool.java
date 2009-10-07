@@ -1,4 +1,13 @@
 package com.ada.workflow.tools;
+
+import java.util.List;
+
+import org.jbpm.api.JobQuery;
+import org.jbpm.api.ManagementService;
+import org.jbpm.api.job.Job;
+
+import com.ada.factory.JbpmFactory;
+
 /** 
  * CopyRright (c)1985-2009: <br />                             
  * Project: jbpm<br />                                           
@@ -15,5 +24,9 @@ package com.ada.workflow.tools;
  */
 
 public class JbpmTool {
-
+public void hello(){
+	ManagementService service=	JbpmFactory.createManagementService();
+	JobQuery query=	service.createJobQuery();
+	List<Job> jobs= query.list();
+}
 }

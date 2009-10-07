@@ -6,6 +6,8 @@ import java.util.Set;
 
 
 import org.jbpm.api.HistoryService;
+import org.jbpm.api.JobQuery;
+import org.jbpm.api.ManagementService;
 import org.jbpm.api.ProcessDefinition;
 import org.jbpm.api.ProcessDefinitionQuery;
 import org.jbpm.api.RepositoryService;
@@ -19,6 +21,7 @@ import org.jbpm.api.history.HistoryProcessInstance;
 import org.jbpm.api.history.HistoryProcessInstanceQuery;
 import org.jbpm.api.history.HistoryTask;
 import org.jbpm.api.history.HistoryTaskQuery;
+import org.jbpm.api.job.Job;
 import org.jbpm.api.task.Task;
 
 import com.ada.factory.JbpmFactory;
@@ -179,4 +182,21 @@ public class JbpmPrinter {
 		
 		
 	}
+	
+	
+	public static void printjobs(){
+		ManagementService service=	JbpmFactory.createManagementService();
+		JobQuery query=	service.createJobQuery();
+		List<Job> jobs= query.list();
+		for (Job item : jobs) {
+			printstring("流程ID         "+item.getId());
+			printstring("流程Key        "+item.getLockOwner());
+			printstring("流程名称                   "+item.getException());
+		}
+	}
+	
+	
+	
+	
+	
 }
