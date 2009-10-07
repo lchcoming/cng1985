@@ -40,6 +40,8 @@ public class Bargain implements java.io.Serializable {
 	private String demo7;
 	private String demo8;
 	private String users;
+	private String subtime;
+	private String state;
 
 	// Constructors
 
@@ -57,7 +59,7 @@ public class Bargain implements java.io.Serializable {
 			String msignature, Integer office, Integer finance,
 			Integer timeint, String demo1, String demo2, String demo3,
 			String demo4, String demo5, String demo6, String demo7,
-			String demo8, String users) {
+			String demo8, String users, String subtime, String state) {
 		this.bargaintype = bargaintype;
 		this.nom = nom;
 		this.time = time;
@@ -89,6 +91,8 @@ public class Bargain implements java.io.Serializable {
 		this.demo7 = demo7;
 		this.demo8 = demo8;
 		this.users = users;
+		this.subtime = subtime;
+		this.state = state;
 	}
 
 	// Property accessors
@@ -347,6 +351,22 @@ public class Bargain implements java.io.Serializable {
 
 	public void setUsers(String users) {
 		this.users = users;
+	}
+
+	public String getSubtime() {
+		return this.subtime;
+	}
+
+	public void setSubtime(String subtime) {
+		this.subtime = subtime;
+	}
+
+	public String getState() {
+		return this.state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }

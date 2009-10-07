@@ -103,5 +103,11 @@
         <property name="users" type="java.lang.String">
             <column name="USERS" length="45" />
         </property>
+        <property name="subtime" type="java.lang.String">
+            <column name="SUBTIME" length="45" />
+        </property>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" length="45" />
+        </property>
     </class>
 </hibernate-mapping>
