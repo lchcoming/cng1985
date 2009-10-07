@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <process name="msg" xmlns="http://jbpm.org/4.0/jpdl">
-   <start name="¿ªÊ¼" g="242,61,48,48">
-      <transition name="to Ìá½»ÈËËÍÉó" to="Ìá½»ÈËËÍÉó" g="-83,-17"/>
+   <start g="244,19,48,48" name="å¼€å§‹">
+      <transition name="to æäº¤äººé€å®¡" to="æäº¤äººé€å®¡" g="-83,-17"/>
    </start>
-   <task name="Ìá½»ÈËËÍÉó" g="221,178,92,52">
-      <transition name="to ²¿ÃÅÉóÅú" to="²¿ÃÅÉóÅú" g="-71,-17"/>
+   <task g="220,116,92,52" name="æäº¤äººé€å®¡">
+      <transition name="to éƒ¨é—¨å®¡æ‰¹" to="éƒ¨é—¨å®¡æ‰¹" g="-71,-17"/>
    </task>
-   <task name="²¿ÃÅÉóÅú" g="224,257,92,52">
-      <transition name="to ²¿ÃÅ¾ö¶¨" to="²¿ÃÅ¾ö¶¨" g="-71,-17"/>
+   <task g="227,228,92,52" name="éƒ¨é—¨å®¡æ‰¹">
+      <transition name="to éƒ¨é—¨å†³å®š" to="éƒ¨é—¨å†³å®š" g="-71,-17"/>
    </task>
-   <decision name="²¿ÃÅ¾ö¶¨" g="249,342,48,48">
-      <transition name="to ¸ß²ãÉóÅú" to="¸ß²ãÉóÅú" g="-71,-17"/>
-      <transition name="to Ìá½»ÈËËÍÉó" to="Ìá½»ÈËËÍÉó" g="113,292:-83,-17"/>
+   <decision g="257,340,48,48" name="éƒ¨é—¨å†³å®š">
+      <transition name="to é«˜å±‚å®¡æ‰¹" to="é«˜å±‚å®¡æ‰¹" g="-71,-17"/>
+      <transition name="to æäº¤äººé€å®¡" to="æäº¤äººé€å®¡" g="108,238:-83,-17"/>
    </decision>
-   <task name="¸ß²ãÉóÅú" g="239,405,92,52">
-      <transition name="to ¸ß²ã¾ö¶¨" to="¸ß²ã¾ö¶¨" g="-71,-17"/>
+   <task g="234,431,92,52" name="é«˜å±‚å®¡æ‰¹">
+      <transition name="to é«˜å±‚å†³å®š" to="é«˜å±‚å†³å®š" g="-71,-17"/>
    </task>
-   <decision name="¸ß²ã¾ö¶¨" g="266,491,48,48">
-      <transition name="to Íê³É" to="Íê³É" g="-47,-17"/>
-      <transition name="to Ê§°Ü" to="Ê§°Ü" g="-47,-17"/>
-      <transition name="to ²¿ÃÅÉóÅú" to="²¿ÃÅÉóÅú" g="429,405:-71,-17"/>
+   <decision name="é«˜å±‚å†³å®š" g="254,527,48,48">
+      <transition name="to æˆåŠŸ" to="æˆåŠŸ" g="-47,-17"/>
+      <transition name="to å¤±è´¥" to="å¤±è´¥" g="-47,-17"/>
+      <transition name="to éƒ¨é—¨å®¡æ‰¹" to="éƒ¨é—¨å®¡æ‰¹" g="455,408:-71,-17"/>
    </decision>
-   <end name="Íê³É" g="205,575,48,48"/>
-   <end-cancel name="Ê§°Ü" g="336,583,48,48"/>
+   <end name="æˆåŠŸ" g="172,650,48,48"/>
+   <end-cancel name="å¤±è´¥" g="333,644,48,48"/>
+ 
 </process>
