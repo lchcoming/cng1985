@@ -19,7 +19,7 @@
    <task name="高层审批" g="268,538,92,52">
       <transition name="to 高层决定" to="高层决定" g="-71,-17"/>
    </task>
-   <end name="成功" g="411,651,48,48"/>
+   <end name="成功" g="435,705,48,48"/>
    <end-error name="失败" g="526,615,48,48"/>
    <decision name="高层决定" g="294,632,48,48">
       <transition name="to 成功" to="成功" g="-47,-17"/>
