@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="moneyplan" xmlns="http://jbpm.org/4.0/jpdl">
+   <start name="开始" g="283,100,48,48">
+      <transition name="to 部门审批" to="部门审批" g="-71,-17"/>
+   </start>
+   <task name="部门审批" g="287,198,92,52">
+      <transition name="to 财务审批" to="财务审批" g="-71,-17"/>
+   </task>
+   <task name="财务审批" g="296,373,92,52">
+      <transition name="to 财务决定" to="财务决定" g="-71,-17"/>
+   </task>
+   <decision name="财务决定" g="334,474,48,48">
+      <transition name="to 失败" to="失败" g="-47,-17"/>
+      <transition name="to 成功" to="成功" g="-47,-17"/>
+      <transition name="to 高层审批" to="高层审批" g="-71,-17"/>
+      <transition name="to 部门审批" to="部门审批" g="438,369:-71,-17"/>
+   </decision>
+   <task name="高层审批" g="268,538,92,52">
+      <transition name="to 高层决定" to="高层决定" g="-71,-17"/>
+   </task>
+   <end name="成功" g="411,651,48,48"/>
+   <end-error name="失败" g="526,615,48,48"/>
+   <decision name="高层决定" g="294,632,48,48">
+      <transition name="to 成功" to="成功" g="-47,-17"/>
+      <transition name="to 失败" to="失败" g="-47,-17"/>
+      <transition name="to 财务审批" to="财务审批" g="123,531:-71,-17"/>
+   </decision>
+</process>
