@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+
+	<property name="hibernate.dialect">
+		org.hibernate.dialect.MySQLInnoDBDialect
+	</property>
+	<property name="hibernate.connection.driver_class">
+		org.hsqldb.jdbcDriver
+	</property>
+	<property name="hibernate.connection.url">
+		jdbc:hsqldb:mem:.
+	</property>
+	<property name="hibernate.hbm2ddl.auto">none</property>
+	<property name="hibernate.format_sql">true</property>
+	<property name="myeclipse.connection.profile">sun</property>
+	<property name="connection.url">
+		jdbc:mysql://192.168.1.103:3306/jbpm
+	</property>
+	<property name="connection.username">root</property>
+	<property name="connection.password">root</property>
+	<property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	</property>
+	<property name="dialect">
+		org.hibernate.dialect.MySQLInnoDBDialect
+	</property>
+
+	<mapping resource="jbpm.repository.hbm.xml" />
+	<mapping resource="jbpm.execution.hbm.xml" />
+	<mapping resource="jbpm.history.hbm.xml" />
+	<mapping resource="jbpm.task.hbm.xml" />
+	<mapping resource="jbpm.identity.hbm.xml" />
+
+</session-factory>
+</hibernate-configuration>
