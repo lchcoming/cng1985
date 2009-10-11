@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="seal" xmlns="http://jbpm.org/4.0/jpdl" key="seal" version="123" description="呵呵">
+   <start g="30,16,48,48" name="开始">
+      <transition g="-71,-17" name="to 部门审批" to="部门审批"/>
+   </start>
+   <task g="16,96,92,52" name="部门审批">
+    <assignment-handler class="com.ada.workflow.seal.DepartHandle">
+     </assignment-handler>
+      <transition g="-71,-17" name="to 高层审批" to="高层审批"/>
+   </task>
+   <task g="157,218,92,52" name="高层审批">
+    <assignment-handler class="com.ada.workflow.seal.LevelHandle">
+     </assignment-handler>
+      <transition g="-71,-17" name="to 高层决定" to="高层决定"/>
+   </task>
+   <decision g="66,358,48,48" name="高层决定">
+      <handler class="com.ada.workflow.seal.ManagerHandle" />
+      <transition g="-47,-17" name="to 结束" to="结束"/>
+      <transition g="-71,-17" name="to 部门审批" to="部门审批"/>
+   </decision>
+   <end g="68,505,92,52" name="结束"/>
+</process>
