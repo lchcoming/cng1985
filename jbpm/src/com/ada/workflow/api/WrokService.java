@@ -26,4 +26,14 @@ public interface WrokService {
 	 *            过程模型<br />
 	 */
 	void aduit(String taskid, JbpmModel model);
+
+	/**
+	 * 发布工作流定义
+	 */
+
+	void pub();
+
+	void printprocess(String proccessid);
+	
+	
 }
