@@ -181,8 +181,14 @@ public class Jdom {
 		//QQ空间 http://feeds.qzone.qq.com/cgi-bin/cgi_rss_out?uin=369983994
 		//有道博客搜索 http://blog.yodao.com/searchrss?q=java&keyfrom=rssreader
 		//netrss("http://rss.sina.com.cn/tech/internet/home28.xml");
-		String info= readnetinfo("http://www.163.com");
-		System.out.println(info);
+		try {
+			String info= readnetinfo("http://cng1985.blogspot.com/2009/09/appengine-java-debugging-exceptions.html");
+			System.out.println(info);
+		} catch (Exception e) {
+			System.out.println("!!!!!!!!!");
+		}
+		
+		
 		// rss("F:\\gseek.xml");
 	}
 
