@@ -9,4 +9,5 @@
 	<import resource="springconfig/hibernate.xml"/>
 	<import resource="springconfig/hello.xml"/>
 	<import resource="spring/workflow/hellowork.xml"/>
+	
 	</beans>
