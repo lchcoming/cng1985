@@ -24,5 +24,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jbpm.jar" sourcepath="F:/软件/jbpm-4.1.zip"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mail.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jdom.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
