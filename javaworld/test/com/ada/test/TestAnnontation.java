@@ -18,7 +18,7 @@ import org.junit.Test;
 
 import com.ada.annotation.Ada;
 import com.ada.annotation.Young;
-import com.ada.utils.NetUtil;
+
 
 @Ada("ada.young")
 @Young(ada = "ada", youngs = "young", value = "ada.young")
