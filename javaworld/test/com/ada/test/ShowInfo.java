@@ -14,20 +14,20 @@
  */
 package com.ada.test;
 
-import static org.junit.Assert.*;
+public abstract class ShowInfo {
 
-import java.lang.reflect.Proxy;
-
-import org.junit.Test;
-
-import com.ada.utils.ProxyUtil;
-
-public class ProxyTest {
-	@Test
-	public void proxy() {
-		Printer printer = new Printer();
-		ShowMessage messagePrint=(ShowMessage)ProxyUtil.proxyObject(printer);
-		messagePrint.show();
-		assertTrue(Proxy.isProxyClass(messagePrint.getClass()));
+	public ShowInfo() {
+		super();
 	}
+
+	public void print() {
+	  System.out.println("4444");
+	}
+
+	
+	public void show() {
+		// TODO Auto-generated method stub
+		 System.out.println("你爷爷的");
+	}
+
 }

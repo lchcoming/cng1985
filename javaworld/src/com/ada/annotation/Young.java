@@ -4,7 +4,7 @@
  * Module ID:    <br />   
  * Comments:            <br />                                  
  * JDK version used:<JDK1.6><br />                                 
- * Namespace:com.ada.test<br />                             
+ * Namespace:com.ada.annotation<br />                             
  * Author：ada.young <br />                  
  * Create Date：  2009-10-21<br />   
  * Modified By：ada.young          <br />                                
@@ -12,22 +12,20 @@
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
  */
-package com.ada.test;
+/**
+ * 
+ */
+package com.ada.annotation;
 
-import static org.junit.Assert.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-import java.lang.reflect.Proxy;
-
-import org.junit.Test;
-
-import com.ada.utils.ProxyUtil;
-
-public class ProxyTest {
-	@Test
-	public void proxy() {
-		Printer printer = new Printer();
-		ShowMessage messagePrint=(ShowMessage)ProxyUtil.proxyObject(printer);
-		messagePrint.show();
-		assertTrue(Proxy.isProxyClass(messagePrint.getClass()));
-	}
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface Young {
+	String youngs();
+	String ada();
+	String value();
 }

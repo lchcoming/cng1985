@@ -14,6 +14,7 @@
 */ 
 package com.ada.test;
 
-public interface MessagePrint extends ShowMessage {
-void print();
+public interface ShowMessage {
+
+	void show();
 }

@@ -14,10 +14,6 @@
 */ 
 package com.ada.test;
 
-public class Printer implements MessagePrint {
-
-	public void print() {
-      System.out.println("4444");
-	}
+public class Printer extends ShowInfo implements MessagePrint {
 
 }

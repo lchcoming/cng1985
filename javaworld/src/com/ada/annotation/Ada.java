@@ -4,7 +4,7 @@
 * Module ID:    <br />   
 * Comments:            <br />                                  
 * JDK version used:<JDK1.6><br />                                 
-* Namespace:com.ada.test<br />                             
+* Namespace:com.ada.annotation<br />                             
 * Author：ada.young <br />                  
 * Create Date：  2009-10-21<br />   
 * Modified By：ada.young          <br />                                
@@ -12,8 +12,15 @@
 * Why & What is modified <br />   
 * Version: 1.01         <br />       
 */ 
-package com.ada.test;
+package com.ada.annotation;
 
-public interface MessagePrint extends ShowMessage {
-void print();
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface Ada {
+	String value() default "ada";
 }

@@ -14,20 +14,23 @@
  */
 package com.ada.test;
 
-import static org.junit.Assert.*;
-
-import java.lang.reflect.Proxy;
-
 import org.junit.Test;
 
-import com.ada.utils.ProxyUtil;
+import com.ada.annotation.Ada;
+import com.ada.annotation.Young;
+import com.ada.utils.NetUtil;
 
-public class ProxyTest {
+@Ada("ada.young")
+@Young(ada = "ada", youngs = "young", value = "ada.young")
+public class TestAnnontation {
 	@Test
-	public void proxy() {
-		Printer printer = new Printer();
-		ShowMessage messagePrint=(ShowMessage)ProxyUtil.proxyObject(printer);
-		messagePrint.show();
-		assertTrue(Proxy.isProxyClass(messagePrint.getClass()));
+	public void testurl() {
+		Ada ada = getClass().getAnnotation(Ada.class);
+		Young young = getClass().getAnnotation(Young.class);
+		System.out.println(ada.value());
+		System.out.println(young.youngs());
+		System.out.println(young.ada());
+		System.out.println(young.value());
+
 	}
 }
