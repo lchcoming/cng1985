@@ -19,7 +19,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-core-2.0.11.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-spring-plugin-2.0.11.2.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-2.0.5.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/xwork-2.0.5.jar" sourcepath="F:/java类库/xwork-2.1.5-all.zip"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jbpm.jar" sourcepath="F:/软件/jbpm-4.1.zip"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
