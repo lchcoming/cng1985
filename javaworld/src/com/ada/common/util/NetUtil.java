@@ -35,7 +35,7 @@ public class NetUtil {
 		return param.toString().substring(1);
 	}
 
-	public static String getResultByPost(String urlStr, String content) {
+	public static  synchronized String getResultByPost(String urlStr, String content) {
 		URL url = null;
 		HttpURLConnection connection = null;
 
