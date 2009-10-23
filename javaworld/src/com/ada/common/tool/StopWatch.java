@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.ada.tool;
+package com.ada.common.tool;
 
 /**
  * <p>
