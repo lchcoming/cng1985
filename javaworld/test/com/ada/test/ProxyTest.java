@@ -28,6 +28,9 @@ public class ProxyTest {
 		Printer printer = new Printer();
 		ShowMessage messagePrint=(ShowMessage)ProxyUtil.proxyObject(printer);
 		messagePrint.show();
+		AutoNumber autoNumber=(AutoNumber)ProxyUtil.proxyObject(printer);
+		autoNumber.autonumber();
+		System.out.println(autoNumber.autonumber());
 		assertTrue(Proxy.isProxyClass(messagePrint.getClass()));
 	}
 }

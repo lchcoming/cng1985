@@ -29,5 +29,9 @@ public abstract class ShowInfo {
 		// TODO Auto-generated method stub
 		 System.out.println("你爷爷的");
 	}
+	public long autonumber() {
+		System.out.println(">>>>");
+		return System.currentTimeMillis();
+	}
 
 }
