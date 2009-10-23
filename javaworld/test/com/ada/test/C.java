@@ -6,21 +6,26 @@
  * JDK version used:<JDK1.6><br />                                 
  * Namespace:com.ada.test<br />                             
  * Author：ada.young <br />                  
- * Create Date：  2009-10-19<br />   
+ * Create Date：  2009-10-23<br />   
  * Modified By：ada.young          <br />                                
- * Modified Date:2009-10-19          <br />                               
+ * Modified Date:2009-10-23          <br />                               
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
  */
 package com.ada.test;
 
-import org.junit.Test;
+public class C {
 
-import com.ada.common.util.NumberUtil;
-
-public class NumberUtilTest {
-	@Test
-	public void testnumber() {
-       System.out.println(NumberUtil.autoNumebr());
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		for (int i = 0; i < 500; i++) {
+            NetWorks works=new NetWorks();
+            works.start();
+		}
 	}
+
 }

@@ -20,7 +20,7 @@ import java.lang.reflect.Proxy;
 
 import org.junit.Test;
 
-import com.ada.utils.ProxyUtil;
+import com.ada.common.util.ProxyUtil;
 
 public class ProxyTest {
 	@Test

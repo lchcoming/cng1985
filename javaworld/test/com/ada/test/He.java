@@ -6,38 +6,26 @@
  * JDK version used:<JDK1.6><br />                                 
  * Namespace:com.ada.test<br />                             
  * Author：ada.young <br />                  
- * Create Date：  2009-10-19<br />   
+ * Create Date：  2009-10-23<br />   
  * Modified By：ada.young          <br />                                
- * Modified Date:2009-10-19          <br />                               
+ * Modified Date:2009-10-23          <br />                               
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
  */
 package com.ada.test;
 
-import static org.junit.Assert.*;
-
-import java.util.Map;
-import java.util.TreeMap;
-
-import org.junit.Test;
-
 import com.ada.common.util.NetUtil;
 
-public class NetUtilTest {
+public class He {
 
-	@Test
-	public void testParseUrlParam() {
-		Map<String, String> map = new TreeMap<String, String>();
-		map.put("a", "1");
-		map.put("b", "2");
-		String result = NetUtil.parseUrlParam(map);
-		assertEquals("a=1&b=2", result);
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		while (true) {
+         NetUtil.getResultByGet("http://127.0.0.1:8080/taoweb/hello/dd", "");
+		}
 	}
 
-	@Test
-	public void testurl() {
-		String content = NetUtil.getResultByGet("http://www.baidu.com/s?wd=163",
-				null);
-		System.out.println(content);
-	}
 }
