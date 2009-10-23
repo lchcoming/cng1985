@@ -18,16 +18,23 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public class DefalutHandle implements InvocationHandler {
- 
+
 	private Object object;
-	public DefalutHandle(Object s){
-		object=s;
+
+	public DefalutHandle(Object s) {
+		object = s;
 	}
+
 	@Override
 	public Object invoke(Object arg0, Method arg1, Object[] arg2)
 			throws Throwable {
 		System.out.println("*****代理开始**********");
+		System.out.println(arg0.getClass().getName());
+		System.out.println(object.getClass().getName());
 		Object ss = arg1.invoke(object, arg2);
+		if (ss != null) {
+			System.out.println(ss.getClass().getName());
+		}
 		System.out.println("*****代理结束**********");
 		return ss;
 	}

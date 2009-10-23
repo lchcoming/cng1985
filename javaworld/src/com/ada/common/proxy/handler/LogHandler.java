@@ -28,6 +28,7 @@ public class LogHandler implements InvocationHandler {
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
+		System.out.println(proxy.getClass().getName());
 		method.invoke(proxyObject, args);
 		return null;
 	}
