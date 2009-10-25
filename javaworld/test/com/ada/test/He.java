@@ -24,7 +24,7 @@ public class He {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		while (true) {
-         NetUtil.getResultByGet("http://127.0.0.1:8080/taoweb/hello/dd", "");
+         NetUtil.getResultByGet("http://127.0.0.1:8080/Sun_PS/cailiaoziyuantypetree.action", "");
 		}
 	}
 
