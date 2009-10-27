@@ -16,4 +16,5 @@ package com.ada.net.api;
 
 public interface Hello {
 	void hello();
+	
 }
