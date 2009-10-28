@@ -4,6 +4,7 @@ import org.jbpm.api.Execution;
 import org.jbpm.api.ExecutionService;
 import org.jbpm.api.NewDeployment;
 import org.jbpm.api.RepositoryService;
+import org.jbpm.api.TaskQuery;
 import org.jbpm.api.TaskService;
 
 import com.ada.factory.JbpmFactory;
@@ -20,7 +21,7 @@ public class JbpmHelper {
 	 * 
 	 * @param path
 	 */
-	public static void deploy(String path) {
+	public  static  void deploy(String path) {
 		RepositoryService repositoryService = JbpmFactory
 				.createRepositoryService();
 		NewDeployment newDeployment = repositoryService.createDeployment();
@@ -47,7 +48,8 @@ public class JbpmHelper {
 
 	public static void deletetask(String executionId) {
 		TaskService taskService = JbpmFactory.createTaskService();
-		
-
+		TaskQuery query=	taskService.createTaskQuery();
+		query.processDefinitionId("");
 	}
+	
 }
