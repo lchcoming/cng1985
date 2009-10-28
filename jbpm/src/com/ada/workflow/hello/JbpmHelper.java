@@ -9,12 +9,6 @@ import org.jbpm.api.TaskService;
 import com.ada.factory.JbpmFactory;
 
 /**
- * CopyRright (c)2008-xxxx: <展望软件Forsoft > Project: <项目工程名 > Module ID:
- * <(模块)类编号，可以引用系统设计中的类编号> Comments: <对此类的描述，可以引用系统设计中的描述> JDK version used:
- * <JDK1.6> Namespace: <命名空间> Author： <作者中文名或拼音缩写> Create Date：
- * <创建日期，格式:YYYY-MM-DD> Modified By： <修改人中文名或拼音缩写> Modified Date:
- * <修改日期，格式:YYYY-MM-DD> Why & What is modified <修改原因描述> Version: <版本号>
- * 
  * @author ada
  * 
  * 
