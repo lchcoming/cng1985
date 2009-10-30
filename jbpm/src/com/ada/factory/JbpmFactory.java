@@ -31,43 +31,43 @@ public class JbpmFactory {
 	private JbpmFactory() {
 	}
 
-	private static void createEngine() {
+	private static synchronized void createEngine() {
 		JbpmConfiguration configurationsConfiguration = new JbpmConfiguration();
 		engine = configurationsConfiguration.buildProcessEngine();
 	}
 
-	public static TaskService createTaskService() {
+	public static  synchronized TaskService createTaskService() {
 		checknull();
 		return engine.getTaskService();
 	}
 
-	public static ExecutionService createExecutionService() {
+	public static synchronized ExecutionService createExecutionService() {
 		checknull();
 		return engine.getExecutionService();
 	}
 
-	public static RepositoryService createRepositoryService() {
+	public static synchronized RepositoryService createRepositoryService() {
 		checknull();
 		return engine.getRepositoryService();
 	}
 
-	public static HistoryService createHistoryService() {
+	public static synchronized HistoryService createHistoryService() {
 		checknull();
 		return engine.getHistoryService();
 	}
 
-	public static IdentityService createIdentityService() {
+	public static synchronized  IdentityService createIdentityService() {
 		checknull();
 		return engine.getIdentityService();
 	}
 
-	public static ManagementService createManagementService() {
+	public static synchronized ManagementService createManagementService() {
 		checknull();
 
 		return engine.getManagementService();
 	}
 
-	private static void checknull() {
+	private static synchronized void checknull() {
 		if (engine == null) {
 			createEngine();
 			count++;
