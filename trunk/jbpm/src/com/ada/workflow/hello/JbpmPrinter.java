@@ -94,12 +94,7 @@ public class JbpmPrinter {
 	}
 
 	public void printTaskQuery(String executionId) {
-		HistoryTaskQuery historyTaskQuery = historyService
-				.createHistoryTaskQuery();
-		if (executionId != null) {
-			historyTaskQuery.executionId(executionId);
-		}
-		List<HistoryTask> list = historyTaskQuery.list();
+		List<HistoryTask> list = JbpmHelper.getHistoryTask(executionId);
 		printstring("HistoryTaskQuery数量" + list.size());
 		for (HistoryTask item : list) {
 			System.out.println("*************开始显示内容***********");
