@@ -35,16 +35,16 @@ public class SealTest {
 	public void tasks(){
 		SealServiceImpl serviceImpl=new SealServiceImpl();
 		serviceImpl.printProcessInstanceQuery("");
-		serviceImpl.printtask("贾艳");
+		serviceImpl.printtask("年高");
 		
 	}
 	@Test
 	public void audit(){
 		SealServiceImpl serviceImpl=new SealServiceImpl();
 		JbpmModel model=new JbpmModel();
-		model.setUser("贾艳");
+		model.setUser("年高");
 		model.setNext("to 结束");
-		serviceImpl.audit("7", model);
+		serviceImpl.audit("5", model);
 	}
 	@Test 
 	public void deleteprocess(){
