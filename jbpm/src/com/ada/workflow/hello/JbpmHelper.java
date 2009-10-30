@@ -1,11 +1,16 @@
 package com.ada.workflow.hello;
 
+import java.util.List;
+
 import org.jbpm.api.Execution;
 import org.jbpm.api.ExecutionService;
+import org.jbpm.api.HistoryService;
 import org.jbpm.api.NewDeployment;
 import org.jbpm.api.RepositoryService;
 import org.jbpm.api.TaskQuery;
 import org.jbpm.api.TaskService;
+import org.jbpm.api.history.HistoryTask;
+import org.jbpm.api.history.HistoryTaskQuery;
 
 import com.ada.factory.JbpmFactory;
 
@@ -21,7 +26,7 @@ public class JbpmHelper {
 	 * 
 	 * @param path
 	 */
-	public  static  void deploy(String path) {
+	public static void deploy(String path) {
 		RepositoryService repositoryService = JbpmFactory
 				.createRepositoryService();
 		NewDeployment newDeployment = repositoryService.createDeployment();
@@ -39,17 +44,27 @@ public class JbpmHelper {
 	public static void endprodcess(String executionId) {
 		ExecutionService executionService = JbpmFactory
 				.createExecutionService();
-		
+
 		Execution execution = executionService.findExecutionById(executionId);
 		if (execution != null) {
 			System.out.println(execution.isEnded());
 		}
 	}
 
-	public  static void deletetask(String executionId) {
+	public static void deletetask(String executionId) {
 		TaskService taskService = JbpmFactory.createTaskService();
-		TaskQuery query=	taskService.createTaskQuery();
+		TaskQuery query = taskService.createTaskQuery();
 		query.processDefinitionId("");
 	}
-	
+
+	public static List<HistoryTask> getHistoryTask(String executionId) {
+		HistoryService historyService = JbpmFactory.createHistoryService();
+		HistoryTaskQuery query = historyService.createHistoryTaskQuery();
+		if (null != executionId) {
+			query.executionId(executionId);
+		}
+		List<HistoryTask> list = query.list();
+		return list;
+	}
+
 }

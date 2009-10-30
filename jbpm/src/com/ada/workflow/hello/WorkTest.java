@@ -166,11 +166,11 @@ public class WorkTest extends TestCase {
 		//printer.printActivityInstanceQuery("seal.2");
 		 //printer.printProcessInstanceQuery(null);
 		//printer.printDistribution("hello.2", "task1");
-		//printer.printTaskQuery("seal.3");
+		printer.printTaskQuery(null);
 		//printer.printDetailQuery();
 		 //JbpmHelper.endprodcess("hello.2");
 		 //JbpmHelper.endprocess("hello.2");
-		printer.printjobs();
+		//printer.printjobs();
 	}
 
 }
