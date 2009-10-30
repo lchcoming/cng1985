@@ -46,7 +46,7 @@ public class JbpmHelper {
 		}
 	}
 
-	public static void deletetask(String executionId) {
+	public  static void deletetask(String executionId) {
 		TaskService taskService = JbpmFactory.createTaskService();
 		TaskQuery query=	taskService.createTaskQuery();
 		query.processDefinitionId("");
