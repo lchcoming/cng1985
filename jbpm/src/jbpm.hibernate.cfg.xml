@@ -27,9 +27,7 @@
 	<property name="connection.driver_class">
 		com.mysql.jdbc.Driver
 	</property>
-	<property name="dialect">
-		org.hibernate.dialect.MySQLInnoDBDialect
-	</property>
+	<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
 
 	<mapping resource="jbpm.repository.hbm.xml" />
 	<mapping resource="jbpm.execution.hbm.xml" />
