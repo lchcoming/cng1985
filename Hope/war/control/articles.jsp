@@ -1,8 +1,6 @@
 
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@page import="com.ada.service.impl.ArticleServiceImpl"%>
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -23,7 +21,14 @@ String query = "select from " + Article.class.getName();
 query+=" order by date desc ";
 ArticleEMFAdapter adapter=new ArticleEMFAdapter();
 //分页
-Pager bean=adapter.getpage(query,curpage,10);
+Pager bean=null;
+if(curpage==1){
+	bean=ArticleServiceImpl.getpage();
+}
+else{
+	 bean=adapter.getpage(query,curpage,10);
+}
+
 request.setAttribute("articles",bean);
 %>
  <jsp:forward page="/view/articles.jsp"></jsp:forward>

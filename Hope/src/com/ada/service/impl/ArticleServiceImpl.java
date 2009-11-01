@@ -14,6 +14,23 @@
  */
 package com.ada.service.impl;
 
+import com.ada.data.adapter.ArticleEMFAdapter;
+import com.ada.data.page.Pager;
+import com.ada.model.Article;
+
 public class ArticleServiceImpl {
 
+	private static Pager pager;
+	public static Pager getpage() {
+		if(null==pager){
+			initData();
+		}
+		return pager;
+	}
+	private static void initData(){
+		ArticleEMFAdapter e=new ArticleEMFAdapter();
+		String hql="select from " + Article.class.getName();
+		hql+=" order by date desc ";
+		pager=e.getpage(hql, 1, 15);
+	}
 }
