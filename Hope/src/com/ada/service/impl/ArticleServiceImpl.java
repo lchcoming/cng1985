@@ -17,17 +17,18 @@ package com.ada.service.impl;
 import com.ada.data.adapter.ArticleEMFAdapter;
 import com.ada.data.page.Pager;
 import com.ada.model.Article;
+import com.ada.service.ArticleService;
 
-public class ArticleServiceImpl {
+public class ArticleServiceImpl implements ArticleService{
 
-	private static Pager pager;
+	public static Pager pager;
 	public static Pager getpage() {
 		if(null==pager){
 			initData();
 		}
 		return pager;
 	}
-	private static void initData(){
+	public static void initData(){
 		ArticleEMFAdapter e=new ArticleEMFAdapter();
 		String hql="select from " + Article.class.getName();
 		hql+=" order by date desc ";

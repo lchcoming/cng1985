@@ -14,6 +14,10 @@
  */
 package com.ada.service;
 
+import com.ada.data.page.Pager;
+
 public interface ArticleService {
+
+
 
 }
