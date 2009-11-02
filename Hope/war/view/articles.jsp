@@ -1,6 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"  %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/xml" prefix="x" %>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -49,12 +52,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <br/>
   <div class="main">
   <table >
-    <c:forEach items="${articles.resultList}" var="ada">
+    <c:forEach items="${articles.resultList}" var="ada" varStatus="young">
     <tr>
+    <td>
+    ${young.index}
+    </td>
     <td width="500">
     <a href="/article.jsp?id=${ada.id} ">
-    <c:out value="${ada.subject}"></c:out>
-    </a>
+    <c:choose>
+    <c:when test="${fn:length(ada.subject)>20}">
+     <c:out value="${fn:substring(ada.subject,0, 20)}"></c:out>....
+    </c:when>
+    <c:otherwise>
+     <c:out value="${ada.subject}"></c:out>
+    </c:otherwise>
+    </c:choose>
+     </a>
     </td>
     <td width="200">
     
