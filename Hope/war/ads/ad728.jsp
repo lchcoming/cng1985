@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<embed src="http://a.alimama.cn/widget/yr1/yr1fixed_760_90.swf"
-	flashvars="catid=110201&count=20&sz=11&type=1&i=mm_13970935_0_0"
-	width="760" height="90" quality="high" wmode="transparent"
-	bgcolor="#ffffff" align="middle" allowScriptAccess="sameDomain"
-	type="application/x-shockwave-flash"
-	pluginspage="http://www.macromedia.com/go/getflashplayer" />
+<script type="text/javascript"><!--
+google_ad_client = "pub-5166549859484488";
+/* 728x90, 创建于 09-8-5 */
+google_ad_slot = "0865881670";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
