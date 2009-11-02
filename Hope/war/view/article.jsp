@@ -10,21 +10,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${article.subject}</title>
 
-  <script src="http://www.google.com/jsapi?key=ABQIAAAA1XbMiDxx_BTCY2_FkPh06RRaGTYH6UMl8mADNa0YKuWNNa8VNxQEerTAUcfkyrr6OwBovxn7TDAH5Q"></script>
+  <script src="http://www.google.com/jsapi?key=ABQIAAAAH80-Y87XpsBeX9dD6s11XRRz5Xc5DfDk61Quo47e5PLdy7WiUBTyBrrhUz_W3sfYfmhtIIq-NwQA9A"></script>
     <script type="text/javascript">
     /*
     *  How to draw results in tabbed mode.
-    */
     
+    */
+    //ABQIAAAAH80-Y87XpsBeX9dD6s11XRRz5Xc5DfDk61Quo47e5PLdy7WiUBTyBrrhUz_W3sfYfmhtIIq-NwQA9A我的密钥
     google.load('search', '1');
     
     function OnLoad() {
     
       // create a tabbed mode search control
       var tabbed = new google.search.SearchControl();
-    
+      //google.search.Search.LARGE_RESULTSET
+      //google.search.Search.SMALL_RESULTSET
+      tabbed.setResultSetSize(GSearch.LARGE_RESULTSET);
+      var webSearch = new google.search.WebSearch();
+
+      // Restrict our search to pages from the Cartoon Newtowrk
+      webSearch.setSiteRestriction('cng1985.appspot.com');
+      webSearch.setUserDefinedLabel('站内搜索');
       // create our searchers.  There will now be 3 tabs.
        tabbed.addSearcher(new google.search.WebSearch());
+       tabbed.addSearcher(webSearch);
       tabbed.addSearcher(new google.search.LocalSearch());
       tabbed.addSearcher(new google.search.BlogSearch());
     
