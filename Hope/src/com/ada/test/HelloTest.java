@@ -15,8 +15,13 @@
 package com.ada.test;
 
 
+import static org.junit.Assert.*;
+
+import java.util.Calendar;
+
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 public class HelloTest {
 
@@ -27,5 +32,12 @@ public class HelloTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+   @Test
+   public void hello(){
+	   Calendar calendar=Calendar.getInstance();
+	    calendar.add(Calendar.DATE,1000);
+	    System.out.println(calendar.getTime().toLocaleString());
+	    assertTrue("hahadddddddd", true);
+	    
+   }
 }
