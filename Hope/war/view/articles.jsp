@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" isELIgnored="false"  %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -26,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     width:768px;
     margin-left:auto;
     margin-right:auto;
-    margin-top:10px;
+    margin-top:100px;
     }
      .ada{
     width:768px;
@@ -45,14 +46,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <%@include file="/top.jsp" %>
+  <br/>
   <div class="main">
-  <table class="main">
+  <table >
     <c:forEach items="${articles.resultList}" var="ada">
     <tr>
-    <td>
+    <td width="500">
     <a href="/article.jsp?id=${ada.id} ">
     <c:out value="${ada.subject}"></c:out>
     </a>
+    </td>
+    <td width="200">
+    
+    <fmt:formatDate value="${ada.date}" pattern="yyyy年MM月dd日"/>
     </td>
   </tr>
     
