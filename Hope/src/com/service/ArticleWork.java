@@ -1,5 +1,6 @@
 package com.service;
 
+import com.ada.data.adapter.ArticleEMFAdapter;
 import com.ada.data.manager.PMF;
 
 import java.io.IOException;
@@ -75,6 +76,7 @@ public class ArticleWork extends HttpServlet {
 		} finally {
 			pm.close();
 		}
+		ArticleEMFAdapter.updateData();
 		response.sendRedirect("/admin/main.jsp");
 	}
 

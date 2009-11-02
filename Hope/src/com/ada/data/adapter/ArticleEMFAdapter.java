@@ -224,6 +224,16 @@ public class ArticleEMFAdapter implements ArticleAdapter {
 		}
 		return pagerResult;
 	}
-
+   public static void updateData(){
+	   EntityManager em = EMF.get().createEntityManager();
+	   String hql="select from " + Article.class.getName();
+	   hql+=" order by date desc ";
+	   Query query = em.createQuery(hql);
+	   temp = query.getResultList();
+	   temp.size();
+	   if (em.isOpen()) {
+			em.close();
+		}
+   }
 	private static List temp;
 }
