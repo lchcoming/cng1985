@@ -23,6 +23,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.ada.framework.ioc.IocService;
+
 public class HelloTest {
 
 	@Before
@@ -38,6 +40,7 @@ public class HelloTest {
 	    calendar.add(Calendar.DATE,1000);
 	    System.out.println(calendar);
 	    assertTrue("hahadddddddd", true);
+	    assertNotNull(IocService.getContext());
 	    
    }
 }
