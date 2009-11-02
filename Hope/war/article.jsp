@@ -5,8 +5,6 @@
        <%@ page import="com.ada.data.manager.PMF" %>
 <%@page import="com.ada.data.adapter.*" %>
 <%@page import="javax.jdo.*" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
 <%String id=request.getParameter("id");
 ArticlePMFAdapter adapter=new ArticlePMFAdapter();
 long ids=Integer.parseInt(id);
@@ -15,98 +13,7 @@ long v=que.getVisit();
 v++;
 que.setVisit(v);
 adapter.updateArticle(que);
+request.setAttribute("article",que);
  %>
  
- 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title><%=que.getSubject() %></title>
-
-  <script src="http://www.google.com/jsapi?key=ABQIAAAA1XbMiDxx_BTCY2_FkPh06RRaGTYH6UMl8mADNa0YKuWNNa8VNxQEerTAUcfkyrr6OwBovxn7TDAH5Q"></script>
-    <script type="text/javascript">
-    /*
-    *  How to draw results in tabbed mode.
-    */
-    
-    google.load('search', '1');
-    
-    function OnLoad() {
-    
-      // create a tabbed mode search control
-      var tabbed = new google.search.SearchControl();
-    
-      // create our searchers.  There will now be 3 tabs.
-       tabbed.addSearcher(new google.search.WebSearch());
-      tabbed.addSearcher(new google.search.LocalSearch());
-      tabbed.addSearcher(new google.search.BlogSearch());
-    
-      // draw in tabbed layout mode
-      var drawOptions = new google.search.DrawOptions();
-      drawOptions.setDrawMode(google.search.SearchControl.DRAW_MODE_TABBED);
-    
-      // Draw the tabbed view in the content div
-      tabbed.draw(document.getElementById("content"), drawOptions);
-    
-      // Search!
-      tabbed.execute("<%=que.getSubject()%>");
-    }
-    google.setOnLoadCallback(OnLoad);
-    </script>
-<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/css/site.css" type="text/css" media="screen" />
- <style type="text/css" rel="stylesheet">
-    form {
-    margin: 0;
-    }
-    .editor {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    }
-    .main{
-    margin-top:100px;
-    width:760px;
-    margin-left:auto;
-    margin-right:auto;
-    
-    }
-    .line{
-    width:700px;
-    heght:2px;
-     background: #433433;
-    }
-    #content{
-    width:768px;
-     margin-left:auto;
-    margin-right:auto;
-    }
-  </style>
-    <script type="text/javascript" charset="utf-8" src="/kindeditor/kindeditor.js"></script>
-  <script type="text/javascript">
-    KE.show({
-        id : 'content1',
-        cssPath : '/kindeditor/index.css',
-          items : [
-        'undo', 'redo','emoticons','fontname', 'fontsize', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline',
-        'removeformat', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-        'insertunorderedlist']
-    });
-  </script>
-</head>
-<body>
-<%@include file="top.jsp" %>
-<div class="main">
-<%@include file="/ads/ad728.jsp" %>
- <br/>
- <%=que.getSubject()%>
- <br/>
- <h5>内容如下</h5>
- 发布时间:<%=que.getDate() %>访问量<%=que.getVisit() %>
- <br/>
- <%=que.getContent().getValue() %>
- <br/>
- <a href="index.jsp">回到首页</a>|<a href="/control/articles.jsp">回到目录</a>|<a href="article.jsp?id=<%=que.getId()%>">置顶</a>
-
-  <div id="content">Loading...</div>
- </div>
-</body>
-</html>
+<jsp:forward page="/view/article.jsp"></jsp:forward>

@@ -51,38 +51,8 @@
 <body>
 <%@include file="top.jsp" %>
 <div class="main">
-<h1>500错误！！！！</h1>
+<h1>系统错误，请等待！！！！！！！</h1>
 <%@include file="/ads/ad728.jsp" %>
-<form action="/servlet/MessageWork" method="post">
- <div class="editor">
-<textarea id="content1" name="content" style="width:768px;height:200px;visibility:hidden;">
-
-</textarea>
-</div>
-<br>
-<input type="submit">
-</form>
-<%String query = "select from " + Message.class.getName();
-PersistenceManager pm = PMF.get().getPersistenceManager();
-		pm = PMF.get().getPersistenceManager();
-		
-		Query que=pm.newQuery(query);
-		que.setOrdering("date desc");
-		que.setRange(0,10);
-		List<Message> msgs = (List<Message>)que.execute();
-        for(Message item:msgs){
-        	%>
-        	<div class="commentbox">
-        	<%=item.getContent() %>
-        	</div>
-        	<div class="commentfooter">
-                              发表于:<%=item.getDate() %>
-            </div>
-        	<div class="line"></div>
-        	<br>
-        	<%
-        } %>
- <a href="message.jsp">置顶</a>
 </div>
 
 <%@include file="foot.jsp" %>

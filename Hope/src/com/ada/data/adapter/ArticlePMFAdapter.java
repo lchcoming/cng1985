@@ -89,6 +89,7 @@ public class ArticlePMFAdapter implements ArticleAdapter {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm = PMF.get().getPersistenceManager();
 		Article que = pm.getObjectById(Article.class, key);
+		que.getContent().getValue();
 		if (!pm.isClosed()) {
 			pm.close();
 		}
