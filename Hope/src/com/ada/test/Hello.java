@@ -14,34 +14,12 @@
  */
 package com.ada.test;
 
+import java.util.Date;
 
-import static org.junit.Assert.*;
+public class Hello {
+	public String now() {
+		Date nowDate = new Date();
+		return nowDate.toString();
 
-import java.util.Calendar;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import com.ada.framework.ioc.IocService;
-
-public class HelloTest {
-
-	@Before
-	public void setUp() throws Exception {
 	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-   @Test
-   public void hello(){
-	   Calendar calendar=Calendar.getInstance();
-	    calendar.add(Calendar.DATE,1000);
-	    System.out.println(calendar);
-	    assertTrue("hahadddddddd", true);
-	    assertNotNull(IocService.getContext());
-	   Hello hello=(Hello)IocService.getContext().getBean("hello");
-	   System.out.println(hello.now());
-   }
 }
