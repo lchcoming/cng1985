@@ -36,7 +36,7 @@ public class HelloTest {
    public void hello(){
 	   Calendar calendar=Calendar.getInstance();
 	    calendar.add(Calendar.DATE,1000);
-	    System.out.println(calendar.getTime().toLocaleString());
+	    System.out.println(calendar);
 	    assertTrue("hahadddddddd", true);
 	    
    }
