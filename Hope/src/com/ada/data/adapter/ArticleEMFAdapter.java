@@ -202,25 +202,27 @@ public class ArticleEMFAdapter implements ArticleAdapter{
 		PageBean pager = null;
 		 EntityManager em = EMF.get().createEntityManager();
 		Query query = em.createQuery(hql);
-		totalRows = (query.getResultList().size()); // 取得总计录数
+		List temp=query.getResultList();
+		totalRows = (temp.size()); // 取得总计录数
 
 		pager = new PageBean(pageSize, currentPage, totalRows);
 		// 从当前页记录数开始
 
-		query.setFirstResult((pager.getCurrentPage() - 1) * pageSize);
-		// 取出pageSize个记录
-
-		query.setMaxResults(pager.getPageSize());
-		if (query.getResultList().size() > 0) {
-			resultList = query.getResultList();
-		}
-		System.out.println("开始》》》》"+pager.getStartPage());
-		System.out.println("结束》》》》"+pager.getEndPage());
+//		query.setFirstResult((pager.getCurrentPage() - 1) * pageSize);
+//		// 取出pageSize个记录
+//
+//		query.setMaxResults(pager.getPageSize());
+//		if (query.getResultList().size() > 0) {
+//			resultList = query.getResultList();
+//		}
 		// 把分页查询的结果和对象放入PagerResult中
-
+		resultList=temp.subList(pager.getStartRow(), pager.getEndRow());
 		Pager pagerResult = new Pager();
 		pagerResult.setPageBean(pager);
 		pagerResult.setResultList(resultList);
+		if(em.isOpen()){
+			em.close();
+		}
 		return pagerResult;
   }
 }
