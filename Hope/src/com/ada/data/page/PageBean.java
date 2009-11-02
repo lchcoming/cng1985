@@ -62,7 +62,7 @@ public class PageBean {
 	}
 
 	public int getStartRow() {
-		startRow = (currentPage - 1) * pageSize - 1;
+		startRow = (currentPage - 1) * pageSize;
 		if(startRow<0){
 			startRow=0;
 		}

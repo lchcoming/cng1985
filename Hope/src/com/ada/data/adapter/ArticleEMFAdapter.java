@@ -194,6 +194,9 @@ public class ArticleEMFAdapter implements ArticleAdapter {
 	 * 
 	 * 分页 只有条件一样时候才能正确使用缓存
 	 * 
+	 * 缺点，当hql改变以后，不同用户之间会出现看见别人内容的时候<br />
+	 * 所有在使用的时候hql是固定的
+	 * 
 	 * @param hql
 	 *            查询条件
 	 * @param currentPage
@@ -208,7 +211,7 @@ public class ArticleEMFAdapter implements ArticleAdapter {
 		PageBean pager = null;
 		EntityManager em = EMF.get().createEntityManager();
 		Query query = em.createQuery(hql);
-		//如果缓存中有就从缓存中取数据
+		// 如果缓存中有就从缓存中取数据
 		if (temp == null) {
 			temp = query.getResultList();
 		}
@@ -226,7 +229,7 @@ public class ArticleEMFAdapter implements ArticleAdapter {
 		// resultList = query.getResultList();
 		// }
 		// 把分页查询的结果和对象放入PagerResult中
-		//分页
+		// 分页
 		if (temp.size() > 1) {
 			resultList = temp.subList(pager.getStartRow(), pager.getEndRow());
 		}
