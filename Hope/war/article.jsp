@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@page import="java.util.*" %>
-       <%@page import="com.ada.model.*" %>
-       <%@ page import="com.ada.data.manager.PMF" %>
+<%@page import="java.util.*" %>
+<%@page import="com.ada.model.*" %>
+<%@ page import="com.ada.data.manager.PMF" %>
 <%@page import="com.ada.data.adapter.*" %>
 <%@page import="javax.jdo.*" %>
 <%String id=request.getParameter("id");
@@ -14,6 +14,5 @@ v++;
 que.setVisit(v);
 adapter.updateArticle(que);
 request.setAttribute("article",que);
- %>
- 
-<jsp:forward page="/view/article.jsp"></jsp:forward>
+request.getRequestDispatcher("/view/article.jsp").forward(request,response);
+%>
