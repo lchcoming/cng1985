@@ -16,9 +16,42 @@ v++;
 que.setVisit(v);
 adapter.updateArticle(que);
  %>
+ 
+ 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><%=que.getSubject() %></title>
+
+  <script src="http://www.google.com/jsapi?key=ABQIAAAA1XbMiDxx_BTCY2_FkPh06RRaGTYH6UMl8mADNa0YKuWNNa8VNxQEerTAUcfkyrr6OwBovxn7TDAH5Q"></script>
+    <script type="text/javascript">
+    /*
+    *  How to draw results in tabbed mode.
+    */
+    
+    google.load('search', '1');
+    
+    function OnLoad() {
+    
+      // create a tabbed mode search control
+      var tabbed = new google.search.SearchControl();
+    
+      // create our searchers.  There will now be 3 tabs.
+       tabbed.addSearcher(new google.search.WebSearch());
+      tabbed.addSearcher(new google.search.LocalSearch());
+      tabbed.addSearcher(new google.search.BlogSearch());
+    
+      // draw in tabbed layout mode
+      var drawOptions = new google.search.DrawOptions();
+      drawOptions.setDrawMode(google.search.SearchControl.DRAW_MODE_TABBED);
+    
+      // Draw the tabbed view in the content div
+      tabbed.draw(document.getElementById("content"), drawOptions);
+    
+      // Search!
+      tabbed.execute("<%=que.getSubject()%>");
+    }
+    google.setOnLoadCallback(OnLoad);
+    </script>
 <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/css/site.css" type="text/css" media="screen" />
  <style type="text/css" rel="stylesheet">
@@ -40,6 +73,11 @@ adapter.updateArticle(que);
     width:700px;
     heght:2px;
      background: #433433;
+    }
+    #content{
+    width:768px;
+     margin-left:auto;
+    margin-right:auto;
     }
   </style>
     <script type="text/javascript" charset="utf-8" src="/kindeditor/kindeditor.js"></script>
@@ -88,6 +126,7 @@ for(RMessage rmsg:msgs){
 }
 }
  %>
+  <div id="content">Loading...</div>
 <form action="/rmessage" method="post">
 <input name="aid" type="hidden" value="<%=que.getId()%>">
 <textarea id="content1" name="content" style="width:768px;height:200px;visibility:hidden;">
