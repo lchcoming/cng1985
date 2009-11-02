@@ -239,6 +239,12 @@ public class ArticleEMFAdapter implements ArticleAdapter {
 		if (em.isOpen()) {
 			em.close();
 		}
+		for (Object object : resultList) {
+			Article article = (Article) object;
+			if (article.getSubject().length() > 20) {
+				article.setSubject(article.getSubject().substring(0,20) + "...");
+			}
+		}
 		return pagerResult;
 	}
 

@@ -13,6 +13,7 @@ long v=que.getVisit();
 v++;
 que.setVisit(v);
 adapter.updateArticle(que);
+
 request.setAttribute("article",que);
 request.getRequestDispatcher("/view/article.jsp").forward(request,response);
 %>
