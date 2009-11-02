@@ -190,12 +190,25 @@ public class ArticleEMFAdapter implements ArticleAdapter {
 				.getPageSize());
 	}
 
+	/**
+	 * 
+	 * 分页 只有条件一样时候才能正确使用缓存
+	 * 
+	 * @param hql
+	 *            查询条件
+	 * @param currentPage
+	 *            当前是第几页
+	 * @param pageSize
+	 *            分页大小
+	 * @return
+	 */
 	public Pager getpage(String hql, int currentPage, int pageSize) {
 		int totalRows = 0;
 		List resultList = null;
 		PageBean pager = null;
 		EntityManager em = EMF.get().createEntityManager();
 		Query query = em.createQuery(hql);
+		//如果缓存中有就从缓存中取数据
 		if (temp == null) {
 			temp = query.getResultList();
 		}
@@ -213,6 +226,7 @@ public class ArticleEMFAdapter implements ArticleAdapter {
 		// resultList = query.getResultList();
 		// }
 		// 把分页查询的结果和对象放入PagerResult中
+		//分页
 		if (temp.size() > 1) {
 			resultList = temp.subList(pager.getStartRow(), pager.getEndRow());
 		}
@@ -224,16 +238,21 @@ public class ArticleEMFAdapter implements ArticleAdapter {
 		}
 		return pagerResult;
 	}
-   public static void updateData(){
-	   EntityManager em = EMF.get().createEntityManager();
-	   String hql="select from " + Article.class.getName();
-	   hql+=" order by date desc ";
-	   Query query = em.createQuery(hql);
-	   temp = query.getResultList();
-	   temp.size();
-	   if (em.isOpen()) {
+
+	/**
+	 * 更新缓存中的内容，当添加新的内容后
+	 */
+	public static void updateData() {
+		EntityManager em = EMF.get().createEntityManager();
+		String hql = "select from " + Article.class.getName();
+		hql += " order by date desc ";
+		Query query = em.createQuery(hql);
+		temp = query.getResultList();
+		temp.size();
+		if (em.isOpen()) {
 			em.close();
 		}
-   }
+	}
+
 	private static List temp;
 }
