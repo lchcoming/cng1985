@@ -104,35 +104,9 @@ adapter.updateArticle(que);
  <br/>
  <%=que.getContent().getValue() %>
  <br/>
- <a href="index.jsp">回到首页</a>|<a href="articles.jsp">回到目录</a>|<a href="article.jsp?id=<%=que.getId()%>">置顶</a>
+ <a href="index.jsp">回到首页</a>|<a href="/control/articles.jsp">回到目录</a>|<a href="article.jsp?id=<%=que.getId()%>">置顶</a>
 
-<%
-RMessageAdapter padapter=new RMessageAdapter();
-String sqlquery="select from "+RMessage.class.getName()+" where articleid=="+id;
-List<RMessage> msgs=padapter.findArticle(sqlquery);
-if(msgs==null){
-out.println("没有人回复");
-}
-else{
-for(RMessage rmsg:msgs){
-%>
-<div class="commentbox">
-        	<%=rmsg.getContent().getValue()%>
-        	</div>
-        	<div class="commentfooter">
-                              发表于:<%=rmsg.getPubtime() %>
-            </div>
-<%
-}
-}
- %>
   <div id="content">Loading...</div>
-<form action="/rmessage" method="post">
-<input name="aid" type="hidden" value="<%=que.getId()%>">
-<textarea id="content1" name="content" style="width:768px;height:200px;visibility:hidden;">
-</textarea>
-<input type="submit">
-</form>
  </div>
 </body>
 </html>

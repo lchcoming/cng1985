@@ -11,19 +11,23 @@ import com.ada.model.Article;
 import com.google.appengine.api.datastore.Text;
 
 public class ArticlePMFAdapter implements ArticleAdapter {
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ada.daoimpl.ArticleAdapter#addArticle(com.ada.model.Article)
 	 */
 	public void addArticle(Article art) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-	    try {
-	      pm.makePersistent(art);
-	    } finally {
-	      pm.close();
-	    }
+		try {
+			pm.makePersistent(art);
+		} finally {
+			pm.close();
+		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ada.daoimpl.ArticleAdapter#updateArticle(com.ada.model.Article)
 	 */
 	public void updateArticle(Article art) {
@@ -42,24 +46,28 @@ public class ArticlePMFAdapter implements ArticleAdapter {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ada.daoimpl.ArticleAdapter#deleteArticle(com.ada.model.Article)
 	 */
 	public void deleteArticle(Article art) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-	    try {
-	    	long key=art.getId();
-	      Article f = pm.getObjectById(Article.class, key);
-	      pm.deletePersistent(f);
-	    } finally {
-	      if (pm.currentTransaction().isActive()) {
-	        pm.currentTransaction().rollback();
-	      }
-	      pm.close();
-	    }
+		try {
+			long key = art.getId();
+			Article f = pm.getObjectById(Article.class, key);
+			pm.deletePersistent(f);
+		} finally {
+			if (pm.currentTransaction().isActive()) {
+				pm.currentTransaction().rollback();
+			}
+			pm.close();
+		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.ada.daoimpl.ArticleAdapter#findArticle(java.lang.String)
 	 */
 	public List<Article> findArticle(String query) {
@@ -76,41 +84,46 @@ public class ArticlePMFAdapter implements ArticleAdapter {
 			pm.close();
 		}
 	}
-	public Article findArticle(Long key){
+
+	public Article findArticle(Long key) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm = PMF.get().getPersistenceManager();
-		Article que=pm.getObjectById(Article.class,key);
+		Article que = pm.getObjectById(Article.class, key);
+		if (!pm.isClosed()) {
+			pm.close();
+		}
 		return que;
 	}
-    public int findsize(String query){
-    	return findArticle(query).size();
-    }
-    public List<Article> pageArticle(String query,int curpage,int pagesize) {
+
+	public int findsize(String query) {
+		return findArticle(query).size();
+	}
+
+	public List<Article> pageArticle(String query, int curpage, int pagesize) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
-			
-			Query qu=pm.newQuery(query);
-			int max=0;
-			int all=0;
-			all=findsize(query);
-			max=all/pagesize;
-			if(all%pagesize!=0){
-				max=max+1;
+
+			Query qu = pm.newQuery(query);
+			int max = 0;
+			int all = 0;
+			all = findsize(query);
+			max = all / pagesize;
+			if (all % pagesize != 0) {
+				max = max + 1;
 			}
-			//±ﬂΩÁ≈–∂®
-			if(pagesize<0){
-				pagesize=10;
+			// ÔøΩﬂΩÔøΩÔøΩ–∂ÔøΩ
+			if (pagesize < 0) {
+				pagesize = 10;
 			}
-			if(curpage>max){
-				curpage=max;
+			if (curpage > max) {
+				curpage = max;
 			}
-			if(curpage<1){
-				curpage=1;
+			if (curpage < 1) {
+				curpage = 1;
 			}
-			int star=(curpage-1)*pagesize;
-			qu.setRange(star,pagesize);
-			List<Article> flights = (List<Article>) qu
-					.execute();
+			int star = (curpage - 1) * pagesize;
+			qu.setRange(star, pagesize);
+			List<Article> flights = (List<Article>) qu.execute();
 			// Force all results to be pulled back before we close the entity
 			// manager.
 			// We could have also called pm.detachCopyAll()
