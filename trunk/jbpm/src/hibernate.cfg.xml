@@ -19,75 +19,7 @@
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
-		<mapping
-			resource="com/gete/sun/entity/Companystructure.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Department.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/UserRole.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Advise.hbm.xml" />
-		<mapping
-			resource="com/gete/sun/entity/Taskdefinitionimpl.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmTimerdef.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Usercontact.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Reward.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Moniteworkmain.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmHistActinst.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmDescriptor.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Borderinfo.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Imgs.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Contactgroup.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Bargaintype.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmActivity.hbm.xml" />
-		<mapping
-			resource="com/gete/sun/entity/JbpmJpdlActivity.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmObjectref.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Mailboxdetail.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmComment.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Planwarn.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Swimlaneimpl.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Filedetail.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Contactbook.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Bargain.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Filetype.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Contribute.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Taskimpl.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmEvent.hbm.xml" />
-		<mapping
-			resource="com/gete/sun/entity/JbpmArgdescriptor.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Role.hbm.xml" />
-		<mapping
-			resource="com/gete/sun/entity/Swimlanedefinitionimpl.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmWireprops.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmExecution.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/User.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmJob.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Moneyplan.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmJpdlProcdef.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Waichu.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmTransition.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Remindbook.hbm.xml" />
-		<mapping
-			resource="com/gete/sun/entity/JbpmJpdlExecution.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmVariable.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmVariabledef.hbm.xml" />
-		<mapping
-			resource="com/gete/sun/entity/JbpmHistProcinst.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmLob.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Moneyplandetail.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Bbsanswer.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Sportsinfo.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmExcepthndlr.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmOperation.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Bbsborder.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Participantimpl.hbm.xml" />
-		<mapping
-			resource="com/gete/sun/entity/Moniteworkdetail.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Flow.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/JbpmProcess.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Mailboxmain.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Sealtable.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Plan.hbm.xml" />
-		<mapping resource="com/gete/sun/entity/Bbsask.hbm.xml" />
-
+		
 
 	</session-factory>
 
