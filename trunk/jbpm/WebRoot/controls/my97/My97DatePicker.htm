@@ -1,24 +1,49 @@
 <html>
-  <head>
-   
-    
-    <title>My JSP 'index.jsp' starting page</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-	<link href="skin/WdatePicker.css" rel="stylesheet" type="text/css" />
-	<script language="JavaScript" type="text/javascript" src="WdatePicker.js">
-	</script> 
-  </head>
-  
-  <body>
-  <form>
-  <input class="Wdate" type="text" id="d15" onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy年MM月dd日 HH时mm分ss秒'})"/>
-  </form>
-  </body>
+<head>
+<meta http-equiv="content-type" content="text/xml; charset=utf-8" />
+<title>My97DatePicker</title>
+<script type="text/javascript" src="config.js"></script>
+<script>
+if(parent==window)
+	location.href = 'http://www.my97.net';
+var $d, $dp, $pdp = parent.$dp, $dt, $tdt, $sdt, $IE=$pdp.ie, $FF = $pdp.ff,$OPERA=$pdp.opera, $ny, $cMark = false;
+if ($pdp.eCont) {
+	$dp = {};
+	for (var p in $pdp) {
+		$dp[p] = $pdp[p];
+	}
+}
+else
+	$dp = $pdp;
+	
+$dp.getLangIndex = function(name){
+	var arr = langList;
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i].name == name) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+$dp.getLang = function(name){
+	var index = $dp.getLangIndex(name);
+	if (index == -1) {
+		index = 0;
+	}
+	return langList[index];
+}
+ 
+$dp.realLang = $dp.getLang($dp.lang);
+document.write("<script src='lang/" + $dp.realLang.name + ".js' charset='" + $dp.realLang.charset + "'><\/script>");
+
+for (var i = 0; i < skinList.length; i++) {
+    document.write('<link rel="stylesheet" type="text/css" href="skin/' + skinList[i].name + '/datepicker.css" title="' + skinList[i].name + '" charset="' + skinList[i].charset + '" disabled="true"/>');
+}
+</script>
+<script type="text/javascript" src="calendar.js"></script>
+</head>
+<body leftmargin="0" topmargin="0" onload="$c.autoSize()" tabindex=0>
+</body>
 </html>
+<script>new My97DP();</script>

@@ -1,5 +1,5 @@
 /* 
- * My97 DatePicker 4.6
+ * My97 DatePicker 4.7
  * 皮肤名称:default
  */
 
@@ -56,8 +56,8 @@
 .WdateDiv .yminput{
 	margin-top:2px;
 	text-align:center;
+	height:20px;
 	border:0px;
-	height:16px;
 	width:50px;
 	cursor:pointer;		
 }
@@ -66,9 +66,9 @@
 	margin-top:2px;
 	text-align:center;
 	font-weight:bold;
+	height:20px;
 	color:blue;
 	border:#ccc 1px solid;
-	height:16px;
 	width:50px;
 }
 /* 菜单选择框 DIV */
@@ -95,12 +95,12 @@
 }
 /* 年选择框的偏移 DIV */
 .WdateDiv .YMenu{
-	margin-top:16px;
+	margin-top:20px;
 	
 }
 /* 月选择框的偏移 DIV */
 .WdateDiv .MMenu{
-	margin-top:16px;
+	margin-top:20px;
 	*width:62px;
 }
 /* 时选择框的位置 DIV */
@@ -134,10 +134,20 @@
 .WdateDiv .MTitle{
 	background-color:#BDEBEE;
 }
+.WdateDiv .WdayTable2{
+	border-collapse:collapse;
+	border:#c5d9e8 1px solid;
+}
+.WdateDiv .WdayTable2 table{
+	border:0;
+}
 /* 日期栏表格 TABLE */
 .WdateDiv .WdayTable{
 	line-height:20px;
 	border:#c5d9e8 1px solid;
+}
+.WdateDiv .WdayTable td{
+	text-align:center;
 }
 /* 日期格的样式 TD */
 .WdateDiv .Wday{
@@ -199,8 +209,8 @@
 }
 /* 时间输入框 INPUT */
 .WdateDiv #dpTime input{
-	height:16px;
 	width:18px;
+	height:20px;
 	text-align:center;
 	border:#ccc 1px solid;	
 }
@@ -246,13 +256,12 @@
 	cursor:pointer;
  }
 .WdateDiv #dpControl {
-	text-align:right;
-	margin-top:3px;
+	text-align:right;	
 }
 .WdateDiv .dpButton{ 
 	height:20px;
 	width:45px;
 	border:#ccc 1px solid;
-	padding:2px;
+	margin-top:2px;
 	margin-right:1px;
 }
