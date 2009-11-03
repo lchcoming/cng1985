@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <c:forEach items="${articles.resultList}" var="ada" varStatus="young">
     <tr>
     <td>
-    ${young.index}
+    ${young.count}
     </td>
     <td width="500">
     <a href="/article.jsp?id=${ada.id} ">
