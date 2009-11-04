@@ -14,6 +14,9 @@
  */
 package com.ada.test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.ada.common.util.NetUtil;
 
 public class He {
@@ -22,9 +25,15 @@ public class He {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		while (true) {
-         NetUtil.getResultByGet("http://127.0.0.1:8080/Sun_PS/cailiaoziyuantypetree.action", "");
+		while(true){
+		Map<String,String> map=new HashMap<String,String>();
+		map.put("content", "test");
+		map.put("id", "5058");
+		map.put("method", "new");
+		map.put("title", "test!!!!!!!  waiting.........");
+		System.out.println(NetUtil.parseUrlParam(map));
+		NetUtil.parseUrlParam(map);
+         NetUtil.getResultByPost("http://cng1985.appspot.com/ForumMessageService", NetUtil.parseUrlParam(map));
 		}
 	}
 
