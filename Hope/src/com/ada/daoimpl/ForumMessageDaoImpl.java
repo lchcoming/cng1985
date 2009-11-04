@@ -8,10 +8,12 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
+import com.ada.dao.PMFDaoImpl;
 import com.ada.data.manager.PMF;
+import com.ada.data.page.Pager;
 import com.ada.model.ForumMessage;
 
-public class ForumMessageDaoImpl {
+public class ForumMessageDaoImpl extends PMFDaoImpl {
 	public void addForumMessage(ForumMessage message) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		try {
@@ -54,8 +56,9 @@ public class ForumMessageDaoImpl {
 			String sql = "select from " + ForumMessage.class.getName();
 			sql += " where forumid == " + forumid;
 			Query query = manager.newQuery(sql);
+			//query.setRange(arg0, arg1)
 			Object result = query.execute();
-			List<ForumMessage> ss=(List<ForumMessage>) result;
+			List<ForumMessage> ss = (List<ForumMessage>) result;
 			ss.size();
 			return ss;
 		} finally {
@@ -63,4 +66,11 @@ public class ForumMessageDaoImpl {
 		}
 	}
 
+	public Pager findbyid(String forumid, int currentPage) {
+		String hql ="select from " + ForumMessage.class.getName();
+		hql += " where forumid == " + forumid;
+		//hql+=" order by putime desc ";
+		Pager temPager = getpage(hql, currentPage, 15);
+		return temPager;
+	}
 }

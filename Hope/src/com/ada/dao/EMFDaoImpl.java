@@ -50,12 +50,17 @@ public class EMFDaoImpl {
 			query.setMaxResults(pager.getPageSize());
 			if (query.getResultList().size() > 0) {
 				resultList = query.getResultList();
+				resultList.size();
 			}
 			// 把分页查询的结果和对象放入PagerResult中
 
 			Pager pagerResult = new Pager();
 			pagerResult.setPageBean(pager);
 			pagerResult.setResultList(resultList);
+			if(em.isOpen()){
+				em.close();
+			}
+			
 			return pagerResult;
 	  }
 }
