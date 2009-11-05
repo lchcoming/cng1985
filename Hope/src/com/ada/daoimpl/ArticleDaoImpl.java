@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 
-import com.ada.dao.DataDao;
+import com.ada.dao.core.DataDao;
 import com.ada.model.Article;
 import com.google.appengine.api.datastore.Text;
 

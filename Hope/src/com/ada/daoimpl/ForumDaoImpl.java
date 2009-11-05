@@ -3,8 +3,7 @@ package com.ada.daoimpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ada.dao.EMFDaoImpl;
-import com.ada.dao.ForumDao;
+import com.ada.dao.core.EMFDaoImpl;
 import com.ada.data.manager.*;
 
 import javax.jdo.Extent;
@@ -13,7 +12,7 @@ import javax.jdo.Transaction;
 
 import com.ada.model.Forum;
 
-public class ForumDaoImpl  implements ForumDao {
+public class ForumDaoImpl  {
 
 	public void addForum(Forum forum) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();

@@ -8,7 +8,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
 
-import com.ada.dao.PMFDaoImpl;
+import com.ada.dao.core.PMFDaoImpl;
 import com.ada.data.manager.PMF;
 import com.ada.data.page.Pager;
 import com.ada.model.ForumMessage;
