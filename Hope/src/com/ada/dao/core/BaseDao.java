@@ -1,4 +1,4 @@
-package com.ada.dao;
+package com.ada.dao.core;
 
 import java.util.List;
 

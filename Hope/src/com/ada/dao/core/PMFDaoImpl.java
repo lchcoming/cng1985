@@ -12,7 +12,7 @@
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
  */
-package com.ada.dao;
+package com.ada.dao.core;
 
 import java.util.List;
 
