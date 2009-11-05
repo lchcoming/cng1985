@@ -14,6 +14,53 @@
  */
 package com.ada.dao.cache;
 
-public class ArticleCache {
+import java.util.List;
+
+import com.ada.dao.api.ArticleDao;
+import com.ada.dao.help.Pager;
+import com.ada.model.Article;
+
+public class ArticleCache implements ArticleDao{
+
+	@Override
+	public void add(Article article) {
+	
+		
+	}
+
+	@Override
+	public void delete(Article article) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteById(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void getById(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Pager getPager(String hql, int curpage, int pagesize) {
+		return null;
+	}
+
+	@Override
+	public List<Article> list(String hql) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(Article article) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

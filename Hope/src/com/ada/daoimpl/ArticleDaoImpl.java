@@ -6,15 +6,14 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 
-import com.ada.dao.core.DataDao;
+
 import com.ada.model.Article;
 import com.google.appengine.api.datastore.Text;
 
 
 
-public class ArticleDaoImpl implements DataDao {
+public class ArticleDaoImpl  {
 
-	@Override
 	public void addObject(Object object) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
@@ -25,7 +24,7 @@ public class ArticleDaoImpl implements DataDao {
 
 	}
 
-	@Override
+	
 	public void deleteObject(Object object) {
 		
 		PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -42,7 +41,7 @@ public class ArticleDaoImpl implements DataDao {
 
 	}
 
-	@Override
+	
 	public List findObject(String sql) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {
@@ -56,7 +55,7 @@ public class ArticleDaoImpl implements DataDao {
 	    }
 	}
 
-	@Override
+	
 	public void updateObject(Object object) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 	    try {

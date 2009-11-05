@@ -4,7 +4,7 @@
  * Module ID:    <br />   
  * Comments:            <br />                                  
  * JDK version used:<JDK1.6><br />                                 
- * Namespace:com.ada.dao.api<br />                             
+ * Namespace:com.ada.dao.factory<br />                             
  * Author：ada.young <br />                  
  * Create Date：  2009-11-5<br />   
  * Modified By：ada.young          <br />                                
@@ -12,26 +12,20 @@
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
  */
-package com.ada.dao.api;
+package com.ada.dao.factory;
 
-import java.util.List;
+import javax.jdo.PersistenceManager;
+import javax.persistence.EntityManager;
 
-import com.ada.dao.help.Pager;
-import com.ada.model.Article;
+import com.ada.data.manager.EMF;
+import com.ada.data.manager.PMF;
 
-public interface ArticleDao {
+public class DataFactory {
+	public synchronized PersistenceManager createPersistenceManager() {
+		return PMF.get().getPersistenceManagerProxy();
+	}
 
-	void add(Article article);
-
-	void delete(Article article);
-
-	void update(Article article);
-
-	void deleteById(String id);
-
-	void getById(String id);
-
-	Pager getPager(String hql, int curpage, int pagesize);
-
-	List<Article> list(String hql);
+	public synchronized EntityManager createEntityManager() {
+		return EMF.get().createEntityManager();
+	}
 }

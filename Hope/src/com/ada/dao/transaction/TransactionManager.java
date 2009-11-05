@@ -4,7 +4,7 @@
  * Module ID:    <br />   
  * Comments:            <br />                                  
  * JDK version used:<JDK1.6><br />                                 
- * Namespace:com.ada.dao.emf<br />                             
+ * Namespace:com.ada.dao.transaction<br />                             
  * Author：ada.young <br />                  
  * Create Date：  2009-11-5<br />   
  * Modified By：ada.young          <br />                                
@@ -12,8 +12,8 @@
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
  */
-package com.ada.dao.core;
+package com.ada.dao.transaction;
 
-public class ArticleDaoImpl {
+public class TransactionManager {
 
 }
