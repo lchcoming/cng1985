@@ -6,35 +6,28 @@
  * JDK version used:<JDK1.6><br />                                 
  * Namespace:com.ada.test<br />                             
  * Author：ada.young <br />                  
- * Create Date：  2009-10-23<br />   
+ * Create Date：  2009-11-5<br />   
  * Modified By：ada.young          <br />                                
- * Modified Date:2009-10-23          <br />                               
+ * Modified Date:2009-11-5          <br />                               
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
  */
 package com.ada.test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Properties;
+import com.ada.common.util.PropertiesUtil;
 
-import com.ada.common.util.NetUtil;
-
-public class He {
+public class Test {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		while(true){
-		Map<String,String> map=new HashMap<String,String>();
-		map.put("content", "欢迎光临");
-		map.put("id", "8");
-		map.put("method", "new");
-		map.put("title", "欢迎光临.........");
-		System.out.println(NetUtil.parseUrlParam(map));
-		NetUtil.parseUrlParam(map);
-         NetUtil.getResultByPost("http://localhost:8080/ForumMessageService", NetUtil.parseUrlParam(map));
-		}
+		// TODO Auto-generated method stub
+		Properties f = PropertiesUtil
+				.readProperties("F:\\hibernate.properties");
+		System.out.println( f.size());
+		PropertiesUtil.writeProperties("F:\\1.properties", f);
 	}
 
 }

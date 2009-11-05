@@ -55,7 +55,7 @@ public class NetUtil {
 			out.close();
 
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					connection.getInputStream(), "utf-8"));
+					connection.getInputStream(), "UTF-8"));
 			StringBuffer buffer = new StringBuffer();
 			String line = "";
 			while ((line = reader.readLine()) != null) {
