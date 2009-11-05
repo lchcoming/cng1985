@@ -23,6 +23,7 @@ import com.ada.data.page.PageBean;
 import com.ada.data.page.Pager;
 
 public class PMFDaoImpl {
+	@SuppressWarnings("unchecked")
 	public Pager getpage(String hql, int currentPage, int pageSize) {
 		List resultList = null;
 		PageBean pager = null;

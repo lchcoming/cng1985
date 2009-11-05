@@ -24,14 +24,17 @@ public class Pager implements Serializable {
 	/**
 	 * 分页结果
 	 */
+	@SuppressWarnings("unchecked")
 	private List resultList;
 	/**
 	 * 分页信息
 	 */
 	private PageBean pageBean;
+	@SuppressWarnings("unchecked")
 	public List getResultList() {
 		return resultList;
 	}
+	@SuppressWarnings("unchecked")
 	public void setResultList(List resultList) {
 		this.resultList = resultList;
 	}

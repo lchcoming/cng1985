@@ -24,6 +24,7 @@ public class BaseDao<T extends Object> {
 		return item;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<T> all() {
 
 		PersistenceManager pm = PMF.get().getPersistenceManager();

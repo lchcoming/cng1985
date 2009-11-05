@@ -33,7 +33,8 @@ public class EMFDaoImpl {
 			em.close();
 		}
 	}
-	 public Pager getpage(String hql, int currentPage, int pageSize){
+	 @SuppressWarnings("unchecked")
+	public Pager getpage(String hql, int currentPage, int pageSize){
 		  int totalRows = 0;
 			List resultList = null;
 			PageBean pager = null;
