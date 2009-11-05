@@ -50,7 +50,8 @@ public class ForumMessageService extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		ForumMessage msg = new ForumMessage();
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
@@ -59,18 +60,17 @@ public class ForumMessageService extends HttpServlet {
 		msg.setForumid(Long.parseLong(id));
 		msg.setPutime(new Date());
 		msg.setTitle(title);
-		 UserService userService = UserServiceFactory.getUserService();
-		User u=userService.getCurrentUser();
-		if(u!=null){
+		UserService userService = UserServiceFactory.getUserService();
+		User u = userService.getCurrentUser();
+		if (u != null) {
 			msg.setPubuser(u.getNickname());
-		}
-		else{
+		} else {
 			msg.setPubuser("游客");
 		}
 		msg.setContent(new Text(content));
-		ForumMessageDaoImpl dao=new ForumMessageDaoImpl();
+		ForumMessageDaoImpl dao = new ForumMessageDaoImpl();
 		dao.addForumMessage(msg);
-		response.sendRedirect("/forum.jsp?id="+id);
+		response.sendRedirect("/forum.jsp?id=" + id);
 	}
 
 	/**
