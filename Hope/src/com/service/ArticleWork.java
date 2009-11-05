@@ -77,6 +77,7 @@ public class ArticleWork extends HttpServlet {
 			pm.close();
 		}
 		ArticleEMFAdapter.updateData();
+		System.out.println("!!!!!!!!!!!!!!!!!!!!");
 		response.sendRedirect("/admin/main.jsp");
 	}
 

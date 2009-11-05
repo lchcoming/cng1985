@@ -54,7 +54,7 @@
 <h3>主题:${message.title}</h3>
 <h5>发布时间: <fmt:formatDate value="${message.putime}" pattern="yyyy年MM月dd日"/>|由${message.pubuser}发布</h5>
 <h2>内容如下</h2>
-<c:out value="${message.content.value}"></c:out>
+<c:out value="${message.content.value}" escapeXml="false"></c:out>
 
 <br/>
 <h2>他人回复</h2>

@@ -4,12 +4,12 @@
 * @author Roddy <luolonghao@gmail.com>
 * @site http://www.kindsoft.net/
 * @licence LGPL(http://www.opensource.org/licenses/lgpl-license.php)
-* @version 3.2
+* @version 3.3.1
 *******************************************************************************/
 
 var KE = {};
 
-KE.version = '3.2';
+KE.version = '3.3.1';
 
 KE.lang = {
     source : '切换模式',
@@ -105,7 +105,6 @@ KE.setting = {
     minWidth : 200,
     minHeight : 100,
     minChangeSize : 5,
-    siteDomains : [],
     items : [
         'source', 'preview', 'fullscreen', 'undo', 'redo', 'print', 'cut', 'copy', 'paste',
         'plainpaste', 'wordpaste', 'justifyleft', 'justifycenter', 'justifyright',
@@ -139,17 +138,26 @@ KE.setting = {
         div : [
             'class', 'align', '.border', '.margin', '.padding', '.text-align', '.color',
             '.background-color', '.font-size', '.font-family', '.font-weight',
+            '.font-style', '.text-decoration', '.vertical-align', '.margin-left'
+        ],
+        table: [
+            'class', 'border', 'cellspacing', 'cellpadding', 'width', 'height', 'align',
+            '.padding', '.margin', '.border', 'bgcolor', '.text-align', '.color', '.background-color',
+            '.font-size', '.font-family', '.font-weight', '.font-style', '.text-decoration'
+        ],
+        'td,th': [
+            'class', 'align', 'valign', 'width', 'height', 'colspan', 'rowspan', 'bgcolor',
+            '.text-align', '.color', '.background-color', '.font-size', '.font-family', '.font-weight',
             '.font-style', '.text-decoration', '.vertical-align'
         ],
-        table : ['border', 'cellspacing', 'cellpadding', 'width', 'height', '.padding', '.margin', '.border'],
-        a : ['href', 'target'],
-        embed : ['src', 'type', 'loop', 'autostart', 'quality', '.width', '.height', '/'],
+        a : ['class', 'href', 'target', 'name'],
+        embed : ['src', 'width', 'height', 'type', 'loop', 'autostart', 'quality', '.width', '.height', 'align', 'allowscriptaccess', '/'],
         img : ['src', 'width', 'height', 'border', 'alt', 'title', '.width', '.height', '/'],
-        hr : ['/'],
+        hr : ['class', '/'],
         br : ['/'],
-        'p,td,ol,ul,li,blockquote,h1,h2,h3,h4,h5,h6' : [
+        'p,ol,ul,li,blockquote,h1,h2,h3,h4,h5,h6' : [
             'align', '.text-align', '.color', '.background-color', '.font-size', '.font-family',
-            '.font-weight', '.font-style', '.text-decoration', '.vertical-align'
+            '.font-weight', '.font-style', '.text-decoration', '.vertical-align', '.text-indent', '.margin-left'
         ],
         'tbody,tr,strong,b,sub,sup,em,i,u,strike' : []
     }
@@ -186,7 +194,7 @@ KE.event = {
     },
     input : function(el, func) {
         this.add(el, 'keyup', function(e) {
-            if (!e.ctrlKey && !e.shiftKey && !e.altKey && (e.keyCode < 16 || e.keyCode > 18)) {
+            if (!e.ctrlKey && !e.shiftKey && !e.altKey && (e.keyCode < 16 || e.keyCode > 18) && e.keyCode != 116) {
                 func(e);
                 return false;
             }
@@ -199,6 +207,35 @@ KE.event = {
                 return false;
             }
         });
+    },
+    ready : function(func) {
+        var loaded = false;
+        var readyFunc = function() {
+            if (loaded) return;
+            loaded = true;
+            func();
+        };
+        if (document.addEventListener) {
+            this.add(document, "DOMContentLoaded", readyFunc);
+        } else if (document.attachEvent){
+            this.add(document, "readystatechange", function() {
+                if (document.readyState == "complete") readyFunc();
+            });
+            if ( document.documentElement.doScroll && typeof window.frameElement === "undefined" ) {
+                var ieReadyFunc = function() {
+                    if (loaded) return;
+                    try {
+                        document.documentElement.doScroll("left");
+                    } catch(e) {
+                        setTimeout(ieReadyFunc, 0);
+                        return;
+                    }
+                    readyFunc();
+                };
+                ieReadyFunc();
+            }
+        }
+        this.add(window, 'load', readyFunc);
     }
 };
 
@@ -251,15 +288,13 @@ KE.selection = function(win, doc) {
                     var nodes = parentNode.childNodes;
                     if (nodes.length == 0) return {node: parentNode, pos: 0};
                     var startNode;
+                    var endElement;
                     var startPos = 0;
-                    var offset = 0;
                     var isEnd = false;
+                    var testRange = range.duplicate();
+                    testRange.moveToElementText(parentNode);
                     for (var i = 0, len = nodes.length; i < len; i++) {
                         var node = nodes[i];
-                        var length;
-                        var testRange = range.duplicate();
-                        testRange.moveToElementText(parentNode);
-                        testRange.moveStart('character', offset);
                         var cmp = testRange.compareEndPoints('StartToStart', pointRange);
                         if (cmp > 0) {
                             isEnd = true;
@@ -273,23 +308,25 @@ KE.selection = function(win, doc) {
                             }
                         }
                         if (node.nodeType == 1) {
-                            var testRange = range.duplicate();
-                            testRange.moveToElementText(node);
-                            length = testRange.text.length;
-                            if (isEnd) startPos += length;
+                            var nodeRange = range.duplicate();
+                            nodeRange.moveToElementText(node);
+                            testRange.setEndPoint('StartToEnd', nodeRange);
+                            if (isEnd) startPos += nodeRange.text.length;
                             else startPos = 0;
                         } else if (node.nodeType == 3) {
-                            if (!isEnd) startNode = node;
-                            length = node.nodeValue.length;
-                            startPos += length;
+                            testRange.moveStart('character', node.nodeValue.length);
+                            startPos += node.nodeValue.length;
                         }
-                        offset += length;
+                        if (!isEnd) startNode = node;
                     }
-                    var testRange = range.duplicate();
+                    if (!isEnd && startNode.nodeType == 1) {
+                        var startNode = parentNode.lastChild;
+                        return {node: startNode, pos: startNode.nodeType == 1 ? 1 : startNode.nodeValue.length};
+                    }
+                    testRange = range.duplicate();
                     testRange.moveToElementText(parentNode);
-                    testRange.collapse(false);
-                    testRange.setEndPoint('StartToStart', pointRange);
-                    startPos -= testRange.text.length;
+                    testRange.setEndPoint('StartToEnd', pointRange);
+                    startPos -= testRange.text.replace(/\r\n|\n|\r/g, '').length;
                     return {node: startNode, pos: startPos};
                 };
                 var start = getStartEnd(true);
@@ -304,6 +341,14 @@ KE.selection = function(win, doc) {
             startPos = range.startOffset;
             endNode = range.endContainer;
             endPos = range.endOffset;
+            if (startNode.nodeType == 1 && typeof startNode.childNodes[startPos] != "undefined") {
+                startNode = startNode.childNodes[startPos];
+                startPos = startNode.nodeType == 1 ? 0 : startNode.nodeValue.length;
+            }
+            if (endNode.nodeType == 1 && typeof endNode.childNodes[endPos] != "undefined") {
+                endNode = endNode.childNodes[endPos];
+                endPos = endNode.nodeType == 1 ? 0 : endNode.nodeValue.length;
+            }
         }
         var keRange = new KE.range(doc);
         keRange.setTextStart(startNode, startPos);
@@ -321,10 +366,9 @@ KE.selection = function(win, doc) {
                     range.moveToElementText(node);
                     range.collapse(isStart);
                 } else if (node.nodeType == 3) {
-                    var offset = KE.util.getParentOffset(doc, node);
-                    range.moveToElementText(node.parentNode);
+                    range = KE.util.getNodeStartRange(doc, node);
                     var pos = isStart ? keRange.startPos : keRange.endPos;
-                    range.moveStart('character', offset + pos);
+                    range.moveStart('character', pos);
                 }
                 return range;
             }
@@ -412,9 +456,8 @@ KE.range = function(doc) {
                         range.moveToElementText(node);
                         range.collapse(isStart);
                     } else if (type == 3) {
-                        var offset = KE.util.getParentOffset(doc, node);
-                        range.moveToElementText(node.parentNode);
-                        range.moveStart('character', offset + pos);
+                        range = KE.util.getNodeStartRange(doc, node);
+                        range.moveStart('character', pos);
                         range.collapse(true);
                     }
                     return range;
@@ -630,7 +673,11 @@ KE.cmd = function(id) {
                         centerNode = node.splitText(startPos);
                         centerNode.parentNode.insertBefore(el, centerNode);
                     } else {
-                        centerNode.parentNode.appendChild(el);
+                        if (centerNode.nextSibling) {
+                            centerNode.parentNode.insertBefore(el, centerNode.nextSibling);
+                        } else {
+                            centerNode.parentNode.appendChild(el);
+                        }
                     }
                     return el;
                 }
@@ -638,6 +685,7 @@ KE.cmd = function(id) {
         }
     };
     this.wrap = function(tagName, attributes) {
+        var self = this;
         this.keSel.focus();
         var element = KE.$$(tagName, this.doc);
         this.mergeAttributes(element, attributes);
@@ -648,13 +696,16 @@ KE.cmd = function(id) {
         var endPos = keRange.endPos;
         var parentNode = keRange.getParentElement();
         var isStarted = false;
-        var self = this;
         KE.eachNode(parentNode, function(node) {
             if (node == startNode) isStarted = true;
-            var type = KE.util.getNodeType(node);
-            if (type == 1) {
+            if (node.nodeType == 1) {
                 if (node == startNode && node == endNode) {
-                    node.appendChild(element);
+                    if (KE.util.inArray(node.tagName.toLowerCase(), KE.setting.noEndTags)) {
+                        if (startPos > 0) node.parentNode.appendChild(element);
+                        else node.parentNode.insertBefore(element, node);
+                    } else {
+                        node.appendChild(element);
+                    }
                     keRange.selectNode(element);
                     return false;
                 } else if (node == startNode) {
@@ -663,7 +714,7 @@ KE.cmd = function(id) {
                     keRange.setEnd(node, 0);
                     return false;
                 }
-            } else if (type == 3) {
+            } else if (node.nodeType == 3) {
                 if (isStarted) {
                     if (node == startNode && node == endNode) {
                         var rangeNode = self.wrapTextNode(node, startPos, endPos, element, attributes);
@@ -712,7 +763,7 @@ KE.cmd = function(id) {
         var endNode = keRange.endNode;
         var endPos = keRange.endPos;
         this.keSel.focus();
-        if (keRange.getText() === '') return;
+        if (keRange.getText().replace(/\s+/g, '') === '') return;
         var startParent = this.getTopParent(tagNames, startNode);
         var endParent = this.getTopParent(tagNames, endNode);
         if (startParent) {
@@ -753,11 +804,95 @@ KE.cmd = function(id) {
             this.keSel.addRange(keRange);
         } catch(e) {}
     };
-}
+};
+
+KE.format = {
+    getHtml : function(html, htmlTags) {
+        var isFilter = (typeof htmlTags == "undefined") ? false : true;
+        var domain = document.domain;
+        var htmlTagHash = {};
+        if (isFilter) {
+            KE.each(htmlTags, function(key, val) {
+                var arr = key.split(',');
+                for (var i = 0, len = arr.length; i < len; i++) htmlTagHash[arr[i]] = KE.util.arrayToHash(val);
+            });
+        }
+        var noEndTagHash = KE.util.arrayToHash(KE.setting.noEndTags);
+        var inlineTagHash = KE.util.arrayToHash(KE.setting.inlineTags);
+        html = html.replace(/<(\/)?(\w+)(.*?)(\/)?>/g, function($0, $1, $2, $3, $4) {
+            var startSlash = $1 || '';
+            var tagName = $2.toLowerCase();
+            var attr = $3 || '';
+            var endSlash = $4 || '';
+            if (isFilter && typeof htmlTagHash[tagName] == "undefined") return '';
+            if (endSlash === '' && typeof noEndTagHash[tagName] != "undefined") endSlash = ' /';
+            var nl = '';
+            if (KE.browser == 'IE' && endSlash && typeof inlineTagHash[tagName] == "undefined") nl = "\r\n";
+            if (attr !== '') {
+                attr = attr.replace(/\s*([^\s]+?)=(".*?"|[^\s]*)/g, function($0, $1, $2) {
+                    var key = $1.toLowerCase();
+                    var val = $2 || '';
+                    if (isFilter) {
+                        if (key.charAt(0) === "." || (key !== "style" && typeof htmlTagHash[tagName][key] == "undefined")) return ' ';
+                    }
+                    if (val === '') {
+                        val = '""';
+                    } else {
+                        if (key === "style") {
+                            val = val.substr(1, val.length - 2);
+                            val = val.replace(/\s*([^\s]+?)\s*:(.*?)(;|$)/g, function($0, $1, $2) {
+                                var k = $1.toLowerCase();
+                                if (isFilter) {
+                                    if (typeof htmlTagHash[tagName]['.' + k] == "undefined") return '';
+                                }
+                                var v = KE.util.trim($2.toLowerCase());
+                                v = KE.util.rgbToHex(v);
+                                return k + ':' + v + ';';
+                            });
+                            val = KE.util.trim(val);
+                            if (val === '') return '';
+                            val = '"' + val + '"';
+                        }
+                        val = val.replace(/http:\/\/(.*?)\//g, function($0, $1) {
+                            if ($1 === domain) return '/';
+                            else return $0;
+                        });
+                        if (val.charAt(0) !== '"') val = '"' + val + '"';
+                    }
+                    return ' ' + key + '=' + val + ' ';
+                });
+                attr = attr.replace(/\s+(checked|selected|disabled|readonly)(\s+|$)/ig, function($0, $1) {
+                    var key = $1.toLowerCase();
+                    if (isFilter) {
+                        if (key.charAt(0) === "." || typeof htmlTagHash[tagName][key] == "undefined") return ' ';
+                    }
+                    return ' ' + key + '="' + key + '"' + ' ';
+                });
+                attr = KE.util.trim(attr);
+                attr = attr.replace(/\s+/g, ' ');
+                if (attr) attr = ' ' + attr;
+                return '<' + startSlash + tagName + attr + endSlash + '>' + nl;
+            } else {
+                return '<' + startSlash + tagName + endSlash + '>' + nl;
+            }
+        });
+        var reg = KE.setting.inlineTags.join('|');
+        var trimHtml = function(inHtml) {
+            var outHtml = inHtml.replace(new RegExp('<(' + reg + ')[^>]*><\\/(' + reg + ')>', 'ig'), function($0, $1, $2) {
+                if ($1 == $2) return '';
+                else return $0;
+            });
+            if (inHtml !== outHtml) outHtml = trimHtml(outHtml);
+            return outHtml;
+        };
+        return trimHtml(html);
+    }
+};
 
 KE.util = {
-    getDocumentElement : function() {
-        return (document.compatMode != "CSS1Compat") ? document.body : document.documentElement;
+    getDocumentElement : function(doc) {
+        doc = doc || document;
+        return (doc.compatMode != "CSS1Compat") ? doc.body : doc.documentElement;
     },
     getDocumentHeight : function() {
         var el = this.getDocumentElement();
@@ -785,6 +920,9 @@ KE.util = {
         for (var i = 0; i < arr.length; i++) {if (str == arr[i]) return true;}
         return false;
     },
+    trim : function(str) {
+        return str.replace(/^\s+|\s+$/g, "");
+    },
     getJsKey : function(key) {
         var arr = key.split('-');
         key = '';
@@ -792,6 +930,11 @@ KE.util = {
             key += (i > 0) ? arr[i].charAt(0).toUpperCase() + arr[i].substr(1) : arr[i];
         }
         return key;
+    },
+    arrayToHash : function(arr) {
+        var hash = {};
+        for (var i = 0, len = arr.length; i < len; i++) hash[arr[i]] = 1;
+        return hash;
     },
     escape : function(html) {
         html = html.replace(/&/g, "&amp;");
@@ -804,7 +947,7 @@ KE.util = {
     getElementPos : function(el) {
         var x = 0;
         var y = 0;
-        if (el.getBoundingClientRect) {
+        if (KE.browser != "WEBKIT") {
             var box = el.getBoundingClientRect();
             var el = this.getDocumentElement();
             x = box.left + el.scrollLeft - el.clientLeft;
@@ -821,9 +964,9 @@ KE.util = {
         }
         return {'x' : x, 'y' : y};
     },
-    getCoords : function(ev) {
+    getCoords : function(ev, doc) {
         ev = ev || window.event;
-        var el = this.getDocumentElement();
+        var el = this.getDocumentElement(doc);
         if (ev.pageX) return { x : ev.pageX, y : ev.pageY};
         return {
             x : ev.clientX + el.scrollLeft - el.clientLeft,
@@ -845,34 +988,17 @@ KE.util = {
             s = parseInt(s).toString(16);
             return s.length > 1 ? s : '0' + s;
         };
-        return str.replace(/rgb\s*?\(\s*?([0-9]+)\s*?,\s*?([0-9]+)\s*?,\s*?([0-9]+)\s*?\)/ig,
+        return str.replace(/rgb\s*?\(\s*?(\d+)\s*?,\s*?(\d+)\s*?,\s*?(\d+)\s*?\)/ig,
                            function($0, $1, $2, $3) {
                                return '#' + hex($1) + hex($2) + hex($3);
                            }
                           );
     },
-    getStyle : function(el, key) {
-        var arr = key.split('-');
-        key = "";
-        for (var i = 0, len = arr.length; i < len; i++) {
-            key += (i > 0) ? arr[i].charAt(0).toUpperCase() + arr[i].substr(1) : arr[i];
-        }
-        var val = el.style[key];
-        if (!val) {
-            var css = el.getAttribute("style");
-            if (css) {
-                var re = new RegExp("(^|[^\w\-])" + key + "\s*:\s*([^;]+)", "ig");
-                var arr = re.exec(css);
-                if (arr) val = arr[2];
-            }
-        }
-        return KE.util.rgbToHex(val);
-    },
     createRange : function(doc) {
         return doc.createRange ? doc.createRange() : doc.body.createTextRange();
     },
     getNodeType : function(node) {
-        return (node.tagName && KE.util.inArray(node.tagName.toLowerCase(), KE.setting.noEndTags)) ? 88 : node.nodeType;
+        return (node.nodeType == 1 && KE.util.inArray(node.tagName.toLowerCase(), KE.setting.noEndTags)) ? 88 : node.nodeType;
     },
     getNodeTextLength : function(node) {
         var type = KE.util.getNodeType(node);
@@ -883,32 +1009,31 @@ KE.util = {
             return node.nodeValue.length;
         }
     },
-    getParentOffset : function(doc, node) {
-        var offset = 0;
-        var sibling = node.previousSibling;
-        while (sibling) {
-            var type = KE.util.getNodeType(sibling);
-            if (type == 1) {
-                var nodeRange = KE.util.createRange(doc);
-                nodeRange.moveToElementText(sibling);
-                offset += nodeRange.text.length;
-            } else if (type == 3) {
-                offset += sibling.nodeValue.length;
+    getNodeStartRange : function(doc, node) {
+        var range = KE.util.createRange(doc);
+        var type = node.nodeType;
+        if (type == 1) {
+            range.moveToElementText(node);
+            return range;
+        } else if (type == 3) {
+            var offset = 0;
+            var sibling = node.previousSibling;
+            while (sibling) {
+                if (sibling.nodeType == 1) {
+                    var nodeRange = KE.util.createRange(doc);
+                    nodeRange.moveToElementText(sibling);
+                    range.setEndPoint('StartToEnd', nodeRange);
+                    range.moveStart('character', offset);
+                    return range;
+                } else if (sibling.nodeType == 3) {
+                    offset += sibling.nodeValue.length;
+                }
+                sibling = sibling.previousSibling;
             }
-            sibling = sibling.previousSibling;
+            range.moveToElementText(node.parentNode);
+            range.moveStart('character', offset);
+            return range;
         }
-        return offset;
-    },
-    trimNodes : function(parent) {
-        if (KE.util.getNodeType(parent) != 1) return;
-        if (KE.util.inArray(parent.tagName.toLowerCase(), KE.setting.inlineTags) && KE.util.getNodeTextLength(parent) == 0) {
-            parent.parentNode.removeChild(parent);
-            return;
-        }
-        KE.eachNode(parent, function(node) {
-            KE.util.trimNodes(node);
-            return true;
-        });
     },
     removeParent : function(parent) {
         if (parent.hasChildNodes) {
@@ -921,38 +1046,50 @@ KE.util = {
         }
         parent.parentNode.removeChild(parent);
     },
-    drag : function(id, mousedownObj, moveObj, func, hideFlag) {
+    drag : function(id, mousedownObj, moveObj, func) {
         var obj = KE.g[id];
-        mousedownObj.onmousedown = function(event) {
-            if (hideFlag && obj.wyswygMode) obj.iframe.style.display = 'none';
-            if (KE.browser != 'IE') event.preventDefault();
-            var ev = event || window.event;
-            var pos = KE.util.getCoords(ev);
+        mousedownObj.onmousedown = function(e) {
+            if (KE.browser != 'IE') e.preventDefault();
+            var pos = KE.util.getCoords(e);
             var objTop = parseInt(moveObj.style.top);
             var objLeft = parseInt(moveObj.style.left);
-            var objWidth = parseInt(moveObj.style.width);
-            var objHeight = parseInt(moveObj.style.height);
+            var objWidth = moveObj.style.width;
+            var objHeight = moveObj.style.height;
+            if (objWidth.match(/%$/)) objWidth = moveObj.offsetWidth + 'px';
+            if (objHeight.match(/%$/)) objHeight = moveObj.offsetHeight + 'px';
+            objWidth = parseInt(objWidth);
+            objHeight = parseInt(objHeight);
             var mouseTop = pos.y;
             var mouseLeft = pos.x;
             var dragFlag = true;
-            var moveListener = function(event) {
+            var moveListener = function(e) {
                 if (dragFlag) {
-                    var ev = event || window.event;
-                    var pos = KE.util.getCoords(ev);
+                    var pos = KE.util.getCoords(e);
                     var top = pos.y - mouseTop;
                     var left = pos.x - mouseLeft;
                     func(objTop, objLeft, objWidth, objHeight, top, left);
                 }
-                return false;
             };
-            var upListener = function(event) {
-                if (hideFlag && obj.wyswygMode) obj.iframe.style.display = '';
+            var iframePos = KE.util.getElementPos(obj.iframe);
+            var iframeMoveListener = function(e) {
+                if (dragFlag) {
+                    var pos = KE.util.getCoords(e, obj.iframeDoc);
+                    var top = iframePos.y + pos.y - mouseTop;
+                    var left = iframePos.x + pos.x - mouseLeft;
+                    func(objTop, objLeft, objWidth, objHeight, top, left);
+                }
+            };
+            var upListener = function(e) {
                 dragFlag = false;
                 KE.event.remove(document, 'mousemove', moveListener);
                 KE.event.remove(document, 'mouseup', upListener);
+                KE.event.remove(obj.iframeDoc, 'mousemove', iframeMoveListener);
+                KE.event.remove(obj.iframeDoc, 'mouseup', upListener);
             };
             KE.event.add(document, 'mousemove', moveListener);
             KE.event.add(document, 'mouseup', upListener);
+            KE.event.add(obj.iframeDoc, 'mousemove', iframeMoveListener);
+            KE.event.add(obj.iframeDoc, 'mouseup', upListener);
         };
     },
     setDefaultPlugin : function(id) {
@@ -968,8 +1105,7 @@ KE.util = {
         }
     },
     getFullHtml : function(id, tagLineMode) {
-        var html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
-        html += '<html xmlns="http://www.w3.org/1999/xhtml">';
+        var html = '<html>';
         html += '<head>';
         html += '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
         html += '<title>KindEditor</title>';
@@ -984,53 +1120,53 @@ KE.util = {
         html += '</html>';
         return html;
     },
-    resize : function(id, width, height) {
+    resize : function(id, width, height, isCheck, isResizeWidth) {
+        isResizeWidth = (typeof isResizeWidth == "undefined") ? true : isResizeWidth;
         var obj = KE.g[id];
-        if (width.match(/%$/)) width = obj.container.offsetWidth + 'px';
-        if (height.match(/%$/)) height = obj.container.offsetHeight + 'px';
-        if (parseInt(width) <= obj.minWidth || parseInt(height) <= obj.minHeight) return;
-        obj.container.style.width = width;
+        if (!obj.container) return;
+        if (isCheck && (parseInt(width) <= obj.minWidth || parseInt(height) <= obj.minHeight)) return;
+        if (isResizeWidth) obj.container.style.width = width;
         obj.container.style.height = height;
+        if (!obj.toolbarTable.offsetHeight) {
+            setTimeout(function () {
+                KE.util.resize(id, width, height, isCheck, isResizeWidth);
+            }, 0);
+            return;
+        }
         var diff = parseInt(height) - obj.toolbarTable.offsetHeight - obj.bottom.offsetHeight;
-        obj.textareaTable.style.height = diff + 'px';
-        obj.iframe.style.height = diff + 'px';
-        obj.newTextarea.style.height = diff + 'px';
+        if (diff >= 0) {
+            obj.textareaTable.style.height = diff + 'px';
+            obj.iframe.style.height = diff + 'px';
+            obj.newTextarea.style.height = diff + 'px';
+        }
     },
     getData : function(id) {
-        var data;
-        if (KE.g[id].wyswygMode) {
-            if (KE.g[id].filterMode) {
-                data = KE.util.outputHtml(id, KE.g[id].iframeDoc.body);
-            } else {
-                data = KE.util.htmlToXhtml(id, KE.g[id].iframeDoc.body);
-            }
-        } else {
-            data = KE.g[id].newTextarea.value;
+        var obj = KE.g[id];
+        if (!obj.wyswygMode) {
+            obj.iframeDoc.body.innerHTML = obj.newTextarea.value;
         }
-        return data;
+        if (obj.filterMode) {
+            return KE.format.getHtml(obj.iframeDoc.body.innerHTML, obj.htmlTags);
+        } else {
+            return KE.format.getHtml(obj.iframeDoc.body.innerHTML);
+        }
     },
     getSrcData : function(id) {
-        var data;
-        if (KE.g[id].wyswygMode) {
-            data = KE.g[id].iframeDoc.body.innerHTML;
-        } else {
-            data = KE.g[id].newTextarea.value;
+        var obj = KE.g[id];
+        if (!obj.wyswygMode) {
+            obj.iframeDoc.body.innerHTML = obj.newTextarea.value;
         }
-        return data;
+        return obj.iframeDoc.body.innerHTML;
     },
     getPureData : function(id) {
         var data = this.getSrcData(id);
         data = data.replace(/<br[\s\/]{0,2}>/ig, "\r\n");
         data = data.replace(/<.*?>/ig, "");
+        data = data.replace(/&nbsp;/ig, "");
         return data;
     },
     setData : function(id) {
-        var data = this.getData(id);
-        KE.g[id].srcTextarea.value = data;
-    },
-    setPureData : function(id) {
-        var data = this.getPureData(id);
-        KE.g[id].srcTextarea.value = data;
+        KE.g[id].srcTextarea.value = this.getData(id);
     },
     focus : function(id) {
         if (KE.g[id].wyswygMode) {
@@ -1089,133 +1225,6 @@ KE.util = {
         } else {
             this.execCommand(id, 'inserthtml', html);
         }
-    },
-    removeDomain : function(id, tagName, key, url) {
-        if ((tagName == 'a' && key == 'href') || (tagName == 'img' && key == 'src') || (tagName == 'embed' && key == 'src')) {
-            var domains = KE.g[id].siteDomains;
-            for (var i = 0, len = domains.length; i < len; i++) {
-                var domain = "http://" + domains[i];
-                if (url.indexOf(domain) == 0) return url.substr(domain.length);
-            }
-        }
-        return url;
-    },
-    htmlToXhtml : function(id, element) {
-        KE.util.trimNodes(element);
-        var html = element.innerHTML;
-        var tags = KE.setting.noEndTags;
-        for (var i = 0, len = tags.length; i < len; i++) {
-            html = html.replace(new RegExp("<(" + tags[i] + ")\\s+(.*?[^\\/])>", "gi"), "<$1 $2 />");
-            html = html.replace(new RegExp("<(" + tags[i] + ")>", "gi"), "<$1 />");
-        }
-        html = html.replace(/<(\w+)(.*?)>/g, function($0, $1, $2) {
-            var tagName = $1.toLowerCase();
-            var attr = $2;
-            attr = attr.replace(/(\w+)=([^\s]+)/gi, function($0, $1, $2) {
-                var key = $1.toLowerCase();
-                var val = $2;
-                var first = $2.charAt(0);
-                var last = $2.charAt($2.length - 1);
-                if (first === '"' && last === '"') {
-                    val = '"' + KE.util.removeDomain(id, tagName, key, val.substr(1, val.length - 2)) + '"';
-                } else if (first !== '"' && last !== '"') {
-                    val = '"' + KE.util.removeDomain(id, tagName, key, val) + '"';
-                }
-                return key + '=' + val;
-            });
-            attr = attr.replace(/\s+style=".*?"/gi, function($0) {
-                return KE.util.rgbToHex($0.toLowerCase());
-            });
-            return '<' + tagName + attr + '>';
-        });
-        html = html.replace(/(<\/\w+>)/g, function($0, $1) {
-            return $1.toLowerCase();
-        });
-        return html;
-    },
-    outputHtml : function(id, element) {
-        var newHtmlTags = [];
-        KE.each(KE.g[id].htmlTags, function(key, val) {
-            var arr = key.split(',');
-            for (var i = 0, len = arr.length; i < len; i++) {
-                newHtmlTags[arr[i]] = val;
-            }
-        });
-        var htmlList = [];
-        KE.util.trimNodes(element);
-        var scanNodes = function(el) {
-            var startTags = [];
-            var setStartTag = function(tagName, attrStr, styleStr, isEnd) {
-                var html = '';
-                html += '<' + tagName;
-                if (attrStr) html += attrStr;
-                if (styleStr) html += ' style="' + styleStr + '"';
-                html += isEnd ? ' />' : '>';
-                if (KE.browser == 'IE' && isEnd && KE.util.inArray(tagName, ['br', 'hr'])) html += "\n";
-                if (typeof newHtmlTags[tagName] == 'object') htmlList.push(html);
-                if (!isEnd) startTags.push(tagName);
-            };
-            var setEndTag = function() {
-                if (startTags.length > 0) {
-                    var tagName = startTags.pop();
-                    if (typeof newHtmlTags[tagName] != 'object') return;
-                    var html = '</' + tagName + '>';
-                    if (KE.browser == 'IE' && KE.util.inArray(tagName, ['p', 'div', 'table', 'ol', 'ul'])) html += "\n";
-                    htmlList.push(html);
-                }
-            };
-            var nodes = el.childNodes;
-            for (var i = 0, len = nodes.length; i < len; i++) {
-                var node = nodes[i];
-                switch (node.nodeType) {
-                case 1:
-                    var tagName = node.tagName.toLowerCase();
-                    var attrStr = '';
-                    var styleStr = '';
-                    var isEnd = false;
-                    if (typeof newHtmlTags[tagName] == 'object') {
-                        var attrList = newHtmlTags[tagName];
-                        for (var j = 0, l = attrList.length; j < l; j++) {
-                            var attr = attrList[j];
-                            if (attr == '/') isEnd = true;
-                            else if (attr.charAt(0) == '.') {
-                                var key = attr.substr(1);
-                                var val = KE.util.getStyle(node, key);
-                                if (val) styleStr += key + ':' + val + ';';
-                            } else {
-                                var val = node.getAttribute(attr);
-                                if (val != null && val !== '') {
-                                    val = KE.util.removeDomain(id, tagName, attr, val);
-                                    attrStr += ' ' + attr + '="' + val + '"';
-                                }
-                            }
-                        }
-                    }
-                    setStartTag(tagName, attrStr, styleStr, isEnd);
-                    if (node.hasChildNodes()) {
-                        scanNodes(node);
-                    } else {
-                        if (startTags.length > 0) {
-                            var prevHtml = htmlList[htmlList.length - 1];
-                            if (prevHtml.match(/^<p|^<div/) != null) {
-                                htmlList.push("&nbsp;");
-                            }
-                        }
-                    }
-                    break;
-                case 3:
-                    htmlList.push(KE.util.escape(node.nodeValue));
-                    break;
-                default:
-                    break;
-                }
-                setEndTag();
-            }
-            setEndTag();
-        };
-        scanNodes(element);
-        var html = htmlList.join('');
-        return html;
     }
 };
 
@@ -1305,10 +1314,15 @@ KE.dialog = function(arg){
     this.getPos = function() {
         var arg = this.arg;
         var id = this.arg.id;
+        var obj = KE.g[id];
         var pos = KE.util.getElementPos(KE.g[id].container);
         var height = arg.height + this.topHeight + this.bottomHeight;
-        var xDiff = Math.round(parseInt(KE.g[id].container.style.width) / 2) - Math.round(arg.width / 2);
-        var yDiff = Math.round(parseInt(KE.g[id].container.style.height) / 2) - Math.round(height / 2);
+        var w = obj.container.style.width;
+        var h = obj.container.style.height;
+        if (w.match(/%$/)) w = obj.container.offsetWidth + 'px';
+        if (h.match(/%$/)) h = obj.container.offsetHeight + 'px';
+        var xDiff = Math.round(parseInt(w) / 2) - Math.round(arg.width / 2);
+        var yDiff = Math.round(parseInt(h) / 2) - Math.round(height / 2);
         var x = xDiff < 0 ? pos.x : pos.x + xDiff;
         var y = yDiff < 0 ? pos.y : pos.y + yDiff;
         return {'x' : x, 'y' : y};
@@ -1558,26 +1572,28 @@ KE.history = {
 };
 
 KE.remove = function(id, mode) {
+    if (!KE.g[id].container) return false;
     mode = (typeof mode == "undefined") ? 0 : mode;
     var container = KE.g[id].container;
     if (mode == 1) {
         document.body.removeChild(container);
     } else {
-        var srcTextarea = KE.$(id);
+        var srcTextarea = KE.g[id].srcTextarea;
         srcTextarea.parentNode.removeChild(container);
+        if (mode == 0) srcTextarea.style.display = '';
     }
     document.body.removeChild(KE.g[id].hideDiv);
     document.body.removeChild(KE.g[id].maskDiv);
-    KE.g[id].containner = null;
+    KE.g[id].container = null;
 };
 
 KE.create = function(id, mode) {
     if (KE.browser == 'IE') try { document.execCommand('BackgroundImageCache', false, true); }catch(e){}
     var srcTextarea = KE.$(id);
     mode = (typeof mode == "undefined") ? 0 : mode;
-    if (mode == 0 && KE.g[id].container != null) return;
-    var width = KE.g[id].width || srcTextarea.style.width;
-    var height = KE.g[id].height || srcTextarea.style.height;
+    if (mode == 0 && KE.g[id].container) return;
+    var width = KE.g[id].width || srcTextarea.style.width || srcTextarea.offsetWidth + 'px';
+    var height = KE.g[id].height || srcTextarea.style.height || srcTextarea.offsetHeight + 'px';
     var tableObj = KE.util.createTable();
     var container = tableObj.table;
     container.className = 'ke-container';
@@ -1655,13 +1671,20 @@ KE.create = function(id, mode) {
     KE.event.add(iframeDoc, 'click', new Function('KE.layout.hide("' + id + '")'));
     KE.event.add(iframeDoc, 'click', new Function('KE.toolbar.updateState("' + id + '")'));
     KE.event.input(iframeDoc, new Function('KE.history.add("' + id + '", true)'));
-    KE.event.add(iframeDoc, 'keyup', new Function('KE.toolbar.updateState("' + id + '")'));
+    KE.event.input(iframeDoc, new Function('KE.toolbar.updateState("' + id + '")'));
     KE.event.add(newTextarea, 'click', new Function('KE.layout.hide("' + id + '")'));
     KE.event.input(newTextarea, new Function('KE.history.add("' + id + '", true)'));
+    KE.event.add(iframeDoc, 'keydown', function(e) {
+        if (e.keyCode == 9) {
+            KE.util.selection(id);
+            KE.util.insertHtml(id, '　　');
+            KE.util.select(id);
+            if (e.preventDefault) e.preventDefault();
+            if (e.stopPropagation) e.stopPropagation();
+            return false;
+        }
+    });
     KE.g[id].container = container;
-    KE.g[id].toolbarOuter = toolbarOuter;
-    KE.g[id].textareaOuter = textareaOuter;
-    KE.g[id].bottomOuter = bottomOuter;
     KE.g[id].toolbarTable = toolbarTable;
     KE.g[id].textareaTable = textareaTable;
     KE.g[id].iframe = iframe;
@@ -1675,22 +1698,21 @@ KE.create = function(id, mode) {
     KE.g[id].width = width;
     KE.g[id].height = height;
     KE.util.resize(id, width, height);
-    KE.util.drag(id, bottomRight, container, function(objTop, objLeft, objWidth, objHeight, top, left) {
-        if (KE.g[id].resizeMode == 2) KE.util.resize(id, (objWidth + left) + 'px', (objHeight + top) + 'px');
-        else if (KE.g[id].resizeMode == 1) KE.util.resize(id, objWidth + 'px', (objHeight + top) + 'px');
-    }, true);
-    KE.util.drag(id, bottomLeft, container, function(objTop, objLeft, objWidth, objHeight, top, left) {
-        KE.util.resize(id, objWidth + 'px', (objHeight + top) + 'px');
-    }, true);
+    if (KE.g[id].resizeMode > 0) {
+        KE.util.drag(id, bottomRight, container, function(objTop, objLeft, objWidth, objHeight, top, left) {
+            if (KE.g[id].resizeMode == 2) KE.util.resize(id, (objWidth + left) + 'px', (objHeight + top) + 'px', true);
+            else if (KE.g[id].resizeMode == 1) KE.util.resize(id, objWidth + 'px', (objHeight + top) + 'px', true, false);
+        });
+        KE.util.drag(id, bottomLeft, container, function(objTop, objLeft, objWidth, objHeight, top, left) {
+            if (KE.g[id].resizeMode > 0) KE.util.resize(id, objWidth + 'px', (objHeight + top) + 'px', true, false);
+        });
+    }
     for (var i = 0, len = KE.g[id].items.length; i < len; i++) {
         var cmd = KE.g[id].items[i];
         if (KE.plugin[cmd] && KE.plugin[cmd].init) KE.plugin[cmd].init(id);
     }
-    setTimeout(
-        function(){
-            if (srcTextarea.value !== "") iframeDoc.body.innerHTML = srcTextarea.value;
-            KE.history.add(id, false);
-        }, 1);
+    if (srcTextarea.value !== "") iframeDoc.body.innerHTML = srcTextarea.value;
+    KE.history.add(id, false);
 };
 
 KE.init = function(config) {
@@ -1706,7 +1728,6 @@ KE.init = function(config) {
     config.minWidth = config.minWidth || KE.setting.minWidth;
     config.minHeight = config.minHeight || KE.setting.minHeight;
     config.minChangeSize = config.minChangeSize || KE.setting.minChangeSize;
-    config.siteDomains = config.siteDomains || KE.setting.siteDomains;
     config.defaultItems = KE.setting.items;
     config.items = config.items || KE.setting.items;
     config.htmlTags = config.htmlTags || KE.setting.htmlTags;
@@ -1718,7 +1739,7 @@ KE.init = function(config) {
 
 KE.show = function(config) {
     KE.init(config);
-    KE.event.add(window, 'load', new Function('KE.create("' + config.id + '")'));
+    KE.event.ready(new Function('KE.create("' + config.id + '")'));
 };
 
 KE.plugin['about'] = {
@@ -1778,8 +1799,7 @@ KE.plugin['plainpaste'] = {
         var dialogDoc = KE.util.getIframeDoc(KE.g[id].dialog);
         var html = KE.$('textArea', dialogDoc).value;
         html = KE.util.escape(html);
-        var re = new RegExp("\r\n|\n|\r", "g");
-        html = html.replace(re, "<br />$&");
+        html = html.replace(/\r\n|\n|\r/g, "<br />$&");
         KE.util.insertHtml(id, html);
         KE.layout.hide(id);
         KE.util.focus(id);
@@ -1804,60 +1824,73 @@ KE.plugin['wordpaste'] = {
         KE.util.select(id);
         var dialogDoc = KE.util.getIframeDoc(KE.g[id].dialog);
         var wordIframe = KE.$('wordIframe', dialogDoc);
-        var wordDoc = KE.util.getIframeDoc(wordIframe);
-        KE.util.insertHtml(id, KE.util.outputHtml(id, wordDoc.body));
+        var str = KE.util.getIframeDoc(wordIframe).body.innerHTML;
+        str = str.replace(/<meta(\n|.)*?>/ig, "");
+        str = str.replace(/<!(\n|.)*?>/ig, "");
+        str = str.replace(/<style[^>]*>(\n|.)*?<\/style>/ig, "");
+        str = str.replace(/<script[^>]*>(\n|.)*?<\/script>/ig, "");
+        str = str.replace(/<w:[^>]+>(\n|.)*?<\/w:[^>]+>/ig, "");
+        str = str.replace(/<xml>(\n|.)*?<\/xml>/ig, "");
+        str = str.replace(/\r\n|\n|\r/ig, "");
+        str = KE.format.getHtml(str, KE.g[id].htmlTags);
+        KE.util.insertHtml(id, str);
         KE.layout.hide(id);
         KE.util.focus(id);
     }
 };
 
 KE.plugin['fullscreen'] = {
-    resetFull : function(id) {
-        var el = KE.util.getDocumentElement();
-        var width = el.clientWidth;
-        var height = el.clientHeight;
-        var left,top;
-        if (KE.browser == 'IE' || KE.browser == 'OPERA') {
-            left = document.body.parentNode.scrollLeft;
-            top = document.body.parentNode.scrollTop;
-        } else {
-            left = window.scrollX;
-            top = window.scrollY;
-        }
-        var div = KE.g[id].container;
-        div.style.left = left + 'px';
-        div.style.top = top + 'px';
-        div.style.zIndex = 19811211;
-        KE.util.resize(id, width + 'px', height + 'px');
-    },
     click : function(id) {
         var obj = KE.g[id];
         var self = this;
-        var resizeListener = function(e) {
-            if (self.isSelected) {
-                KE.plugin["fullscreen"].resetFull(id);
+        var resetSize = function() {
+            var el = KE.util.getDocumentElement();
+            obj.width = el.clientWidth + 'px';
+            obj.height = el.clientHeight + 'px';
+        };
+        var windowSize = '';
+        var resizeListener = function() {
+            if (!self.isSelected) return;
+            var el = KE.util.getDocumentElement();
+            var size = [el.clientWidth, el.clientHeight].join('');
+            if (windowSize != size) {
+                windowSize = size;
+                resetSize();
+                KE.util.resize(id, obj.width, obj.height);
             }
         }
         if (this.isSelected) {
             this.isSelected = false;
             KE.util.setData(id);
             KE.remove(id, 1);
+            obj.width = this.width;
+            obj.height = this.height;
             KE.create(id, 2);
             document.body.parentNode.style.overflow = 'auto';
-            KE.util.resize(id, this.width, this.height);
             KE.event.remove(window, 'resize', resizeListener);
             KE.toolbar.unselect(id, "fullscreen");
         } else {
             this.isSelected = true;
             KE.util.setData(id);
-            this.width = KE.g[id].width;
-            this.height = KE.g[id].height;
+            this.width = obj.container.style.width;
+            this.height = obj.container.style.height;
             KE.remove(id, 2);
-            KE.create(id, 1);
             document.body.parentNode.style.overflow = 'hidden';
+            resetSize();
+            KE.create(id, 1);
+            var left,top;
+            if (KE.browser == 'IE' || KE.browser == 'OPERA') {
+                left = document.body.parentNode.scrollLeft;
+                top = document.body.parentNode.scrollTop;
+            } else {
+                left = window.scrollX;
+                top = window.scrollY;
+            }
             var div = KE.g[id].container;
             div.style.position = 'absolute';
-            this.resetFull(id);
+            div.style.left = left + 'px';
+            div.style.top = top + 'px';
+            div.style.zIndex = 19811211;
             KE.event.add(window, 'resize', resizeListener);
             KE.toolbar.select(id, "fullscreen");
         }
@@ -2015,9 +2048,9 @@ KE.plugin['source'] = {
         } else {
             KE.layout.hide(id);
             if (KE.g[id].filterMode) {
-                obj.newTextarea.value = KE.util.outputHtml(id, obj.iframeDoc.body);
+                obj.newTextarea.value = KE.format.getHtml(obj.iframeDoc.body.innerHTML, obj.htmlTags);
             } else {
-                obj.newTextarea.value = KE.util.htmlToXhtml(id, obj.iframeDoc.body);
+                obj.newTextarea.value = KE.format.getHtml(obj.iframeDoc.body.innerHTML);
             }
             obj.iframe.style.display = 'none';
             obj.newTextarea.style.display = 'block';
@@ -2114,6 +2147,7 @@ KE.plugin['emoticons'] = {
         table.style.margin = 0;
         table.style.padding = 0;
         table.style.borderCollapse = 'separate';
+        table.style.borderSpacing = '2px';
         for (var i = 0; i < emoticonTable.length; i++) {
             var row = table.insertRow(i);
             for (var j = 0; j < emoticonTable[i].length; j++) {
@@ -2139,7 +2173,7 @@ KE.plugin['emoticons'] = {
     },
     exec : function(id, value) {
         KE.util.select(id);
-        var html = '<img src="' + KE.g[id].pluginsPath + 'emoticons/' + value + '" border="0">';
+        var html = '<img src="' + KE.g[id].pluginsPath + 'emoticons/' + value + '" border="0" />';
         KE.util.insertHtml(id, html);
         KE.layout.hide(id);
         KE.util.focus(id);
@@ -2441,6 +2475,7 @@ KE.plugin['specialchar'] = {
         table.style.margin = 0;
         table.style.padding = 0;
         table.style.borderCollapse = 'separate';
+        table.style.borderSpacing = '2px';
         for (var i = 0; i < charTable.length; i++) {
             var row = table.insertRow(i);
             for (var j = 0; j < charTable[i].length; j++) {
@@ -2472,47 +2507,67 @@ KE.plugin['specialchar'] = {
 };
 
 KE.plugin['table'] = {
-    selected : function(id, i, j) {
-        var text = i.toString(10) + ' by ' + j.toString(10) + ' Table';
-        KE.$('tableLocation' + id).innerHTML = text;
-        var num = 10;
-        for (var m = 1; m <= num; m++) {
-            for (var n = 1; n <= num; n++) {
-                var td = KE.$('tableTd' + id + m.toString(10) + '_' + n.toString(10) + '');
-                if (m <= i && n <= j) {
-                    td.style.backgroundColor = '#CCCCCC';
-                } else {
-                    td.style.backgroundColor = '#FFFFFF';
-                }
-            }
-        }
-    },
     click : function(id) {
-        var cmd = 'table';
-        KE.util.selection(id);
+        var self = this;
         var num = 10;
-        var html = '<table cellpadding="0" cellspacing="0" border="0" style="width:130px;border-collapse:separate;padding:0;margin:0;">';
-        for (var i = 1; i <= num; i++) {
-            html += '<tr>';
-            for (var j = 1; j <= num; j++) {
-                var value = i.toString(10) + ',' + j.toString(10);
-                html += '<td id="tableTd' + id + i.toString(10) + '_' + j.toString(10) +
-                    '" style="font-size:1px;width:12px;height:12px;background-color:#FFFFFF;' +
-                    'border:1px solid #DDDDDD;cursor:pointer;margin:0;padding:0;" ' +
-                    'onclick="javascript:KE.plugin[\'table\'].exec(\'' + id + '\', \'' + value + '\');" ' +
-                    'onmouseover="javascript:KE.plugin[\'table\'].selected(\'' + id + '\', \'' + i.toString(10) +
-                    '\', \'' + j.toString(10) + '\');">&nbsp;</td>';
+        var cmd = 'table';
+        var cellArr = [];
+        KE.util.selection(id);
+        var table = KE.$$('table');
+        table.cellPadding = 0;
+        table.cellSpacing = 2;
+        table.border = 0;
+        table.style.margin = 0;
+        table.style.padding = 0;
+        table.style.borderCollapse = 'separate';
+        table.style.borderSpacing = '2px';
+        for (var i = 0; i < num; i++) {
+            var row = table.insertRow(i);
+            cellArr[i] = [];
+            for (var j = 0; j < num; j++) {
+                var value = (i + 1) + ',' + (j + 1);
+                var cell = row.insertCell(j);
+                cellArr[i][j] = cell;
+                cell.style.margin = 0;
+                cell.style.padding = 0;
+                cell.style.border = '1px solid #DDDDDD';
+                cell.style.backgroundColor = '#FFFFFF';
+                cell.style.cursor = 'pointer';
+                cell.style.fontSize = '1px';
+                cell.style.width = '12px';
+                cell.style.height = '12px';
+                cell.id = value;
+                cell.onmouseover = function() {
+                    var location = this.id.split(',');
+                    var x = location[0];
+                    var y = location[1];
+                    self.locationCell.innerHTML = x + ' by ' + y + ' Table';
+                    for (var m = 0; m < num; m++) {
+                        for (var n = 0; n < num; n++) {
+                            var cell = cellArr[m][n];
+                            if (m < x && n < y) cell.style.backgroundColor = '#CCCCCC';
+                            else cell.style.backgroundColor = '#FFFFFF';
+                        }
+                    }
+                };
+                cell.onclick = new Function('KE.plugin["' + cmd + '"].exec("' + id + '", "' + value + '")');
             }
-            html += '</tr>';
         }
-        html += '<tr><td colspan="10" id="tableLocation' + id +
-            '" style="font-size:12px;text-align:center;height:20px;margin:0;padding:0;border:0;"></td></tr>';
-        html += '</table>';
+        var row = table.insertRow(num);
+        var cell = row.insertCell(0);
+        cell.colSpan = 10;
+        cell.style.fontSize = '12px';
+        cell.style.textAlign = 'center';
+        cell.style.height = '20px';
+        cell.style.margin = 0;
+        cell.style.padding = 0;
+        cell.style.border = 0;
+        self.locationCell = cell;
         var menu = new KE.menu({
             id : id,
             cmd : cmd
         });
-        menu.insert(html);
+        menu.append(table);
         menu.show();
     },
     exec : function(id, value) {
