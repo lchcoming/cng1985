@@ -45,6 +45,9 @@ public class ForumRMessageDaoImpl {
 			Query query = manager.newQuery(sql);
 			Object result = query.execute();
 			List<ForumRMessage> ss=(List<ForumRMessage>) result;
+			for (ForumRMessage forumRMessage : ss) {
+				forumRMessage.getContent().getValue();
+			}
 			ss.size();
 			return ss;
 		} finally {

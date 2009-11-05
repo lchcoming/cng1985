@@ -22,7 +22,6 @@ import com.ada.data.manager.PMF;
 import com.ada.data.page.PageBean;
 import com.ada.data.page.Pager;
 
-
 public class PMFDaoImpl {
 	public Pager getpage(String hql, int currentPage, int pageSize) {
 		List resultList = null;
@@ -34,7 +33,7 @@ public class PMFDaoImpl {
 			// query.setRange(arg0, arg1)
 			Object result = query.execute();
 			resultList = (List) result;
-			pager=new PageBean(pageSize,currentPage,resultList.size());
+			pager = new PageBean(pageSize, currentPage, resultList.size());
 			resultList.size();
 
 		} finally {
@@ -43,8 +42,13 @@ public class PMFDaoImpl {
 
 		Pager pagerResult = new Pager();
 		pagerResult.setPageBean(pager);
-		if(pager!=null){
-		pagerResult.setResultList(resultList.subList(pager.getStartRow(), pager.getEndRow()));
+		if (pager.getTotalRows() > 1) {
+			System.out.println("getTotalRows" + pager.getTotalRows());
+			System.out.println("star" + pager.getStartRow());
+			System.out.println("end" + pager.getEndRow());
+			pagerResult.setResultList(resultList.subList(pager.getStartRow(),
+					pager.getEndRow()));
+
 		}
 		if (!manager.isClosed()) {
 			manager.close();

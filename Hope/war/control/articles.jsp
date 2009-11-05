@@ -24,11 +24,12 @@ ArticleEMFAdapter adapter=new ArticleEMFAdapter();
 Pager bean=null;
 if(curpage==1){
 	bean=ArticleServiceImpl.getpage();
+	
 }
 else{
 	 bean=adapter.getpage(query,curpage,10);
 }
-
+System.out.println(bean.getResultList().size());
 request.setAttribute("articles",bean);
 %>
  <jsp:forward page="/view/articles.jsp"></jsp:forward>

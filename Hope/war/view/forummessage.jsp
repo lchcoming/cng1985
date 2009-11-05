@@ -64,7 +64,7 @@
           
         	</div>
         	<div class="commentfooter">
-                              发表于:<fmt:formatDate value="${message.pubtime}" pattern="yyyy年MM月dd日"/>
+                              发表于:<fmt:formatDate value="${item.pubtime}" pattern="yyyy年MM月dd日"/>
             </div>
 
 </c:forEach>
