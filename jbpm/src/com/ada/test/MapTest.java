@@ -23,15 +23,9 @@ public class MapTest {
 	@Test
 	public void hello() {
     Map<String,Object> map=new HashMap<String,Object>();
-    for(int i=1;i<100000;i++){
-    	map.put("hello", i);
-    	map.put(String.valueOf(i), i);
-    }
-    System.out.println(map.size());
-    System.out.println(map.get("hello"));
-    System.out.println(map.get("8956"));
-    System.out.println(map.containsKey("5"));
-    System.out.println(map.containsValue(566));
+  System.out.println(map.get("ada"));
+  String adaString="哈哈";
+  System.out.println(adaString.length());
    
 	}
 }
