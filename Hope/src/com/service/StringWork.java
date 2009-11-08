@@ -17,6 +17,8 @@ package com.service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -71,6 +73,11 @@ public class StringWork extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
+		Logger logger;
+		logger = Logger.getLogger("xixiPU");
+		logger.log(Level.INFO,"ddd");
+		logger.info("ff");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
 		out
 				.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
 		out.println("<HTML>");
