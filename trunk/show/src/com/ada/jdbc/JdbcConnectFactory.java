@@ -25,8 +25,8 @@ import org.apache.commons.logging.LogFactory;
 
 import com.ada.common.util.Config;
 
-public class ConnectFactory {
-	private static Log log = LogFactory.getLog(ConnectFactory.class);
+public class JdbcConnectFactory {
+	private static Log log = LogFactory.getLog(JdbcConnectFactory.class);
 
 	public static Connection creadteDB2() {
 		Connection connection = null;
