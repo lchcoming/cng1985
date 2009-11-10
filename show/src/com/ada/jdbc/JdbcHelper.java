@@ -16,10 +16,19 @@ package com.ada.jdbc;
 
 public class JdbcHelper {
 
-	public static ConnectFactory getDefault(){
+	public static ConnectFactory getDefault() {
 		return new JdbcConnectFactory();
 	}
-	public static ConnectFactory createProxoolConnectFactory(){
+
+	public static ConnectFactory createProxoolConnectFactory() {
 		return new ProxoolConnectFactory();
+	}
+
+	public static ConnectFactory createDbcpConnectFactory() {
+		return new DbcpConnectFactory();
+	}
+
+	public static ConnectFactory createC3P0ConnectFactory() {
+		return new C3P0ConnectFactory();
 	}
 }
