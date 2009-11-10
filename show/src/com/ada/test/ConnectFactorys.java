@@ -19,13 +19,17 @@ import static org.junit.Assert.*;
 import java.sql.Connection;
 import org.junit.Test;
 
-public class ConnectFactory {
+import com.ada.jdbc.ConnectFactory;
+import com.ada.jdbc.JdbcHelper;
+
+public class ConnectFactorys {
 
 	@Test
 	public void testCreadteDB2() {
-		Connection connection=com.ada.jdbc.ConnectFactory.creadteDB2();
+		ConnectFactory com = JdbcHelper.getDefault();
+		Connection connection = com.creadteDB2();
 		assertNotNull(connection);
-		Connection connection1=com.ada.jdbc.ConnectFactory.creadteMysql();
+		Connection connection1 = com.creadteMysql();
 		assertNotNull(connection1);
 	}
 
