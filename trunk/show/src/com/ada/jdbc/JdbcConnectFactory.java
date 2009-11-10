@@ -25,10 +25,10 @@ import org.apache.commons.logging.LogFactory;
 
 import com.ada.common.util.Config;
 
-public class JdbcConnectFactory {
+public class JdbcConnectFactory implements ConnectFactory {
 	private static Log log = LogFactory.getLog(JdbcConnectFactory.class);
 
-	public static Connection creadteDB2() {
+	public  Connection creadteDB2() {
 		Connection connection = null;
 		Properties properties = Config.loadProperties(
 				"/properties/db2.properties", "db2 properties");
@@ -37,7 +37,7 @@ public class JdbcConnectFactory {
 		return connection;
 	}
 
-	private static Connection createConnect(Properties properties) {
+	Connection createConnect(Properties properties) {
 		Connection connection = null;
 		if (null == properties || properties.size() < 4) {
 			log.error("加载资源失败");
@@ -61,7 +61,7 @@ public class JdbcConnectFactory {
 		return connection;
 	}
 
-	public static Connection creadteMysql() {
+	public  Connection creadteMysql() {
 		Connection connection = null;
 		Properties properties = Config.loadProperties(
 				"/properties/mysql.properties", "mysql properties");
