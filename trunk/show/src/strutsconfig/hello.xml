@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
-    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
-    "http://struts.apache.org/dtds/struts-2.0.dtd">
-  <struts>    
-     <package name="struts" namespace="/" extends="struts-default">	        
-     
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="hello" namespace="/" extends="struts-default">
+        
         <!--意见箱列表-->
-        <action name="hello" class="helloAction" >           
-            <result>index.jsp</result>
-        </action> 
-     </package>      
-  </struts>
+        <action name="hello" class="flowAction" method="addImage">
+            <result name="success">
+                /file/success.jsp
+            </result>
+            <result name="input">
+                /file/add.jsp
+            </result>
+        </action>
+        <action name="file">
+            <result name="success">
+                /file/add.jsp
+            </result>
+            <result name="input">
+                /file/add.jsp
+            </result>
+        </action>
+    </package>
+</struts>
