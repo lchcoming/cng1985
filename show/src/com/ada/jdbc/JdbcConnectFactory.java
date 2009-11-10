@@ -68,4 +68,13 @@ public class JdbcConnectFactory implements ConnectFactory {
 		connection = createConnect(properties);
 		return connection;
 	}
+
+	@Override
+	public Connection creadteMSsql() {
+		Connection connection = null;
+		Properties properties = Config.loadProperties(
+				"/properties/mssql.properties", "mysql properties");
+		connection = createConnect(properties);
+		return connection;
+	}
 }

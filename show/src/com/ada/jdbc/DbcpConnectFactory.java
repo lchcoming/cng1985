@@ -16,12 +16,24 @@ package com.ada.jdbc;
 
 import java.sql.Connection;
 
+public class DbcpConnectFactory implements ConnectFactory {
 
-public interface ConnectFactory {
+	@Override
+	public Connection creadteDB2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-	 Connection creadteDB2();
+	@Override
+	public Connection creadteMSsql() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-	 Connection creadteMysql();
-	 Connection creadteMSsql();
+	@Override
+	public Connection creadteMysql() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
