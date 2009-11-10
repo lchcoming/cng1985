@@ -19,4 +19,7 @@ public class JdbcHelper {
 	public static ConnectFactory getDefault(){
 		return new JdbcConnectFactory();
 	}
+	public static ConnectFactory createProxoolConnectFactory(){
+		return new ProxoolConnectFactory();
+	}
 }

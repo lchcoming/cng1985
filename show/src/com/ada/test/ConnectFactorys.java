@@ -26,11 +26,12 @@ public class ConnectFactorys {
 
 	@Test
 	public void testCreadteDB2() {
-		ConnectFactory com = JdbcHelper.getDefault();
-		Connection connection = com.creadteDB2();
-		assertNotNull(connection);
+		ConnectFactory com = JdbcHelper.createProxoolConnectFactory();
+		
 		Connection connection1 = com.creadteMysql();
 		assertNotNull(connection1);
+		Connection connection = com.creadteDB2();
+		assertNotNull(connection);
 	}
 
 }
