@@ -19,7 +19,39 @@
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
-		
+		<mapping resource="com/ada/entity/ScoreParameter.hbm.xml" />
+		<mapping resource="com/ada/entity/BpmdefinitionDev.hbm.xml" />
+		<mapping resource="com/ada/entity/BuyingClass.hbm.xml" />
+		<mapping resource="com/ada/entity/User.hbm.xml" />
+		<mapping resource="com/ada/entity/Links.hbm.xml" />
+		<mapping resource="com/ada/entity/Buying.hbm.xml" />
+		<mapping resource="com/ada/entity/Leavewords.hbm.xml" />
+		<mapping resource="com/ada/entity/Bpmdefinition.hbm.xml" />
+		<mapping resource="com/ada/entity/Product.hbm.xml" />
+		<mapping resource="com/ada/entity/NewsClass.hbm.xml" />
+		<mapping resource="com/ada/entity/AreaInfo.hbm.xml" />
+		<mapping resource="com/ada/entity/Role.hbm.xml" />
+		<mapping resource="com/ada/entity/Sales.hbm.xml" />
+		<mapping resource="com/ada/entity/ScoreModel.hbm.xml" />
+		<mapping resource="com/ada/entity/ScoreList.hbm.xml" />
+		<mapping resource="com/ada/entity/Company.hbm.xml" />
+		<mapping resource="com/ada/entity/ProductClass.hbm.xml" />
+		<mapping resource="com/ada/entity/SalesClass.hbm.xml" />
+		<mapping resource="com/ada/entity/SiteParameter.hbm.xml" />
+		<mapping resource="com/ada/entity/Attach.hbm.xml" />
+		<mapping resource="com/ada/entity/OrderSheet.hbm.xml" />
+		<mapping resource="com/ada/entity/Tradetype.hbm.xml" />
+		<mapping resource="com/ada/entity/CompanyLevel.hbm.xml" />
+		<mapping resource="com/ada/entity/News.hbm.xml" />
+		<mapping resource="com/ada/entity/Inquiry.hbm.xml" />
+		<mapping resource="com/ada/entity/CompanyClass.hbm.xml" />
+		<mapping resource="com/ada/entity/CompanyType.hbm.xml" />
+		<mapping resource="com/ada/entity/Jobs.hbm.xml" />
+		<mapping resource="com/ada/entity/OrderList.hbm.xml" />
+		<mapping resource="com/ada/entity/OrderSheetHistory.hbm.xml" />
+		<mapping resource="com/ada/entity/MenuInfo.hbm.xml" />
+		<mapping resource="com/ada/entity/Authority.hbm.xml" />
+
 
 	</session-factory>
 
