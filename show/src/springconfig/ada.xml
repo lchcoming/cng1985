@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--
+		<bean id="helloAction" class="com.ada.action.HelloAction"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default"> </bean> <bean id="flowAction"
+		class="com.ada.action.FlowAction" abstract="false" lazy-init="default"
+		autowire="default" dependency-check="default"> <property
+		name="hellowork" ref="hello"></property> </bean>
+	-->
+	<bean id="AdaWork" class="com.ada.action.AdaWork" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default" scope="request" >
+
+	</bean>
+	</beans>

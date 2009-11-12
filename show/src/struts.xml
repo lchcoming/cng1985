@@ -7,6 +7,7 @@
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 	
 	<include file="strutsconfig/hello.xml"></include>
+	<include file="strutsconfig/ada.xml"></include>
 	<!-- <include file="strutsconfig/flow.xml"></include> -->
 	
 </struts>

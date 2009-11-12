@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+ "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+ "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="ada" namespace="/" extends="struts-default">
+        
+        <!--意见箱列表-->
+        <action name="adawork" class="AdaWork" >
+            <result name="success">
+                /ada/success.jsp
+            </result>
+            <result name="input">
+                /ada/ada.jsp
+            </result>
+        </action>
+        <action name="ada">
+            <result name="success">
+                /ada/ada.jsp
+            </result>
+        </action>
+    </package>
+</struts>
