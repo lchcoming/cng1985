@@ -22,6 +22,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import com.ada.dao.api.ArticleDao;
+import com.ada.dao.help.EntityManagerHelper;
 import com.ada.dao.help.PageBean;
 import com.ada.dao.help.Pager;
 import com.ada.data.manager.EMF;
@@ -74,7 +75,8 @@ public class ArticleDaoImpl implements ArticleDao {
 		
 		// 如果缓存中有就从缓存中取数据
 		if (temp == null) {
-			EntityManager em = EMF.get().createEntityManager();
+			
+			EntityManager em = EntityManagerHelper.getEntityManager();
 			Query query = em.createQuery(hql);
 			temp = query.getResultList();
 			temp.size();
