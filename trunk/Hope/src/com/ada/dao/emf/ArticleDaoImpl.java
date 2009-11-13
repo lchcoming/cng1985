@@ -41,8 +41,8 @@ public class ArticleDaoImpl implements ArticleDao{
 	}
 
 	@Override
-	public void getById(String id) {
-		// TODO Auto-generated method stub
+	public Article getById(String id) {
+		return null;
 		
 	}
 

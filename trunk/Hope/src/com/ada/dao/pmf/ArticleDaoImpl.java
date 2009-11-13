@@ -20,14 +20,19 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.jdo.PersistenceManager;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.ada.dao.api.ArticleDao;
+import com.ada.dao.help.PageBean;
 import com.ada.dao.help.Pager;
+import com.ada.data.manager.EMF;
 import com.ada.data.manager.PMF;
 import com.ada.model.Article;
 
-public class ArticleDaoImpl {
+public class ArticleDaoImpl implements ArticleDao {
 	private Logger logger = Logger.getLogger("ArticleDaoImpl");
+	private static List temp;
 
 	public void add(Article article) {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
@@ -65,8 +70,29 @@ public class ArticleDaoImpl {
 	}
 
 	public Pager getPager(String hql, int curpage, int pagesize) {
-		// TODO Auto-generated method stub
-		return null;
+		int totalRows = 0;
+		List resultList = null;
+		PageBean pager = null;
+		EntityManager em = EMF.get().createEntityManager();
+		Query query = em.createQuery(hql);
+		// 如果缓存中有就从缓存中取数据
+		if (temp == null) {
+			temp = query.getResultList();
+		}
+
+		totalRows = (temp.size()); // 取得总计录数
+
+		pager = new PageBean(pagesize, curpage, totalRows);
+		if (temp.size() > 1) {
+			resultList = temp.subList(pager.getStartRow(), pager.getEndRow());
+		}
+		Pager pagerResult = new Pager();
+		pagerResult.setPageBean(pager);
+		pagerResult.setResultList(resultList);
+		if (em.isOpen()) {
+			em.close();
+		}
+		return pagerResult;
 	}
 
 	public List<Article> list(String hql) {
