@@ -14,54 +14,69 @@
  */
 package com.ada.dao.pmf;
 
+
+
 import java.util.List;
+import java.util.logging.Logger;
+
+import javax.jdo.PersistenceManager;
 
 import com.ada.dao.api.ArticleDao;
 import com.ada.dao.help.Pager;
+import com.ada.data.manager.PMF;
 import com.ada.model.Article;
 
-public class ArticleDaoImpl implements ArticleDao{
+public class ArticleDaoImpl {
+	private Logger logger = Logger.getLogger("ArticleDaoImpl");
 
-	@Override
 	public void add(Article article) {
-		// TODO Auto-generated method stub
-		
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		try {
+			pm.makePersistent(article);
+		} finally {
+			pm.close();
+		}
+
 	}
 
-	@Override
 	public void delete(Article article) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	@Override
 	public void deleteById(String id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	@Override
-	public void getById(String id) {
-		// TODO Auto-generated method stub
-		
+	public Article getById(String id) {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		Article item = null;
+		try {
+			item = pm.getObjectById(Article.class, id);
+		} catch (Exception e) {
+			logger.severe(e.getMessage());
+		} finally {
+			pm.close();
+		}
+
+		return item;
+
 	}
 
-	@Override
 	public Pager getPager(String hql, int curpage, int pagesize) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<Article> list(String hql) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public void update(Article article) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

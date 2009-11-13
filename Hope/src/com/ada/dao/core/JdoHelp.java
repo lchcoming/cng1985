@@ -4,32 +4,19 @@
  * Module ID:    <br />   
  * Comments:            <br />                                  
  * JDK version used:<JDK1.6><br />                                 
- * Namespace:com.ada.test<br />                             
+ * Namespace:com.ada.dao.core<br />                             
  * Author：ada.young <br />                  
- * Create Date：  2009-11-8<br />   
+ * Create Date：  2009-11-13<br />   
  * Modified By：ada.young          <br />                                
- * Modified Date:2009-11-8        <br />                               
+ * Modified Date:2009-11-13        <br />                               
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
  */
-package com.ada.test;
+package com.ada.dao.core;
 
-import java.util.logging.Level;
+public class JdoHelp {
 
-public class A {
-
-	public void show() {
-		System.out.println("a");
-		//Level.INFO
-	}
-
-	private C c;
-
-	public C getC() {
-		return c;
-	}
-
-	public void setC(C c) {
-		this.c = c;
+	public void add(Object object){
+		
 	}
 }

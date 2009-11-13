@@ -16,27 +16,29 @@ package com.ada.dao.spring;
 
 import java.util.List;
 
+import org.springframework.orm.jdo.support.JdoDaoSupport;
+
 import com.ada.dao.api.ArticleDao;
 import com.ada.dao.help.Pager;
 import com.ada.model.Article;
 
-public class ArticleDaoImpl implements ArticleDao{
+public class ArticleDaoImpl extends JdoDaoSupport implements ArticleDao{
 
 	@Override
 	public void add(Article article) {
-		// TODO Auto-generated method stub
+		this.getJdoTemplate().makePersistent(article);
 		
 	}
 
 	@Override
 	public void delete(Article article) {
-		// TODO Auto-generated method stub
+		this.getJdoTemplate().deletePersistent(article);
 		
 	}
 
 	@Override
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -54,7 +56,7 @@ public class ArticleDaoImpl implements ArticleDao{
 
 	@Override
 	public List<Article> list(String hql) {
-		// TODO Auto-generated method stub
+		this.getJdoTemplate().find(hql);
 		return null;
 	}
 

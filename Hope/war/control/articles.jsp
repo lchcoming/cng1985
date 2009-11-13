@@ -8,6 +8,7 @@
 <%@page import="com.ada.model.*" %>
 <%@page import="java.util.*" %>
 <%@page import="com.ada.data.page.*" %>
+<%@page import="java.util.logging.Logger"%>
 
 
 <%
