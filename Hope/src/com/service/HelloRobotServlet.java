@@ -40,8 +40,14 @@ public class HelloRobotServlet extends AbstractRobotServlet {
 	      if (e.getType() == EventType.WAVELET_PARTICIPANTS_CHANGED) {    
 	        Blip blip = wavelet.appendBlip();
 	        TextView textView = blip.getDocument();
-	        textView.append("Hi, everybody!");
+	        textView.append("Hi, everybody! welcome to here");
 	      }
+	      if (e.getType() == EventType.DOCUMENT_CHANGED) {   
+	    	   
+		        Blip blip = wavelet.appendBlip();
+		        TextView textView = blip.getDocument();
+		        textView.append("Hi, what are you dong");
+		      }
 	    }
 	  }
 
