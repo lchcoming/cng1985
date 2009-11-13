@@ -30,7 +30,7 @@ public class UserInfoActionTest {
 		UserInfoAction action = (UserInfoAction) help.getBean("UserInfoAction");
 		Userinfo info = new Userinfo();
 		info.setRealname("a");
-		info.setUsername("a");
+		info.setUsername("年高");
 		info.setUserpassword("p");
 		action.setModel(info);
 		action.add();
@@ -38,11 +38,28 @@ public class UserInfoActionTest {
 
 	@Test
 	public void testUpdate() {
+		BeanHelp help = BeanHelp.getinstance();
+		UserInfoAction action = (UserInfoAction) help.getBean("UserInfoAction");
+		Userinfo info = new Userinfo();
+		info.setId(5);
+		info.setRealname("年高");
+		info.setUsername("年高");
+		info.setUserpassword("年高");
+		action.setModel(info);
+		action.update();
 	}
 
 	@Test
 	public void testDelete() {
-
+		BeanHelp help = BeanHelp.getinstance();
+		UserInfoAction action = (UserInfoAction) help.getBean("UserInfoAction");
+		Userinfo info = new Userinfo();
+		info.setId(5);
+		info.setRealname("a");
+		info.setUsername("年高");
+		info.setUserpassword("p");
+		action.setModel(info);
+		action.delete();
 	}
 
 }
