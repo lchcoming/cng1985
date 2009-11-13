@@ -105,6 +105,16 @@
     <description>This is the description of my J2EE component</description>
     <servlet-class>com.service.StringWork</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>HelloRobotServlet</servlet-name>
+    <servlet-class>com.service.HelloRobotServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Profile</servlet-name>
+    <servlet-class>com.ada.wave.Profile</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -193,6 +203,14 @@
   <servlet-mapping>
     <servlet-name>StringWork</servlet-name>
     <url-pattern>/StringWork</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HelloRobotServlet</servlet-name>
+    <url-pattern>/_wave/robot/jsonrpc</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Profile</servlet-name>
+    <url-pattern>/_wave/robot/profile</url-pattern>
   </servlet-mapping>
  <!-- Default page to serve -->
  <welcome-file-list>
