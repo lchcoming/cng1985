@@ -9,6 +9,7 @@
 	<import resource="springconfig/hibernate.xml"/>
 	<import resource="springconfig/ada.xml"/>
 	<import resource="springconfig/hello.xml"/>
+	<import resource="springconfig/userinfo.xml"/>
 	<!--
 	<import resource="spring/workflow/hellowork.xml"/>
 	  -->
