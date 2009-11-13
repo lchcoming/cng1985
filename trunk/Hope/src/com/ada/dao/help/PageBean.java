@@ -14,7 +14,10 @@
  */
 package com.ada.dao.help;
 
+import java.util.logging.Logger;
+
 public class PageBean {
+	private Logger logger = Logger.getLogger("ArticleDaoImpl");
 	private int totalRows;// 记录总行数
 
 	private int pageSize;// 设置一页显示的条数

@@ -16,9 +16,9 @@ public class NewTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ApplicationContext context= new ClassPathXmlApplicationContext("classpath:config/spring/test.xml");
-	Object cObject=	context.getBean("b");
-	A b=(A)cObject;
-	
+	Object cObject=	context.getBean("d");
+	B b=(B)cObject;
+	b.message();
 	System.out.println(cObject.getClass().getName());
 	}
 
