@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--
+		<bean id="helloAction" class="com.ada.action.HelloAction"
+		abstract="false" lazy-init="default" autowire="default"
+		dependency-check="default"> </bean> <bean id="flowAction"
+		class="com.ada.action.FlowAction" abstract="false" lazy-init="default"
+		autowire="default" dependency-check="default"> <property
+		name="hellowork" ref="hello"></property> </bean>
+	-->
+	<bean id="UserInfoAction" class="com.work.userinfo.action.UserInfoAction" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default" scope="prototype">
+   <property name="baseDAO" ref="UserInfoDAO"></property>
+	</bean>
+   <bean id="UserInfoDAO" class="com.work.userinfo.dao.UserInfoDAOImpl" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default" scope="prototype" >
+   <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	  <bean id="BaseDAO" class="com.ada.dao.impl.BaseDAOImpl" abstract="false"
+		lazy-init="default" autowire="default" dependency-check="default" scope="prototype">
+   <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	</beans>
