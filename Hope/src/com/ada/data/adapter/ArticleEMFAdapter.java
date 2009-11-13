@@ -219,17 +219,6 @@ public class ArticleEMFAdapter implements ArticleAdapter {
 		totalRows = (temp.size()); // 取得总计录数
 
 		pager = new PageBean(pageSize, currentPage, totalRows);
-		// 从当前页记录数开始
-
-		// query.setFirstResult((pager.getCurrentPage() - 1) * pageSize);
-		// // 取出pageSize个记录
-		//
-		// query.setMaxResults(pager.getPageSize());
-		// if (query.getResultList().size() > 0) {
-		// resultList = query.getResultList();
-		// }
-		// 把分页查询的结果和对象放入PagerResult中
-		// 分页
 		if (temp.size() > 1) {
 			resultList = temp.subList(pager.getStartRow(), pager.getEndRow());
 		}
@@ -239,12 +228,6 @@ public class ArticleEMFAdapter implements ArticleAdapter {
 		if (em.isOpen()) {
 			em.close();
 		}
-//		for (Object object : resultList) {
-//			Article article = (Article) object;
-//			if (article.getSubject().length() > 20) {
-//				article.setSubject(article.getSubject().substring(0,20) + "...");
-//			}
-//		}
 		return pagerResult;
 	}
 

@@ -29,7 +29,7 @@ public interface ArticleDao {
 
 	void deleteById(String id);
 
-	void getById(String id);
+	Article getById(String id);
 
 	Pager getPager(String hql, int curpage, int pagesize);
 

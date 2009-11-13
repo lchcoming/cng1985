@@ -43,9 +43,9 @@ public class ArticleDaoImpl extends JdoDaoSupport implements ArticleDao{
 	}
 
 	@Override
-	public void getById(String id) {
+	public Article getById(String id) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
