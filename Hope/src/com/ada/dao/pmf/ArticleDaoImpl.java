@@ -14,8 +14,6 @@
  */
 package com.ada.dao.pmf;
 
-
-
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -73,11 +71,18 @@ public class ArticleDaoImpl implements ArticleDao {
 		int totalRows = 0;
 		List resultList = null;
 		PageBean pager = null;
-		EntityManager em = EMF.get().createEntityManager();
-		Query query = em.createQuery(hql);
+		
 		// 如果缓存中有就从缓存中取数据
 		if (temp == null) {
+			EntityManager em = EMF.get().createEntityManager();
+			Query query = em.createQuery(hql);
 			temp = query.getResultList();
+			temp.size();
+			logger.info("初始化数据");
+			if (em.isOpen()) {
+				em.close();
+				logger.info("关闭会话");
+			}
 		}
 
 		totalRows = (temp.size()); // 取得总计录数
@@ -89,9 +94,7 @@ public class ArticleDaoImpl implements ArticleDao {
 		Pager pagerResult = new Pager();
 		pagerResult.setPageBean(pager);
 		pagerResult.setResultList(resultList);
-		if (em.isOpen()) {
-			em.close();
-		}
+		
 		return pagerResult;
 	}
 
