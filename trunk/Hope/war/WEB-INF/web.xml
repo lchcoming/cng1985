@@ -212,6 +212,40 @@
     <servlet-name>Profile</servlet-name>
     <url-pattern>/_wave/robot/profile</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  <!-- dwr configuration begin -->
+	<listener>
+		<listener-class>
+			org.directwebremoting.servlet.EfficientShutdownServletContextAttributeListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			org.directwebremoting.servlet.EfficientShutdownServletContextListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>dwr-invoker</servlet-name>
+		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>crossDomainSessionSecurity</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>allowScriptTagRemoting</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+	<!-- dwr configuration end -->
  <!-- Default page to serve -->
  <welcome-file-list>
   <welcome-file>index.jsp</welcome-file>

@@ -14,7 +14,6 @@
  */
 package com.service;
 
-
 import com.google.wave.api.AbstractRobotServlet;
 import com.google.wave.api.Blip;
 import com.google.wave.api.Event;
@@ -26,29 +25,35 @@ import com.google.wave.api.Wavelet;
 @SuppressWarnings("serial")
 public class HelloRobotServlet extends AbstractRobotServlet {
 
-	 @Override
-	  public void processEvents(RobotMessageBundle bundle) {
-	    Wavelet wavelet = bundle.getWavelet();
-	              
-	    if (bundle.wasSelfAdded()) {
-	      Blip blip = wavelet.appendBlip();
-	      TextView textView = blip.getDocument();
-	      textView.append("I'm alive!");
-	    }
-	            
-	    for (Event e: bundle.getEvents()) {
-	      if (e.getType() == EventType.WAVELET_PARTICIPANTS_CHANGED) {    
-	        Blip blip = wavelet.appendBlip();
-	        TextView textView = blip.getDocument();
-	        textView.append("Hi, everybody! welcome to here");
-	      }
-	      if (e.getType() == EventType.DOCUMENT_CHANGED) {   
-	    	   
-		        Blip blip = wavelet.appendBlip();
-		        TextView textView = blip.getDocument();
-		        textView.append("Hi, what are you dong");
-		      }
-	    }
-	  }
+	@Override
+	public void processEvents(RobotMessageBundle bundle) {
+		Wavelet wavelet = bundle.getWavelet();
+
+		if (bundle.wasSelfAdded()) {
+			Blip blip = wavelet.appendBlip();
+			TextView textView = blip.getDocument();
+			textView.append("I'm alive!");
+		}
+
+		for (Event e : bundle.getEvents()) {
+			if (e.getType() == EventType.WAVELET_PARTICIPANTS_CHANGED) {
+				Blip blip = wavelet.appendBlip();
+				TextView textView = blip.getDocument();
+				textView.append("Hi, everybody! welcome to here");
+			}
+			if (e.getType() == EventType.DOCUMENT_CHANGED) {
+
+				Blip blip = wavelet.appendBlip();
+				TextView textView = blip.getDocument();
+				textView.append("Hi, what are you dong");
+			}
+			if (e.getType() == EventType.BLIP_CONTRIBUTORS_CHANGED) {
+
+				Blip blip = wavelet.appendBlip();
+				TextView textView = blip.getDocument();
+				textView.append("Hi, what are you dong!!!!!!");
+			}
+		}
+	}
 
 }
