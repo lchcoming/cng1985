@@ -30,7 +30,7 @@
 					<a href="/softnews.jsp" title="软件新闻">软件新闻</a>
 				</li>
 				<li>
-					<a href="/control/articles.jsp" title="编程思想">编程思想</a>
+					<a href="/control/articles.jsp" title="编程思想">文章</a>
 				</li>
 				<li>
 					<a href="/common.jsp" title="啪啪社区">啪啪社区</a>
