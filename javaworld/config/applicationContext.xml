@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	<bean id="HelloAction" class="com.ada.action.HelloAction"></bean>
+	<bean id="TreeDAO" class="com.ada.dao.TreeDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	    <!-- 加载资源文件配置 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+    <!-- 数据源配置  -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="driverClass">
+		   <value>${c3p0.driverClass}</value>
+		</property>
+		<property name="jdbcUrl">
+		   <value>${c3p0.jdbcUrl}</value>
+		</property>
+		<property name="user">
+		   <value>${c3p0.user}</value>
+		</property>
+		<property name="password">
+		   <value>${c3p0.password}</value>
+		</property>
+		<property name="minPoolSize">
+		   <value>${c3p0.minPoolSize}</value>
+		</property>
+		<property name="maxPoolSize">
+		   <value>${c3p0.maxPoolSize}</value>
+		</property>
+		<property name="initialPoolSize">
+		   <value>${c3p0.initialPoolSize}</value>
+		</property>
+		<property name="maxIdleTime">
+		   <value>${c3p0.maxIdleTime}</value>
+		</property>
+		<property name="acquireIncrement">
+		   <value>${c3p0.acquireIncrement}</value>
+		</property>
+		<property name="maxStatements">
+		   <value>${c3p0.maxStatements}</value>
+		</property>
+		<property name="idleConnectionTestPeriod">
+		   <value>${c3p0.idleConnectionTestPeriod}</value>
+		</property>
+		<property name="acquireRetryAttempts">
+			<value>${c3p0.acquireRetryAttempts}</value>
+		</property>
+		<property name="breakAfterAcquireFailure">
+			<value>${c3p0.breakAfterAcquireFailure}</value>
+		</property>
+		<property name="testConnectionOnCheckout">
+			<value>${c3p0.testConnectionOnCheckout}</value>
+		</property>
+	</bean>
+
+     <!-- 事务配置  -->
+     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+	     <property name="dataSource" ref="dataSource" />
+	 </bean>
+	 <!-- 事务代理配置 -->
+	<bean id="transactionProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" abstract="true">	
+	  <property name="transactionManager">
+        <ref bean="transactionManager"/>	  
+	  </property>
+	  <property name="transactionAttributes">	 
+	    <props>	      
+	      <prop key="add*">PROPAGATION_REQUIRED</prop>
+	      <prop key="pre*">PROPAGATION_REQUIRED</prop>
+	      <prop key="delete*">PROPAGATION_REQUIRED</prop>
+	      <prop key="modify*">PROPAGATION_REQUIRED</prop>
+	      <prop key="edit*">PROPAGATION_REQUIRED</prop>
+	      <prop key="update*">PROPAGATION_REQUIRED</prop>
+	      <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+	      <prop key="release*">PROPAGATION_REQUIRED</prop>
+	      <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+	    </props>
+	  </property>
+	</bean>
+	
+		<bean id="treeServiceTarget" class="com.ada.service.TreeServiceImpl">	
+		<property name="treeDAO">
+			<ref bean="TreeDAO"/>
+		</property>
+	</bean>	
+	 <bean id="treeervice" parent="transactionProxy">
+      <property name="target">
+        <ref bean="treeServiceTarget"/>
+      </property>
+    </bean>
+
+	
+</beans>
