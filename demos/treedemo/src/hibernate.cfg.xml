@@ -22,6 +22,7 @@
 			jdbc:mysql://127.0.0.1:3306/treedemo
 		</property>
 		<mapping resource="com/ada/entity/Tree.hbm.xml" />
+		<mapping resource="com/ada/entity/Navigate.hbm.xml" />
 
 	</session-factory>
 

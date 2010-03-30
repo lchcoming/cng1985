@@ -23,7 +23,8 @@
 		<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-		<link rel="stylesheet" href="<%=basePath%>jtree/jquery.treeview.css" />
+		
+<link rel="stylesheet" href="<%=basePath%>jtree/jquery.treeview.css" />
 
 		<link rel="stylesheet" href="<%=basePath%>jtree/screen.css" />
 		<script src="<%=basePath%>jtree/lib/jquery.js" type="text/javascript"></script>
@@ -32,36 +33,13 @@
 		<script src="<%=basePath%>jtree/lib/jquery.treeview.js"
 			type="text/javascript"></script>
 
-
 	</head>
 
 	<body>
 		<table style="width: 100%">
 			<tr>
 				<td align="left" vAlign="top" style="font-size: 10pt; width: 200px;">
-					<div id="sidetree">
-						<div class="treeheader">
-							&nbsp;
-						</div>
-						<div id="sidetreecontrol">
-							<a href="?#">收缩</a> |
-							<a href="?#">展开</a>
-						</div>
-
-
-						<tree:Tree></tree:Tree>
-						<script type="text/javascript">
-	$(function() {
-			$("#tree").treeview({
-				collapsed: true,
-				
-				control:"#sidetreecontrol",
-				//animated: "medium",
-				persist: "location"
-			});
-		})
-	</script>
-					</div>
+				<tree:Tree></tree:Tree>
 				</td>
 				<td vAlign="top">
 					<iframe name="cai" id="cai" width="100%"

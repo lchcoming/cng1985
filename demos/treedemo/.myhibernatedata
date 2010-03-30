@@ -1,5 +1,5 @@
 #
-#Mon Mar 29 12:04:52 CST 2010
+#Tue Mar 30 19:05:35 CST 2010
 genBasicCompId=false
 sessionFactoryName=com.demo.factory.HibernateSessionFactory
 profile=

@@ -66,6 +66,50 @@
 		<url-pattern>*.jsp</url-pattern>
 	</filter-mapping>
 	<!-- Struts2 configuration end -->
+	<servlet>
+		<servlet-name>dwr-invoker</servlet-name>
+		<display-name>DWR Servlet</display-name>
+		<servlet-class>
+			org.directwebremoting.servlet.DwrServlet
+		</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+  <servlet>
+    <servlet-name>NavigateEditServlet</servlet-name>
+    <servlet-class>com.ada.dwr.NavigateEditServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>NavigateJsonServlet</servlet-name>
+    <servlet-class>com.ada.dwr.NavigateJsonServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>NavigateSaveServlet</servlet-name>
+    <servlet-class>com.ada.dwr.NavigateSaveServlet</servlet-class>
+  </servlet>
+
+
+
+
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NavigateEditServlet</servlet-name>
+    <url-pattern>/navigateedit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NavigateJsonServlet</servlet-name>
+    <url-pattern>/navigatejson</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NavigateSaveServlet</servlet-name>
+    <url-pattern>/navigatesave</url-pattern>
+  </servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
