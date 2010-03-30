@@ -1,0 +1,96 @@
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>组织注册－组织树</title>
+
+<link href="../../style/gray/main.css" rel="stylesheet" type="text/css">
+<link href="../../style/gray/blue.css" rel="stylesheet" type="text/css">
+<link href="css/xtree.css" rel="stylesheet" type="text/css">
+</head>
+<script language="javascript" src="js/xtree.js"></script>
+<base target="mainFrame">
+<body onselectstart="return false" oncontextmenu="window.event.returnValue=false"> 
+<table width="100%"  border="0" align="center" cellpadding="0" cellspacing="0" class="TrQBG">
+  <tr>
+    <td ><a href="#" onClick="window.location.reload()" target="left">刷&nbsp 新</a></td>
+  </tr>
+</table>
+<!--<DIV style="LEFT: 0px; OVERFLOW: auto; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; PADDING-TOP: 5px; POSITION: absolute; TOP: 41px;"> -->
+<div noWrap style="position: absolute; width:90%px; height:100%px; top: 39px; left: 5px; PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; PADDING-TOP: 5px; overflow:auto;"> 
+  <!-- js file containing the tree content, edit this file to alter the menu,
+     the menu will be inserted where this tag is located in the document -->
+
+<script language="javascript">
+if (document.getElementById) {	
+    var noderoot = new WebFXTree("root","作业指导书","../../release/standSortManage.htm");
+    setFilePath(noderoot,"");
+    noderoot.setBehavior("classic");
+		var node104 = new WebFXTreeItem("104", "架空输电线路及电缆（线路篇上）","../../release/standBookManage.htm");
+        noderoot.add(node104);
+
+		var node109 = new WebFXTreeItem("109", "架空输电线路及电缆（线路篇下）", "","",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+        noderoot.add(node109);
+
+		var node265 = new WebFXTreeItem("265", "架空输电线路及电缆（电缆篇）", "","",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+        noderoot.add(node265);
+
+		var node1 = new WebFXTreeItem("1", "带电作业", "", "",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+        noderoot.add(node1);
+
+		var node103 = new WebFXTreeItem("103", "变电设备（运行篇）", "","",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+        noderoot.add(node103);
+
+		var node219 = new WebFXTreeItem("219", "变电设备（检修篇）", "", "",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+        noderoot.add(node219);
+
+		var node216 = new WebFXTreeItem("216", "继电保护及安全自动装置（线路保护篇）", "", "",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+        noderoot.add(node216);
+
+		var node218 = new WebFXTreeItem("218", "继电保护及安全自动装置（元件保护篇）", "", "",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+        noderoot.add(node218);
+
+		var node217 = new WebFXTreeItem("217", "继电保护及安全自动装置（安全自动装置篇）", "", "",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+        noderoot.add(node217);
+
+		var node222 = new WebFXTreeItem("222", "电测仪表和热工仪表（校验篇）", "", "",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+        noderoot.add(node222);
+
+		var node223 = new WebFXTreeItem("223", "油、气和高压电气设备试验（试验篇）", "", "",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+        noderoot.add(node223);
+		
+		var node1041 = new WebFXTreeItem("1041", "500kV 架空输电线路巡视作业指导书", "../../release/standCatalogManage.htm", "",'pic/xtree_foldericon.gif');
+		node104.add(node1041);
+		
+		var node1042 = new WebFXTreeItem("1042", "线路部分隐蔽工程施工监督作业指导书", "","",'pic/xtree_foldericon.gif','pic/xtree_foldericon.gif');
+		node104.add(node1042);
+		
+		var node10411 = new WebFXTreeItem("10411", "目的", "");
+		node1041.add(node10411);
+		
+		var node10412 = new WebFXTreeItem("10412", "适用范围", "");
+		node1041.add(node10412);
+		
+		var node10413 = new WebFXTreeItem("10413", "引用标准", "");
+		node1041.add(node10413);
+		
+		var node10414 = new WebFXTreeItem("10414", "支持性文件", "");
+		node1041.add(node10414);
+		
+		var node10415 = new WebFXTreeItem("10415", "技术术语", "");
+		node1041.add(node10415);
+		
+		var node10416 = new WebFXTreeItem("10416", "安全措施", "../../release/standCatalogEdit.htm");
+		node1041.add(node10416);
+		
+		var node10417 = new WebFXTreeItem("10417", "作业标准", "");
+		node1041.add(node10417);
+
+	document.write(noderoot);
+}
+</script>
+</DIV>
+</body>
+</html>
+                                                                                              
