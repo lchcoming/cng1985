@@ -74,16 +74,16 @@ public class DataTreeTag extends TagSupport {
 	@SuppressWarnings("unchecked")
 	@Override
 	public int doEndTag() throws JspException {
-		logger.info(findString("trees"));
-		logger.info(getStack().findString("trees"));
-		JspWriter out=pageContext.getOut();
-		try {
-			out.write(getStack().findString("trees"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		// workFreemake();
+//		logger.info(findString("trees"));
+//		logger.info(getStack().findString("trees"));
+//		JspWriter out=pageContext.getOut();
+//		try {
+//			out.write(getStack().findString("trees"));
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		workFreemake();
 		return super.doEndTag();
 	}
 
@@ -101,7 +101,7 @@ public class DataTreeTag extends TagSupport {
 
         /* 创建数据模型 */
         Map root = new HashMap();
-        root.put("trees", findString("DataTreeAction.trees"));
+        root.put("trees",getStack().findString("trees"));
         Writer out=pageContext.getOut();
         temp.process(root, out);
         out.flush();
