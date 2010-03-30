@@ -6,8 +6,8 @@
  FormEditWin = function(){  
      var curFormWin;  
      return {  
-         width : 600,  
-         height : 400,  
+         width : 200,  
+         height : 100,  
          showAddDirWin : function(parentNode) {  
              // 显示添加子目录窗口  
              var number = parentNode.indexOf(parentNode.lastChild) + 1;  
