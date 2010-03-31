@@ -29,7 +29,7 @@ public class TreeMakerImpl implements TreeMaker {
 			buffer.append("d = new dTree('d');");
 			//d.add(0,-1,'资源库','tree.html','','','img/trash.gif');
 			buffer.append("\n");
-			buffer.append("d.add(0,-1,'资源库','tree.html','','','img/trash.gif');");
+			buffer.append("d.add(0,-1,'资源库','#','','','img/trash.gif');");
 			buffer.append("\n");
 			for (TreeNode node : nodes) {
 				buffer.append(node);
