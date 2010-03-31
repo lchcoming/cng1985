@@ -40,6 +40,13 @@ public class TreeScriptTag extends TagSupport {
 		try {
 			//<link rel="StyleSheet" href="<%=basePath%>dtree/dtree.css" type="text/css" />
 			//<script type="text/javascript" src="<%=basePath%>dtree/dtree.js"></script>
+			out.write("\n");
+			out.write("<script type=\"text/javascript\">");
+			out.write("\n");
+			out.write("var imgur=\""+basePath+"dtree/img/\";");
+			out.write("\n");
+			out.write("</script>");
+			out.write("\n");
 			out.write("<link rel=\"StyleSheet\" href=\""+basePath+"dtree/dtree.css\" type=\"text/css\" />");
 			out.write("\n");
 			out.write("<script type=\"text/javascript\" src=\""+basePath+"dtree/dtree.js\">");

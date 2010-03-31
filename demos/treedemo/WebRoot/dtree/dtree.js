@@ -9,7 +9,7 @@
 | Updated: 17.04.2003                               |
 |--------------------------------------------------*/
 
-// Node objectvar imgur="http://127.0.0.1:8080/treedemo/dtree/img/";
+// Node object
 function Node(id, pid, name, url, title, target, icon, iconOpen, open) {
 	this.id = id;
 	this.pid = pid;
