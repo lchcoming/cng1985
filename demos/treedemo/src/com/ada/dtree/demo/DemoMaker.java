@@ -17,10 +17,11 @@ package com.ada.dtree.demo;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ada.dtree.api.NodeBuilder;
 import com.ada.dtree.core.TreeNode;
 import com.ada.dwr.Navigate;
 
-public class DemoMaker {
+public class DemoMaker implements NodeBuilder{
 	public List<TreeNode> nodes() {
 		NavigateDao dao=NavigateDao.getInstanece();
 		List<Navigate> list=	dao.listall();

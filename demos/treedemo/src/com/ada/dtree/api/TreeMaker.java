@@ -20,7 +20,7 @@ import com.ada.dtree.core.TreeNode;
 
 public interface TreeMaker {
 
-	public String make(List<TreeNode> nodes);
+	public String make(NodeBuilder builder);
 
 }
 

@@ -43,6 +43,6 @@ public class TreeMakerTest {
 		list.add(node);
 		list.add(node);
 		DemoMaker make=new DemoMaker();
-		System.out.println(maker.make(make.nodes()));
+		System.out.println(maker.make(make));
 	}
 }
