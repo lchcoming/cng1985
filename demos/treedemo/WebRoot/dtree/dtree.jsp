@@ -5,6 +5,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<%@taglib uri="http://cng1985.appspot.com/" prefix="tree"%>
 <%@taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -26,7 +27,8 @@
 	</head>
 
 	<body>
-			<s:property value="trees" escape="false" />
+			<tree:DTree></tree:DTree>
+			
 		<br>
 	</body>
 </html>

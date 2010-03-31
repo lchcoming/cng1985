@@ -12,6 +12,12 @@
                     to ensure that input is correct and output is localized.
                     The Struts Tags can be used with JSP FreeMarker or Velocity."</description>
  <tag>
+  <name>DTree</name>
+  <tag-class>com.ada.dtree.tld.DTreeTag</tag-class>
+  <body-content>JSP</body-content>
+  <description>无限极树</description>
+ </tag>
+ <tag>
   <name>Tree</name>
   <tag-class>com.ada.tree.tld.DataTreeTag</tag-class>
   <body-content>JSP</body-content>
