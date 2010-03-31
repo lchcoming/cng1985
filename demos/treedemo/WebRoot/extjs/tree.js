@@ -111,7 +111,7 @@
              }  
              if(!loader){  
                  loader = new Ext.tree.TreeLoader({  
-                     url : basePath + '/navigatejson'  
+                     url : basePath + '/navigatejson?id=1'  
                  });  
                  loader.on('beforeload', function(treeloader, node) {  
                      treeloader.baseParams = {  
@@ -122,7 +122,7 @@
              }  
              if(!root){  
                  root = new Ext.tree.AsyncTreeNode({  
-                     id : '1',  
+                     id : '0',  
                      text : "系统菜单"  
                  });  
              }  

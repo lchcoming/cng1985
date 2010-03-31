@@ -1,0 +1,91 @@
+
+<html>
+
+	<head>
+
+		<link rel="stylesheet" type="text/css" href="../extjs/ext-all.css" />
+		<script type="text/javascript" src="../extjs/ext-base.js"></script>
+		<script type="text/javascript" src="../extjs/ext-all.js"></script>
+
+		<!-- <SCRIPT src="jsontreetest.js" type=text/javascript></SCRIPT>-->
+
+	</head>
+
+	<body>
+
+		<div id="tree-div"
+			></div>
+
+	</body>
+
+</html>
+
+
+
+<script type="text/javascript">
+
+Ext.onReady(function(){
+    Ext.QuickTips.init(); 
+    var mytree=new Ext.tree.TreePanel({
+      el:"tree-div",
+      animate:true,////展开,收缩动画,false时,则没有动画效果
+      title:"人力资源库",
+      collapsible:true,//可折叠
+      enableDD:true,//不仅可以拖动,还可以通过Drag改变节点的层次结构
+      enableDrag:true,//树的节点可以拖动Drag
+      rootVisible:true,
+      autoScroll:true,
+      trackMouseOver:false,//false则mouseover无效果
+      //useArrows:true,//小箭头
+      autoHeight:true,
+      width:150,
+      lines:true //节点间的虚线条
+      //loader : new Tree.TreeLoader( {////加载节点数据
+
+            //  dataUrl : 'OrgTreeJsonData.action'
+
+           //就是要动态载入数据的请求地址，这里请求时会提交一数为node的值，值为root即new Tree.AsyncTreeNode()对象的id值
+
+     // })
+  });
+  //根节点
+  var root=new Ext.tree.TreeNode({
+      id:"root",
+      text:"控制面板",
+      expanded:true
+  });
+ //第一个子节点及其子节点
+  var sub1=new Ext.tree.TreeNode({
+      id:"news",
+      text:"新闻管理",
+      singleClickExpand:true
+  });
+  sub1.appendChild(new Ext.tree.TreeNode({
+      id:"addNews",
+      text:"添加新闻",
+      href:"http://www.baidu.com",
+      hrefTarget:"mainFrame",
+      qtip:"打开百度",//qtip:"提示"//提示信息,不过要 Ext.QuickTips.init();下
+      listeners:{//监听
+          "click":function(node,e){
+               alert(node.text)
+          }
+      }
+  }));
+  sub1.appendChild(new Ext.tree.TreeNode({
+      id:"editNews",
+     text:"编辑新闻"
+  }));
+  sub1.appendChild(new Ext.tree.TreeNode({
+     id:"delNews",
+     text:"删除新闻"
+  }));
+ root.appendChild(sub1);
+ root.appendChild(new Ext.tree.TreeNode({
+     id:"sys",
+     text:"系统设置"
+ }));
+ mytree.setRootNode(root);//设置根节点
+ mytree.render();//不要忘记render(),否则不显示
+})
+</script>
