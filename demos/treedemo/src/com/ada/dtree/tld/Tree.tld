@@ -27,6 +27,6 @@
   <name>TreeScript</name>
   <tag-class>com.ada.dtree.tld.TreeScriptTag</tag-class>
   <body-content>JSP</body-content>
-  <description>无限极树</description>
+  <description>DTree所需要的脚本文件</description>
  </tag>
 </taglib>
