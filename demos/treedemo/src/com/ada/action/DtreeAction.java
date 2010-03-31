@@ -4,7 +4,7 @@
  * Module ID:    <br />   
  * Comments:            <br />                                  
  * JDK version used:<JDK1.6><br />                                 
- * Namespace:package com.ada.dtree.demo;<br />                             
+ * Namespace:package com.ada.action;<br />                             
  * Author£ºada.young <br />                  
  * Create Date£º  Mar 31, 2010<br />   
  * Modified By£ºada.young          <br />                                
@@ -12,28 +12,34 @@
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
  */
-package com.ada.dtree.demo;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.ada.action;
 
 import com.ada.dtree.api.NodeBuilder;
-import com.ada.dtree.core.TreeNode;
-import com.ada.dwr.Navigate;
+import com.ada.dtree.api.TreeMaker;
+import com.ada.dtree.core.TreeMakerImpl;
 
-public class DemoMaker implements NodeBuilder{
-	public List<TreeNode> nodes() {
-		NavigateDao dao=NavigateDao.getInstanece();
-		List<Navigate> list=	dao.listall();
-		List<TreeNode> nodes=new ArrayList<TreeNode>();
-		for(Navigate item:list){
-			TreeNode	node=new TreeNode();
-			node.setId(item.getId());
-			node.setPid(item.getParentId());
-			node.setName(item.getTitle());
-			node.setUrl(item.getUrl());
-			nodes.add(node);
-		}
-		return nodes;
+public class DtreeAction {
+	private String trees;
+    private NodeBuilder builder;
+    private TreeMaker maker;
+	public String getTrees() {
+		return trees;
+	}
+public NodeBuilder getBuilder() {
+		return builder;
+	}
+	public void setBuilder(NodeBuilder builder) {
+		this.builder = builder;
+	}
+public DtreeAction(){
+	maker = new TreeMakerImpl();
+}
+	public void setTrees(String trees) {
+		this.trees = trees;
+	}
+
+	public String work() {
+		trees=maker.make(builder);
+		return "success";
 	}
 }

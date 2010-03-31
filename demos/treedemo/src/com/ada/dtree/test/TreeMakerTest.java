@@ -23,7 +23,7 @@ import org.junit.Test;
 
 import com.ada.dtree.core.TreeMakerImpl;
 import com.ada.dtree.core.TreeNode;
-import com.ada.dtree.demo.DemoMaker;
+import com.ada.dtree.demo.DemoMakerBuilder;
 
 public class TreeMakerTest {
 
@@ -42,7 +42,7 @@ public class TreeMakerTest {
 		TreeNode node=new TreeNode();
 		list.add(node);
 		list.add(node);
-		DemoMaker make=new DemoMaker();
+		DemoMakerBuilder make=new DemoMakerBuilder();
 		System.out.println(maker.make(make));
 	}
 }

@@ -17,20 +17,21 @@
 			<ref bean="sessionFactory" />
 		</property>
 	</bean>
-	    <!-- 配置Hibernate中的SessionFactory -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> 
+	<!-- 配置Hibernate中的SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource">
 			<ref bean="dataSource" />
 		</property>
 		<!-- guxiao 2009.11.20 在需要创建数据库是去掉注释，此处不需注销，只需将jdbc.properties文件中hibernate.hbm2ddl.auto设置为none即可 
-		<property name="hibernateProperties">
+			<property name="hibernateProperties">
 			<ref bean="hibernateProperties"/>
-		</property>
-		  -->
+			</property>
+		-->
 		<property name="mappingDirectoryLocations">
-		<list>
-			<value>classpath:com/ada/entity/</value>		
-		</list> 
+			<list>
+				<value>classpath:com/ada/entity/</value>
+			</list>
 		</property>
 	</bean>
 	<!-- 加载资源文件配置 -->
@@ -132,6 +133,11 @@
 	<bean id="DataTreeAction" class="com.ada.action.DataTreeAction">
 		<property name="treeMakeBuilder" ref="DataTreeMaker"></property>
 	</bean>
+	<bean id="DtreeAction" class="com.ada.action.DtreeAction">
+		<property name="builder" ref="DataTreeMaker"></property>
+	</bean>
+	<bean id="builder" class="com.ada.action.DtreeAction">
+	</bean>
 	<bean id="DataTreeMaker" class="com.ada.action.DataTreeMaker">
 		<property name="treeService" ref="treeervice"></property>
 	</bean>
@@ -139,4 +145,5 @@
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
-	</bean></beans>
+	</bean>
+</beans>

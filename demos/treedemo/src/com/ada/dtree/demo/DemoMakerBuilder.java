@@ -4,7 +4,7 @@
  * Module ID:    <br />   
  * Comments:            <br />                                  
  * JDK version used:<JDK1.6><br />                                 
- * Namespace:package com.ada.dtree.api;<br />                             
+ * Namespace:package com.ada.dtree.demo;<br />                             
  * Author：ada.young <br />                  
  * Create Date：  Mar 31, 2010<br />   
  * Modified By：ada.young          <br />                                
@@ -12,19 +12,28 @@
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
  */
-package com.ada.dtree.api;
+package com.ada.dtree.demo;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.ada.dtree.api.NodeBuilder;
 import com.ada.dtree.core.TreeNode;
-/**
- * 接口介绍<br/>
- * 返回一个List<TreeNode>注意子父关系
- * 
- * @author Administrator
- *
- */
-public interface NodeBuilder {
-	List<TreeNode> nodes();
-}
+import com.ada.dwr.Navigate;
 
+public class DemoMakerBuilder implements NodeBuilder{
+	public List<TreeNode> nodes() {
+		NavigateDao dao=NavigateDao.getInstanece();
+		List<Navigate> list=	dao.listall();
+		List<TreeNode> nodes=new ArrayList<TreeNode>();
+		for(Navigate item:list){
+			TreeNode	node=new TreeNode();
+			node.setId(item.getId());
+			node.setPid(item.getParentId());
+			node.setName(item.getTitle());
+			node.setUrl(item.getUrl());
+			nodes.add(node);
+		}
+		return nodes;
+	}
+}

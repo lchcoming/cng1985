@@ -28,30 +28,11 @@ public class TreeMakerImpl implements TreeMaker {
 			buffer.append("\n");
 			for (TreeNode node : nodes) {
 				buffer.append(node);
-				// d = new dTree('d');
-				//
-				// d.add(0,-1,'×ÊÔ´¿â','tree.html','','','img/trash.gif');
-				// d.add(1,0,'Node 1','tree.html');
-				// d.add(2,0,'Node 2','tree.html');
-				// d.add(3,1,'Node 1.1','tree.html');
-				// d.add(4,0,'Node 3','tree.html');
-				// d.add(5,3,'Node 1.1.1','tree.html');
-				// d.add(6,5,'Node 1.1.1.1','tree.html');
-				// d.add(7,0,'Node 4','tree.html');
-				// d.add(8,1,'Node 1.2','tree.html');
-				// d.add(9,0,'My Pictures','tree.html','Pictures I\'ve taken
-				// over the years','','','img/imgfolder.gif');
-				// d.add(10,9,'The trip to Iceland','tree.html','Pictures of
-				// Gullfoss and Geysir');
-				// d.add(11,9,'Mom\'s birthday','tree.html');
-				// //d.add(12,0,'Recycle
-				// Bin','tree.html','','','img/trash.gif');
-				// d.add(12,0,'Recycle Bin','tree.html','','','img/trash.gif');
-				// document.write(d);
 			}
 		} else {
 
 		}
+		buffer.append("document.write(d);");
 		return buffer.toString();
 	}
 }
