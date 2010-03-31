@@ -1,7 +1,7 @@
 /*--------------------------------------------------|
 | dTree 2.05 | www.destroydrop.com/javascript/tree/ |
 |---------------------------------------------------|
-| Copyright (c) 2002-2003 Geir Landrö               |
+| Copyright (c) 2002-2003 Geir Landrï¿½               |
 |                                                   |
 | This script can be used freely as long as all     |
 | copyright messages are intact.                    |
@@ -9,7 +9,7 @@
 | Updated: 17.04.2003                               |
 |--------------------------------------------------*/
 
-// Node object
+// Node objectvar imgur="http://127.0.0.1:8080/treedemo/img/base.gif";
 function Node(id, pid, name, url, title, target, icon, iconOpen, open) {
 	this.id = id;
 	this.pid = pid;
