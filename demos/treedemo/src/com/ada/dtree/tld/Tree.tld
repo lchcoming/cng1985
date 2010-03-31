@@ -23,4 +23,10 @@
   <body-content>JSP</body-content>
   <description>无限极树</description>
  </tag>
+ <tag>
+  <name>TreeScript</name>
+  <tag-class>com.ada.dtree.tld.TreeScriptTag</tag-class>
+  <body-content>JSP</body-content>
+  <description>无限极树</description>
+ </tag>
 </taglib>

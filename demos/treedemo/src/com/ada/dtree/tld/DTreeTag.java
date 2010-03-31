@@ -17,6 +17,8 @@ package com.ada.dtree.tld;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.BodyTagSupport;
@@ -37,7 +39,7 @@ public class DTreeTag extends BodyTagSupport {
 	}
 	@Override
 	public int doStartTag() throws JspException {
-		//logger.info(getStack().findString("trees"));
+	
 		JspWriter out=pageContext.getOut();
 		try {
 			out.write(getStack().findString("trees"));
