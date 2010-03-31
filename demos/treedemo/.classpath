@@ -45,5 +45,7 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring-webmvc.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/spring.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dwr.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/oscache-2.4.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/oscore-2.2.5.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
