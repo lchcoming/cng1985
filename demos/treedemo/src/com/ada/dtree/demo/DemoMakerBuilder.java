@@ -31,7 +31,13 @@ public class DemoMakerBuilder implements NodeBuilder{
 			node.setId(item.getId());
 			node.setPid(item.getParentId());
 			node.setName(item.getTitle());
-			node.setUrl(item.getUrl());
+			if(null!=item.getUrl()){
+				node.setUrl(item.getUrl());
+			}
+			else{
+				node.setUrl("#");
+			}
+			
 			nodes.add(node);
 		}
 		return nodes;

@@ -9,7 +9,7 @@
 | Updated: 17.04.2003                               |
 |--------------------------------------------------*/
 
-// Node objectvar imgur="http://127.0.0.1:8080/treedemo/img/base.gif";
+// Node objectvar imgur="http://127.0.0.1:8080/treedemo/dtree/img/";
 function Node(id, pid, name, url, title, target, icon, iconOpen, open) {
 	this.id = id;
 	this.pid = pid;
@@ -41,20 +41,20 @@ function dTree(objName) {
 		inOrder					: false
 	}
 	this.icon = {
-		root				: 'img/base.gif',
-		folder			: 'img/folder.gif',
-		folderOpen	: 'img/folderopen.gif',
-		node				: 'img/page.gif',
-		empty				: 'img/empty.gif',
-		line				: 'img/line.gif',
-		join				: 'img/join.gif',
-		joinBottom	: 'img/joinbottom.gif',
-		plus				: 'img/plus.gif',
-		plusBottom	: 'img/plusbottom.gif',
-		minus				: 'img/minus.gif',
-		minusBottom	: 'img/minusbottom.gif',
-		nlPlus			: 'img/nolines_plus.gif',
-		nlMinus			: 'img/nolines_minus.gif'
+		root				: imgur+'base.gif',
+		folder			: imgur+'folder.gif',
+		folderOpen	: imgur+'folderopen.gif',
+		node				: imgur+'page.gif',
+		empty				: imgur+'empty.gif',
+		line				: imgur+'line.gif',
+		join				: imgur+'join.gif',
+		joinBottom	: imgur+'joinbottom.gif',
+		plus				: imgur+'plus.gif',
+		plusBottom	: imgur+'plusbottom.gif',
+		minus				: imgur+'minus.gif',
+		minusBottom	: imgur+'minusbottom.gif',
+		nlPlus			: imgur+'nolines_plus.gif',
+		nlMinus			: imgur+'nolines_minus.gif'
 	};
 	this.obj = objName;
 	this.aNodes = [];

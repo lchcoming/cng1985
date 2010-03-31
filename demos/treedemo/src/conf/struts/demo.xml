@@ -17,7 +17,7 @@
 			<result name="datasuccess">/jtree/filedatatree.jsp</result>
 		</action>
 
-		<action name="datatree" class="DtreeAction" method="work">
+		<action name="dtree" class="DtreeAction" method="work">
 			<result name="success">/dtree/dtree.jsp</result>
 		</action>
 	</package>
