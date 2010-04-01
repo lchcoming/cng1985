@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         var vault = null;
         function doOnLoad() {
             vault = new dhtmlXVaultObject();
-            vault.setImagePath("codebase/imgs/");
+            vault.setImagePath("<%=basePath%>codebase/imgs/");
             vault.setServerHandlers("UploadHandler.jsp", "GetInfoHandler.jsp", "GetIdHandler.jsp");
             vault.create("vault1");
 	}
@@ -62,6 +62,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 </XMP>
 
+<input type="button" onclick="work();">
+<script>
+function work(){
+alert(vault.fileList);
 
+alert(files[0]);
+}
+
+</script>
 </body>
 </html>
