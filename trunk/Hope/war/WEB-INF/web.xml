@@ -116,7 +116,49 @@
 
 
 
+ <servlet>
+    <servlet-name>upload</servlet-name>
+    <servlet-class>com.ada.upfile.Upload</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>post</servlet-name>
+    <servlet-class>com.ada.upfile.UploadPost</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>index</servlet-name>
+    <servlet-class>com.ada.upfile.Index</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>resource</servlet-name>
+    <servlet-class>com.ada.upfile.Resource</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>display</servlet-name>
+    <servlet-class>com.ada.upfile.Display</servlet-class>
+  </servlet>
 
+  <servlet-mapping>
+    <servlet-name>upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>post</servlet-name>
+    <url-pattern>/post</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>resource</servlet-name>
+    <url-pattern>/resource</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>display</servlet-name>
+    <url-pattern>/display</url-pattern>
+  </servlet-mapping>
+
+  
 
 
 
@@ -245,6 +287,22 @@
 		<servlet-name>dwr-invoker</servlet-name>
 		<url-pattern>/dwr/*</url-pattern>
 	</servlet-mapping>
+	<security-constraint>
+    <web-resource-collection>
+      <url-pattern>/upload</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>*</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <url-pattern>/post</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
 	<!-- dwr configuration end -->
  <!-- Default page to serve -->
  <welcome-file-list>
