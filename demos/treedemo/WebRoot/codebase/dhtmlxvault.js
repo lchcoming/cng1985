@@ -140,7 +140,7 @@ dhtmlXVaultObject.prototype.checkFilesLimit = function () {
 dhtmlXVaultObject.prototype.addFile = function () {
 	var file = this.currentFile;
 	
-	alert(this.getFileName(file.value)+"文件名");
+	//alert(this.getFileName(file.value)+"文件名");
 	for (var i in files) {
 	//console.log(files[i]);
 		if (files[i]==this.getFileName(file.value)) {
@@ -311,6 +311,8 @@ dhtmlXVaultObject.prototype.removeItem = function (id) {
 	var r = this.getCurrentRowListFiles(id);
 	r.parentNode.removeChild(r);
 	delete this.fileList[id];
+	delete nouploadfiles[id-1];
+	//nouploadfiles.splice(id-1,1);
 	this.checkFilesLimit();
 };
 //删除没有上传的
