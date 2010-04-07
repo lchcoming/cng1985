@@ -38,8 +38,8 @@ public class TreeMakerImpl implements TreeMaker {
 
 		}
 		
-		//buffer.append("document.write(d);");
-		 buffer.append(" CreateTreeSelect(\"SelctOrg\",d,\"\",\"\",380); ");
+		buffer.append("document.write(d);");
+		 //buffer.append(" CreateTreeSelect(\"SelctOrg\",d,\"\",\"\",380); ");
 		buffer.append("\n");
 		buffer.append("</script>");
 		buffer.append("\n");
