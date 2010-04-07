@@ -37,7 +37,9 @@ public class TreeMakerImpl implements TreeMaker {
 		} else {
 
 		}
-		buffer.append("document.write(d);");
+		
+		//buffer.append("document.write(d);");
+		 buffer.append(" CreateTreeSelect(\"SelctOrg\",d,\"\",\"\",380); ");
 		buffer.append("\n");
 		buffer.append("</script>");
 		buffer.append("\n");

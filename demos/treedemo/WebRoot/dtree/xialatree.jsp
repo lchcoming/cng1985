@@ -13,8 +13,7 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
-		<script type="text/javascript" src="TreeSelect.js"></script>
-		<style type="text/css" href="treeselect.css"></style>
+		
 		<tree:TreeScript></tree:TreeScript>
 		<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
@@ -23,6 +22,7 @@
 
 	<body>
 			<tree:DTree></tree:DTree>
+			
 		<br>
 	</body>
 </html>
