@@ -39,14 +39,15 @@ Ext.onReady(function(){
       //useArrows:true,//小箭头
       autoHeight:true,
       width:150,
-      lines:true //节点间的虚线条
+      lines:true, //节点间的虚线条
       //loader : new Tree.TreeLoader( {////加载节点数据
 
-            //  dataUrl : 'http://localhost:8080/treedemo/navigatejson?id=1'
+            //dataUrl : 'http://localhost:8080/treedemo/navigatejson?id=1'
 
            //就是要动态载入数据的请求地址，这里请求时会提交一数为node的值，值为root即new Tree.AsyncTreeNode()对象的id值
 
-     // })
+     //})
+     loader: new Ext.tree.TreeLoader({dataUrl: "../navigatejson"})
   });
   //根节点
   var root=new Ext.tree.TreeNode({
@@ -86,7 +87,7 @@ Ext.onReady(function(){
      text:"系统设置"
  }));
   var remoteroot = new Ext.tree.AsyncTreeNode({
-        text: 'Ext JS',
+        text: '资源库',
         draggable:false,
         id:'source'
     });

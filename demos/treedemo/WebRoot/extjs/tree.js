@@ -111,18 +111,18 @@
              }  
              if(!loader){  
                  loader = new Ext.tree.TreeLoader({  
-                     url : basePath + '/navigatejson?id=1'  
+                     url :  '/treedemo/navigatejson'  
                  });  
                  loader.on('beforeload', function(treeloader, node) {  
                      treeloader.baseParams = {  
                          id : node.id,  
-                         method : 'tree'  
+                         
                      };  
                  }, this);  
              }  
              if(!root){  
                  root = new Ext.tree.AsyncTreeNode({  
-                     id : '0',  
+                     id : '1',  
                      text : "系统菜单"  
                  });  
              }  

@@ -42,13 +42,24 @@ public class NavigateJsonServlet extends HttpServlet {
 
 	    public void doGet(HttpServletRequest request, HttpServletResponse response)  
 	             throws ServletException, IOException {  
-	         this.doPost(request, response);  
+	    	  System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
+		         NavigateManager navigateManager = new NavigateManager();  
+		         request.setAttribute("list", navigateManager.getChildrenById(new Integer(request.getParameter("id"))));  
+		         RequestDispatcher dispatcher = request.getRequestDispatcher("/exttree/json.jsp");  
+		         dispatcher.forward(request, response);  
 	     }  
 	     public void doPost(HttpServletRequest request, HttpServletResponse response)  
 	             throws ServletException, IOException {  
-	   
-	         NavigateManager navigateManager = new NavigateManager();  
-	         request.setAttribute("list", navigateManager.getChildrenById(new Integer(request.getParameter("id"))));  
+	         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
+	         NavigateManager navigateManager = new NavigateManager(); 
+	         String id=request.getParameter("id");
+	         if(null==id){
+	        	  request.setAttribute("list", navigateManager.getChildrenById(1));  
+	         }
+	         else{
+	        	 request.setAttribute("list", navigateManager.getChildrenById(new Integer(id)) );  
+	         }
+	        
 	         RequestDispatcher dispatcher = request.getRequestDispatcher("/exttree/json.jsp");  
 	         dispatcher.forward(request, response);  
 	     }  
