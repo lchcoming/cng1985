@@ -23,8 +23,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class NavigateJsonServlet extends HttpServlet {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class NavigateJsonServlet extends HttpServlet {
+private Logger logger=LoggerFactory.getLogger(getClass());
 	/**
 	 * Constructor of the object.
 	 */
@@ -42,7 +45,7 @@ public class NavigateJsonServlet extends HttpServlet {
 
 	    public void doGet(HttpServletRequest request, HttpServletResponse response)  
 	             throws ServletException, IOException {  
-	    	  System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
+	    	logger.info("get");
 		         NavigateManager navigateManager = new NavigateManager();  
 		         request.setAttribute("list", navigateManager.getChildrenById(new Integer(request.getParameter("id"))));  
 		         RequestDispatcher dispatcher = request.getRequestDispatcher("/exttree/json.jsp");  
@@ -50,7 +53,7 @@ public class NavigateJsonServlet extends HttpServlet {
 	     }  
 	     public void doPost(HttpServletRequest request, HttpServletResponse response)  
 	             throws ServletException, IOException {  
-	         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>");
+	    	 logger.info("post");
 	         NavigateManager navigateManager = new NavigateManager(); 
 	         String id=request.getParameter("id");
 	         if(null==id){
