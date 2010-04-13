@@ -12,6 +12,7 @@
 	</bean>
 	<bean id="HelloAction" class="com.ada.action.HelloAction"></bean>
 	<bean id="TreeAction" class="com.ada.action.TreeAction"></bean>
+	<bean id="TreeJson" class="com.ada.action.TreeJson"></bean>
 	<bean id="TreeDAO" class="com.ada.dao.TreeDAOImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory" />

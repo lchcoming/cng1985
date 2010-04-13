@@ -9,8 +9,9 @@
        id:'${obj.id}',  
      text:'${obj.title}',  
        <c:if test="${obj.leaf == 1}">  
-         leaf:true,  
+         leaf:true,  href:'${obj.url}',hrefTarget:'dd',
      </c:if>  
+     
       singleClickExpand:true  
   }  
        <c:if test="${i.index<len}">,</c:if>  

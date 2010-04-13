@@ -7,5 +7,6 @@
 
     <!-- 在此配置所有业务action的xml -->
 	<include file="conf/struts/demo.xml" />
+	<include file="conf/struts/json.xml" />
 	<include file="com/ada/dtree/struts2/dtree.xml" />
 </struts>
