@@ -22,40 +22,43 @@ public class TreeHelp {
 
 	public String makeTree(List<CailiaoZiyuanType> ytypespes) {
 		StringBuffer buffer = new StringBuffer();
-		if(null!=ytypespes){
+		if (null != ytypespes) {
 			buffer.append("[");
-			
-			for(CailiaoZiyuanType item:ytypespes)
-			{
+			int length = ytypespes.size();
+			int temp = 0;
+			for (CailiaoZiyuanType item : ytypespes) {
+				temp++;
 				buffer.append("{");
-				buffer.append("id:'"+item.getCailiaoTypeId()+"'");
+				buffer.append("id:'" + item.getCailiaoTypeId() + "'");
 				buffer.append(",");
 				// href:'${obj.url}',hrefTarget:'dd',
-				//buffer.append("href:'"+item.getCailiaoTypeName()+"'");
-				//buffer.append("href:'a.ction'");
-				//buffer.append(",");
+				// buffer.append("href:'"+item.getCailiaoTypeName()+"'");
+				// buffer.append("href:'a.ction'");
+				// buffer.append(",");
 				buffer.append("hrefTarget:'dd'");
 				buffer.append(",");
-				buffer.append("text:'"+item.getCailiaoTypeName()+"'");
+				buffer.append("text:'" + item.getCailiaoTypeName() + "'");
 				buffer.append(",");
-				if(item.getCailiaoZiyuanTypes().size()<1){
-					buffer.append("href:'treetypeone.action?id="+item.getCailiaoTypeId()+"'");
+
+				if (item.getCailiaoZiyuanTypes().size() < 1) {
+					buffer.append("href:'treetypeone.action?id="
+							+ item.getCailiaoTypeId() + "'");
 					buffer.append(",");
 					buffer.append("leaf:true");
 					buffer.append(",");
-				}
-				else{
-					buffer.append("href:'treetypemore.action?id="+item.getCailiaoTypeId()+"'");
+				} else {
+					buffer.append("href:'treetypemore.action?id="
+							+ item.getCailiaoTypeId() + "'");
 					buffer.append(",");
 				}
 				buffer.append("singleClickExpand:true");
-				buffer.append(",");
 				buffer.append("}");
-				buffer.append(",");
+				if (temp < length) {
+					buffer.append(",");
+				}
 			}
 			buffer.append("]");
-		}
-		else{
+		} else {
 			buffer.append("[]");
 		}
 		return buffer.toString();

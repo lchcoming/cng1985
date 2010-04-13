@@ -7,13 +7,14 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>信息更新成功</title>
 		<script type="text/javascript">  
+		alert(this.parent.FormEditWin);
         // 信息保存成功后，刷新父节点  
        this.parent.FormEditWin.reloadNavNode();  
    </script>
 	</head>
 	<body>
 		<center>
-			恭喜，信息更新成功！
+			恭喜，信息更新成功！    
 		</center>
 	</body>
 </html>

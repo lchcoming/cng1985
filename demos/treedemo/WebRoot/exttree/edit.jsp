@@ -33,7 +33,7 @@
            }  
       </script>
 	</head>
-	<body style="background-color: white">
+	<body style="background-color: white"  onUnload="window.opener.location.reload();">
 		<br />
 		<br />
 		<form action="navigatesave" method="post"
