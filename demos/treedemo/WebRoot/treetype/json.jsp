@@ -14,6 +14,6 @@
      
       singleClickExpand:true  
   }  
-       <c:if test="${i.index<len}">,</c:if>  
+       ,<c:if test="${i.index<len}">,</c:if>  
   </c:forEach>  
    ]  

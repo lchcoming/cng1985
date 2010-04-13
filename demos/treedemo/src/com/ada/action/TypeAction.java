@@ -16,10 +16,14 @@ package com.ada.action;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.ada.dao.BaseDAOImpl;
 import com.ada.entity.CailiaoZiyuanType;
 
 public class TypeAction {
+	private Logger logger=LoggerFactory.getLogger(getClass());
 
 	public String work() {
 		return "success";
@@ -37,7 +41,7 @@ public class TypeAction {
 	}
 
 	public TypeAction() {
-
+		dao=new BaseDAOImpl();
 	}
 
 	public String getId() {
@@ -51,7 +55,10 @@ public class TypeAction {
 	private List<CailiaoZiyuanType> types;
 
 	public String tree() {
-		types=(List<CailiaoZiyuanType>)dao.findByQuery("from CailiaoZiyuanType type where type.cailiaoZiyuanTypecailiaoTypeId = "+id);
+		String hql="from CailiaoZiyuanType type where type.cailiaoZiyuanType.cailiaoTypeId = "+id;
+		logger.info("ff{}ff",hql);
+		logger.info(hql);
+		types=(List<CailiaoZiyuanType>)dao.findByQuery(hql);
 		return "success";
 	}
 

@@ -139,7 +139,7 @@ NavTree = function() {
 			}
 			if (!root) {
 				root = new Ext.tree.AsyncTreeNode({
-							id : '1',
+							id : '0',
 							text : "系统菜单"
 						});
 			}

@@ -141,10 +141,10 @@ public class BaseDAOImpl {
 		transaction.begin();
 		Query query = session.createQuery(object);
 		List<?> temp = null;
-		logger.info(query.getQueryString());
+		logger.info("Query SQL:{}",query.getQueryString());
 		logger.info("返回对象类型{}", query.getReturnTypes());
-		logger.info("{}", query.getReturnAliases());
-		logger.info("{}", query.getNamedParameters());
+		logger.info("ReturnAliases:{}", query.getReturnAliases());
+		logger.info("NamedParameters:{}", query.getNamedParameters());
 		temp = query.list();
 		if (temp.size() > 0) {
 			Object o = temp.get(0);
