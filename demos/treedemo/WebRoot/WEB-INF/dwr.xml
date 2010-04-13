@@ -11,7 +11,14 @@
 			<include method="ajaxRemoveNode" />
 			<include method="ajaxMoveNode" />
 		</create>
-		
+		<create javascript="CailiaoZiyuanTypeDwr" creator="new">
+			<param name="class"
+				value="com.ada.dwr.CailiaoZiyuanTypeDwr">
+			</param>
+			<include method="ajaxUpdateTitle" />
+			<include method="ajaxRemoveNode" />
+			<include method="ajaxMoveNode" />
+		</create>
 		<create javascript="Hi" creator="new">
 			<param name="class"
 				value="com.ada.dwr.HelloDwr">

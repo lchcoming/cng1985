@@ -30,7 +30,7 @@
 
 		<script type="text/javascript" src="<%=basePath%>extjs/ext-all.js"></script>
 		<script type='text/javascript'
-			src='<%=basePath%>dwr/interface/NavigateManager.js'></script>
+			src='<%=basePath%>dwr/interface/CailiaoZiyuanTypeDwr.js'></script>
 		<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
 		<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
 		<script type='text/javascript' src='treetype/tree.js'></script>

@@ -21,7 +21,19 @@
 		<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-		
+			<link rel="stylesheet" type="text/css"
+			href="<%=basePath%>extjs/ext-all.css" />
+		<!-- GC -->
+		<!-- LIBS -->
+		<script type="text/javascript" src="<%=basePath%>extjs/ext-base.js"></script>
+		<!-- ENDLIBS -->
+
+		<script type="text/javascript" src="<%=basePath%>extjs/ext-all.js"></script>
+		<script type='text/javascript'
+			src='<%=basePath%>dwr/interface/CailiaoZiyuanTypeDwr.js'></script>
+		<script type='text/javascript' src='<%=basePath%>dwr/engine.js'></script>
+		<script type='text/javascript' src='<%=basePath%>dwr/util.js'></script>
+		<script type='text/javascript' src='treetype/tree.js'></script>
 	</head>
 
 	<body>

@@ -18,5 +18,15 @@
 			/treetype/json.jsp
 			</result>
 		</action>
+		<action name="treetypeone" class="TypeAction" method="makeOne">
+			<result name="success" >
+			/treetype/one.jsp
+			</result>
+		</action>
+		<action name="treetypemore" class="TypeAction" method="makeMore">
+			<result name="success" >
+			/treetype/list.jsp
+			</result>
+		</action>
 	</package>
 </struts>

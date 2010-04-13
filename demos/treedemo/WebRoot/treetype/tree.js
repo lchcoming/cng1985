@@ -129,7 +129,7 @@ NavTree = function() {
 			}
 			if (!loader) {
 				loader = new Ext.tree.TreeLoader({
-							url : 'treetypejson.action'
+							url : 'treejsonwork'
 						});
 				loader.on('beforeload', function(treeloader, node) {
 							treeloader.baseParams = {
@@ -308,10 +308,10 @@ NavTree = function() {
 // 文档加载完毕执行
 Ext.onReady(function() {
 			Ext.BLANK_IMAGE_URL = "images/default/s.gif";
-			if (typeof(NavigateManager) == "undefined") {
+			if (typeof(CailiaoZiyuanTypeDwr) == "undefined") {
 				Ext.Msg.alert("警告提示", "请先设置 DWR，并实例化NavigateManager");
 			} else {
-				NavTree.setMgr(NavigateManager);
+				NavTree.setMgr(CailiaoZiyuanTypeDwr);
 				NavTree.init();
 				NavTree.show();
 			}

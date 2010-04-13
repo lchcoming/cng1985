@@ -5,9 +5,9 @@
  * Comments:            <br />                                  
  * JDK version used:<JDK1.6><br />                                 
  * Namespace:package com.ada.bulider;<br />                             
- * Author£ºada.young <br />                  
- * Create Date£º  Apr 13, 2010<br />   
- * Modified By£ºada.young          <br />                                
+ * Authorï¿½ï¿½ada.young <br />                  
+ * Create Dateï¿½ï¿½  Apr 13, 2010<br />   
+ * Modified Byï¿½ï¿½ada.young          <br />                                
  * Modified Date:Apr 13, 20102009-10-28        <br />                               
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
@@ -30,10 +30,22 @@ public class TreeHelp {
 				buffer.append("{");
 				buffer.append("id:'"+item.getCailiaoTypeId()+"'");
 				buffer.append(",");
+				// href:'${obj.url}',hrefTarget:'dd',
+				//buffer.append("href:'"+item.getCailiaoTypeName()+"'");
+				//buffer.append("href:'a.ction'");
+				//buffer.append(",");
+				buffer.append("hrefTarget:'dd'");
+				buffer.append(",");
 				buffer.append("text:'"+item.getCailiaoTypeName()+"'");
 				buffer.append(",");
 				if(item.getCailiaoZiyuanTypes().size()<1){
+					buffer.append("href:'treetypeone.action?id="+item.getCailiaoTypeId()+"'");
+					buffer.append(",");
 					buffer.append("leaf:true");
+					buffer.append(",");
+				}
+				else{
+					buffer.append("href:'treetypemore.action?id="+item.getCailiaoTypeId()+"'");
 					buffer.append(",");
 				}
 				buffer.append("singleClickExpand:true");
