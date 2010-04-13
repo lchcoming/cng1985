@@ -1,9 +1,4 @@
-   1. <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
-   2. <html xmlns="http://www.w3.org/1999/xhtml" >  
-   3. <head>  
-   4.     <title>JSON Plugin</title>  
-   5.     <script type="text/javascript">      
-   6.     var bXmlHttpSupport = (typeof XMLHttpRequest != "undefined" || window.ActiveXObject);  
+  6.     var bXmlHttpSupport = (typeof XMLHttpRequest != "undefined" || window.ActiveXObject);  
    7.        
    8.     if (typeof XMLHttpRequest == "undefined" && window.ActiveXObject) {  
    9.         function XMLHttpRequest() {  
@@ -38,9 +33,3 @@
   38.         }  
   39.     }  
   40.     </script>  
-  41. </head>  
-  42. <body>  
-  43.     <input type="button" value=" 点我吧" onclick="showdata()" />  
-  44.     <div id="tttt"></div>  
-  45. </body>  
-  46. </html>  
