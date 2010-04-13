@@ -22,7 +22,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.ada.bulider.TreeHelp;
 import com.ada.dao.BaseDAOImpl;
+import com.ada.entity.CailiaoZiyuanType;
 
 public class DataTest {
 
@@ -43,6 +45,9 @@ public class DataTest {
 		List<?> d = dao
 				.findByQuery("from CailiaoZiyuanType type where type.cailiaoZiyuanType.cailiaoTypeId = '0' ");
 		assertNotNull(d);
+		TreeHelp help=new TreeHelp();
+	String qq=	help.makeTree((List<CailiaoZiyuanType>)d);
+	System.out.println(qq);	
 	}
 
 }

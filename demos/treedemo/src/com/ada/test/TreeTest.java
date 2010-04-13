@@ -5,9 +5,9 @@
  * Comments:            <br />                                  
  * JDK version used:<JDK1.6><br />                                 
  * Namespace:package com.ada.test;<br />                             
- * Author：ada.young <br />                  
- * Create Date：  Mar 29, 2010<br />   
- * Modified By：ada.young          <br />                                
+ * Author锛歛da.young <br />                  
+ * Create Date锛�  Mar 29, 2010<br />   
+ * Modified By锛歛da.young          <br />                                
  * Modified Date:Mar 29, 20102009-10-28        <br />                               
  * Why & What is modified <br />   
  * Version: 1.01         <br />       
@@ -34,6 +34,7 @@ public class TreeTest {
 	public void testDao()   {
 		Session session=		HibernateSessionFactory.getSession();
 		assertNotNull(session);
+		
 	}
 }
 

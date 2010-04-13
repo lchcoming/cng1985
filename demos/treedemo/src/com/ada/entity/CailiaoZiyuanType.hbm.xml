@@ -44,7 +44,7 @@
   <property generated="never" lazy="false" name="demo5" type="java.lang.String">
    <column name="DEMO5"/>
   </property>
-  <set inverse="true" lazy="true" name="cailiaoZiyuanTypes" sort="unsorted">
+  <set inverse="true" lazy="false" name="cailiaoZiyuanTypes" sort="unsorted">
    <key>
     <column length="32" name="PARENT_CAILIAO_TYPE_ID"/>
    </key>
