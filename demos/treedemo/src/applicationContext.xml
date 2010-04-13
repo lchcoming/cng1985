@@ -11,6 +11,7 @@
 		</property>
 	</bean>
 	<bean id="HelloAction" class="com.ada.action.HelloAction"></bean>
+	<bean id="TypeAction" class="com.ada.action.TypeAction"></bean>
 	<bean id="TreeAction" class="com.ada.action.TreeAction"></bean>
 	<bean id="TreeJson" class="com.ada.action.TreeJson"></bean>
 	<bean id="TreeDAO" class="com.ada.dao.TreeDAOImpl">
