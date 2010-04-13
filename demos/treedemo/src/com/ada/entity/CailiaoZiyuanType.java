@@ -35,13 +35,19 @@ public class CailiaoZiyuanType implements java.io.Serializable {
 	public CailiaoZiyuanType() {
 	}
 
+	/** minimal constructor */
+	public CailiaoZiyuanType(String cailiaoTypeId) {
+		this.cailiaoTypeId = cailiaoTypeId;
+	}
+
 	/** full constructor */
-	public CailiaoZiyuanType(CailiaoZiyuanType cailiaoZiyuanType,
-			String cailiaoTypeName, Date cailiaoTypeCreatTime,
-			String cailiaoTypeBy, Date cailiaoUpdateTime,
-			String cailiaoUpdateBy, String demo1, String demo2, String demo3,
-			String demo4, String demo5, Set cailiaoZiyuanTypes,
-			Set cailiaoZiyuans) {
+	public CailiaoZiyuanType(String cailiaoTypeId,
+			CailiaoZiyuanType cailiaoZiyuanType, String cailiaoTypeName,
+			Date cailiaoTypeCreatTime, String cailiaoTypeBy,
+			Date cailiaoUpdateTime, String cailiaoUpdateBy, String demo1,
+			String demo2, String demo3, String demo4, String demo5,
+			Set cailiaoZiyuanTypes, Set cailiaoZiyuans) {
+		this.cailiaoTypeId = cailiaoTypeId;
 		this.cailiaoZiyuanType = cailiaoZiyuanType;
 		this.cailiaoTypeName = cailiaoTypeName;
 		this.cailiaoTypeCreatTime = cailiaoTypeCreatTime;

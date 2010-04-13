@@ -129,7 +129,7 @@ NavTree = function() {
 			}
 			if (!loader) {
 				loader = new Ext.tree.TreeLoader({
-							url : '/treedemo/navigatejson'
+							url : 'treetypejson.action'
 						});
 				loader.on('beforeload', function(treeloader, node) {
 							treeloader.baseParams = {

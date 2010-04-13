@@ -1,4 +1,4 @@
-#Tue Apr 13 13:22:56 CST 2010
+#Tue Apr 13 13:57:26 CST 2010
 eclipse.preferences.version=1
 encoding//WebRoot/extjs/tree.js=UTF-8
 encoding//WebRoot/exttree/MyXhtml.txt=UTF-8
@@ -6,4 +6,7 @@ encoding//WebRoot/exttree/a.txt=UTF-8
 encoding//WebRoot/exttree/tree.js=UTF-8
 encoding//WebRoot/exttress/a.js=UTF-8
 encoding//WebRoot/treetype/tree.js=UTF-8
+encoding//src/com/ada/dao/BaseDAOImpl.java=UTF-8
+encoding//src/com/ada/pager/PageBean.java=UTF-8
+encoding//src/com/ada/pager/Pager.java=UTF-8
 encoding/<project>=GBK

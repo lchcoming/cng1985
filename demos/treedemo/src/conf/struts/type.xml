@@ -8,7 +8,12 @@
 
 		
 
-		<action name="treetype" class="TreeJson" method="work">
+		<action name="treetype" class="TypeAction" method="work">
+			<result name="success" >
+			/treetype/index.jsp
+			</result>
+		</action>
+		<action name="treetypejson" class="TypeAction" method="tree">
 			<result name="success" >
 			/treetype/index.jsp
 			</result>
