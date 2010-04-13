@@ -9,7 +9,9 @@
 		
 
 		<action name="treetype" class="TreeJson" method="work">
-			<result name="success"  type="json"></result>
+			<result name="success" >
+			/treetype/index.jsp
+			</result>
 		</action>
 	</package>
 </struts>
