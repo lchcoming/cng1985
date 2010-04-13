@@ -158,8 +158,8 @@ NavTree = function() {
 									if (node.isLeaf()) {
 										// alert(node.text);
 										// 为叶子节点时，点击不进入链接
-										FormEditWin
-												.showUrl(node.attributes["href"]);
+										//FormEditWin
+										//		.showUrl(node.attributes["href"]);
 									}
 								}
 							}
