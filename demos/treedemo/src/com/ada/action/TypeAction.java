@@ -55,7 +55,7 @@ public class TypeAction {
 	private List<CailiaoZiyuanType> types;
 
 	public String tree() {
-		String hql="from CailiaoZiyuanType type where type.cailiaoZiyuanType.cailiaoTypeId = "+id;
+		String hql="from CailiaoZiyuanType type where type.cailiaoZiyuanType.cailiaoTypeId = '"+id+"'";
 		logger.info("ff{}ff",hql);
 		logger.info(hql);
 		types=(List<CailiaoZiyuanType>)dao.findByQuery(hql);

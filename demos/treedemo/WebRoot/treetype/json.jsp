@@ -11,7 +11,6 @@
        <c:if test="${obj.cailiaoZiyuanTypes == null}">  
          leaf:true,  href:'${obj.cailiaoTypeId}',hrefTarget:'dd',
      </c:if>  
-     
       singleClickExpand:true  
   }  
        ,<c:if test="${i.index<len}">,</c:if>  
