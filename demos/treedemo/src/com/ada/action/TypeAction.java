@@ -20,7 +20,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ada.bulider.TreeHelp;
+import com.ada.bulider.TreesHelp;
 import com.ada.dao.BaseDAOImpl;
+import com.ada.entity.CailiaoZiyuan;
 import com.ada.entity.CailiaoZiyuanType;
 
 public class TypeAction {
@@ -102,9 +104,14 @@ public class TypeAction {
 				+ id + "'";
 		logger.info("ff{}ff", hql);
 		logger.info(hql);
+		String hql1="from CailiaoZiyuan type where type.cailiaoTypeId= '"
+			+ id + "'";
 		List<CailiaoZiyuanType> temp = (List<CailiaoZiyuanType>) dao
 				.findByQuery(hql);
-		treess = help.makeTree(temp);
+		List<CailiaoZiyuan> ziyuans=(List<CailiaoZiyuan> )dao.findByQuery(hql1);
+		//treess = help.makeTree(temp);
+		TreesHelp h=new TreesHelp();
+		treess=h.makeTree(temp, ziyuans);
 		return "success";
 	}
 

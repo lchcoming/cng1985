@@ -24,7 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ada.bulider.TreeHelp;
+import com.ada.bulider.TreesHelp;
 import com.ada.dao.BaseDAOImpl;
+import com.ada.entity.CailiaoZiyuan;
 import com.ada.entity.CailiaoZiyuanType;
 
 public class TreeHelpServlet extends HttpServlet {
@@ -61,14 +63,21 @@ public class TreeHelpServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// /treejsonwork
-		TreeHelp help = new TreeHelp();
+		BaseDAOImpl dao = new BaseDAOImpl();
+
 		String hql = "from CailiaoZiyuanType type where type.cailiaoZiyuanType.cailiaoTypeId = '"
 				+ request.getParameter("id") + "'";
 
-		BaseDAOImpl dao = new BaseDAOImpl();
+		String hql1 = "from CailiaoZiyuan type where type.cailiaoTypeId= '"
+				+ request.getParameter("id") + "'";
 		List<CailiaoZiyuanType> temp = (List<CailiaoZiyuanType>) dao
 				.findByQuery(hql);
-		String treess = help.makeTree(temp);
+		List<CailiaoZiyuan> ziyuans = (List<CailiaoZiyuan>) dao
+				.findByQuery(hql1);
+		// treess = help.makeTree(temp);
+		TreesHelp h = new TreesHelp();
+		String treess = h.makeTree(temp, ziyuans);
+
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println(treess);
@@ -94,14 +103,21 @@ public class TreeHelpServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		TreeHelp help = new TreeHelp();
+		BaseDAOImpl dao = new BaseDAOImpl();
+
 		String hql = "from CailiaoZiyuanType type where type.cailiaoZiyuanType.cailiaoTypeId = '"
 				+ request.getParameter("id") + "'";
 
-		BaseDAOImpl dao = new BaseDAOImpl();
+		String hql1 = "from CailiaoZiyuan type where type.cailiaoTypeId= '"
+				+ request.getParameter("id") + "'";
 		List<CailiaoZiyuanType> temp = (List<CailiaoZiyuanType>) dao
 				.findByQuery(hql);
-		String treess = help.makeTree(temp);
+		List<CailiaoZiyuan> ziyuans = (List<CailiaoZiyuan>) dao
+				.findByQuery(hql1);
+		// treess = help.makeTree(temp);
+		TreesHelp h = new TreesHelp();
+		String treess = h.makeTree(temp, ziyuans);
+
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println(treess);

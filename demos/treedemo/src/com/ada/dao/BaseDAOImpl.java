@@ -153,7 +153,7 @@ public class BaseDAOImpl {
 		try {
 			transaction.commit();
 		} catch (Exception e) {
-			logger.error("保存数据失败", e);
+			logger.error("查询数据失败", e);
 			transaction.rollback();
 		} finally {
 			HibernateSessionFactory.closeSession();
