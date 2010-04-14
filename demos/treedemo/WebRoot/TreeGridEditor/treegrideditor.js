@@ -48,7 +48,7 @@ Ext.onReady(function() {
         autoWidth: true,
         
         // 高度
-        height: 400,
+        height: 800,
         
         // 渲染到DOM节点
         renderTo: 'div-treegrideditor',
@@ -57,7 +57,7 @@ Ext.onReady(function() {
         maxDepth: 5,
         
         // 复选框
-        checkbox: true,
+        checkbox: false,
         
         // 复选框类型，取值范围: 'multiple' 'single'
         checkMode: 'multiple',
@@ -122,7 +122,22 @@ Ext.onReady(function() {
                 regex: /^\d{1,10}$/,
                 regexText: '请输入1-10位正整数'
             }
-        }, {
+        }
+        , {
+            header: '人数',
+            dataIndex: 'popu',
+            width: 150,
+            tpl: new Ext.XTemplate('{popu}人'),
+            inputCfg: {
+                cls: 'tge-inputfield-popu',
+                defaultValue: '0',
+                allowBlank: false,
+                maskRe: /^\d$/,
+                regex: /^\d{1,10}$/,
+                regexText: '请输入1-10位正整数'
+            }
+        }
+        , {
             header: '是否覆盖',
             dataIndex: 'overlapped',
             width: 100,
