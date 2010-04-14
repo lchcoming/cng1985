@@ -125,7 +125,7 @@ Ext.onReady(function() {
         }
         , {
             header: '人数',
-            dataIndex: 'popu',
+            dataIndex: 'popu3',
             width: 150,
             tpl: new Ext.XTemplate('{popu}人'),
             inputCfg: {

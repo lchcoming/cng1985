@@ -2,6 +2,7 @@ var basePath = "http://localhost:8080/treedemo";
 if (typeof(glbRootPath) != "undefined") {
 	basePath = glbRootPath;
 }
+
 // 扩展窗体
 FormEditWin = function() {
 	var curFormWin;
@@ -82,6 +83,7 @@ FormEditWin = function() {
 			return win;
 		},
 		reloadNavNode : function() {
+			alert("ffff");
 		},
 
 		showUrl : function(href) {
@@ -108,7 +110,6 @@ FormEditWin = function() {
 
 	}
 }();
-
 // 导航树
 NavTree = function() {
 	var nav;
