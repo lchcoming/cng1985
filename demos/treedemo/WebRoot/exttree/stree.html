@@ -9,7 +9,18 @@
 
 		<!-- <SCRIPT src="jsontreetest.js" type=text/javascript></SCRIPT>-->
 
-<script type="text/javascript">
+		<script type="text/javascript">
+		
+var pa=new Ext.TabPanel({
+title:'北',
+region: 'north',
+contentEl:'right'
+})
+var paa=new Ext.TabPanel({
+title:'中',
+region: 'center',
+contentEl:'center'
+})
 var loader= new Ext.tree.TreeLoader({dataUrl: "../navigatejson",});
 loader.on('beforeload', function(treeloader, node) {
 							treeloader.baseParams = {
@@ -67,6 +78,7 @@ Ext.onReady(function(){
     Ext.QuickTips.init(); 
      mytree=new Ext.tree.TreePanel({
       el:"tree-div",
+      region:"west",
       animate:true,////展开,收缩动画,false时,则没有动画效果
       title:"人力资源库",
       collapsible:true,//可折叠
@@ -145,10 +157,14 @@ Ext.onReady(function(){
 	});
   //  tree.setRootNode(root)
   //mytree.setRootNode(remoteroot);//设置根节点
- mytree.setRootNode(remoteroot);//设置根节点
- mytree.render();//不要忘记render(),否则不显示
- root.expand();
-
+ //mytree.setRootNode(remoteroot);//设置根节点
+ //mytree.render();//不要忘记render(),否则不显示
+ //root.expand();
+  Ext.state.Manager.setProvider(new Ext.state.CookieProvider());
+        
+        var viewport = new Ext.Viewport({
+            layout: 'border',
+            items: [mytree,pa,paa]});
 })
 function showall(){
  mytree.expandAll();
@@ -160,10 +176,17 @@ mytree.collapseAll();
 	</head>
 
 	<body>
-<button onclick="showall();">张开</button>
-         <button onclick="hidenall();">收缩</button>
+	<div id="center">gg</div>
+		<div id="right">h
+			<button onclick="showall();">
+				张开
+			</button>
+			<button onclick="hidenall();">
+				收缩
+			</button>
+		</div>
 		<div id="tree-div"></div>
-        
+
 	</body>
 
 </html>

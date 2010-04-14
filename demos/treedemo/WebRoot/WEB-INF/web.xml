@@ -94,7 +94,22 @@
     <servlet-class>com.ada.servlet.TreeHelpServlet</servlet-class>
   </servlet>
 
-
+   <servlet>
+        <servlet-name>
+            treegrideditorservlet
+        </servlet-name>
+        <servlet-class>
+           com.ada.servlet.TreeGridEditorServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>
+            treegrideditorservlet
+        </servlet-name>
+        <url-pattern>
+            /tgeservlet
+        </url-pattern>
+    </servlet-mapping>
 
 
 
