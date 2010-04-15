@@ -71,7 +71,7 @@ public class TreeHelpServlet extends HttpServlet {
 		BaseDAOImpl dao = new BaseDAOImpl();
 
 		String hql = "from CailiaoZiyuanType type where type.cailiaoZiyuanType.cailiaoTypeId = '"
-				+ request.getParameter("id") + "'";
+				+ request.getParameter("id") + "'"+" order by cailiaoTypeName";
 
 		List<CailiaoZiyuanType> temp = (List<CailiaoZiyuanType>) dao
 				.findByQuery(hql);
