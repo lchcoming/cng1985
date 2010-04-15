@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ada.bulider.TreeHelp;
+import com.ada.bulider.TTreeHelp;
 import com.ada.bulider.TreesHelp;
 import com.ada.dao.BaseDAOImpl;
 import com.ada.entity.CailiaoZiyuan;
@@ -62,21 +62,23 @@ public class TreeHelpServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		aa(request, response);
+	}
+
+	private void aa(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		// /treejsonwork
 		BaseDAOImpl dao = new BaseDAOImpl();
 
 		String hql = "from CailiaoZiyuanType type where type.cailiaoZiyuanType.cailiaoTypeId = '"
 				+ request.getParameter("id") + "'";
 
-		String hql1 = "from CailiaoZiyuan type where type.cailiaoTypeId= '"
-				+ request.getParameter("id") + "'";
 		List<CailiaoZiyuanType> temp = (List<CailiaoZiyuanType>) dao
 				.findByQuery(hql);
-		List<CailiaoZiyuan> ziyuans = (List<CailiaoZiyuan>) dao
-				.findByQuery(hql1);
+	
 		// treess = help.makeTree(temp);
-		TreesHelp h = new TreesHelp();
-		String treess = h.makeTree(temp, ziyuans);
+		TTreeHelp h = new TTreeHelp();
+		String treess = h.makeTree(temp);
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -103,6 +105,11 @@ public class TreeHelpServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		aa(request, response);
+	}
+
+	private void eee(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
 		BaseDAOImpl dao = new BaseDAOImpl();
 
 		String hql = "from CailiaoZiyuanType type where type.cailiaoZiyuanType.cailiaoTypeId = '"
