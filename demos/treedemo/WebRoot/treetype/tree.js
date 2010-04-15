@@ -146,6 +146,7 @@ NavTree = function() {
 			if (!nav) {
 				nav = new Ext.tree.TreePanel({
 							title : "材料资源库",
+							el:'treediv',
 							width : 232,
 							heigth : 500,
 							autoScroll : true,
@@ -253,13 +254,7 @@ NavTree = function() {
 													.showEditDirWin(nodeSelected);
 										}
 									}, "-", {
-										text : "添加叶子节点",
-										handler : function() {
-											FormEditWin
-													.showAddLeafWin(nodeSelected);
-										}
-									}, "-", {
-										text : "添加目录节点",
+										text : "添加类型",
 										handler : function() {
 											FormEditWin
 													.showAddDirWin(nodeSelected);
