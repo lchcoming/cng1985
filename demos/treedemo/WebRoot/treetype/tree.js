@@ -81,7 +81,27 @@ FormEditWin = function() {
 			curFormWin = win;
 			return win;
 		},
+				createWins : function(winId, winTitle, iframePage, closeFun) {
+			// 供各类型窗口创建时调用
+			var win = Ext.getCmp(winId);
+			if (!win) {
+				win = new Ext.Window({
+					id : winId,
+					title : "菜单编辑窗口-" + winTitle,
+					width : this.width,
+					height : this.height,
+					maximizable : true,
+					modal : true,
+					html : "<iframe width='100%' height='100%' frameborder='0' src='"
+							+ iframePage + "'></iframe>"
+				});
+				this.reloadNavNode = closeFun;
+			}
+			curFormWin = win;
+			return win;
+		},
 		reloadNavNode : function() {
+			alert("fffffggg");
 		},
 
 		showUrl : function(href) {
@@ -195,6 +215,7 @@ NavTree = function() {
 				// 当节点删除时触发事件
 				nav.on("remove", function(tree, parentNode, node) {
 							if (removeFlag) {
+								//可以通过返回一个bool值来判断是否删除成功
 								mgr.ajaxRemoveNode(node.id);
 							}
 						});
@@ -262,6 +283,12 @@ NavTree = function() {
 									}, "-", {
 										text : "删除",
 										handler : this.delTreeItemComfirm
+									}, "-", {
+										text : "模型",
+										handler :  function(){
+										window.showModalDialog("a.html");
+										FormEditWin.reloadNavNode(); 
+										}
 									}]
 						});
 			}
