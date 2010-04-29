@@ -50,5 +50,6 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jstl-api-1.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jstl-impl-1.2.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/struts2-json-plugin-2.1.8.1.jar"/>
+	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/IKAnalyzer3.2.0Stable.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

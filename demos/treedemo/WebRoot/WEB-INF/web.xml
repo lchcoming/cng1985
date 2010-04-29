@@ -77,6 +77,10 @@
 			<param-value>true</param-value>
 		</init-param>
 	</servlet>
+		<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
   <servlet>
     <servlet-name>NavigateEditServlet</servlet-name>
     <servlet-class>com.ada.dwr.NavigateEditServlet</servlet-class>

@@ -17,23 +17,24 @@ package com.ada.test;
 import java.util.Date;
 import java.util.Properties;
 
+import org.wltea.analyzer.lucene.IKQueryParser;
+
 public class App {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		IKQueryParser iKQueryParser = new IKQueryParser();
+	
 		// TODO Auto-generated method stub
-		   System.out.println(new Date());
-	        Properties P = System.getProperties();
-	        P.list(System.out);
-	        System.out.println("--- Memony Usage:");
-	        Runtime rt = Runtime.getRuntime();
-	        System.out.println("Total Memory="
-	                          +rt.totalMemory() 
-	                          +"Free Memory="
-	                          +rt.freeMemory());
+		System.out.println(new Date());
+		Properties P = System.getProperties();
+		P.list(System.out);
+		System.out.println("--- Memony Usage:");
+		Runtime rt = Runtime.getRuntime();
+		System.out.println("Total Memory=" + rt.totalMemory() + "Free Memory="
+				+ rt.freeMemory());
 	}
 
 }
-
