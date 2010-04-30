@@ -146,5 +146,8 @@ public class StringUtil {
 		}
 		return tempStr;
 	}
-	
+	public static void main(String [] args){
+		System.out.println("dd");
+		System.out.println(moneyToUpperCase(1556.155));
+	}
 }
