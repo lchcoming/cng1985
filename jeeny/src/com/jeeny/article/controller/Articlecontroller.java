@@ -10,7 +10,7 @@ public class Articlecontroller {
 	 /**
      * The public index page, used for unauthenticated users.
      */
-    @RequestMapping(value="/index.htm", method=RequestMethod.GET)
+    @RequestMapping(value="/article/index.htm", method=RequestMethod.GET)
     public ModelAndView displayPublicIndex() {
        
         return new ModelAndView("index", "contact", "ddd");
