@@ -40,13 +40,18 @@ public class WelcomePanel extends JPanel {
 	
 	private MainFrame mainFrame;
 	
+	public WelcomePanel(JFrame mainFrame)
+	{
+		//this.mainFrame = mainFrame;
+		this.setLayout(new BorderLayout());
+		initUI();
+	}
 	public WelcomePanel(MainFrame mainFrame)
 	{
 		this.mainFrame = mainFrame;
 		this.setLayout(new BorderLayout());
 		initUI();
 	}
-	
 	public void initUI()
 	{
 		initMenu();
