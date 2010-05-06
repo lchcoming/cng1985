@@ -33,21 +33,23 @@ public DiaryJPanel(JFrame jframe){
 }
 
 private void initUI() {
-	JMenuBar menuBar = this.mainFrame.getJMenuBar();
+	JMenuBar menuBar = mainFrame.getJMenuBar();
 	menuBar.removeAll();
-	JMenu mnuFile = new JMenu("程序");
-	JMenuItem miExit = new JMenuItem("退出");
-	mnuFile.add(miExit);
-	miExit.addActionListener(new ActionListener(){
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-			//closeApplication();
-		}
-		
-	});
+	JMenu mnuFile = new JMenu("文件(F)");
+	JMenu mnuEdit = new JMenu("编辑(E)");
+	JMenu mnuLogin = new JMenu("记录(L)");
+	JMenu mnuSetup = new JMenu("设置(S)");
+	JMenu mnuHelp = new JMenu("帮助(H)");
+	mnuFile.setMnemonic('F');
+	mnuEdit.setMnemonic('E');
+	mnuLogin.setMnemonic('L');
+	mnuSetup.setMnemonic('S');
+	mnuHelp.setMnemonic('H');
 	menuBar.add(mnuFile);
+	menuBar.add(mnuEdit);
+	menuBar.add(mnuLogin);
+	menuBar.add(mnuSetup);
+	menuBar.add(mnuHelp);
 	
 }
 
