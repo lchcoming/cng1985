@@ -15,10 +15,15 @@
 package com.diary.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -50,9 +55,25 @@ private void initUI() {
 	menuBar.add(mnuLogin);
 	menuBar.add(mnuSetup);
 	menuBar.add(mnuHelp);
-	
+	initStatusBar();
 }
-
+private void initStatusBar()
+{
+	JPanel statusBar = new JPanel(){
+		public void paintComponent(Graphics g)
+		{
+			g.drawImage(new ImageIcon(this.getClass().getClassLoader().getResource("image/statusBG.gif")).getImage(),0,0,getWidth(),25,null);
+		}
+	};
+	statusBar.setSize(this.getWidth(), 30);
+	statusBar.setLayout(new FlowLayout(FlowLayout.LEFT));
+	JLabel	statusInfo = new JLabel();
+	statusInfo.setForeground(Color.WHITE);
+	statusInfo.setText("×¼±¸¾ÍÐ÷£¡");
+	statusInfo.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("image/statDone.gif")));
+	statusBar.add(statusInfo);
+	this.add(statusBar,BorderLayout.SOUTH);
+}
 
 }
 
