@@ -19,17 +19,7 @@
 
 <script src="/js/suggest-min.js"></script>
 
-<style>
-    #page { padding: 50px 50px 300px; width: 750px; margin: 0 auto; }
-    h1, h2, h3 { margin: 1em 0 0.3em; }
-    .section { margin-bottom: 50px; }
-    .section ol { margin: 5px 20px; }
-    .section ol li { list-style: decimal inside; margin: 5px 0; }
-    .search-input { width: 300px; height: 20px; padding: 3px 2px 2px 4px; }
-    .search-submit { padding: 4px 10px; margin-left: 5px; }
-    input.g-submit { padding: 2px 8px; margin-left: 5px; }
-    html { overflow-y: scroll; }
-</style>
+
 </head>
 
 <body>
@@ -100,12 +90,7 @@
 	<div id="main">
 		<div class="padding">
 			<div class="right_side">
-				<div class="sponsors">
-					<a href="#" title="sponsor1"><img class="ml" src="images/sponsor.jpg" alt="" /></a>
-					<a href="#" title="sponsor2"><img class="ml" src="images/sponsor.jpg" alt="" /></a>
-					<a href="#" title="sponsor3"><img src="images/sponsor.jpg" alt="" /></a>
-				</div>
-				<h3>Latest Articles</h3>
+				<h3>最新发布的文章</h3>
 				<ul>
 					<li><a href="http://www.free-css-templates.com/webdesign/helpful-links-for-webdesigners/" title="Webdesign : Helpful Links for Webdesigners (December 16 , 2007)">Helpful Links for Webdesigners</a></li>
 					<li><a href="http://www.free-css-templates.com/internet-news/xhtml-css-validator/" title="Internet : XHTML and CSS Validator (December 15 , 2007)">XHTML and CSS Validator</a></li>
