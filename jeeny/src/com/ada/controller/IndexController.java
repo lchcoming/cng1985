@@ -39,10 +39,10 @@ public class IndexController {
      * The implementation should be an instance of {@link AclPermissionEvaluator} or one which is compatible with Spring
      * Security's ACL module.
      */
-    @RequestMapping(value="/hello.htm", method=RequestMethod.GET)
-    public ModelAndView displayUserContacts() {
+    @RequestMapping(value="/search.htm", method=RequestMethod.POST)
+    public ModelAndView displayUserContacts(String search) {
       
 
-        return new ModelAndView("hello", "model", "gg");
+        return new ModelAndView("querylist", "search", search);
     }
 }
