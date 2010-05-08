@@ -106,7 +106,7 @@
 					</div>
 				</div>
 				<div class="ls">
-					<h3>Categories</h3>
+					<h3>文章分类</h3>
 					<ul>
 						<li><a href="http://www.free-css-templates.com/" title="Home">Home</a></li>
 						<li><a href="http://www.free-css-templates.com/free_css_xhtml_templates/" title="Free Css/XHTML Templates for your Websites!">Templates (14)</a></li>
@@ -116,7 +116,7 @@
 						<li><a href="http://www.free-css-templates.com/css-techniques/" title="Css techniques">CSS Techniques (15)</a></li>
 						
 					</ul>
-					<h3>New Comments</h3>
+					<h3>最新评论</h3>
 					<ul>
 						<li><a href="#" title="">Ok Mike, it's done...)</a></li>
 						<li><a href="#" title="">Thanks I got it...</a></li>
@@ -126,13 +126,13 @@
 					</ul>
      			</div>
 				<div class="rs">
-					<h3>Links</h3>
+					<h3>网站模板</h3>
 					<ul>
-						<li><a href="http://www.free-css-templates.com/code2css.php" title="Style your code with CSS">Code2Css</a></li>
-						<li><a href="http://www.free-css-templates.com" title="Free Css Templates">Free Css Templates</a></li>
-						<li><a href="http://www.free-css-templates.com/website_templates.html" title="Website Templates">Website Templates</a></li>
-						<li><a href="http://www.snewscms.com" title="sNews CMS">sNews CMS</a></li>
-						<li><a href="http://www.cssheaven.com/" title="Css Gallery CssHeaven">Css Heaven</a></li>
+						<li><a href="http://soft-blog.appspot.com/template/tiring-room/index.htm" title="Style your code with CSS">管理中心</a></li>
+						<li><a href="http://soft-blog.appspot.com/template/show/admin-templates/index.html" title="Free Css Templates">商家管理</a></li>
+						<li><a href="http://soft-blog.appspot.com/template/sutdents/index.htm" title="Website Templates">学生管理系统</a></li>
+						<li><a href="http://soft-blog.appspot.com/template/tiring-room/login.htm" title="sNews CMS">登陆界面</a></li>
+						<li><a href="http://soft-blog.appspot.com/template/sutdents/login.htm" title="Css Gallery CssHeaven">登陆界面二</a></li>
 						<li><a href="http://www.csscreme.com/" title="Css Gallery CssCreme">Css Creme</a></li>
 						<li><a href="http://www.links4se.com/" title="SEO Directory">Link4se.com</a></li>
 					</ul>
@@ -213,7 +213,7 @@
 			</ul>
 		</div>
 	<br />
-	&copy; Copyright 2007, Your Website - Design: <a href="http://www.free-css-templates.com" title="Free Css Template">Free Css Templates</a>
+	&copy; Copyright 1985-2010, jeeny毕业设计组 - Design: <a href="http://www.free-css-templates.com" title="Free Css Template">Free Css Templates</a>
 	</div>	
 	
 </div>
