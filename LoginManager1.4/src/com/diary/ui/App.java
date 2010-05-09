@@ -14,6 +14,10 @@
  */
 package com.diary.ui;
 public class App {
-
+	public static void main(String[] args) {
+		AddDiary a=new AddDiary();
+		a.setVisible(true);
+		a.show();
+	}
 }
 
