@@ -74,12 +74,12 @@
 					<a href="/rss/" title=""><img src="images/rss.gif" alt="RSS" /></a>
 				</div>
 				<ul>	
-					<li><a class="current" href="http://www.free-css-templates.com" title="home"><span>Home</span></a></li>
-					<li><a href="#" title="Gallery">Gallery</a></li>
-					<li><a href="#" title="Affiliates">Download</a></li>
-					<li><a href="#" title="Articles">Community</a></li>
-					<li><a href="#" title="Abous us">About</a></li>
-					<li><a href="#" title="Contact">Contact</a></li>
+					<li><a class="current" href="http://www.free-css-templates.com" title="home"><span>首页</span></a></li>
+					<li><a href="#" title="Gallery">在线论坛</a></li>
+					<li><a href="#" title="Affiliates">知识库</a></li>
+					<li><a href="#" title="Articles">微博</a></li>
+					<li><a href="#" title="Abous us">实验室</a></li>
+					<li><a href="#" title="Contact">关于我们</a></li>
 				</ul>
 		</div>
 	</div>
@@ -108,12 +108,12 @@
 				<div class="ls">
 					<h3>文章分类</h3>
 					<ul>
-						<li><a href="http://www.free-css-templates.com/" title="Home">Home</a></li>
-						<li><a href="http://www.free-css-templates.com/free_css_xhtml_templates/" title="Free Css/XHTML Templates for your Websites!">Templates (14)</a></li>
-						<li><a href="http://www.free-css-templates.com/webdesign/" title="webdesign">Webdesign (11)</a></li>
-						<li><a href="http://www.free-css-templates.com/photoshop-webdesign-tutorials/" title="The best tutorials from internet about the webdesign and photoshop.">Tutorials (21)</a></li>
-						<li><a href="http://www.free-css-templates.com/photoshop-stuffs/" title="Photoshop Stuffs">Photoshop (14)</a></li>
-						<li><a href="http://www.free-css-templates.com/css-techniques/" title="Css techniques">CSS Techniques (15)</a></li>
+						<li><a href="http://www.free-css-templates.com/" title="Home">首页</a></li>
+						<li><a href="http://www.free-css-templates.com/free_css_xhtml_templates/" title="Free Css/XHTML Templates for your Websites!">知识库</a></li>
+						<li><a href="http://www.free-css-templates.com/webdesign/" title="webdesign">在线论坛</a></li>
+						<li><a href="http://www.free-css-templates.com/photoshop-webdesign-tutorials/" title="The best tutorials from internet about the webdesign and photoshop.">微博</a></li>
+						<li><a href="http://www.free-css-templates.com/photoshop-stuffs/" title="Photoshop Stuffs">实验室</a></li>
+						<li><a href="http://www.free-css-templates.com/css-techniques/" title="Css techniques">关于我们</a></li>
 						
 					</ul>
 					<h3>最新评论</h3>
@@ -142,59 +142,32 @@
 		
 			<div id="left_side">
 				<div class="intro">
-					<div class="pad">sNews is a completly free PHP and MySQL driven content management system for managing web content. Consisting of only one file, sNews is extremely lightweight, easy to install, and easy to use via a simple web interface.
-						<br /><a href="http://www.snewscms.com" title="sNews cms">Download </a>&nbsp; | &nbsp;<a href="http://www.snewscms.com" title="sNews cms">Read more...</a>
+					<div class="pad">
+					欢迎光临本站，我们将竭诚为您服务！
+					本站拥有原创毕业设计和毕业论文作品共10000多套(海量的计算机毕业设计,电子毕业设计,机械毕业设计,土木毕业设计等)。我们多年的努力已帮助大量毕业生顺利通过了毕业答辩，获得了“优秀毕业设计”的好成绩。
+					本网站上刊登的只是毕业设计论文或说明书的部分摘抄内容，如需购买全部资料请联系在线客服。
+					本站客服 QQ：1426111722 (为了更好地为您服务，请先加为好友) Email:cng1985@gmail.com
+						<br />
 					</div>
 				</div>
 				<div class="mpart">
-				<h2>Webdesign</h2>
-				<h3>Posted on April 11 , 2007 in <a href="#" title="">sNews</a></h3>
-				<p>A website like <a href="http://www.free-css-templates.com" title="Free Website Templates">free-css-templates.com</a> is a collection of information about a particular topic or subject. Designing a 
-					website is defined as the arrangement and creation of web pages that in turn make up a 
-					website. A web page consists of information for which the website is developed. 
-					A website might be compared to a book, where each page of the book is a web page.
-				</p>
+				<h2>关于毕业设计</h2>
+				<h3>计算机毕业设计</h3>
 				<p>
-
-					Here a code sample made with <a href="http://www.free-css-templates.com/code2css.php" title="Source code styled with CSS">Code2CSS</a>:
+				计算机毕业设计是计算机专业毕业生培养方案中的必修环节。学生通过计算机论文的写作，培养综合运用计算机专业知识去分析并解决实际问题的能力，学有所用，不仅实践操作、动笔能力得到很好的锻炼，还极大地增强了今后走向社会拼搏、奋斗的勇气和自信。 计算机毕业设计一般可分为四大类：1计算机信息管理，2计算机应用，3计算机网络，4计算机软件。本站提供全套计算机毕业设计材料。
 				</p>
-				<ol class="code">
-					<li class="t0">for ($i = 0; $i &lt; $num_kw; $i++) {</li>
-					<li class="t2"><code>$keywords = trim($kws[$i]);</code></li>
-					<li class="t2"><code>$value .= " keywords_meta LIKE '%$keywords%' ";</code></li>
+				<h3>机械电子类毕业设计</h3>
+				<p>
+				机械电子类毕业设计就是机械电子各专业毕业生在完成学业时要写的论文和做的设计，其中毕业论文是本科教学计划的最后一个重要环节，是落实本科教育培养目标的重要组成部分。其主要目的是培养学生综合运用所学知识和技能，理论联系实际，独立分析，解决实际问题的能力，使学生得到从事本专业工作和进行相关的基本训练。本站提供完整优秀的机械电子类专业毕业设计、论文、课程设计。包含机电一体化、自动化、汽车、PLC、单片机、模具、数控设计制造等项目；论文(说明书)＋图纸等，一应俱全，都是经过审核修改完善并成功答辩过的，质量保证。
+				</p>
+				<h2>毕业设计总结</h2>
+				<p>
+			毕业设计论文是毕业设计工作的总结和提高，和做科研开发工作一样，要有严谨求实的科学态度。毕业设计论文应有一定的学术价值和实用价值，能反映出作者所具有的专业基础知识和分析解决问题的能力。
+                              在毕业设计期间，尽可能多的阅读文献资料是很重要的，一方面是为毕业设计做技术准备，另一方面是学习论文的写作方法。一篇优秀的论文对启发我们的思维，掌握论文的写作规范很有帮助。
 
-					<li class="t2"><code>if ($i &lt; $num_kw-1) {</code></li>
-					<li class="t3"><code>$value .= " OR ";</code></li>
-					<li class="t2"><code>}</code></li>
-					<li class="t0">}</li>
-				</ol>
-				<p>Blockquote example:</p>
-
-					<blockquote>
-						<p>The Extensible HyperText Markup Language, or XHTML, is a markup language that has the same depth of expression as HTML, but with a syntax that conform to XML syntax.</p>
-					</blockquote>
-				<div class="date"><a href="#" title="#">Comments (5)</a></div>
-				<h2>Cascading Style Sheets</h2>
-				<h3>Posted on April 10 , 2007 in <a href="#" title="">Internet</a></h3>
-				<div class="rs">
-					<strong>List example</strong>:
-					<ul>
-
-						<li>list line 1</li>
-						<li>list line 2
-							<ul>
-								<li>sublist line a</li>
-								<li>sublist line b</li>
-							</ul>
-						</li>
-					</ul>
-
-				</div>
-				<p>In computing, <b>Cascading Style Sheets</b> (<b>CSS</b>) is a <a href="http://en.wikipedia.org/wiki/Stylesheet_language" title="Stylesheet language">stylesheet language</a> used to describe the presentation of a document written in a <a href="http://en.wikipedia.org/wiki/Markup_language" title="Markup language">markup language</a>. Its most common application is to style <a href="http://en.wikipedia.org/wiki/Web_page" title="Web page">web pages</a> written in <a href="http://en.wikipedia.org/wiki/HTML" title="HTML">HTML</a> and <a href="http://en.wikipedia.org/wiki/XHTML" title="XHTML">XHTML</a>, but the language can be applied to any kind of <a href="http://en.wikipedia.org/wiki/XML" title="XML">XML</a> document, including <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics" title="Scalable Vector Graphics">SVG</a> and <a href="http://en.wikipedia.org/wiki/XUL" title="XUL">XUL</a>. The CSS specifications are maintained by the <a href="http://en.wikipedia.org/wiki/World_Wide_Web_Consortium" title="World Wide Web Consortium">World Wide Web Consortium</a> (W3C).</p>
-
-				<p>CSS has various levels and profiles. Each level of CSS builds upon the last, typically adding new features and are typically denoted as CSS1, CSS2, and CSS3. Profiles are typically a subset of one or more levels of CSS built for a particular device or user interface. Currently there are profiles for mobile devices, printers, and television sets. Profiles should not be confused with media types which were added in CSS2.</p>
-				<div class="date"><a href="#" title="#">Comments (11)</a></div>
-				</div>
+                               本站设计已帮助大量毕业生获得了“优秀毕业设计”的好成绩，参考本站论文服务的毕业生全部通过了论文答辩，顺利毕业。如果你感到本站所列设计对你的毕业设计有参考使用价值，欢迎你与我联系！ 
+				</p>
+			
 			</div>
 		</div>
 	<div class="clear"></div>
