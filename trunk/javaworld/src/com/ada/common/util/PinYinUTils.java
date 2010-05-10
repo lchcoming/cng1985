@@ -82,6 +82,6 @@ public class PinYinUTils {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-	System.out.println(getPY("陈陈"));
+	System.out.println(getPY("啊陈陈"));
 	}
 }

@@ -24,10 +24,10 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Properties f = PropertiesUtil
-				.readProperties("F:\\hibernate.properties");
-		System.out.println( f.size());
-		PropertiesUtil.writeProperties("F:\\1.properties", f);
+//		Properties f = PropertiesUtil
+//				.readProperties("F:\\hibernate.properties");
+//		System.out.println( f.size());
+//		PropertiesUtil.writeProperties("F:\\1.properties", f);
 	}
 
 }
