@@ -18,7 +18,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
-
 public class AutoTimeNumerUtil {
 
 	private static final String configFile = "com/ada/common/util/number.properties";
@@ -40,24 +39,35 @@ public class AutoTimeNumerUtil {
 			PropertiesUtil.saveData(profile, configFile);
 			min = profile.getProperty("daynumberspitid");
 		}
-		min=min.replaceAll("-", "");
-	
+		min = min.replaceAll("-", "");
+
 		if (key.length() < min.length()) {
-			return key.substring(0,8)+"-"+step;
+			return key.substring(0, 8) + "-" + step;
 		}
 		if (Long.parseLong(key) > Long.parseLong(min)) {
-			return key.substring(0,8)+"-"+step;
+			return key.substring(0, 8) + "-" + step;
 		} else {
 			String min1 = min.substring(8, min.length());
 			String min2 = min.substring(0, 8);
-			min1="1"+min1;
+			min1 = "1" + min1;
 			long temp = Long.parseLong(min1);
 			temp++;
-			String t=String.valueOf(temp);
-			t=t.substring(1);
-			return String.valueOf(min2+"-"+t);
+			String t = String.valueOf(temp);
+			t = t.substring(1);
+			return String.valueOf(min2 + "-" + t);
 		}
 
+		// String min=
+	}
+
+	public static String getDayNumberSpitBySave() {
+
+		Properties profile = new Properties();
+		String temp = getDayNumberSpit();
+		profile.setProperty("daynumberspitid", temp);
+
+		PropertiesUtil.saveData(profile, configFile);
+		return temp;
 		// String min=
 	}
 
@@ -72,7 +82,7 @@ public class AutoTimeNumerUtil {
 			PropertiesUtil.saveData(profile, configFile);
 			min = profile.getProperty(id);
 		}
-		
+
 		if (key.length() < min.length()) {
 			return key;
 		}
@@ -98,14 +108,7 @@ public class AutoTimeNumerUtil {
 		// loadProperties(configFile,"");
 		int i = 0;
 		while (i < 320) {
-			
-			// saveData(id,"numberid");
-			Properties profile = new Properties();
-			String temp = getDayNumberSpit();
-			profile.setProperty("daynumberspitid", temp);
-			
-			PropertiesUtil.saveData(profile, configFile);
-			System.out.println(temp);
+			System.out.println(getDayNumberSpitBySave());
 			i++;
 		}
 
