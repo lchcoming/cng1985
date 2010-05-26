@@ -1,4 +1,0 @@
-访问.net程序系统数据 
- string image1 = Properties.Settings.Default.DefaultImage1;
-web
-ConfigurationManager.ConnectionStrings["sqlfilm"].ToString()
