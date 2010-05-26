@@ -18,21 +18,68 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+
+
 public class AutoTimeNumerUtil {
 
 	private static final String configFile = "com/ada/common/util/number.properties";
 	private static final String step = "01";//
 
-	public static String getDayNumber() {
+	
+	static Properties profile;
+	static {
+		profile = PropertiesUtil.loadProperties(configFile, new Date()
+				.toLocaleString());
+	}
 
-		return getNumber("daynumberid", "yyyyMMdd");
+	public static String getDayNumber(String id) {
+
+		return getNumber(id, "yyyyMMdd");
+		// String min=
+	}
+
+	public static String getYearNumber(String id) {
+
+		return getNumber(id, "yyyy");
+		// String min=
+	}
+
+	public static synchronized String getDayNumberBySave(String id) {
+
+		String temp = getDayNumber(id);
+		profile.setProperty(id, temp);
+
+		PropertiesUtil.saveData(profile, configFile);
+		return temp;
+		// String min=
+	}
+
+	public static synchronized String getYearNumberBySave(String id) {
+
+		String temp = getDayNumber(id);
+		profile.setProperty(id, temp);
+
+		PropertiesUtil.saveData(profile, configFile);
+		return temp;
+		// String min=
+	}
+
+	public static String getDayNumberBySave() {
+		Properties profile = new Properties();
+		String temp = getDayNumber("daynumberid");
+		profile.setProperty("daynumberid", temp);
+
+		PropertiesUtil.saveData(profile, configFile);
+		return temp;
 		// String min=
 	}
 
 	public static String getDayNumberSpit() {
 		String key = new SimpleDateFormat("yyyyMMdd").format(new Date());
 		key = key + step;
-		Properties profile = PropertiesUtil.loadProperties(configFile, "");
+		if (null == profile) {
+			profile = PropertiesUtil.loadProperties(configFile, "");
+		}
 		String min = profile.getProperty("daynumberspitid");
 		if (null == min) {
 			profile.setProperty("daynumberspitid", key);
@@ -40,7 +87,7 @@ public class AutoTimeNumerUtil {
 			min = profile.getProperty("daynumberspitid");
 		}
 		min = min.replaceAll("-", "");
-
+	
 		if (key.length() < min.length()) {
 			return key.substring(0, 8) + "-" + step;
 		}
@@ -60,22 +107,13 @@ public class AutoTimeNumerUtil {
 		// String min=
 	}
 
-	public static String getDayNumberSpitBySave() {
-
-		Properties profile = new Properties();
-		String temp = getDayNumberSpit();
-		profile.setProperty("daynumberspitid", temp);
-
-		PropertiesUtil.saveData(profile, configFile);
-		return temp;
-		// String min=
-	}
-
 	public static String getNumber(String id, String format) {
-		// daynumberid
 		String key = new SimpleDateFormat(format).format(new Date());
 		key = key + step;
-		Properties profile = PropertiesUtil.loadProperties(configFile, "");
+		if (null == profile) {
+			profile = PropertiesUtil.loadProperties(configFile, "");
+		}
+
 		String min = profile.getProperty(id);
 		if (null == min) {
 			profile.setProperty(id, key);
@@ -107,8 +145,9 @@ public class AutoTimeNumerUtil {
 	public static void main(String[] args) {
 		// loadProperties(configFile,"");
 		int i = 0;
-		while (i < 320) {
-			System.out.println(getDayNumberSpitBySave());
+		while (i < 10) {
+			System.out.println(getDayNumberBySave("aaaaaaa"));
+			System.out.println(getDayNumberBySave("b"));
 			i++;
 		}
 
