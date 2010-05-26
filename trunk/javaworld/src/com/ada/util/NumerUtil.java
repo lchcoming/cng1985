@@ -22,6 +22,7 @@ import com.ada.common.util.PropertiesUtil;
 
 
 
+@SuppressWarnings("deprecation")
 public class NumerUtil {
 
 	private static final String configFile = "com/ada/common/util/number.properties";
