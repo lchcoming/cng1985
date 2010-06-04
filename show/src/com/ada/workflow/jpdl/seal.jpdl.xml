@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<process name="seal" xmlns="http://jbpm.org/4.0/jpdl">
-   <start name="开始" g="242,90,48,48"/>
-</process>

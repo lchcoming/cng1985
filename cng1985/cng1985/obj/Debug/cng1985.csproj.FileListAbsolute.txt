@@ -1,3 +1,0 @@
-G:\google开发\trunk\cng1985\cng1985\obj\Debug\ResolveAssemblyReference.cache
-G:\google开发\trunk\cng1985\cng1985\obj\Debug\Interop.MediaPlayer.dll
-G:\google开发\trunk\cng1985\cng1985\obj\Debug\cng1985.csproj.ResolveComReference.cache
