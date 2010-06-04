@@ -4,7 +4,7 @@ Created on 2010-6-4
 @author: Administrator
 '''
 from jeeny.Hello import Hello
-import jeeny.Jeeny.Hi
+from jeeny.Jeeny import Hi
 print 'hi'
 def main():
     print 'hi'
@@ -20,3 +20,4 @@ b=[1,5,6]
 print b[2]
 b={"aa":"ada","ffff":"fff"}
 print b["aa"]
+b=Hi()
