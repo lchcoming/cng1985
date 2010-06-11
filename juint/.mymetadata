@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="juint"
+  id="myeclipse.1276234231031"
+  context-root="/juint"
+  j2ee-spec="5.0"
+  archive="juint.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
