@@ -26,13 +26,14 @@ import com.ada.common.util.PropertiesUtil;
 public class NumerUtil {
 
 	private static final String configFile = "/number.properties";
-	private static final String step = "01";//
+	private static String step = "01";//
 
 	
 	static Properties profile;
 	static {
 		profile = PropertiesUtil.loadProperties(configFile, new Date()
 				.toLocaleString());
+		step=profile.getProperty("step");
 	}
 
 	public static String getDayNumber(String id) {
