@@ -34,6 +34,9 @@ public class NumerUtil {
 		profile = PropertiesUtil.loadProperties(configFile, new Date()
 				.toLocaleString());
 		step=profile.getProperty("step");
+		if(null==step){
+			step="00001";
+		}
 	}
 
 	public static String getDayNumber(String id) {
