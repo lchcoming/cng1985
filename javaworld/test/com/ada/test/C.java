@@ -14,6 +14,11 @@
  */
 package com.ada.test;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 public class C {
 
 	/**
@@ -21,10 +26,23 @@ public class C {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		Date date=new Date(System.currentTimeMillis()+1000*60*60*8);
+		Calendar calendar=Calendar.getInstance();
+		TimeZone zone= TimeZone.getDefault();
+		Locale aLocale=Locale.CHINA;
+		//aLocale.CHINA
+		//calendar.s
+		zone.setRawOffset(10);
+		zone.setID("CST");
+		Calendar.getInstance(zone,aLocale);
+		calendar.getTime();
+		//System.out.println(date.toLocaleString());
+		System.out.println(zone);
+		System.out.println(calendar.getTime());
+		//System.out.println(date.toLocaleString());
 		for (int i = 0; i < 500; i++) {
             NetWorks works=new NetWorks();
-            works.start();
+            //works.start();
 		}
 	}
 
