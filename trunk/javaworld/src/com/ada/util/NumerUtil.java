@@ -25,7 +25,7 @@ import com.ada.common.util.PropertiesUtil;
 @SuppressWarnings("deprecation")
 public class NumerUtil {
 
-	private static final String configFile = "com/ada/common/util/number.properties";
+	private static final String configFile = "/number.properties";
 	private static final String step = "01";//
 
 	
