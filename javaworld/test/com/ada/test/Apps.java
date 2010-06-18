@@ -14,16 +14,25 @@
  */
 package com.ada.test;
 
+import java.io.File;
+import java.util.List;
+
+import com.ada.common.util.FileUtil;
+
 public class Apps {
 	public static void main(String[] args) {
-     int a=65536;
-     System.out.println(a<<5);
-     System.out.println(a>>16);
-     System.out.println(~a);
-     System.out.println(a|2);
-     System.out.println(a&2);
-     System.out.println(a&2);
-     System.out.println(a&1);
-     System.out.println(2<<29);
+		int a = 65536;
+		System.out.println(a << 5);
+		System.out.println(a >> 16);
+		System.out.println(~a);
+		System.out.println(a | 2);
+		System.out.println(a & 2);
+		System.out.println(a & 2);
+		System.out.println(a & 1);
+		System.out.println(2 << 29);
+		File file=new File("E:\\编程文档");
+		List<File> files = FileUtil.ListFile("E:\\编程文档");
+		System.out.println(files.size());
+		System.out.println(file.list().length);
 	}
 }
