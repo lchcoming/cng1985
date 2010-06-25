@@ -44,7 +44,7 @@ public class UnZip {
 	   * Simple main program, construct an UnZipper, process each .ZIP file from
 	   * argv[] through that object.
 	   */
-	  public static void main(String[] argv) {
+	  public static void mains(String[] argv) {
 	    UnZip u = new UnZip();
 
 	    for (int i = 0; i < argv.length; i++) {
@@ -153,7 +153,7 @@ public class UnZip {
 	      throw new IllegalStateException("mode value (" + mode + ") bad");
 	    }
 	  }
-	public static void maisn(String[] args) {
+	public static void main(String[] args) {
 		int a = 65536;
 		System.out.println(a << 5);
 		System.out.println(a >> 16);
