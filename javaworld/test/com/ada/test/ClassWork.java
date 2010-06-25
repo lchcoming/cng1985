@@ -14,6 +14,10 @@
  */
 package com.ada.test;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
 
@@ -25,8 +29,14 @@ public class ClassWork {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ClassLoader.getSystemClassLoader();
+		//E:\\jars\\guice-2.0\\guice-2.0.jar
 	URL url=	ClassWork.class.getResource("/guice-2.0.jar");
+	System.out.println(url.getProtocol());
 	System.out.println(url.getFile());
+	System.out.println(url.getPort());
+	System.out.println(url.getHost());
+	File file=new File("");
+
 	URL [] r={url};
 		URLClassLoader c=new URLClassLoader(r);
 		try {
