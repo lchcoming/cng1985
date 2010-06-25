@@ -15,9 +15,14 @@
 package com.ada.test;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 import com.ada.common.util.FileUtil;
+
 
 public class Apps {
 	public static void main(String[] args) {
@@ -30,9 +35,28 @@ public class Apps {
 		System.out.println(a & 2);
 		System.out.println(a & 1);
 		System.out.println(2 << 29);
-		File file=new File("E:\\编程文档");
-		List<File> files = FileUtil.ListFile("E:\\编程文档");
-		System.out.println(files.size());
-		System.out.println(file.list().length);
+		File file=new File("C:\\Documents and Settings\\ada");
+		//List<File> files = FileUtil.ListFile("C:\\Documents and Settings");
+		//System.out.println(files.size());
+		//System.out.println("文件个数："+file.list().length);
+		try {
+			JarFile jar=new JarFile("E:\\jars\\guice-2.0\\guice-2.0.jar");
+			Enumeration<JarEntry>  e=	jar.entries();
+			while(e.hasMoreElements()){
+				String name=e.nextElement().getName();
+				System.out.println(name);
+				File filetemp=new  File("E:/jars/guice-2.0/guice-2.0.jar"+name);
+				if(filetemp.isFile()){
+					System.out.println(">>>>>");
+				}
+			}
+			System.out.println(jar.getName());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
 	}
+	
 }
