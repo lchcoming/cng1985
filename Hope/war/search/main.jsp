@@ -31,9 +31,9 @@
   </style>
 </head>
 <body>
-<%@include file="/top.jsp" %>
+
 <div class="main">
-<%@include file="/ads/ad728.jsp" %>
+
 <%@include file="search.jsp" %>
 <!-- SiteSearch Google -->
 <!-- Google Search Result Snippet Begins -->
