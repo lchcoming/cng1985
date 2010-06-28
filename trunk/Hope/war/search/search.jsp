@@ -11,9 +11,46 @@ if(query==null){
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title><%=query %></title>
+<link rel="stylesheet" type="text/css" href="/css/style.css"
+	media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0"
+	href="rss/" />
+<script src="/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.get("/temple/subbar.txt",function(data){
+	      $("#subbar").html(data);
+			});
+	$.get("/temple/topbar.txt",function(data){
+	      $("#topbar").html(data);
+			});
+
+	
+});
+</script>
+
 </head>
 <body>
+
+<!-- SiteSearch Google -->
+
+<div id="topbar">
+加载中
+</div>
+
+<div id="subbar">
+加载中
+</div>
+
+
+<div class="content">
+<div id="main">
+<div class="padding">
+
+
+<div id="left_side"  >
+				<div class="mpart">
 <!-- SiteSearch Google -->
 <form method="get" action="http://cng1985.appspot.com/search/main.jsp" target="_top">
 <table border="0" bgcolor="#fbf7f7">
@@ -46,7 +83,13 @@ if(query==null){
 <input type="hidden" name="hl" value="zh-CN"></input>
 </td></tr></table>
 </form>
-<!-- SiteSearch Google -->
-<%@include file="/bbs.jsp" %>
+				</div>
+</div>
+<div class="clear"></div>
+</div>
+
+
+</div>
+</div>
 </body>
 </html>
