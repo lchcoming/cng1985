@@ -17,6 +17,7 @@ package com.ada.test;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Scanner;
 import java.util.TimeZone;
 
 public class C {
@@ -38,6 +39,13 @@ public class C {
 		calendar.getTime();
 		//System.out.println(date.toLocaleString());
 		System.out.println(zone);
+		System.out.println("15623".matches("^\\d*"));
+		Scanner scanner=new Scanner("");
+		
+		while(scanner.hasNext()){
+			System.out.println(scanner.next());
+		}
+		
 		System.out.println(calendar.getTime());
 		//System.out.println(date.toLocaleString());
 		for (int i = 0; i < 500; i++) {

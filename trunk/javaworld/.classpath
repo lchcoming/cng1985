@@ -7,5 +7,11 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="src/jar/commons-logging-1.1.jar"/>
 	<classpathentry kind="lib" path="src/jar/commons-logging-api-1.1.jar"/>
+	<classpathentry kind="lib" path="src/jar/log4j.jar"/>
+	<classpathentry kind="lib" path="src/jar/slf4j-api-1.5.2.jar"/>
+	<classpathentry kind="lib" path="src/jar/slf4j-log4j12-1.5.2.jar"/>
+	<classpathentry kind="lib" path="src/jar/google-collect-1.0.jar"/>
+	<classpathentry kind="lib" path="src/jar/hsqldb.jar"/>
+	<classpathentry kind="lib" path="src/sqlitejdbc-v056.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
