@@ -26,6 +26,8 @@ public class Apps {
 		// TODO Auto-generated method stub
 		OO o1 = new OO();
 		OO o2 = new OO();
+		OO o3 = new OO();
+		o3.setName("dsadasdasds");
 		System.out.println(o1.equals(o2));
 		Set<OO> set=new HashSet<OO>();
 		set.add(o1);
@@ -33,6 +35,15 @@ public class Apps {
 		set.add(o2);
 		System.out.println(set.size());
 		System.out.println(set.contains(01));
+		o2.setName(">>>>>>>>>>>>>>>>>>>>>");
+		for(int i =0;i<3;i++){
+			  set.add(o3);
+			 //  System.out.println();
+		}
+	   for(OO item:set){
+		   set.add(o3);
+		   System.out.println(item.getName());
+	   }
 		
 	}
 
