@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Highcharts Example</title>
+
+
+        <!-- 1. Add these JavaScript inclusions in the head of your page -->	<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="js/highcharts.js"></script>
+
+        <!-- 1a) Optional: the exporting module -->
+        <script type="text/javascript" src="js/modules/exporting.js"></script>
+
+        <!-- 2. Add the JavaScript to initialize the chart on document ready -->
+        <script type="text/javascript">
+
+            /**
+             * Visualize an HTML table using Highcharts. The top (horizontal) header
+             * is used for series names, and the left (vertical) header is used
+             * for category names. This function is based on jQuery.
+             * @param {Object} table The reference to the HTML table to visualize
+             * @param {Object} options Highcharts options
+             */
+            Highcharts.visualize = function(table, options) {
+                // the categories
+                options.xAxis.categories = [];
+                $('tbody th', table).each( function(i) {
+                    options.xAxis.categories.push(this.innerHTML);
+                });
+
+                // the data series
+                options.series = [];
+                $('tr', table).each( function(i) {
+                    var tr = this;
+                    $('th, td', tr).each( function(j) {
+                        if (j > 0) { // skip first column
+                            if (i == 0) { // get the name and init the series
+                                options.series[j - 1] = {
+                                    name: this.innerHTML,
+                                    data: []
+                                };
+                            } else { // add values
+                                options.series[j - 1].data.push(parseFloat(this.innerHTML));
+                            }
+                        }
+                    });
+                });
+
+                var chart = new Highcharts.Chart(options);
+            }
+
+            // On document ready, call visualize on the datatable.
+            $(document).ready(function() {
+                var table = document.getElementById('datatable'),
+                options = {
+                    exporting: {
+                        enabled: false
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    chart: {
+                        renderTo: 'container',
+                        defaultSeriesType: 'column' //line column spline area areaspline bar
+                    },
+                    title: {
+                        text: '$name'
+                    },
+                    xAxis: {
+                    },
+                    yAxis: {
+                        title: {
+                            text: '费用'
+                        }
+                    },
+                    tooltip: {
+                        formatter: function() {
+                            return '<b>'+ this.series.name +'</b><br/>'+
+                                this.x.toLowerCase()+' '+ this.y +"元";
+                        }
+                    }
+                };
+
+
+                Highcharts.visualize(table, options);
+                $("#imgtype").change(function(){
+                  options.chart.defaultSeriesType=$("#imgtype").val();
+                  Highcharts.visualize(table, options);
+                });
+                //$(table).hide();
+            });
+
+        </script>
+
+    </head>
+    <body>
+    <select id="imgtype">
+        <option>line</option>
+        <option>column</option>
+        <option>spline</option>
+        <option>area</option>
+        <option>areaspline</option>
+        <option>bar</option>
+    </select>
+    <!-- 3. Add the container -->
+    <div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+
+
+    <table id="datatable" style="width: 800px; height: 400px; margin: 0 auto">
+         <thead>
+            <tr>
+                <th>费用</th>
+                <th>工程一</th>
+                <th>工程二</th>
+                <th>工程三</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>材料费</th>
+                <td>302.12</td>
+                <td>423.0</td>
+                <td>423.0</td>
+            </tr>
+            <tr>
+                <th>人工费</th>
+                <td>223.56</td>
+                <td>523.66</td>
+                <td>423.0</td>
+            </tr>
+            <tr>
+                <th>机械费</th>
+                <td>523.56</td>
+                <td>232.56</td>
+                <td>232.56</td>
+            </tr>
+            <tr>
+                <th>其他费用</th>
+                <td>213.23</td>
+                <td>232.366</td>
+                <td>232.56</td>
+            </tr>
+           #foreach($item in [1..100])
+            <tr>
+                <th>$item</th>
+                <td>2$item 3.23</td>
+                <td>$item 32.56</td>
+                <td>21$item.5</td>
+            </tr>
+            #end
+        </tbody>
+        
+    </table>
+
+
+</body>
+</html>
