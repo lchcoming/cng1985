@@ -1,0 +1,9 @@
+#set( $this = "Velocity")
+$this is great!
+$hello.m()
+#set( $imperial = ["Munetaka","Koreyasu","Hisakira","Morikune"] )
+#foreach( $shogun in $imperial )
+$shogun
+#end
+$hello.message()
+$hello.message("hi")
