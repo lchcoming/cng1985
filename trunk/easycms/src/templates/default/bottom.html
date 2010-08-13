@@ -1,15 +1,14 @@
 <div class="bottom">
 	<ul class="column">
 		<li>
-			{sc:foreach item=navi key=i from=$navis#}
-			<a href="{sc:$navi.URL#}">{sc:$navi.sName#}</a>&nbsp;&nbsp;|&nbsp;
-			{sc:/foreach#}
-			<a href="mailto:{sc:$Web.WebEmail#}">{sc:$Html.sEmail#}</a>
+			 #foreach( $item in $navs )
+			<a href="{sc:$navi.URL#}">$item.name</a>&nbsp;&nbsp;|&nbsp;
+			#end
+			<a href="mailto:$WebEmail ">$WebEmailName</a>
 		</li>
 	</ul>
 	<ul class="copyright">
-		<li>{sc:$Web.WebCopyright#}</li>
-		<li>Powered by <a target="_blank" href="http://www.songcms.com">SongCMS {sc:$Sys.CMSVersion#}</a><br /><br /></li>
+		<li>$WebCopyright</li>
+		<li>技术支持 <a target="_blank" href="http://www.songcms.com">西安宝亿电子</a><br /><br /></li>
 	</ul>
 </div>
-{sc:if $menu.open == "1"#}{sc:include file='component_top_menu.html'#}{sc:/if#}
