@@ -11,6 +11,7 @@ import org.apache.velocity.app.VelocityEngine;
 
 import com.easycms.article.domain.NavItem;
 import com.easycms.article.domain.Notice;
+import com.easycms.entity.Link;
 import com.easycms.entity.News;
 import com.easycms.factory.VelocityContextFactory;
 
@@ -33,6 +34,9 @@ public class HelloAction {
 		item.setName("首页");
 		item.setUrl("dd");
 		items.add(item);
+		items.add(item);
+		items.add(item);
+		items.add(item);
 		List<Notice> notices = new ArrayList<Notice>();
 		Notice n=new Notice();
 		n.setName("dsfsdfdsfdsfdsfd");
@@ -44,6 +48,14 @@ public class HelloAction {
 		News nn=new News();
 		nn.setNewsTitle("快填分东风送扥跟随");
 		news.add(nn);
+		List<Link> links=new ArrayList<Link>();
+		Link li=new Link();
+		li.setLinkEmail("cng1985@gmail.com");
+		li.setLinkWebName("西安");
+		links.add(li);
+		links.add(li);
+		links.add(li);
+		links.add(li);
 		Properties properties = new Properties();
 		properties.setProperty("resource.loader", "class");
 		properties
@@ -57,6 +69,8 @@ public class HelloAction {
 		context.put("navs", items);
 		context.put("notices", notices);
 		context.put("news", news);
+		context.put("links", links);
+		
 		StringWriter writer = new StringWriter();
 		t.merge(context, writer);
 		writer.flush();
