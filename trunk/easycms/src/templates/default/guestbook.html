@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{sc:$Html.GuestBook#} - {sc:$Web.WebTitle#}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="{sc:$Web.Webkeyword#}"> 
+<meta name="description" content="{sc:$Web.WebDescription#}">
+<base href="{sc:$Sys.WebHost#}">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/global.js?{sc:$Sys.Lang#}"></script>
+<script type="text/javascript" src="./js/swfobject.js"></script>
+<script type="text/javascript" src="./js/msclass.js"></script>
+<script type="text/javascript" src="./tools/highslide/highslide-with-gallery.js"></script>
+<link rel="stylesheet" type="text/css" href="./tools/highslide/highslide.css" />
+<link rel="stylesheet" type="text/css" href="{sc:$Sys.TemDir#}global.css" />
+<style type="text/css">
+.framework{margin:auto; width:930px; overflow:auto; padding:10px 0 0 0;}
+.framework .btop{float:left; overflow:auto; width:700px; margin:10px 0 0 20px;}
+.framework .btop .over{height:35px; background:url({sc:$Sys.TemDir#}images/homt_newstitle_bg.gif) no-repeat left bottom;}
+.framework .btop .over li{height:30px; line-height:30px;}
+.framework .btop .over .title{float:left; padding:0 0 0 30px; font-size:14px; font-family:"微软雅黑","宋体","新宋体"; letter-spacing:2px;}
+.framework .btop .over .navig{float:right;}
+.framework .search li{float:right;}
+.framework .information{float:left; overflow:auto; width:700px; margin:10px 0 0 20px;}
+.framework .information .ntitle li{font-size:13px; color:#FFF; width:300px; clear:both; letter-spacing:2px; font-family:"微软雅黑","黑体","宋体","新宋体"; height:31px; line-height:18px; padding:0 0 0 10px; background:url({sc:$Sys.TemDir#}images/home_product_bg.gif) no-repeat left center;}
+.framework .information ul{clear:both;}
+.framework .information ul li{float:left}
+.framework .information ul .nodata{width:680px; text-align:center; height:50px; line-height:50px;}
+.framework .information .row1 li,.framework .information .row2 li,.framework .information .row3 li,.framework .information .row4 li{width:680px; float:left; line-height:40px; background:url(./images/0101.gif) repeat-x left bottom; _height:30px; _padding:10px 0 0 0;}
+.framework .information .row1 li{width:340px;}
+.framework .information .row4 li{background:url({sc:$Sys.TemDir#}images/homt_newstitle_bg.gif) repeat-x -30px bottom;}
+.framework .form{float:left; overflow:auto; width:700px; margin:50px 0 0 20px;}
+.framework .form ul{clear:both;}
+.framework .form ul .ntitle{font-size:13px; color:#FFF; width:300px; clear:both; letter-spacing:2px; font-family:"微软雅黑","黑体","宋体","新宋体"; height:31px; line-height:18px; padding:0 0 0 10px; background:url({sc:$Sys.TemDir#}images/home_product_bg.gif) no-repeat left center;}
+.framework .form li{float:left; height:40px; line-height:40px; background:url(./images/0101.gif) left bottom repeat-x;}
+.framework .form .text{text-align:right; width:120px;}
+.framework .form .input{width:550px; _padding:8px 0 0 0; _height:32px;}
+.framework .form .input #GuestBookTitle{width:350px}
+.framework .form .code{width:60px; _height:34px; _padding:6px 0 0 0;}
+.framework .form .code input{width:40px;}
+.framework .form .codeimg{width:490px; height:35px; padding:5px 0 0 0; height:39px\9; padding:1px 0 0 0\9; _height:32px; _padding:8px 0 0 0;}
+.framework .form .details li{height:120px; padding:10px 0 10px 0;}
+.framework .form .details li textarea{width:350px; height:100px;}
+</style>
+<script type="text/JavaScript">
+function FormCheck(){
+	if(document.guesbook.GuestBookTitle.value.length < 3){ 
+		alert("{sc:$Html['Message'][0]#}"); 
+		document.guesbook.GuestBookTitle.focus(); 
+		return false; 
+	}
+	if(document.guesbook.GuestBookContent.value.length < 10){ 
+		alert("{sc:$Html['Message'][1]#}"); 
+		document.guesbook.GuestBookContent.focus(); 
+		return false; 
+	}
+	if (document.guesbook.GetCode.value.length < 4){
+		alert("{sc:$Html['Message'][2]#}");
+		document.guesbook.GetCode.focus();
+		return false;
+	}	
+}
+</script>
+</head>
+<body>
+{sc:include file='top.html'#}
+<div class="framework">
+	{sc:include file='component_product.html'#}
+	<div class="btop">
+		<ul class="over">
+			<li class="title">{sc:$Html['Message'][14]#}</li>
+			<li class="navig">{sc:$Html.Navi#} ： <a href="{sc:$Sys.URL.Home#}">{sc:$Html.Home#}</a> >> {sc:$Html['Message'][14]#}</li>
+		</ul>
+		<ul class="search">
+			<li>{sc:include file='component_search.html'#}</li>
+		</ul>
+	</div>
+	
+	{sc:dynamic#}
+	<div class="information">
+		<ul class="ntitle">
+			<li>{sc:$Html['Message'][15]#}</li>
+		</ul>	
+		{sc:guestbook->sList Total="3" isPage="1"#}
+		{sc:foreach from=$guestbook item=gb key=i name=x#}		
+		<ul class="row1">
+			<li><img src="images/bname.gif" width="10" height="17" border="0" /> {sc:$gb.GuestBookName#}</li>
+			<li><img src="images/time.gif" width="12" height="13" border="0" /> {sc:$gb.GuestBookTime#}</li>
+		</ul>
+		<ul class="row2">
+			<li><img src="images/title.gif" width="14" height="15" border="0" /> {sc:$gb.GuestBookTitle#}</li>
+		</ul>
+		<ul class="row3">
+			<li><font color="#330099">{sc:$gb.GuestBookContent|nl2br#}</font></li>
+		</ul>
+		<ul class="row4">
+			<li>		
+				<font color="#006600">
+				{sc:if $gb.GuestBookResumes != ""#}{sc:$Html['Message'][12]#}：{sc:$gb.GuestBookResumes|nl2br#}{sc:else#}{sc:$Html['Message'][13]#}{sc:/if#}
+				</font>
+			</li>
+		</ul>	
+		{sc:foreachelse#}
+		<ul><li class="nodata">{sc:$Html.NotProduct#}</li></ul>
+		{sc:/foreach#}	
+		<ul><li class="nodata">{sc:$pages#}</ul>	
+	</div>
+	{sc:/dynamic#}
+	
+	<a name="a" id="a"></a>
+	<div class="form">
+		<form name="guesbook" action="{sc:$Sys.URL.GuestbookSub#}" method="post" onSubmit="return FormCheck()">
+		<ul>
+			<li class="ntitle">{sc:$Html['Message'][3]#}</li>
+		</ul>
+		<ul>
+			<li class="text">{sc:$Html['Message'][4]#}：</li>
+			<li class="input"><input name="GuestBookTitle" type="text" id="GuestBookTitle" maxlength="50" /> <font color="#FF0000">*</font></li>
+		</ul>
+		<ul class="details">
+			<li class="text">{sc:$Html['Message'][5]#}：</li>
+			<li class="input"><textarea name="GuestBookContent" id="GuestBookContent"></textarea> <font color="#FF0000">*</font></li>
+		</ul>
+		<ul>
+			<li class="text">{sc:$Html['Message'][7]#}：</li>
+			<li class="input">
+				<input name="GuestBookName" type="text" id="GuestBookName" maxlength="16" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				{sc:$Html['Message'][8]#}：<input name="GuestBookMail" type="text" id="GuestBookMail" maxlength="30" />
+			</li>
+		</ul>
+		<ul>
+			<li class="text">{sc:$Html['Message'][10]#}：</li>
+			<li class="input">
+				<input type="text" name="GuestBookCompany" id="GuestBookCompany"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				{sc:$Html['Message'][9]#}：<input name="GuestBookQQ" type="text" id="GuestBookQQ" maxlength="12" />
+			</li>
+		</ul>
+		<ul>
+			<li class="text">{sc:$Html['Message'][11]#}：</li>
+			<li class="code"><input name="GetCode" type="text" class="Code" id="GetCode" maxlength="4" /></li>
+			<li class="codeimg"><img src="./inc/getcode.php" border="0" onclick="this.src+='?' + Math.random();" onmouseover="0" style="cursor:pointer;" /></li>
+		</ul>
+		<ul>
+			<li class="text"></li>
+			<li class="input"><input type="submit" value="  {sc:$Html.Submit#}  " /></li>
+		</ul>
+		</form>	
+	</div>
+</div>
+{sc:include file='bottom.html'#}
+</body>
+</html>

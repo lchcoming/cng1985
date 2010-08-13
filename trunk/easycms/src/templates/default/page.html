@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{sc:$sc.ArticleTitle#} - {sc:$Web.WebTitle#}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="{sc:$Web.Webkeyword#}"> 
+<meta name="description" content="{sc:$Web.WebDescription#}">
+<base href="{sc:$Sys.WebHost#}">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link href="{sc:$Sys.TemDir#}global.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/global.js?{sc:$Sys.Lang#}"></script>
+<script type="text/javascript" src="./js/swfobject.js"></script>
+<script type="text/javascript" src="./js/msclass.js"></script>
+<style type="text/css">
+.framework{margin:auto; width:930px; overflow:auto; padding:10px 0 20px 0;}
+.framework .main{float:left; overflow:auto; width:700px; margin:10px 0 0 20px;}
+.framework .main .over{height:35px; background:url({sc:$Sys.TemDir#}images/homt_newstitle_bg.gif) no-repeat left bottom;}
+.framework .main .over li{height:30px; line-height:30px;}
+.framework .main .over .title{float:left; padding:0 0 0 30px; font-size:14px; font-family:"微软雅黑","宋体","新宋体"; letter-spacing:2px;}
+.framework .main .over .navig{float:right;}
+.framework .main .content li{line-height:25px; padding:20px 0; margin:auto; width:650px;}
+</style>
+</head>
+<body>
+{sc:include file='top.html'#}
+<div class="framework">
+	{sc:include file='component_page.html'#}
+	<div class="main">
+		<ul class="over">
+			<li class="title">{sc:$sc.ArticleTitle#}</li>
+			<li class="navig">{sc:$Html.Navi#} ： <a href="{sc:$Sys.URL.Home#}">{sc:$Html.Home#}</a> >> <a href="{sc:URL Cid="{sc:$pe.RootID#}" Type="1"#}">{sc:$pe.RootName#}</a> >> {sc:$sc.ArticleTitle#}</li>
+		</ul>
+		<ul class="content">
+			<li>{sc:$sc.ArticleContent#}</li>
+		</ul>
+	</div>
+</div>
+{sc:include file='bottom.html'#}
+</body>
+</html>

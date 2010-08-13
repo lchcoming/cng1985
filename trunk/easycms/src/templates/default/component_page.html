@@ -1,0 +1,21 @@
+<div class="leftpage">
+	<ul class="toppics"><li></li></ul>
+	<ul class="column1">
+		<li class="columntoppics"></li><!--栏目-->
+		{sc:article->sList Sort="3" Rela=$pe.RootID isImg="0" Start="0" Total="99" BackVar='art' Interception="12" Symbol=".."#}
+		{sc:foreach from=$art item=arb key=i name=x#} 				
+		<li class="text"><a href="{sc:$arb.URL#}">{sc:$arb.ArticleTitle#}</a></li>
+		{sc:/foreach#}			
+		<li class="columnbottompics"></li>
+		<li class="pitch"></li>
+	</ul>
+	<ul class="column2">
+		<li class="columntoppics"></li>
+		<li class="text"><a href="{sc:$Sys.URL.Feedback#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_order{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+		<li class="text"><a href="{sc:$Sys.URL.Download#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_download{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+		<li class="text"><a href="{sc:$Sys.URL.Guestbook#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_guestbook{sc:$Sys.Lang#}.gif" width="110" height="50" border="0" /></a></li>
+		<li class="text"><a href="{sc:URL Cid="000388,000389"#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_service{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+		<li class="columnbottompics"></li>
+	</ul>
+	<ul class="bottompics"><li></li></ul>
+</div>

@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{sc:$Html.Product#} - {sc:$Web.WebTitle#}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="{sc:$Web.Webkeyword#}"> 
+<meta name="description" content="{sc:$Web.WebDescription#}">
+<base href="{sc:$Sys.WebHost#}">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/global.js?{sc:$Sys.Lang#}"></script>
+<script type="text/javascript" src="./js/swfobject.js"></script>
+<script type="text/javascript" src="./js/msclass.js"></script>
+<script type="text/javascript" src="./tools/highslide/highslide-with-gallery.js"></script>
+<link rel="stylesheet" type="text/css" href="./tools/highslide/highslide.css" />
+<link rel="stylesheet" type="text/css" href="{sc:$Sys.TemDir#}global.css" />
+<style type="text/css">
+.framework{margin:auto; width:930px; overflow:auto; padding:10px 0 0 0;}
+.framework .btop{float:left; overflow:auto; width:700px; margin:10px 0 0 20px;}
+.framework .btop .over{height:35px; background:url({sc:$Sys.TemDir#}images/homt_newstitle_bg.gif) no-repeat left bottom;}
+.framework .btop .over li{height:30px; line-height:30px;}
+.framework .btop .over .title{float:left; padding:0 0 0 30px; font-size:14px; font-family:"微软雅黑","宋体","新宋体"; letter-spacing:2px;}
+.framework .btop .over .navig{float:right;}
+.framework .search li{float:right;}
+.framework .recommended{float:right; overflow:auto; width:700px; margin:0 0 50px 20px;}
+.framework .recommended .picsbg{height:31px; background:url({sc:$Sys.TemDir#}images/home_product_bg.gif) no-repeat left center;}
+.framework .recommended .picsbg .text{float:left; font-size:13px; color:#FFF; letter-spacing:2px; font-family:"微软雅黑","黑体","宋体","新宋体"; height:31px; line-height:18px; padding:0 0 0 10px;}
+.framework .recommended .product{clear:both; padding:10px 0 0 0;}
+.framework .recommended .product li{float:left; width:170px; text-align:center;}
+.framework .recommended .product li ol img{padding:2px; border:1px #CCC solid;}
+.framework .recommended .product li .name{height:25px; line-height:25px;}
+.framework .recommended .npages li{clear:both; width:600px; margin:auto; text-align:center; padding:20px 0 0 0;  padding:10px 0 30px 0\9;}
+</style>
+<script type="text/javascript">
+hs.graphicsDir = './tools/highslide/graphics/';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.addSlideshow({
+	interval: 5000,
+	repeat: false,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: .75,
+		position: 'bottom center',
+		hideOnMouseOut: true
+	}
+});
+</script>
+</head>
+<body>
+{sc:include file='top.html'#}
+<div class="framework">
+	{sc:include file='component_product.html'#}
+	<div class="btop">
+		<ul class="over">
+			<li class="title">{sc:$Html.Product#}</li>
+			<li class="navig">{sc:$Html.Navi#} ： <a href="{sc:$Sys.URL.Home#}">{sc:$Html.Home#}</a> >> <a href="{sc:$Sys.URL.Products#}">{sc:$Html.Product#}</a> >> {sc:$pt.Sort#}</li>
+		</ul>
+		<ul class="search">
+			<li>{sc:include file='component_search.html'#}</li>
+		</ul>
+	</div>
+	<div class="recommended">{sc:* 推荐产品 *#}
+		<ul class="picsbg">
+			<li class="text">{sc:$Html.pRecommended#}</li>
+		</ul>
+		<ul class="product">
+			{sc:product->sList Sort="3" Rela="0" New="0" Start="0" Total="4" BackVar='tpx' Interception="12" Symbol=".."#}
+			{sc:foreach from=$tpx item=otp key=i name=x#} 
+			<li>
+				<ol>
+					<a href="{sc:$otp.ProductPhoto2#}" onclick="return hs.expand(this)">
+					<img style="border:1px #CCC solid; padding:2px;" width="120" height="120" title="{sc:$Html.ClickEnlarge#}" src="{sc:$otp.ProductPhoto1#}" />
+					</a>				
+				</ol>
+				<ol class="name">
+					<a target="_blank" href="{sc:$otp.URL#}">{sc:$otp.ProductName#}</a>				
+				</ol>
+			</li>
+			{sc:/foreach#}
+		</ul>
+	</div>
+	<div class="recommended">{sc:* 产品 *#}
+		<ul class="picsbg">
+			<li class="text">{sc:$pt.cName#}</li>
+		</ul>
+		<ul class="product">
+			{sc:product->sList Sort="0" Rela=$Sys.sGET.c New="0" Start="0" Total="8" BackVar='tps' isPage="1" isSearch="1" Interception="12" Symbol=".."#}
+			{sc:foreach from=$tps item=tp key=i name=ox#} 
+			<li>
+				<ol>
+					<a href="{sc:$tp.ProductPhoto2#}" onclick="return hs.expand(this)">
+					<img style="border:1px #CCC solid; padding:2px;" width="120" height="120" title="{sc:$Html.ClickEnlarge#}" src="{sc:$tp.ProductPhoto1#}" />
+					</a>				
+				</ol>
+				<ol class="name">
+					<a target="_blank" href="{sc:$tp.URL#}">{sc:$tp.ProductName#}</a>									
+				</ol>
+			</li>
+			{sc:if $smarty.foreach.ox.iteration is div by 4#}</ul><ul class="product">{sc:/if#}
+			{sc:foreachelse#}<li>{sc:$Html.NotProduct#}</li>		
+			{sc:/foreach#} 
+		</ul>
+		<ul class="npages">
+			<li>{sc:$pages#}</li>
+		</ul>
+	</div>
+</div>
+{sc:include file='bottom.html'#}
+</body>
+</html>
