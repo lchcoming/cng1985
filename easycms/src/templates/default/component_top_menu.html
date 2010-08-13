@@ -1,0 +1,95 @@
+{sc:* //////////////// 注释：
+可在该页修改导航栏下拉菜单样式、布局、调用数据等，id与class名称不得改变，其它内容可随意修改。
+菜单样式可在 global.css 文件中修改
+///////////////////// *#}
+
+{sc:* //注释： 首页，根据需要可以在这里添加首页菜单链接 // *#}
+{sc:* 注释掉"首页"下拉菜单,如需要添加"首页"下拉请删除注释
+<div class="xSC_MENU" id="xSC_MENU_HOME">
+</div>
+*#}
+
+{sc:* //注释： 产品，如果产品没有分类时可以调用最新产品或推荐、热门产品等信息 // *#}
+<div class="xSC_MENU" id="xSC_MENU_PRODUCT">
+	<ul class="subject">
+		{sc:sdb->column Type="2" Colu="0"#}{sc:foreach from=$column item=c name=x#}
+		<li>
+		{sc:section name=ne loop=$c.ColumnLevel-1#}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{sc:/section#}
+		<img src="images/article_elite3.gif" />&nbsp;<a href="{sc:$c.URL#}">{sc:$c.ColumnName#}</a>
+		</li>
+		{sc:/foreach#}
+	</ul>
+	<ul class="xbottom"><li></li></ul>
+</div>
+
+{sc:* //注释： 新闻 // *#}
+<div class="xSC_MENU" id="xSC_MENU_NEWS">
+	<ul class="subject">
+		{sc:sdb->column Type="1" Colu="0"#}{sc:foreach from=$column item=c name=x#}
+		<li>
+		{sc:section name=ne loop=$c.ColumnLevel-1#}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{sc:/section#}
+		<img src="images/article_elite3.gif" />&nbsp;<a href="{sc:$c.URL#}">{sc:$c.ColumnName#}</a>
+		</li>
+		{sc:/foreach#}
+	</ul>
+	<ul class="xbottom"><li></li></ul>
+</div>
+
+{sc:* //注释： 反馈 // *#}
+<div class="xSC_MENU" id="xSC_MENU_FEEDBACK">
+	<ul class="subject">
+		<li><img src="images/article_elite.gif" />&nbsp;<a href="{sc:$Sys.URL.Feedback#}/ta">{sc:$Html.t1#}</a></li>
+		<li><img src="images/article_elite.gif" />&nbsp;<a href="{sc:$Sys.URL.Feedback#}/tb">{sc:$Html.t2#}</a></li>
+		<li><img src="images/article_elite.gif" />&nbsp;<a href="{sc:$Sys.URL.Feedback#}/tc">{sc:$Html.t3#}</a></li>
+	</ul>
+	<ul class="xbottom"><li></li></ul>	
+</div>
+
+{sc:* //注释： 留言 // *#}
+<div class="xSC_MENU" id="xSC_MENU_GUESTBOOK">
+	<ul class="subject">
+		<li><img src="images/article_elite.gif" />&nbsp;<a href="{sc:$Sys.URL.Guestbook#}">{sc:$Html.ViewMessage#}</a></li>
+		<li><img src="images/article_elite.gif" />&nbsp;<a href="{sc:$Sys.URL.Guestbook#}/#a">{sc:$Html.SubmitMessage#}</a></li>
+	</ul>
+	<ul class="xbottom"><li></li></ul>
+</div>
+
+{sc:* //注释： 下载 // *#}
+<div class="xSC_MENU" id="xSC_MENU_DOWNLOAD">
+	<ul class="subject">
+		{sc:sdb->column Type="3" Colu="0"#}{sc:foreach from=$column item=c name=x#}
+		<li>
+		{sc:section name=ne loop=$c.ColumnLevel-1#}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{sc:/section#}
+		<img src="images/article_elite3.gif" />&nbsp;<a href="{sc:$c.URL#}">{sc:$c.ColumnName#}</a>
+		</li>
+		{sc:/foreach#}
+	</ul>
+	<ul class="xbottom"><li></li></ul>
+</div>
+
+{sc:* //注释： 所有在导航栏中启用的并且含有子分类文章栏目，将使用子类别作为下拉菜单(栏目ID数组：$menu.parts) // *#}
+{sc:section name=i loop=$menu.parts#}
+<div class="xSC_MENU" id="xSC_MENU_PAGE_{sc:$menu.parts[i]#}">
+	<ul class="subject">
+		{sc:sdb->column Type="0" Colu=$menu.parts[i]#}{sc:foreach from=$column item=c name=x#}
+		<li>
+		{sc:section name=ne loop=$c.ColumnLevel-2#}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{sc:/section#}
+		<img src="images/article_elite3.gif" />&nbsp;<a href="{sc:$c.URL#}">{sc:$c.ColumnName#}</a>
+		</li>
+		{sc:/foreach#}
+	</ul>
+	<ul class="xbottom"><li></li></ul>
+</div>
+{sc:/section#}
+
+{sc:* //注释： 所有在导航栏中启用的没有子分类文章栏目，调用20篇文章标题(栏目ID数组：$menu.title)作为下拉菜单，可更改排序值(Sort)，以推荐、点击等排序 // *#}
+{sc:section name=i loop=$menu.title#}
+<div class="xSC_MENU" id="xSC_MENU_PAGE_{sc:$menu.title[i]#}">
+	<ul class="subject">
+		{sc:article->sList Sort="0" Rela=$menu.title[i] Total="20"#}{sc:foreach from=$article item=o name=x#}
+		<li><img src="images/article_elite.gif" />&nbsp;<a href="{sc:$o.URL#}">{sc:$o.ArticleTitle#}</a></li>
+		{sc:/foreach#}
+	</ul>
+	<ul class="xbottom"><li></li></ul>
+</div>
+{sc:/section#}

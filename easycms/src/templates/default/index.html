@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>$title</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="{sc:$Web.Webkeyword#}"> 
+<meta name="description" content="{sc:$Web.WebDescription#}">
+<base href="{sc:$Sys.WebHost#}">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/global.js?1"></script>
+<script type="text/javascript" src="./js/msclass.js"></script>
+<script type="text/javascript" src="./js/swfobject.js"></script>
+<script type="text/javascript" src="./tools/highslide/highslide-with-gallery.js"></script>
+<link rel="stylesheet" type="text/css" href="./tools/highslide/highslide.css" />
+<link rel="stylesheet" type="text/css" href="./templates/default/global.css" />
+<style type="text/css">
+.flashandnews{width:950px; margin:auto;}
+.flashandnews ul li{float:left;}
+.flashandnews ul .flash{padding:20px; width:650px; height:260px; text-align:center; background:url({sc:$Sys.TemDir#}images/home_flash_bg.gif) center no-repeat;}
+.flashandnews ul .newsandonline{padding:10px 10px 10px 0;}
+.flashandnews ul .newsandonline .news{width:250px; height:140px; background:url({sc:$Sys.TemDir#}images/home_news_bg.gif) center no-repeat;}
+.flashandnews ul .newsandonline .news .title{height:40px; line-height:40px; width:200px; padding:0 0 0 30px; margin:0 0 2px 10px; background:url({sc:$Sys.TemDir#}images/homt_newstitle_bg.gif) bottom left no-repeat;}
+.flashandnews ul .newsandonline .news .title .stit{font-size:13px; letter-spacing:2px; font-family:"微软雅黑","黑体","宋体","新宋体";}
+.flashandnews ul .newsandonline .news .title .more{float:right; padding:2px 5px 0 0; _padding:13px 5px 0 0;}
+.flashandnews ul .newsandonline .news .sntest li{clear:both; left:22px; height:22px; width:230px; padding:0 0 0 10px;}
+.flashandnews ul .newsandonline .online{width:250px; height:130px; margin:10px 0 0 0; clear:both; background:url(./images/0101.gif) repeat-x 0 bottom;}
+.flashandnews ul .newsandonline .online ul{clear:both;}
+.flashandnews ul .newsandonline .online ul li{width:125px; height:65px; text-align:center;}
+.newsandproduct{width:950px; height:200px; margin:auto; clear:both; background:url(./images/1010.gif) repeat-y 325px 0;}
+.newsandproduct .products{width:600px; float:right; margin:0 5px 0 10px;}
+.newsandproduct .products .picsbg{height:31px; background:url({sc:$Sys.TemDir#}images/home_product_bg.gif) no-repeat left center;}
+.newsandproduct .products .picsbg .text{float:left; font-size:13px; color:#FFF; letter-spacing:2px; font-family:"微软雅黑","黑体","宋体","新宋体"; height:31px; line-height:18px; padding:0 0 0 10px;}
+.newsandproduct .products .picsbg .more{float:right; padding:0 10px 0 0;}
+.newsandproduct .products .product{clear:both; padding:10px 0 0 0;}
+.newsandproduct .products .product li{float:left; width:150px; text-align:center;}
+.newsandproduct .products .product li ol img{padding:2px; border:1px #CCC solid;}
+.newsandproduct .products .product li .name{height:25px; line-height:25px;}
+.newsandproduct .news{width:300px; float:left; margin:0 0 0 10px;}
+.newsandproduct .news .picsbg{height:31px; background:url({sc:$Sys.TemDir#}images/home_product_bg.gif) no-repeat left center;}
+.newsandproduct .news .picsbg .text{float:left; font-size:13px; color:#FFF; letter-spacing:2px; font-family:"微软雅黑","黑体","宋体","新宋体"; height:31px; line-height:18px; padding:0 0 0 10px;}
+.newsandproduct .news .picsbg .more{float:right; padding:0 10px 0 0;}
+.newsandproduct .news .new{clear:both; padding:10px 0 0 0;}
+.newsandproduct .news .new li{float:left; width:150px; text-align:center;}
+.newsandproduct .news .new li ol img{padding:2px; border:1px #CCC solid;}
+.newsandproduct .news .new li .name{height:25px; line-height:25px;}
+.link{width:930px; overflow:hidden; margin:auto; clear:both;}
+.link .picslink li{float:left;}
+.link .picslink .left,.link .picslink .right{width:45px; height:50px;}
+.link .picslink .left{background:url({sc:$Sys.TemDir#}images/home_link_bg_left.gif) no-repeat center left;}
+.link .picslink .right{background:url({sc:$Sys.TemDir#}images/home_link_bg_right.gif) no-repeat center right;}
+.link .picslink .logo{height:50px; width:840px; background:url({sc:$Sys.TemDir#}images/home_link_bg_center.gif) repeat-x center center;}
+.link .picslink .logo #scroll{padding:9px 0 0 0; width:840px; height:50px;}
+.link ul{clear:both;}
+.link .textlink{clear:both;}
+.link .textlink li{text-align:center; overflow:auto; line-height:25px; margin:3px 0 10px 0;}
+</style>
+<script type="text/javascript">
+hs.graphicsDir = './tools/highslide/graphics/';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.addSlideshow({
+	interval: 5000,
+	repeat: false,
+	useControls: true,
+	fixedControls: 'fit',
+	overlayOptions: {
+		opacity: .75,
+		position: 'bottom center',
+		hideOnMouseOut: true
+	}
+});
+
+
+/* 焦点图 */
+var SWFswfUrl = 'media/pixviewer.swf?1829243772';
+var SWFflashvars = {
+	pics : "uploadfile/Media/x1.jpg|uploadfile/Media/x2.jpg",
+	links : "http://bbs.songcms.com/viewthread.php?tid=705|http://data.songcms.com",
+	texts : "SongCMS v3.16新功能介绍|SongCMS数据频道倾情回馈",
+	borderwidth : "650",
+	borderheight : "260",
+	textheight : "0"
+};
+var attributes = {
+	wmode : "transparent"
+};
+
+/* 友情链接[Logo] */
+window.onload = function(){
+	new Marquee("scroll",2,2,840,31,30,0,3000,0);
+	swfobject.embedSWF(SWFswfUrl,"pixviewer","650","260","6",null,SWFflashvars,attributes);
+}
+</script>
+</head>
+<body>
+#parse("/templates/default/top.html")
+
+<div class="flashandnews">
+	<ul>
+		<li class="flash"><div id="pixviewer"><br /><br /><br /><br /><br /><br /><br /><br />Loading...</div></li>
+		<li class="newsandonline">
+			<div class="news">
+				<ul class="title">
+					<li class="stit">{sc:$Html.sNews#}</li>
+					<li class="more"><a href="{sc:$Sys.URL.News#}"><img src="{sc:$Sys.TemDir#}images/more.gif" width="38" height="13" border="0" /></a></li>
+				</ul>
+				<ul class="sntest">
+					{sc:news->sList Sort="0" Rela="0" isImg="0" Start="0" Total="4" BackVar="ns" Interception="13" Symbol=".."#}
+						
+					 #foreach( $item in $news )		
+					<li>
+						<img src="./images/article_elite4.gif" width="9" height="15" />
+						<a target="_blank" href="{sc:$n.URL#}">$item.newsTitle</a>
+						<font color="#666666">({sc:if $Sys.WebStaticHTML==0#}{sc:$n.NewsClick#}{sc:else#}{sc:$n.NewsTime|date_format:"%m-%d"#}{sc:/if#})</font>
+					</li>
+					#end
+				</ul>
+			</div>
+			<div class="online">
+				<ul>
+					<li><a href="{sc:$Sys.URL.Feedback#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_order{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+					<li><a href="{sc:$Sys.URL.Download#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_download{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+				</ul>
+				<ul>
+					<li><a href="{sc:$Sys.URL.Guestbook#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_guestbook{sc:$Sys.Lang#}.gif" width="110" height="50" border="0" /></a></li>
+					<li><a href="{sc:URL Cid="000388,000389"#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_service{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+				</ul>				
+			</div>
+		</li>
+	</ul>
+</div>
+<div class="newsandproduct">
+	<div class="news">{sc:* 图片新闻 *#}
+		<ul class="picsbg">
+			<li class="text">{sc:$Html.PhotoNews#}</li>
+			<li class="more"><a href="{sc:$Sys.URL.News#}"><img src="{sc:$Sys.TemDir#}images/more.gif" width="38" height="13" border="0"></a></li>
+		</ul>
+		<ul class="new">
+			{sc:news->sList Sort="0" Rela="0" isImg="1" Start="0" Total="2" BackVar="photonews" Interception="10" Symbol=".."#}
+			{sc:foreach from=$photonews item=pn key=i name=x#}
+			<li>
+				<ol>
+					<a target="_blank" href="{sc:$pn.URL#}">
+					<img src="{sc:$pn.NewsPhoto#}" width="120" height="120" border="0">
+					</a>				
+				</ol>
+				<ol class="name">
+					<a target="_blank" href="{sc:$pn.URL#}">{sc:$pn.NewsTitle#}</a>			
+				</ol>
+			</li>
+			{sc:/foreach#}
+		</ul>
+	</div>
+	<div class="products">{sc:* 推荐产品 *#}
+		<ul class="picsbg">
+			<li class="text">{sc:$Html.pRecommended#}</li>
+			<li class="more"><a href="{sc:$Sys.URL.Products#}"><img src="{sc:$Sys.TemDir#}images/more.gif" width="38" height="13" border="0"></a></li>
+		</ul>
+		<ul class="product">
+			{sc:product->sList Sort="3" Rela="0" New="0" Start="0" Total="4" BackVar='tps' Interception="10" Symbol=".."#}
+			{sc:foreach from=$tps item=tp key=i name=x#} 
+			<li>
+				<ol>
+					<a href="{sc:$tp.ProductPhoto2#}" onclick="return hs.expand(this)">
+					<img style="border:1px #CCC solid; padding:2px;" width="120" height="120" title="{sc:$Html.ClickEnlarge#}" src="{sc:$tp.ProductPhoto1#}" />
+					</a>				
+				</ol>
+				<ol class="name">
+					<a target="_blank" href="{sc:$tp.URL#}">{sc:$tp.ProductName#}</a>				
+				</ol>
+			</li>
+			{sc:/foreach#}
+		</ul>
+	</div>
+</div>
+<br />
+<div class="link">
+	<ul class="picslink">
+		<li class="left"></li>
+		<li class="logo">
+			<nobr><div id="scroll">
+				{sc:sdb->sLink Type="1" Start="0" Total="50"#}
+				{sc:foreach from=$sLink item=L key=i name=x#} 
+				<a target="_blank" href="{sc:$L.LinkWebUrl#}"><img width="88" height="31" src="{sc:$L.LinkLogoUrl#}" /></a>
+				{sc:/foreach#}		
+			</div></nobr>
+		</li>
+		<li class="right"></li>
+	</ul>
+	{sc:sdb->sLink Type="0" Start="0" Total="50" BackVar="tLink"#}
+	{sc:if $tLink|@count > 0#}
+	<ul class="textlink">
+		<li>
+		{sc:foreach from=$tLink item=tL key=i name=x#}
+		<a target="_blank" href="{sc:$tL.LinkWebUrl#}">{sc:$tL.LinkWebName#}</a>
+		{sc:if $smarty.foreach.x.iteration is div by 9#}<br />{sc:/if#}
+		{sc:/foreach#}
+		</li>
+	</ul>
+	{sc:/if#}
+</div>
+ #parse("/templates/default/bottom.html")
+
+</body>
+</html>

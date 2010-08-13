@@ -1,0 +1,57 @@
+{sc:dynamic#}
+{sc:if $Sys.isLogin != "songcms"#} {sc:* 没有登录 *#}
+<form id="form_login" name="form_login" class="form_login" method="post" action="{sc:$Sys.URL.LoginSub#}">
+<table border="0" cellspacing="0" cellpadding="0" class="sLogin">
+	<tr>
+		<td align="right">{sc:$Html.Member#}：</td>
+		<td><input type="text" name="Member" id="Member" class="StylePnput" /></td>
+		<td>&nbsp;<a href="{sc:$Sys.URL.Reg#}">{sc:$Html.NewReg#}</a></td>
+	</tr>
+	<tr>
+		<td align="right">{sc:$Html.Password#}：</td>
+		<td><input type="password" name="Password" id="Password" class="StylePnput" />
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td colspan="2"><table border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="80"><input type="image"  onclick="if(document.getElementById('Member').value == '' || document.getElementById('Password').value == ''){ alert('{sc:$Html.pUser#}');return false;}" src="{sc:$Sys.TemDir#}images/{sc:$Html.SubmitImg#}" /></td>
+				<td><input name="sCookies" type="checkbox" value="yes" /></td>
+				<td>{sc:$Html.sCookies#}</td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+</form>
+{sc:else#} {sc:* 已登录 *#}
+<table border="0" cellspacing="0" cellpadding="0" class="sLogin">
+	<tr>
+		<td>{sc:$Html.Welcome#}<strong>{sc:$smarty.cookies.User.Name#}</strong> {sc:*if $smarty.cookies.User.TrueName != ''#}[<font color="#FF0000">{sc:$smarty.cookies.User.TrueName#}</font>]{sc:/if*#}</td>
+	</tr>
+	<tr>
+		<td>
+			{sc:$Html.Logins#}：<span class="bred">{sc:$smarty.cookies.User.Login#}</span> &nbsp;&nbsp;&nbsp;
+			{sc:$Html.Last#}：<span class="bred">{sc:$smarty.cookies.User.LoginTime#}</span>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{sc:if $smarty.cookies.User.Company !=''#}
+				<span class="bred">{sc:$smarty.cookies.User.Company#}</span>
+			{sc:else#}
+				{sc:$Html.LastIP#}：<span class="bred">{sc:$smarty.cookies.User.LoginIP#}</span>
+			{sc:/if#}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="{sc:$Sys.URL.ChanUser#}">{sc:$Html.rPassword#}</a> |
+			<a href="{sc:$Sys.URL.ChanUser#}">{sc:$Html.Modify#}</a> |
+			<a href="{sc:$Sys.URL.OutLogin#}">{sc:$Html.ExitLogin#}</a> 
+		</td>
+	</tr>		
+</table>
+{sc:/if#}
+{sc:/dynamic#}

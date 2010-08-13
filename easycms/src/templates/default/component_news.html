@@ -1,0 +1,30 @@
+<div class="leftpage">
+	<ul class="toppics"><li></li></ul>
+	<ul class="product">
+		<li class="columntoppics"></li>
+		{sc:sdb->column Type="1" Colu="0" BackVar="cns"#}
+		{sc:foreach from=$cns item=cp key=i name=x#} 
+		<li class="text">
+		{sc:if $cp.ColumnLevel==1#} {sc:* 一级类别 *#}
+		<img src="./images/article_elite3.gif" width="9" height="15">
+		{sc:elseif  $cp.ColumnLevel==2#} {sc:* 设置二级类别样式 *#}
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./images/article_elite5.gif" width="9" height="15" />
+		{sc:else#} {sc:* 设置更多级别的类别样式 *#}
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./images/article_ontop2.gif" width="9" height="15" />
+		{sc:/if#}
+		<a href="{sc:$cp.URL#}">{sc:$cp.ColumnName#}</a>
+		</li>
+		{sc:/foreach#}			
+		<li class="columnbottompics"></li>
+		<li class="pitch"></li>
+	</ul>
+	<ul class="column2">
+		<li class="columntoppics"></li>
+		<li class="text"><a href="{sc:$Sys.URL.Feedback#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_order{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+		<li class="text"><a href="{sc:$Sys.URL.Download#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_download{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+		<li class="text"><a href="{sc:$Sys.URL.Guestbook#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_guestbook{sc:$Sys.Lang#}.gif" width="110" height="50" border="0" /></a></li>
+		<li class="text"><a href="{sc:URL Cid="000388,000389"#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_service{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+		<li class="columnbottompics"></li>
+	</ul>
+	<ul class="bottompics"><li></li></ul>
+</div>

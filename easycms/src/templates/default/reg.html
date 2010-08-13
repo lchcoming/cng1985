@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{sc:$pfe.pfTitle#} - {sc:$Web.WebTitle#}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="{sc:$Web.Webkeyword#}"> 
+<meta name="description" content="{sc:$Web.WebDescription#}">
+<base href="{sc:$Sys.WebHost#}">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/global.js?{sc:$Sys.Lang#}"></script>
+<script type="text/javascript" src="./js/swfobject.js"></script>
+<script type="text/javascript" src="./js/msclass.js"></script>
+<link rel="stylesheet" type="text/css" href="{sc:$Sys.TemDir#}global.css" />
+<script language="javascript">
+function Check() {
+	if (document.reg.UserName.value.length<4){
+		alert("{sc:$Html['Reg'][0]#}");
+		document.reg.UserName.focus();
+		return false;
+	}
+	if (document.reg.UserPassword.value.length<6){
+		alert("{sc:$Html['Reg'][1]#}");
+		document.reg.UserPassword.focus();
+		return false;
+	}	
+	if (document.reg.UserPassword.value!=document.reg.UserPassword2.value){
+		alert("{sc:$Html['Reg'][2]#}");
+		document.reg.UserPassword2.focus();
+		return false;
+	}	
+	if (document.reg.UserProtectionQuestion.value.length<4){
+		alert("{sc:$Html['Reg'][3]#}");
+		document.reg.UserProtectionQuestion.focus();
+		return false;
+	}
+	if (document.reg.UserProtectionAnswer.value.length<4){
+		alert("{sc:$Html['Reg'][4]#}");
+		document.reg.UserProtectionAnswer.focus();
+		return false;
+	}
+	if (document.reg.UserEmail.value.length<4){
+		alert("{sc:$Html['Reg'][5]#}");
+		document.reg.UserEmail.focus();
+		return false;
+	}	
+	if (document.reg.UserTel.value==""){
+		alert("{sc:$Html['Reg'][6]#}");
+		document.reg.UserTel.focus();
+		return false;
+	}	
+}
+</script>
+<style type="text/css">
+.framework{margin:auto; width:930px; overflow:auto; padding:10px 0 0 0;}
+.framework .btop{float:left; overflow:auto; width:700px; margin:10px 0 0 20px;}
+.framework .btop .over{height:35px; background:url({sc:$Sys.TemDir#}images/homt_newstitle_bg.gif) no-repeat left bottom;}
+.framework .btop .over li{height:30px; line-height:30px;}
+.framework .btop .over .title{float:left; padding:0 0 0 30px; font-size:14px; font-family:"微软雅黑","宋体","新宋体"; letter-spacing:2px;}
+.framework .btop .over .navig{float:right;}
+.framework .search li{float:right;}
+.framework .information{margin:20px 0 10px 100px; float:left;}
+.framework .information .ntitle li{font-size:13px; color:#FFF; width:300px; clear:both; letter-spacing:2px; font-family:"微软雅黑","黑体","宋体","新宋体"; height:31px; line-height:18px; padding:0 0 0 10px; background:url({sc:$Sys.TemDir#}images/home_product_bg.gif) no-repeat left center;}
+.framework .form{float:left; width:700px;}
+.framework .form ul li{float:left; height:35px; line-height:35px;}
+.framework .form ul{clear:both;}
+.framework .form ul .right{text-align:right; width:180px;}
+.framework .form ul .input{width:220px;}
+.framework .form ul .pv{color:#999; width:160px;}
+.framework .form ul li .input2{width:200px; height:17px; line-height:17px;}
+</style>
+</head>
+<body>
+{sc:include file='top.html'#}
+<div class="framework">
+	{sc:include file='component_product.html'#}
+	<div class="btop">
+		<ul class="over">
+			<li class="title">{sc:$pfe.pfTitle#}</li>
+			<li class="navig">{sc:$Html.Navi#} ： <a href="{sc:$Sys.URL.Home#}">{sc:$Html.Home#}</a> >> {sc:$pfe.pfTitle#}</li>
+		</ul>
+		<ul class="search">
+			<li>{sc:include file='component_search.html'#}</li>
+		</ul>
+	</div>
+	
+	<div class="information">
+		<ul class="ntitle">
+			<li>{sc:$pfe.pfTitle#}</li>
+		</ul>
+	</div>
+	
+	<div class="form">
+		{sc:dynamic#}
+		<form id="reg" name="reg" method="post" action="{sc:$Sys.URL.RegSub#}" onSubmit="return Check()">
+			<ul>
+				<li class="right">{sc:$Html['Reg'][7]#}：</li>
+				<li class="input"><input name="UserName" value="{sc:$Ue.UserName#}" type="text" class="input2" id="UserName" maxlength="30" {sc:if $pfe.Action=='UpDate'#} readonly="readonly"{sc:/if#} /> <font color="#FF0000">*</font></li>
+				<li class="pv">&nbsp;</li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][8]#}：</li>
+				<li class="input"><input name="UserPassword" value="{sc:$Ue.UserPassword#}" type="password" id="UserPassword" maxlength="32" class="input2" /> <font color="#FF0000">*</font></li>
+				<li class="pv">{sc:$Html['Reg'][9]#}</li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][10]#}：</li>
+				<li class="input"><input name="UserPassword2" value="{sc:$Ue.UserPassword#}" type="password" id="UserPassword2" maxlength="32" class="input2" /></li>
+				<li class="pv"></li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][11]#}：</li>
+				<li class="input"><input type="text" value="{sc:$Ue.UserProtectionQuestion#}" name="UserProtectionQuestion" id="UserProtectionQuestion" class="input2" /> <font color="#FF0000">*</font></li>
+				<li class="pv"></li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][12]#}：</li>
+				<li class="input"><input name="UserProtectionAnswer" value="{sc:$Ue.UserProtectionAnswer#}" type="text" id="UserProtectionAnswer" maxlength="30" class="input2" /> <font color="#FF0000">*</font></li>
+				<li class="pv"></li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][13]#}：</li>
+				<li class="input"><input name="UserTrueName" value="{sc:$Ue.UserTrueName#}" type="text" id="UserTrueName" maxlength="20" class="input2" /></li>
+				<li class="pv"></li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][14]#}：</li>
+				<li class="input"><input type="radio" name="UserSex" id="radio" value="0" {sc:if $Ue.UserSex=="0"#}checked="checked"{sc:/if#} />
+					{sc:$Html['Reg'][15]#}
+					<input name="UserSex" type="radio" id="radio2" value="1" {sc:if $Ue.UserSex=="1" || $pfe.Action=='Add'#}checked="checked"{sc:/if#} />
+					{sc:$Html['Reg'][16]#}</li>
+				<li class="pv"></li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][17]#}：</li>
+				<li class="input"><input name="UserEmail" value="{sc:$Ue.UserEmail#}" type="text" id="UserEmail" maxlength="30" class="input2" {sc:if $pfe.Action=='UpDate'#} readonly="readonly"{sc:/if#} /> <font color="#FF0000">*</font></li>
+				<li class="pv">{sc:$Html['Reg'][18]#}</li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][19]#}：</li>
+				<li class="input"><input type="text" value="{sc:$Ue.UserCompany#}" name="UserCompany" id="UserCompany" class="input2" /></li>
+				<li class="pv"></li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][20]#}：</li>
+				<li class="input"><input name="UserWeb" value="{sc:$Ue.UserWeb#}" type="text" id="UserWeb" maxlength="30" class="input2" /></li>
+				<li class="pv"></li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][21]#}：</li>
+				<li class="input"><input name="UserAddress" value="{sc:$Ue.UserAddress#}" type="text" id="UserAddress" maxlength="100" class="input2" /></li>
+				<li class="pv"></li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][22]#}：</li>
+				<li class="input"><input name="UserTel" value="{sc:$Ue.UserTel#}" type="text" id="UserTel" maxlength="20" class="input2" /> <font color="#FF0000">*</font></li>
+				<li class="pv"></li>
+			</ul>
+			<ul>
+				<li class="right">{sc:$Html['Reg'][23]#}：</li>
+				<li class="input"><input name="UserFax" value="{sc:$Ue.UserFax#}" type="text" id="UserFax" maxlength="20" class="input2" /></li>
+				<li class="pv"></li>
+			</ul>
+			<ul>
+				<li class="right">&nbsp;</li>
+				<li class="input"><input type="submit" value=" {sc:$Html['Reg'][24]#} " /></li>
+				<li class="pv"></li>
+			</ul>			
+		</form>
+		{sc:/dynamic#}	
+	</div>
+</div>
+{sc:include file='bottom.html'#}
+</body>
+</html>

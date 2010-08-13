@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{sc:$Html.Login#} - {sc:$Web.WebTitle#}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="{sc:$Web.Webkeyword#}"> 
+<meta name="description" content="{sc:$Web.WebDescription#}">
+<base href="{sc:$Sys.WebHost#}">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{sc:$Sys.TemDir#}global.css" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/global.js?{sc:$Sys.Lang#}"></script>
+<script type="text/javascript" src="./js/swfobject.js"></script>
+<script type="text/javascript" src="./js/msclass.js"></script>
+<style type="text/css">
+.framework{margin:auto; width:930px; overflow:auto; padding:10px 0 0 0;}
+.framework .btop{float:left; overflow:auto; width:700px; margin:10px 0 0 20px;}
+.framework .btop .over{height:35px; background:url({sc:$Sys.TemDir#}images/homt_newstitle_bg.gif) no-repeat left bottom;}
+.framework .btop .over li{height:30px; line-height:30px;}
+.framework .btop .over .title{float:left; padding:0 0 0 30px; font-size:14px; font-family:"微软雅黑","宋体","新宋体"; letter-spacing:2px;}
+.framework .btop .over .navig{float:right;}
+.framework .search li{float:right;}
+.framework .information{margin:120px 0 10px 200px; float:left;}
+.framework .form{margin:0 0 0 200px; float:left;}
+.framework .information .ntitle li{font-size:13px; color:#FFF; width:300px; clear:both; letter-spacing:2px; font-family:"微软雅黑","黑体","宋体","新宋体"; height:31px; line-height:18px; padding:0 0 0 10px; background:url({sc:$Sys.TemDir#}images/home_product_bg.gif) no-repeat left center;}
+.sLogin {height:120px;}
+.sLogin td{height:40px;}
+</style>
+</head>
+<body>
+{sc:include file='top.html'#}
+<div class="framework">
+	{sc:include file='component_product.html'#}
+	<div class="btop">
+		<ul class="over">
+			<li class="title">{sc:$Html.Login#}</li>
+			<li class="navig">{sc:$Html.Navi#} ： <a href="{sc:$Sys.URL.Home#}">{sc:$Html.Home#}</a> >> {sc:$Html.Login#}</li>
+		</ul>
+		<ul class="search">
+			<li>{sc:include file='component_search.html'#}</li>
+		</ul>
+	</div>
+	
+	<div class="information">
+		<ul class="ntitle">
+			<li>{sc:$Html.Login#}</li>
+		</ul>
+	</div>
+	
+	<div class="form">{sc:include file='component_login.html'#}</div>
+</div>
+{sc:include file='bottom.html'#}
+</body>
+</html>

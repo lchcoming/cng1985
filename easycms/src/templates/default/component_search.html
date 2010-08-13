@@ -1,0 +1,18 @@
+<script type="text/javascript">
+function onfsearch(){ //提交
+	var URL = './?m1/';
+//	URL += 'f' + document.getElementById('File').value;
+	{sc:if $Sys.sGET.f == 'news' || $Sys.sGET.f == 'new'#}URL += 'f' + 'news';
+	{sc:elseif $Sys.sGET.f == 'download'#}URL += 'f' + 'download';
+	{sc:else#}URL += 'f' + 'products';{sc:/if#}
+	URL += '/l' + "{sc:$Sys.Lang#}";
+	URL += '/w' + encodeURI(document.getElementById('wd').value) + '/';
+	document.getElementById('fsearch').action = URL;
+}
+</script>
+<form name="fsearch" id="fsearch" action="" method="post" onSubmit="return onfsearch()">
+	<div class="productsearch">
+		<ol class="wd"><input name="wd" id="wd" type="text" onfocus="if(value=='{sc:$Html.swd#}') {value=''}" onblur="if(value=='') {value='{sc:$Html.swd#}'}" value="{sc:$Html.swd#}" /></ol>
+		<ol class="wd_button"><input type="image" src="{sc:$Sys.TemDir#}images/search_submit{sc:$Sys.Lang#}.gif" onclick="if(document.getElementById('wd').value == '{sc:$Html.swd#}'){ alert('{sc:$Html.sillegal#}');return false;}" /></ol>
+	</div>
+</form>

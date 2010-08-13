@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{sc:$Html.order#} - {sc:$Web.WebTitle#}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="{sc:$Web.Webkeyword#}"> 
+<meta name="description" content="{sc:$Web.WebDescription#}">
+<base href="{sc:$Sys.WebHost#}">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/global.js?{sc:$Sys.Lang#}"></script>
+<script type="text/javascript" src="./js/swfobject.js"></script>
+<script type="text/javascript" src="./js/msclass.js"></script>
+<script type="text/javascript" src="./tools/highslide/highslide-with-gallery.js"></script>
+<link rel="stylesheet" type="text/css" href="./tools/highslide/highslide.css" />
+<link rel="stylesheet" type="text/css" href="{sc:$Sys.TemDir#}global.css" />
+<style type="text/css">
+.framework{margin:auto; width:930px; overflow:auto; padding:10px 0 0 0;}
+.framework .btop{float:left; overflow:auto; width:700px; margin:10px 0 0 20px;}
+.framework .btop .over{height:35px; background:url({sc:$Sys.TemDir#}images/homt_newstitle_bg.gif) no-repeat left bottom;}
+.framework .btop .over li{height:30px; line-height:30px;}
+.framework .btop .over .title{float:left; padding:0 0 0 30px; font-size:14px; font-family:"微软雅黑","宋体","新宋体"; letter-spacing:2px;}
+.framework .btop .over .navig{float:right;}
+.framework .search li{float:right;}
+.framework .form{float:left; overflow:auto; width:700px; margin:10px 0 0 20px;}
+.framework .form li{float:left; height:40px; line-height:40px; background:url(./images/0101.gif) left bottom repeat-x;}
+.framework .form .text{text-align:right; width:120px;}
+.framework .form .input{width:550px; _padding:8px 0 0 0; _height:32px;}
+.framework .form .details li{height:120px; padding:10px 0 10px 0;}
+.framework .form .details li textarea{width:450px; height:100px;}
+</style>
+<script language="javascript">
+function trim(str) {
+	return str.replace(/(^[\s\u3000]*)|([\s\u3000]*$)/g,"");
+}
+function nCheck(){
+	if(trim(document.Feedback.Email.value)=="" || trim(document.Feedback.Details.value)==""){
+		alert('{sc:$Html.sIncomplete#}');
+		document.Feedback.Content.focus();
+		return false;
+	}
+}
+</script>
+</head>
+<body>
+{sc:include file='top.html'#}
+<div class="framework">
+	{sc:include file='component_product.html'#}
+	<div class="btop">
+		<ul class="over">
+			<li class="title">{sc:$Html.order#}</li>
+			<li class="navig">{sc:$Html.Navi#} ： <a href="{sc:$Sys.URL.Home#}">{sc:$Html.Home#}</a> >> {sc:$Html.order#}</li>
+		</ul>
+		<ul class="search">
+			<li>{sc:include file='component_search.html'#}</li>
+		</ul>
+	</div>
+	
+	<div class="form">
+		<form name="Feedback" action="{sc:$Sys.URL.FeedbackSub#}" method="post" onSubmit="return nCheck()">
+		<ul>
+			<li class="text">{sc:$Html.Recipient#}：</li>
+			<li class="input">
+				<select name="Re" id="select">
+					<option value="{sc:$Web.WebEmail#}">{sc:$Web.WebEmail#}</option> {sc:* 收件人邮箱地址请在后台 基本信息 中设置 *#}
+				</select> <font color="#999999">{sc:$Html.tFeedback#}</font>			
+			</li>
+		</ul>
+		<ul>
+			<li class="text">{sc:$Html.Theme#}：</li>
+			<li class="input">
+				<input name="Type" type="radio" value="{sc:$Html.t1#}" {sc:if $Sys.sGET.t != 'b' && $Sys.sGET.t != 'c'#}checked{sc:/if#} />{sc:$Html.t1#}
+				<input name="Type" type="radio" value="{sc:$Html.t2#}" {sc:if $Sys.sGET.t == 'b'#}checked{sc:/if#} />{sc:$Html.t2#}
+				<input name="Type" type="radio" value="{sc:$Html.t3#}" {sc:if $Sys.sGET.t == 'c'#}checked{sc:/if#} />{sc:$Html.t3#}
+			</li>
+		</ul>
+		<ul>
+			<li class="text">{sc:$Html.CompanyName#}：</li>
+			<li class="input"><input name="Company" type="text" size="40" /></li>
+		</ul>		
+		<ul>
+			<li class="text">{sc:$Html.YourEmail#}：</li>
+			<li class="input"><input name="Email" type="text" id="Email" size="40" /> <font color="#FF0000">*</font></li>
+		</ul>
+		<ul>
+			<li class="text">{sc:$Html.onTel#}：</li>
+			<li class="input"><input name="Telephone" type="text" size="40" /></li>
+		</ul>
+		<ul>
+			<li class="text">{sc:$Html.onFax#}：</li>
+			<li class="input"><input name="Fax" type="text" size="40" /></li>
+		</ul>
+		<ul>
+			<li class="text">{sc:$Html.onWeb#}：</li>
+			<li class="input"><input name="Website" type="text" size="40" /></li>
+		</ul>
+		<ul>
+			<li class="text">{sc:$Html.onPname#}：</li>
+			<li class="input"><input name="Products" type="text" size="40" /></li>
+		</ul><ul>
+			<li class="text">{sc:$Html.onAmount#}：</li>
+			<li class="input"><input name="Amount" type="text" size="10" /></li>
+		</ul>
+		<ul class="details">
+			<li class="text">{sc:$Html.onDetails#}：</li>
+			<li class="input"><textarea name="Details"></textarea> <font color="#FF0000">*</font></li>
+		</ul>		
+		<ul>
+			<li class="text"><input type="hidden" name="Title" value="{sc:$Html.order#}"></li>
+			<li class="input"><input type="submit" value="  {sc:$Html.Submit#}  " /></li>
+		</ul>
+		</form>	
+	</div>
+	
+	
+
+</div>
+{sc:include file='bottom.html'#}
+</body>
+</html>

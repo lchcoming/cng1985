@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{sc:$Html.Download#} - {sc:$Web.WebTitle#}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="keywords" content="{sc:$Web.Webkeyword#}"> 
+<meta name="description" content="{sc:$Web.WebDescription#}">
+<base href="{sc:$Sys.WebHost#}">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{sc:$Sys.TemDir#}global.css" />
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/global.js?{sc:$Sys.Lang#}"></script>
+<script type="text/javascript" src="./js/swfobject.js"></script>
+<script type="text/javascript" src="./js/msclass.js"></script>
+<style type="text/css">
+.framework{margin:auto; width:930px; overflow:auto; padding:10px 0 0 0;}
+.framework .btop{float:left; overflow:auto; width:700px; margin:10px 0 0 20px;}
+.framework .btop .over{height:35px; background:url({sc:$Sys.TemDir#}images/homt_newstitle_bg.gif) no-repeat left bottom;}
+.framework .btop .over li{height:30px; line-height:30px;}
+.framework .btop .over .title{float:left; padding:0 0 0 30px; font-size:14px; font-family:"微软雅黑","宋体","新宋体"; letter-spacing:2px;}
+.framework .btop .over .navig{float:right;}
+.framework .search li{float:right;}
+.framework .cnews{float:right; width:700px; padding:20px 0 0 0; overflow:hidden;}
+.framework .cnews ul{clear:both;}
+.framework .cnews ul .ntitle{font-size:13px; color:#FFF; width:300px; clear:both; letter-spacing:2px; font-family:"微软雅黑","黑体","宋体","新宋体"; height:31px; line-height:18px; padding:0 0 0 10px; background:url({sc:$Sys.TemDir#}images/home_product_bg.gif) no-repeat left center;}
+.framework .cnews ul .cname,.framework .cnews ul .newstitle,.framework .cnews ul .downloads,.framework .cnews ul .newsdate{float:left; height:30px; line-height:30px; background:url(./images/0101.gif) repeat-x 0 bottom;}
+.framework .cnews .stitle li{font-weight:bold; text-align:center;}
+.framework .cnews ul .cname{width:130px; text-align:center;}
+.framework .cnews ul .newstitle{width:400px;}
+.framework .cnews ul .downloads{width:70px; text-align:center;}
+.framework .cnews ul .newsdate{width:100px; text-align:center;}
+.framework .cnews ul .newsdate img{_margin:7px 0 0 0;}
+.framework .cnews ul .pages{padding:10px 0 10px 0; width:600px; margin:auto; text-align:center;}
+.framework .picsnews{float:right; width:700px; overflow:hidden; padding:20px 0 0 0; overflow:hidden;}
+.framework .picsnews .ptitle{font-size:13px; color:#FFF; width:300px; clear:both; letter-spacing:2px; font-family:"微软雅黑","黑体","宋体","新宋体"; height:31px; line-height:18px; padding:0 0 0 10px; background:url({sc:$Sys.TemDir#}images/home_product_bg.gif) no-repeat left center;}
+.framework .picsnews .new{overflow:hidden; width:700px; height:150px; padding:10px 0 0 0;}
+.framework .picsnews .new ul{float:left;}
+.framework .picsnews .new ul li{clear:both; text-align:center; width:170px;}
+.framework .picsnews .new ul li img{padding:2px; border:1px #CCC solid;}
+.framework .picsnews .new ul .name{height:25px; line-height:25px;}
+</style>
+</head>
+<body>
+{sc:include file='top.html'#}
+<div class="framework">
+	<div class="leftpage">
+		<ul class="toppics"><li></li></ul>
+		<ul class="product">
+			<li class="columntoppics"></li>
+			{sc:sdb->column Type="3" Colu="0" BackVar="sD"#}
+			{sc:foreach from=$sD item=cp key=i name=x#} 
+			<li class="text">
+			{sc:if $cp.ColumnLevel==1#} {sc:* 一级类别 *#}
+			<img src="./images/article_elite3.gif" width="9" height="15">
+			{sc:elseif  $cp.ColumnLevel==2#} {sc:* 设置二级类别样式 *#}
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./images/article_elite5.gif" width="9" height="15" />
+			{sc:else#} {sc:* 设置更多级别的类别样式 *#}
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./images/article_ontop2.gif" width="9" height="15" />
+			{sc:/if#}
+			<a href="{sc:$cp.URL#}">{sc:$cp.ColumnName#}</a>
+			</li>
+			{sc:/foreach#}			
+			<li class="columnbottompics"></li>
+			<li class="pitch"></li>
+		</ul>
+		<ul class="column2">
+			<li class="columntoppics"></li>
+			<li class="text"><a href="{sc:$Sys.URL.Feedback#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_order{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+			<li class="text"><a href="{sc:$Sys.URL.Download#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_download{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+			<li class="text"><a href="{sc:$Sys.URL.Guestbook#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_guestbook{sc:$Sys.Lang#}.gif" width="110" height="50" border="0" /></a></li>
+			<li class="text"><a href="{sc:URL Cid="000388,000389"#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_service{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+			<li class="columnbottompics"></li>
+		</ul>
+		<ul class="bottompics"><li></li></ul>
+	</div>
+	
+	<div class="btop">
+		<ul class="over">
+			<li class="title">{sc:$Html.Download#}</li>
+			<li class="navig">{sc:$Html.Navi#} ： <a href="{sc:$Sys.URL.Home#}">{sc:$Html.Home#}</a> >> <a href="{sc:$Sys.URL.Download#}">{sc:$Html.Download#}</a> >> {sc:$do.Sort#}</li>
+		</ul>
+		<ul class="search">
+			<li>{sc:include file='component_search.html'#}</li>
+		</ul>
+	</div>
+	
+	<div class="cnews">
+		<ul>
+			<li class="ntitle">{sc:$do.cName#}</li>
+		</ul>
+		<ul class="stitle">
+			<li class="cname">{sc:$Html.Categories#}</li>
+			<li class="newstitle">{sc:$Html.dTitle#}</li>
+			<li class="downloads">{sc:$Html.Downloads#}</li>
+			<li class="newsdate">{sc:$Html.sDownload#}</li>		
+		</ul>
+		{sc:download->sList Total="15" Rela=$Sys.sGET.c isPage="1" isSearch="1" Interception="22" Symbol=".."#}
+		{sc:foreach from=$Download item=dow key=i name=x#}		
+		<ul>
+			<li class="cname">[{sc:sdb->CidToName Rela=$dow.DownloadRela blank=" | "#}]</li>
+			<li class="newstitle">
+				<img src="./images/article_elite3.gif" width="9" height="15" />{sc:$dow.DownloadTitle#}
+				 <font color="#999999">({sc:$dow.DownloadAddDate|date_format:"%Y-%m-%d"#})</font>
+				{sc:if $dow.Difference < 48#}<img src="./images/new.gif">{sc:/if#}
+			</li>
+			<li class="downloads">{sc:$dow.DownloadViews#}</li>
+			<li class="newsdate">
+				<a target="_blank" href="{sc:$dow.URL#}">
+				<img src="{sc:$Sys.TemDir#}images/go.gif" width="30" height="15" border="0">
+				</a>
+			</li>
+		</ul>
+			{sc:foreachelse#}
+			<li>{sc:$Html.NotProduct#}</li>
+			{sc:/foreach#}
+		<ul>
+			<li class="pages">{sc:$pages#}</li>
+		</ul>
+	</div>
+	
+	<div class="picsnews">
+		<ol class="ptitle">{sc:$Html.PhotoNews#}</ol>
+		<div class="new">
+			{sc:news->sList Sort="0" Rela="0" isImg="1" Start="0" Total="4" BackVar="photonews" Interception="10" Symbol=".."#}
+			{sc:foreach from=$photonews item=pn key=i name=x#}
+			<ul>
+				<li>
+					<a target="_blank" href="{sc:$pn.URL#}">
+					<img src="{sc:$pn.NewsPhoto#}" width="120" height="120" border="0">
+					</a>				
+				</li>
+				<li class="name">
+					<a target="_blank" href="{sc:$pn.URL#}">{sc:$pn.NewsTitle#}</a>			
+				</li>
+			</ul>
+			{sc:/foreach#}
+		</div>
+	</div>
+</div>
+{sc:include file='bottom.html'#}
+</body>
+</html>
