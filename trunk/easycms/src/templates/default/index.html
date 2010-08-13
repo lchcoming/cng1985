@@ -77,9 +77,9 @@ hs.addSlideshow({
 
 
 /* 焦点图 */
-var SWFswfUrl = 'media/pixviewer.swf?1829243772';
+var SWFswfUrl = '/media/pixviewer.swf?1829243772';
 var SWFflashvars = {
-	pics : "uploadfile/Media/x1.jpg|uploadfile/Media/x2.jpg",
+	pics : "/uploadfile/Media/x1.jpg|uploadfile/Media/x2.jpg",
 	links : "http://bbs.songcms.com/viewthread.php?tid=705|http://data.songcms.com",
 	texts : "SongCMS v3.16新功能介绍|SongCMS数据频道倾情回馈",
 	borderwidth : "650",
@@ -106,76 +106,132 @@ window.onload = function(){
 		<li class="newsandonline">
 			<div class="news">
 				<ul class="title">
-					<li class="stit">{sc:$Html.sNews#}</li>
-					<li class="more"><a href="{sc:$Sys.URL.News#}"><img src="{sc:$Sys.TemDir#}images/more.gif" width="38" height="13" border="0" /></a></li>
+					<li class="stit">新闻中心</li>
+					<li class="more"><a href="./?fnews"><img src="./templates/default/images/more.gif" width="38" height="13" border="0" /></a></li>
 				</ul>
 				<ul class="sntest">
-					{sc:news->sList Sort="0" Rela="0" isImg="0" Start="0" Total="4" BackVar="ns" Interception="13" Symbol=".."#}
-						
-					 #foreach( $item in $news )		
+					
+									
 					<li>
 						<img src="./images/article_elite4.gif" width="9" height="15" />
-						<a target="_blank" href="{sc:$n.URL#}">$item.newsTitle</a>
-						<font color="#666666">({sc:if $Sys.WebStaticHTML==0#}{sc:$n.NewsClick#}{sc:else#}{sc:$n.NewsTime|date_format:"%m-%d"#}{sc:/if#})</font>
+						<a target="_blank" href="./?fnew/i14">谷歌Buzz促使用户通过谷歌阅..</a>
+						<font color="#666666">(3)</font>
 					</li>
-					#end
-				</ul>
+									
+					<li>
+						<img src="./images/article_elite4.gif" width="9" height="15" />
+						<a target="_blank" href="./?fnew/i13">360回应阻拦QQ医生装补丁：..</a>
+						<font color="#666666">(3)</font>
+					</li>
+									
+					<li>
+						<img src="./images/article_elite4.gif" width="9" height="15" />
+						<a target="_blank" href="./?fnew/i12">中移动分公司证实已执行减薪</a>
+						<font color="#666666">(1)</font>
+					</li>
+									
+					<li>
+						<img src="./images/article_elite4.gif" width="9" height="15" />
+						<a target="_blank" href="./?fnew/i11"><font color="#0000ff">百亿暴利病毒产业链调查</font></a>
+						<font color="#666666">(3)</font>
+					</li>
+									</ul>
 			</div>
 			<div class="online">
 				<ul>
-					<li><a href="{sc:$Sys.URL.Feedback#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_order{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
-					<li><a href="{sc:$Sys.URL.Download#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_download{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+					<li><a href="./?ffeedback"><img src="./templates/default/images/homeandleft_order1.gif" width="100" height="50" border="0" /></a></li>
+					<li><a href="./?fdownload"><img src="./templates/default/images/homeandleft_download1.gif" width="100" height="50" border="0" /></a></li>
 				</ul>
 				<ul>
-					<li><a href="{sc:$Sys.URL.Guestbook#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_guestbook{sc:$Sys.Lang#}.gif" width="110" height="50" border="0" /></a></li>
-					<li><a href="{sc:URL Cid="000388,000389"#}"><img src="{sc:$Sys.TemDir#}images/homeandleft_service{sc:$Sys.Lang#}.gif" width="100" height="50" border="0" /></a></li>
+					<li><a href="./?fguestbook"><img src="./templates/default/images/homeandleft_guestbook1.gif" width="110" height="50" border="0" /></a></li>
+					<li><a href="./?fpage/c000388"><img src="./templates/default/images/homeandleft_service1.gif" width="100" height="50" border="0" /></a></li>
 				</ul>				
 			</div>
 		</li>
 	</ul>
 </div>
 <div class="newsandproduct">
-	<div class="news">{sc:* 图片新闻 *#}
+	<div class="news">
 		<ul class="picsbg">
-			<li class="text">{sc:$Html.PhotoNews#}</li>
-			<li class="more"><a href="{sc:$Sys.URL.News#}"><img src="{sc:$Sys.TemDir#}images/more.gif" width="38" height="13" border="0"></a></li>
+			<li class="text">图片新闻</li>
+			<li class="more"><a href="./?fnews"><img src="./templates/default/images/more.gif" width="38" height="13" border="0"></a></li>
 		</ul>
 		<ul class="new">
-			{sc:news->sList Sort="0" Rela="0" isImg="1" Start="0" Total="2" BackVar="photonews" Interception="10" Symbol=".."#}
-			{sc:foreach from=$photonews item=pn key=i name=x#}
-			<li>
+			
+						<li>
 				<ol>
-					<a target="_blank" href="{sc:$pn.URL#}">
-					<img src="{sc:$pn.NewsPhoto#}" width="120" height="120" border="0">
+					<a target="_blank" href="./?fnew/i14">
+					<img src="uploadfile/News/04.jpg" width="120" height="120" border="0">
 					</a>				
 				</ol>
 				<ol class="name">
-					<a target="_blank" href="{sc:$pn.URL#}">{sc:$pn.NewsTitle#}</a>			
+					<a target="_blank" href="./?fnew/i14">谷歌Buzz促使用户通过..</a>			
 				</ol>
 			</li>
-			{sc:/foreach#}
-		</ul>
+						<li>
+				<ol>
+					<a target="_blank" href="./?fnew/i13">
+					<img src="uploadfile/News/03.jpg" width="120" height="120" border="0">
+					</a>				
+				</ol>
+				<ol class="name">
+					<a target="_blank" href="./?fnew/i13">360回应阻拦QQ医生装..</a>			
+				</ol>
+			</li>
+					</ul>
 	</div>
-	<div class="products">{sc:* 推荐产品 *#}
+	<div class="products">
 		<ul class="picsbg">
-			<li class="text">{sc:$Html.pRecommended#}</li>
-			<li class="more"><a href="{sc:$Sys.URL.Products#}"><img src="{sc:$Sys.TemDir#}images/more.gif" width="38" height="13" border="0"></a></li>
+			<li class="text">推荐产品</li>
+			<li class="more"><a href="./?fproducts"><img src="./templates/default/images/more.gif" width="38" height="13" border="0"></a></li>
 		</ul>
 		<ul class="product">
-			{sc:product->sList Sort="3" Rela="0" New="0" Start="0" Total="4" BackVar='tps' Interception="10" Symbol=".."#}
-			{sc:foreach from=$tps item=tp key=i name=x#} 
+			
+			 
 			<li>
 				<ol>
-					<a href="{sc:$tp.ProductPhoto2#}" onclick="return hs.expand(this)">
-					<img style="border:1px #CCC solid; padding:2px;" width="120" height="120" title="{sc:$Html.ClickEnlarge#}" src="{sc:$tp.ProductPhoto1#}" />
+					<a href="uploadfile/Products/10b.jpg" onclick="return hs.expand(this)">
+					<img style="border:1px #CCC solid; padding:2px;" width="120" height="120" title="点击查看大图" src="uploadfile/Products/10a.jpg" />
 					</a>				
 				</ol>
 				<ol class="name">
-					<a target="_blank" href="{sc:$tp.URL#}">{sc:$tp.ProductName#}</a>				
+					<a target="_blank" href="./?fproduct/i11">极品加厚弹力丝光棉</a>				
 				</ol>
 			</li>
-			{sc:/foreach#}
-		</ul>
+			 
+			<li>
+				<ol>
+					<a href="uploadfile/Products/09b.jpg" onclick="return hs.expand(this)">
+					<img style="border:1px #CCC solid; padding:2px;" width="120" height="120" title="点击查看大图" src="uploadfile/Products/09a.jpg" />
+					</a>				
+				</ol>
+				<ol class="name">
+					<a target="_blank" href="./?fproduct/i10">新款秋装 韩版毛呢小..</a>				
+				</ol>
+			</li>
+			 
+			<li>
+				<ol>
+					<a href="uploadfile/Products/08b.jpg" onclick="return hs.expand(this)">
+					<img style="border:1px #CCC solid; padding:2px;" width="120" height="120" title="点击查看大图" src="uploadfile/Products/08a.jpg" />
+					</a>				
+				</ol>
+				<ol class="name">
+					<a target="_blank" href="./?fproduct/i9">弹力绸高档韩版风衣</a>				
+				</ol>
+			</li>
+			 
+			<li>
+				<ol>
+					<a href="uploadfile/Products/07b.jpg" onclick="return hs.expand(this)">
+					<img style="border:1px #CCC solid; padding:2px;" width="120" height="120" title="点击查看大图" src="uploadfile/Products/07a.jpg" />
+					</a>				
+				</ol>
+				<ol class="name">
+					<a target="_blank" href="./?fproduct/i8">韩版拼色仿真丝连衣裙</a>				
+				</ol>
+			</li>
+					</ul>
 	</div>
 </div>
 <br />
@@ -184,25 +240,14 @@ window.onload = function(){
 		<li class="left"></li>
 		<li class="logo">
 			<nobr><div id="scroll">
-				{sc:sdb->sLink Type="1" Start="0" Total="50"#}
-				{sc:foreach from=$sLink item=L key=i name=x#} 
-				<a target="_blank" href="{sc:$L.LinkWebUrl#}"><img width="88" height="31" src="{sc:$L.LinkLogoUrl#}" /></a>
-				{sc:/foreach#}		
+				
+						
 			</div></nobr>
 		</li>
 		<li class="right"></li>
 	</ul>
-	{sc:sdb->sLink Type="0" Start="0" Total="50" BackVar="tLink"#}
-	{sc:if $tLink|@count > 0#}
-	<ul class="textlink">
-		<li>
-		{sc:foreach from=$tLink item=tL key=i name=x#}
-		<a target="_blank" href="{sc:$tL.LinkWebUrl#}">{sc:$tL.LinkWebName#}</a>
-		{sc:if $smarty.foreach.x.iteration is div by 9#}<br />{sc:/if#}
-		{sc:/foreach#}
-		</li>
-	</ul>
-	{sc:/if#}
+	
+</div>
 </div>
  #parse("/templates/default/bottom.html")
 
