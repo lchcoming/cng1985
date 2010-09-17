@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="qianlida" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\qianlida.mdf;Integrated Security=True;User Instance=True" SettingsObjectName="carwork.Properties.Settings" SettingsPropertyName="qianlidaConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ts_LineInfo" Member="ts_LineInfos">
+    <Type Name="ts_LineInfo">
+      <Column Name="li_LineID" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="li_LineName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="li_BeginSiteID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="li_BeginSite" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="li_EndSiteID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="li_EndSite" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="li_Kilometer" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="li_InRegion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="li_Direction" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="li_StopOrOpen" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="li_StationID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="li_Station" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="li_Remark" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
