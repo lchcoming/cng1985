@@ -20,6 +20,7 @@ public class HelloApps {
 		ApplicationContext contex = new ClassPathXmlApplicationContext(
 				"applicationContext.xml");
 		ArticleWork work = (ArticleWork) contex.getBean("helloSerivce");
+		
 		String query = "select from " + Article.class.getName();
 		query += " order by date desc ";
 		List<Article> as = work.list(1);
