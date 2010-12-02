@@ -10,29 +10,29 @@ import com.alipay.config.AlipayConfig;
 
 public class AlipayNotify {
 	/**
-	 * *¹¦ÄÜ£º¸ù¾İ·´À¡»ØÀ´µÄĞÅÏ¢£¬Éú³ÉÇ©Ãû½á¹û
-	 * @param Params Í¨Öª·µ»ØÀ´µÄ²ÎÊıÊı×é
-	 * @param key °²È«Ğ£ÑéÂë
-	 * @return Éú³ÉµÄÇ©Ãû½á¹û
+	 * *åŠŸèƒ½ï¼šæ ¹æ®åé¦ˆå›æ¥çš„ä¿¡æ¯ï¼Œç”Ÿæˆç­¾åç»“æœ
+	 * @param Params é€šçŸ¥è¿”å›æ¥çš„å‚æ•°æ•°ç»„
+	 * @param key å®‰å…¨æ ¡éªŒç 
+	 * @return ç”Ÿæˆçš„ç­¾åç»“æœ
 	 */
 	public static String GetMysign(Map Params, String key){
-		Map sParaNew = AlipayFunction.ParaFilter(Params);//¹ıÂË¿ÕÖµ¡¢signÓësign_type²ÎÊı
-		String mysign = AlipayFunction.BuildMysign(sParaNew, key);//»ñµÃÇ©Ãû½á¹û
+		Map sParaNew = AlipayFunction.ParaFilter(Params);//è¿‡æ»¤ç©ºå€¼ã€signä¸sign_typeå‚æ•°
+		String mysign = AlipayFunction.BuildMysign(sParaNew, key);//è·å¾—ç­¾åç»“æœ
 		
 		return mysign;
 	}
 	
 	/**
-	* *¹¦ÄÜ£º»ñÈ¡Ô¶³Ì·şÎñÆ÷ATN½á¹û,ÑéÖ¤·µ»ØURL
-	* @param notify_id Í¨ÖªĞ£ÑéID
-	* @return ·şÎñÆ÷ATN½á¹û
-	* ÑéÖ¤½á¹û¼¯£º
-	* invalidÃüÁî²ÎÊı²»¶Ô ³öÏÖÕâ¸ö´íÎó£¬Çë¼ì²â·µ»Ø´¦ÀíÖĞpartnerºÍkeyÊÇ·ñÎª¿Õ 
-	* true ·µ»ØÕıÈ·ĞÅÏ¢
-	* false Çë¼ì²é·À»ğÇ½»òÕßÊÇ·şÎñÆ÷×èÖ¹¶Ë¿ÚÎÊÌâÒÔ¼°ÑéÖ¤Ê±¼äÊÇ·ñ³¬¹ıÒ»·ÖÖÓ
+	* *åŠŸèƒ½ï¼šè·å–è¿œç¨‹æœåŠ¡å™¨ATNç»“æœ,éªŒè¯è¿”å›URL
+	* @param notify_id é€šçŸ¥æ ¡éªŒID
+	* @return æœåŠ¡å™¨ATNç»“æœ
+	* éªŒè¯ç»“æœé›†ï¼š
+	* invalidå‘½ä»¤å‚æ•°ä¸å¯¹ å‡ºç°è¿™ä¸ªé”™è¯¯ï¼Œè¯·æ£€æµ‹è¿”å›å¤„ç†ä¸­partnerå’Œkeyæ˜¯å¦ä¸ºç©º 
+	* true è¿”å›æ­£ç¡®ä¿¡æ¯
+	* false è¯·æ£€æŸ¥é˜²ç«å¢™æˆ–è€…æ˜¯æœåŠ¡å™¨é˜»æ­¢ç«¯å£é—®é¢˜ä»¥åŠéªŒè¯æ—¶é—´æ˜¯å¦è¶…è¿‡ä¸€åˆ†é’Ÿ
 	*/
 	public static String Verify(String notify_id){
-		//»ñÈ¡Ô¶³Ì·şÎñÆ÷ATN½á¹û£¬ÑéÖ¤ÊÇ·ñÊÇÖ§¸¶±¦·şÎñÆ÷·¢À´µÄÇëÇó
+		//è·å–è¿œç¨‹æœåŠ¡å™¨ATNç»“æœï¼ŒéªŒè¯æ˜¯å¦æ˜¯æ”¯ä»˜å®æœåŠ¡å™¨å‘æ¥çš„è¯·æ±‚
 		String transport = AlipayConfig.transport;
 		String partner = AlipayConfig.partner;
 		String veryfy_url = "";
@@ -49,13 +49,13 @@ public class AlipayNotify {
 	}
 	
 	/**
-	* *¹¦ÄÜ£º»ñÈ¡Ô¶³Ì·şÎñÆ÷ATN½á¹û
-	* @param urlvalue Ö¸¶¨URLÂ·¾¶µØÖ·
-	* @return ·şÎñÆ÷ATN½á¹û
-	* ÑéÖ¤½á¹û¼¯£º
-	* invalidÃüÁî²ÎÊı²»¶Ô ³öÏÖÕâ¸ö´íÎó£¬Çë¼ì²â·µ»Ø´¦ÀíÖĞpartnerºÍkeyÊÇ·ñÎª¿Õ 
-	* true ·µ»ØÕıÈ·ĞÅÏ¢
-	* false Çë¼ì²é·À»ğÇ½»òÕßÊÇ·şÎñÆ÷×èÖ¹¶Ë¿ÚÎÊÌâÒÔ¼°ÑéÖ¤Ê±¼äÊÇ·ñ³¬¹ıÒ»·ÖÖÓ
+	* *åŠŸèƒ½ï¼šè·å–è¿œç¨‹æœåŠ¡å™¨ATNç»“æœ
+	* @param urlvalue æŒ‡å®šURLè·¯å¾„åœ°å€
+	* @return æœåŠ¡å™¨ATNç»“æœ
+	* éªŒè¯ç»“æœé›†ï¼š
+	* invalidå‘½ä»¤å‚æ•°ä¸å¯¹ å‡ºç°è¿™ä¸ªé”™è¯¯ï¼Œè¯·æ£€æµ‹è¿”å›å¤„ç†ä¸­partnerå’Œkeyæ˜¯å¦ä¸ºç©º 
+	* true è¿”å›æ­£ç¡®ä¿¡æ¯
+	* false è¯·æ£€æŸ¥é˜²ç«å¢™æˆ–è€…æ˜¯æœåŠ¡å™¨é˜»æ­¢ç«¯å£é—®é¢˜ä»¥åŠéªŒè¯æ—¶é—´æ˜¯å¦è¶…è¿‡ä¸€åˆ†é’Ÿ
 	*/
 	public static String CheckUrl(String urlvalue){
 		String inputLine = "";
