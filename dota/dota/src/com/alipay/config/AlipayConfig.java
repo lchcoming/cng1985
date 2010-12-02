@@ -28,7 +28,8 @@ public class AlipayConfig {
 	//↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 	// 合作身份者ID，以2088开头由16位纯数字组成的字符串
 	public static String partner = "2088002369010951";
-	
+	// 合作身份者ID，以2088开头由16位纯数字组成的字符串
+	public static String partnerID = "2088002369010951";
 	// 交易安全检验码，由数字和字母组成的32位字符串
 	public static String key = "4khh426s92rn6e588tt4b5b3a4s8mcr1";
 	
@@ -40,7 +41,7 @@ public class AlipayConfig {
 	
 	// 付完款后跳转的页面 要用 http://格式的完整路径，不允许加?id=123这类自定义参数
 	public static String return_url = "http://localhost:8080/js_jsp_utf8/return_url.jsp";
-	
+	public static String return_url1 = "http://localhost:8888/user/return_url.jsp";
 	// 网站商品的展示地址，不允许加?id=123这类自定义参数
 	public static String show_url = "http://www.alipay.com";
 	
