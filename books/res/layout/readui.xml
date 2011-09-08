@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@drawable/bg">
+	<LinearLayout android:id="@+id/listimages"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:orientation="vertical">
+		<Button android:id="@+id/textButton" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:background="@drawable/bg03"></Button>
+		<include layout="@layout/common_ad_bottom" />
+		<RelativeLayout android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true" android:id="@+id/buttonpannel"
+			android:layout_marginBottom="3dip">
+			<com.baoyi.novels.widget.LogTextBox
+				android:paddingTop="5dip" android:paddingBottom="5dip"
+				android:paddingLeft="5dip" android:paddingRight="5dip"
+				android:text="读取小说内容失败，请检查你的网络..." android:textSize="22sp"
+				android:textColor="#000000" android:id="@+id/textnovel"
+				android:layout_width="fill_parent" android:layout_height="fill_parent"
+				android:layout_weight="1" android:scrollbars="vertical"
+				android:layout_marginBottom="42dip" />
+			<ImageButton android:background="@null" android:src="@drawable/shangyijie"
+				android:id="@+id/previousbutton" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_marginTop="7dp"
+				android:layout_marginLeft="20dp" android:paddingBottom="5dip"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentBottom="true" />
+			<ImageButton android:id="@+id/nextbutton"
+				android:background="@null" android:src="@drawable/xiayijie"
+				android:layout_height="wrap_content" android:layout_width="wrap_content"
+				android:layout_marginTop="7dp" android:layout_marginRight="20dp"
+				android:paddingBottom="5dip" android:layout_alignParentRight="true"
+				android:layout_alignParentBottom="true" />
+		</RelativeLayout>
+	</LinearLayout>
+
+</LinearLayout>
+

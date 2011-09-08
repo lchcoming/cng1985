@@ -17,20 +17,34 @@ public class MainUI extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ui_main);
-        listView=(ListView)findViewById(R.id.listView1);
-        BooksAdapter adapter=new BooksAdapter(this);
-       // adapter.set
-        LibraryInstance=new Library();
-        LibraryInstance.searchResults();
-        LibraryInstance.build();
-        LibraryInstance.synchronize();
-        adapter.setDatas(LibraryInstance.byTitle());
-        listView.setAdapter(adapter);
+        init();
+        aa();
     }
+	private void init() {
+		listView=(ListView)findViewById(R.id.listView1);
+       
+	}
+	private void initData() {
+		BooksAdapter adapter=new BooksAdapter(this);
+       // adapter.set
+        LibraryInstance=LibraryBaseActivity.LibraryInstance;
+        try {
+        	adapter.setDatas(LibraryInstance.byTitle());
+            listView.setAdapter(adapter);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+	}
     Library LibraryInstance;
 	private void aa() {
 		Intent intent=new Intent(this,LibraryTopLevelActivity.class);
         startActivity(intent);
 	}
-    private ListView listView;
+    @Override
+	protected void onResume() {
+    	 initData();
+		super.onResume();
+	}
+	private ListView listView;
 }

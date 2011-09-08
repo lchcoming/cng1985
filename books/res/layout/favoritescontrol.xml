@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="horizontal">
+
+	<ImageView android:paddingLeft="5dip" android:layout_width="wrap_content"
+		android:id="@+id/imageView1" android:src="@drawable/novelzhang"
+		android:layout_height="wrap_content"></ImageView>
+	<TextView android:paddingLeft="5dip" android:layout_width="30dip"
+		android:layout_height="wrap_content" android:textSize="10dip"
+		android:textColor="#993300" android:text="长按删除" android:layout_marginTop="-5dip"></TextView>
+	<TextView android:paddingLeft="10dip" android:id="@+id/noveltext"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:textSize="16dip" android:textColor="#000000"></TextView>
+</LinearLayout>
