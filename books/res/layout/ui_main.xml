@@ -4,11 +4,13 @@
 	android:layout_width="fill_parent" android:layout_height="fill_parent"
 	android:background="@drawable/mainbg">
 	<LinearLayout android:orientation="vertical"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
 		android:background="@null">
+		<ImageView android:src="@drawable/bgon"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"></ImageView>
 		<LinearLayout android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:orientation="horizontal"
-			android:layout_marginTop="73dip" android:layout_marginLeft="20dip">
+			 android:background="@drawable/bgdown">
 			<ImageButton android:background="@null" android:id="@+id/imageButton1"
 				android:layout_height="wrap_content" android:layout_width="wrap_content"
 				android:src="@drawable/books_tushu"></ImageButton>
@@ -18,9 +20,12 @@
 			<ImageButton android:background="@null" android:src="@drawable/books_biaoti"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:id="@+id/imageButton3"></ImageButton>
+			<ImageButton android:background="@null"
+				android:src="@drawable/books_tushuguan" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:id="@+id/imageButton4"></ImageButton>
 		</LinearLayout>
 		<ListView android:layout_height="wrap_content" android:id="@+id/listView1"
-			android:layout_width="fill_parent"></ListView>
+			android:layout_width="fill_parent" android:background="#ffffffff"></ListView>
 	</LinearLayout>
 	<include layout="@layout/common_ad_bottom" />
 </RelativeLayout>
