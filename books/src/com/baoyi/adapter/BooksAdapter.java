@@ -38,8 +38,8 @@ public class BooksAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO datas-generated method stub
+		return datas.get(position);
 	}
 
 	@Override

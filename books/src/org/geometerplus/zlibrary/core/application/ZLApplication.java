@@ -104,12 +104,20 @@ public abstract class ZLApplication {
 			action.checkAndRun();
 		}
 	}
-
+   /**
+    * 根据触摸的位置觉得执行什么Action
+    * @param actionId
+    * @param x
+    * @param y
+    */
 	public final void doActionWithCoordinates(String actionId, int x, int y) {
-		final ZLAction action = myIdToActionMap.get(actionId);
-		if (action != null && action.isEnabled()) {
-			action.runWithCoordinates(x, y);
+		if(null!=actionId&&!actionId.equals("menu")){
+			final ZLAction action = myIdToActionMap.get(actionId);
+			if (action != null && action.isEnabled()) {
+				action.runWithCoordinates(x, y);
+			}
 		}
+	
 	}
 
 	//may be protected
