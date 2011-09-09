@@ -137,9 +137,9 @@
 			</intent-filter>
 		</activity>
 
-		<activity android:name=".CustomShirtcutActivity"
+		<activity android:name="org.adw.launcher2.CustomShirtcutActivity"
 			android:theme="@android:style/Theme.Dialog" />
-		<activity android:name=".ActivityPickerActivity" />
+		<activity android:name="org.adw.launcher2.ActivityPickerActivity" />
 		<activity android:name="org.adw.launcher2.settings.SettingsActivity" />
 
 		<!-- Intent received used to install shortcuts from other applications -->
