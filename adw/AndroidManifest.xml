@@ -9,7 +9,8 @@
 	for the specific language governing permissions and ** limitations under 
 	the License. */ -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	android:sharedUserId="@string/sharedUserId" package="com.ada.desks">
+	android:sharedUserId="@string/sharedUserId" package="com.ada.desks"
+	android:versionCode="1" android:versionName="1.1">
 
 	<original-package android:name="com.ada.desks" />
 
