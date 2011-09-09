@@ -106,7 +106,7 @@
 		android:required="false" />
 	<application android:name="org.adw.launcher2.LauncherApplication"
 		android:process="@string/process" android:label="@string/application_name"
-		android:icon="@drawable/ic_launcher_home">
+		android:icon="@drawable/icon">
 
 		<activity android:name="org.adw.launcher2.Launcher"
 			android:launchMode="singleTask" android:clearTaskOnLaunch="true"
@@ -120,17 +120,11 @@
 				<category android:name="android.intent.category.MONKEY" />
 			</intent-filter>
 		</activity>
-
-		<activity android:name="org.adw.launcher2.WallpaperChooser"
-			android:label="@string/pick_wallpaper" android:icon="@drawable/ic_launcher_wallpaper"
-			android:screenOrientation="nosensor"
-			android:finishOnCloseSystemDialogs="true">
-			<intent-filter>
-				<action android:name="android.intent.action.SET_WALLPAPER" />
-				<category android:name="android.intent.category.DEFAULT" />
-			</intent-filter>
-		</activity>
-
+		<!-- <activity android:name="org.adw.launcher2.WallpaperChooser" android:label="@string/pick_wallpaper" 
+			android:icon="@drawable/ic_launcher_wallpaper" android:screenOrientation="nosensor" 
+			android:finishOnCloseSystemDialogs="true"> <intent-filter> <action android:name="android.intent.action.SET_WALLPAPER" 
+			/> <category android:name="android.intent.category.DEFAULT" /> </intent-filter> 
+			</activity> -->
 		<activity android:name="org.adw.launcher2.actions.RunActionActivity">
 			<intent-filter>
 				<action android:name="org.adw.launcher2.ACTION_LAUNCHERACTION" />
@@ -183,10 +177,10 @@
 
 
 
-         <!-- 快速设置 -->
-		<activity android:name="com.bwx.bequick.ShowSettingsActivity" android:label="Quick Settings"
-			android:icon="@drawable/ic_logo" android:launchMode="standard"
-			android:theme="@android:style/Theme.NoDisplay">
+		<!-- 快速设置 -->
+		<activity android:name="com.bwx.bequick.ShowSettingsActivity"
+			android:label="Quick Settings" android:icon="@drawable/ic_logo"
+			android:launchMode="standard" android:theme="@android:style/Theme.NoDisplay">
 			<intent-filter>
 				<action android:name="android.intent.action.SEARCH_LONG_PRESS" />
 				<category android:name="android.intent.category.DEFAULT" />
@@ -199,9 +193,10 @@
 			android:excludeFromRecents="true">
 		</activity>
 
-		<activity android:name="com.bwx.bequick.MainSettingsActivity" android:label="Quick Settings"
-			android:icon="@drawable/ic_logo" android:launchMode="singleInstance"
-			android:excludeFromRecents="true" android:theme="@style/NoTitle" />
+		<activity android:name="com.bwx.bequick.MainSettingsActivity"
+			android:label="Quick Settings" android:icon="@drawable/ic_logo"
+			android:launchMode="singleInstance" android:excludeFromRecents="true"
+			android:theme="@style/NoTitle" />
 
 		<activity android:name="com.bwx.bequick.LayoutSettingsActivity"
 			android:label="@string/txt_customize_settings"
@@ -219,8 +214,8 @@
 		<activity android:name="com.bwx.bequick.preferences.MobileDataPrefs"
 			android:label="@string/txt_preferences" android:excludeFromRecents="true" />
 
-		<activity android:name="com.bwx.bequick.preferences.GpsPrefs" android:label="@string/txt_preferences"
-			android:excludeFromRecents="true" />
+		<activity android:name="com.bwx.bequick.preferences.GpsPrefs"
+			android:label="@string/txt_preferences" android:excludeFromRecents="true" />
 
 		<activity android:name="com.bwx.bequick.preferences.AirplaneModePrefs"
 			android:label="@string/txt_preferences" android:excludeFromRecents="true" />

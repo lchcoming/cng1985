@@ -2254,12 +2254,29 @@ public final class Launcher extends Activity
                 }
 
                 case AddAdapter.ITEM_APPWIDGET: {
-                    int appWidgetId = Launcher.this.mAppWidgetHost.allocateAppWidgetId();
-
-                    Intent pickIntent = new Intent(AppWidgetManager.ACTION_APPWIDGET_PICK);
-                    pickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-                    // start the pick activity
-                    startActivityForResult(pickIntent, REQUEST_PICK_APPWIDGET);
+                	int appWidgetId = Launcher.this.mAppWidgetHost.allocateAppWidgetId();
+                	  Intent pickIntent = new Intent(AppWidgetManager.ACTION_APPWIDGET_PICK);
+                	  pickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+                	    
+                	  // add the search widget
+                	  ArrayList<AppWidgetProviderInfo> customInfo =
+                	  new ArrayList<AppWidgetProviderInfo>();
+                	  AppWidgetProviderInfo info = new AppWidgetProviderInfo();
+                	  info.provider = new ComponentName(getPackageName(), "XXX.YYY");
+                	  info.label = getString(R.string.application_name);
+                	  info.icon = R.drawable.ic_home_arrows_1_focus;
+                	  customInfo.add(info);
+                	  pickIntent.putParcelableArrayListExtra(
+                	  AppWidgetManager.EXTRA_CUSTOM_INFO, customInfo);
+                	  ArrayList<Bundle> customExtras = new ArrayList<Bundle>();
+                	  Bundle b = new Bundle();
+                	  b.putString(EXTRA_CUSTOM_WIDGET, "search_widget");
+                	  customExtras.add(b);
+                	  pickIntent.putParcelableArrayListExtra(
+                	  AppWidgetManager.EXTRA_CUSTOM_EXTRAS, customExtras);
+                	    
+                	  // start the pick activity
+                	  startActivityForResult(pickIntent, REQUEST_PICK_APPWIDGET);
                     break;
                 }
 
@@ -2280,7 +2297,7 @@ public final class Launcher extends Activity
             }
         }
     }
-
+    private static final String EXTRA_CUSTOM_WIDGET = "custom_widget";
     /**
      * Receives notifications when applications are added/removed.
      */
