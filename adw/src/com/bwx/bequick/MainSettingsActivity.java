@@ -27,8 +27,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
-import org.adw.launcher2.R;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -63,6 +61,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ada.apps.Res;
+import com.ada.desks.R;
 import com.bwx.bequick.flashlight.LedFlashlightReceiver;
 import com.bwx.bequick.flashlight.ScreenLightActivity;
 import com.bwx.bequick.fwk.Setting;

@@ -16,7 +16,7 @@
 
 <org.adw.launcher2.DragLayer
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:launcher="http://schemas.android.com/apk/res/org.adw.launcher2"
+    xmlns:launcher="http://schemas.android.com/apk/res/com.ada.desks"
 
     android:id="@+id/drag_layer"
     android:layout_width="fill_parent"

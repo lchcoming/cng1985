@@ -16,8 +16,6 @@
 
 package com.bwx.bequick.handlers;
 
-import org.adw.launcher2.R;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -37,6 +35,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ada.apps.Res;
+import com.ada.desks.R;
 import com.bwx.bequick.Constants;
 import com.bwx.bequick.MainSettingsActivity;
 

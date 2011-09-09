@@ -7,7 +7,9 @@
 
 package com.ada.apps;
 
-import org.adw.launcher2.R;
+import com.ada.desks.R;
+
+
 
 public final class Res {
 	public static final R.anim anim = new R.anim();

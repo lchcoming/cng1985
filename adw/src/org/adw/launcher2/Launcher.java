@@ -34,11 +34,8 @@ import org.adw.launcher2.appdb.AppDB;
 import org.adw.launcher2.quickactionbar.ActionItem;
 import org.adw.launcher2.quickactionbar.QuickAction;
 import org.adw.launcher2.settings.LauncherSettings;
-import org.adw.launcher2.settings.Preferences;
 import org.adw.launcher2.settings.LauncherSettings.Favorites;
-
-import com.ada.apps.Res;
-import com.bwx.bequick.ShowSettingsActivity;
+import org.adw.launcher2.settings.Preferences;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -55,8 +52,8 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.Intent.ShortcutIconResource;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ProviderInfo;
 import android.content.pm.ResolveInfo;
@@ -89,9 +86,9 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -99,6 +96,10 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ada.apps.Res;
+import com.ada.desks.R;
+import com.bwx.bequick.ShowSettingsActivity;
 
 
 /**
