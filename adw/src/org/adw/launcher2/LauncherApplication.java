@@ -20,13 +20,14 @@ import org.adw.launcher2.appdb.AppDB;
 import org.adw.launcher2.settings.LauncherSettings;
 import org.adw.launcher2.settings.Preferences;
 
-import android.app.Application;
 import android.content.ContentResolver;
 import android.content.IntentFilter;
 import android.database.ContentObserver;
 import android.os.Handler;
 
-public class LauncherApplication extends Application {
+import com.bwx.bequick.SettingsApplication;
+
+public class LauncherApplication extends SettingsApplication {
 	private static final String ACTION_EXTERNAL_APPLICATIONS_AVAILABLE = "android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE";
 	private static final String ACTION_EXTERNAL_APPLICATIONS_UNAVAILABLE = "android.intent.action.EXTERNAL_APPLICATIONS_UNAVAILABLE";
 

@@ -1,69 +1,188 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-/*
-* Copyright (C) 2008 The Android Open Source Project
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*      http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
- -->
+<!-- /* * Copyright (C) 2008 The Android Open Source Project * * Licensed 
+	under the Apache License, Version 2.0 (the "License"); * you may not use 
+	this file except in compliance with the License. * You may obtain a copy 
+	of the License at * * http://www.apache.org/licenses/LICENSE-2.0 * * Unless 
+	required by applicable law or agreed to in writing, software * distributed 
+	under the License is distributed on an "AS IS" BASIS, * WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. * See the License for 
+	the specific language governing permissions and * limitations under the License. 
+	*/ -->
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="application_name" msgid="8424725141379931883">"啟動器"</string>
-    <string name="uid_name" msgid="3371120195364560632">"Android 核心應用程式"</string>
-    <string name="folder_name" msgid="4588446541914685904">"資料夾"</string>
-    <string name="chooser_wallpaper" msgid="5988031014201479733">"從…選取桌布"</string>
-    <string name="wallpaper_instructions" msgid="4215640646180727542">"設定桌布"</string>
-    <string name="pick_wallpaper" msgid="5630222540525626723">"桌布"</string>
-    <string name="activity_not_found" msgid="3571057450431950427">"應用程式未安裝到手機。"</string>
-    <string name="configure_wallpaper" msgid="2820186271419674623">"設定..."</string>
-    <string name="rename_folder_label" msgid="5646236631298452787">"資料夾名稱"</string>
-    <string name="rename_folder_title" msgid="4544573104191526550">"重新命名資料夾"</string>
-    <string name="rename_action" msgid="6016003384693240896">"確定"</string>
-    <string name="cancel_action" msgid="3811860427489435048">"取消"</string>
-    <string name="menu_item_add_item" msgid="6233177331075781114">"新增至主畫面"</string>
-    <string name="group_applications" msgid="4118484163419674240">"應用程式"</string>
-    <string name="group_shortcuts" msgid="9133529424900391877">"捷徑"</string>
-    <string name="group_folder" msgid="5143593791798929193">"新資料夾"</string>
-    <string name="group_live_folders" msgid="2664945399140647217">"資料夾"</string>
-    <string name="group_widgets" msgid="6704978494073105844">"小工具"</string>
-    <string name="group_wallpapers" msgid="1568191644272224858">"桌布"</string>
-    <string name="add_folder" msgid="3521088587367839879">"資料夾"</string>
-    <string name="add_clock" msgid="2337943840175865746">"時鐘"</string>
-    <string name="add_photo_frame" msgid="3154058437359487954">"相框"</string>
-    <string name="out_of_space" msgid="8365249326091984698">"首頁已無空間"</string>
-    <string name="shortcut_installed" msgid="7071557296331322355">"已建立「<xliff:g id="NAME">%s</xliff:g>」捷徑。"</string>
-    <string name="shortcut_uninstalled" msgid="2129499669449749995">"已移除「<xliff:g id="NAME">%s</xliff:g>」捷徑。"</string>
-    <string name="shortcut_duplicate" msgid="4757756326465060694">"「<xliff:g id="NAME">%s</xliff:g>」捷徑已經存在。"</string>
-    <string name="title_select_shortcut" msgid="2858897527672831763">"選取捷徑"</string>
-    <string name="title_select_application" msgid="8031072293115454221">"選取應用程式"</string>
-    <string name="title_select_live_folder" msgid="3753447798805166749">"選取資料夾"</string>
-    <string name="all_apps_button_label" msgid="3953036962111614813">"所有應用程式"</string>
-    <string name="all_apps_home_button_label" msgid="1022222300329398558">"主螢幕"</string>
-    <string name="menu_add" msgid="3065046628354640854">"新增"</string>
-    <string name="menu_manage_apps" msgid="2308685199463588895">"管理應用程式"</string>
-    <string name="menu_wallpaper" msgid="5837429080911269832">"桌布"</string>
-    <string name="menu_search" msgid="4826514464423239041">"搜尋"</string>
-    <string name="menu_notifications" msgid="6424587053194766192">"通知"</string>
-    <string name="menu_gestures" msgid="514678675575912237">"觸控動作"</string>
-    <string name="menu_settings" msgid="6233960148378443661">"設定"</string>
-    <string name="permlab_install_shortcut" msgid="1201690825493376489">"安裝捷徑"</string>
-    <string name="permdesc_install_shortcut" msgid="7429365847558984148">"允許應用程式自動新增快速鍵。"</string>
-    <string name="permlab_uninstall_shortcut" msgid="7696645932555926449">"解除安裝捷徑"</string>
-    <string name="permdesc_uninstall_shortcut" msgid="959972195916090900">"允許應用程式自動移除捷徑。"</string>
-    <string name="permlab_read_settings" msgid="3452408290738106747">"讀取首頁設定和捷徑"</string>
-    <string name="permdesc_read_settings" msgid="8377434937176025492">"允許應用程式讀取首頁中的設定和捷徑。"</string>
-    <string name="permlab_write_settings" msgid="1360567537236705628">"寫入首頁設定和捷徑"</string>
-    <string name="permdesc_write_settings" msgid="1098648778383349818">"允許應用程式變更首頁中的設定和捷徑。"</string>
-    <string name="gadget_error_text" msgid="8359351016167075858">"載入小工具時發生問題"</string>
+	xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+	<string name="application_name" msgid="8424725141379931883">"啟動器"</string>
+	<string name="uid_name" msgid="3371120195364560632">"Android 核心應用程式"</string>
+	<string name="folder_name" msgid="4588446541914685904">"資料夾"</string>
+	<string name="chooser_wallpaper" msgid="5988031014201479733">"從…選取桌布"</string>
+	<string name="wallpaper_instructions" msgid="4215640646180727542">"設定桌布"</string>
+	<string name="pick_wallpaper" msgid="5630222540525626723">"桌布"</string>
+	<string name="activity_not_found" msgid="3571057450431950427">"應用程式未安裝到手機。"</string>
+	<string name="configure_wallpaper" msgid="2820186271419674623">"設定..."</string>
+	<string name="rename_folder_label" msgid="5646236631298452787">"資料夾名稱"</string>
+	<string name="rename_folder_title" msgid="4544573104191526550">"重新命名資料夾"</string>
+	<string name="rename_action" msgid="6016003384693240896">"確定"</string>
+	<string name="cancel_action" msgid="3811860427489435048">"取消"</string>
+	<string name="menu_item_add_item" msgid="6233177331075781114">"新增至主畫面"</string>
+	<string name="group_applications" msgid="4118484163419674240">"應用程式"</string>
+	<string name="group_shortcuts" msgid="9133529424900391877">"捷徑"</string>
+	<string name="group_folder" msgid="5143593791798929193">"新資料夾"</string>
+	<string name="group_live_folders" msgid="2664945399140647217">"資料夾"</string>
+	<string name="group_widgets" msgid="6704978494073105844">"小工具"</string>
+	<string name="group_wallpapers" msgid="1568191644272224858">"桌布"</string>
+	<string name="add_folder" msgid="3521088587367839879">"資料夾"</string>
+	<string name="add_clock" msgid="2337943840175865746">"時鐘"</string>
+	<string name="add_photo_frame" msgid="3154058437359487954">"相框"</string>
+	<string name="out_of_space" msgid="8365249326091984698">"首頁已無空間"</string>
+	<string name="shortcut_installed" msgid="7071557296331322355">
+		"已建立「
+		<xliff:g id="NAME">%s</xliff:g>
+		」捷徑。"
+	</string>
+	<string name="shortcut_uninstalled" msgid="2129499669449749995">
+		"已移除「
+		<xliff:g id="NAME">%s</xliff:g>
+		」捷徑。"
+	</string>
+	<string name="shortcut_duplicate" msgid="4757756326465060694">
+		"「
+		<xliff:g id="NAME">%s</xliff:g>
+		」捷徑已經存在。"
+	</string>
+	<string name="title_select_shortcut" msgid="2858897527672831763">"選取捷徑"</string>
+	<string name="title_select_application" msgid="8031072293115454221">"選取應用程式"</string>
+	<string name="title_select_live_folder" msgid="3753447798805166749">"選取資料夾"</string>
+	<string name="all_apps_button_label" msgid="3953036962111614813">"所有應用程式"</string>
+	<string name="all_apps_home_button_label" msgid="1022222300329398558">"主螢幕"</string>
+	<string name="menu_add" msgid="3065046628354640854">"新增"</string>
+	<string name="menu_manage_apps" msgid="2308685199463588895">"管理應用程式"</string>
+	<string name="menu_wallpaper" msgid="5837429080911269832">"桌布"</string>
+	<string name="menu_search" msgid="4826514464423239041">"搜尋"</string>
+	<string name="menu_notifications" msgid="6424587053194766192">"通知"</string>
+	<string name="menu_gestures" msgid="514678675575912237">"觸控動作"</string>
+	<string name="menu_settings" msgid="6233960148378443661">"設定"</string>
+	<string name="permlab_install_shortcut" msgid="1201690825493376489">"安裝捷徑"</string>
+	<string name="permdesc_install_shortcut" msgid="7429365847558984148">"允許應用程式自動新增快速鍵。"</string>
+	<string name="permlab_uninstall_shortcut" msgid="7696645932555926449">"解除安裝捷徑"</string>
+	<string name="permdesc_uninstall_shortcut" msgid="959972195916090900">"允許應用程式自動移除捷徑。"</string>
+	<string name="permlab_read_settings" msgid="3452408290738106747">"讀取首頁設定和捷徑"</string>
+	<string name="permdesc_read_settings" msgid="8377434937176025492">"允許應用程式讀取首頁中的設定和捷徑。"</string>
+	<string name="permlab_write_settings" msgid="1360567537236705628">"寫入首頁設定和捷徑"</string>
+	<string name="permdesc_write_settings" msgid="1098648778383349818">"允許應用程式變更首頁中的設定和捷徑。"</string>
+	<string name="gadget_error_text" msgid="8359351016167075858">"載入小工具時發生問題"</string>
+	<string name="txt_quick_settings">快速設定</string>
+
+	<string name="txt_status_unknown">未知</string>
+	<string name="txt_status_turned_on">已開啟舊檔</string>
+	<string name="txt_status_turned_off">已關閉</string>
+	<string name="txt_status_turning_on">正在開啟舊檔 ...</string>
+	<string name="txt_status_turning_off">正在關閉 ...</string>
+	<string name="txt_status_enabled">已啟用</string>
+	<string name="txt_status_disabled">已禁用</string>
+
+	<string name="wifi_title">Wi-Fi</string>
+	<string name="txt_net_status_connecting">正在連線 ...</string>
+	<string name="txt_net_status_obtainingip">正在獲取IP位址 ...</string>
+	<string name="txt_net_status_connected_to">已連線到%s</string>
+	<string name="txt_net_status_connected">Connected</string>
+	<string name="txt_net_status_failed">連線失敗</string>
+	<string name="txt_net_status_disconnecting">正在斷開 ...</string>
+	<string name="txt_net_status_disconnected">已斷開</string>
+
+	<string name="gps_title">GPS 接收器</string>
+	<string name="txt_brightness">亮度</string>
+	<string name="msg_disable_autobrightness">自動亮度已開啟舊檔。您想要關閉它並手動控制麼?</string>
+
+	<string name="battery_state_title">電集區狀態:</string>
+	<string name="battery_state_value">%d%%</string>
+	<string name="txt_memory_state_value">手機剩餘空間:</string>
+	<string name="txt_card_state_value">SD 卡剩餘空間:</string>
+	<string name="txt_no_card">沒有 SD 卡</string>
+
+	<string name="airmode_title">飛行模式</string>
+
+	<string name="btn_yes">是</string>
+	<string name="btn_no">否</string>
+	<string name="btn_close">關閉</string>
+	<string name="btn_set">設定</string>
+	<string name="btn_calcel">取消</string>
+
+	<string name="txt_ringer">鈴聲</string>
+	<string name="txt_ringer_mode">鈴聲模式</string>
+	<string name="txt_ringer_silent">靜音</string>
+	<string name="txt_ringer_sound">僅聲音</string>
+	<string name="txt_ringer_vibro">僅震動</string>
+	<string name="txt_ringer_vibrosound">聲音和震動</string>
+
+	<string name="txt_bt">藍芽</string>
+	<string name="txt_no_apn">沒有 APN 組態</string>
+
+	<string name="txt_screen_timeout">螢幕待機</string>
+	<string name="txt_screen_timeout_value_seconds">%d 秒</string>
+	<string name="txt_screen_timeout_value_minute">%d 分鐘</string>
+	<string name="txt_screen_timeout_value_minutes">%d 分鐘</string>
+	<string name="txt_screen_timeout_value_never">從不待機</string>
+
+	<string name="txt_customize_settings">快速設定 > 自訂</string>
+	<string name="txt_preferences">快速設定 > 偏好</string>
+	<string name="txt_visible_settings">顯示設定</string>
+	<string name="txt_hidden_settings">隱藏設定</string>
+	<string name="msg_drag_and_drop">按並按住右邊的圖示來隱藏, 顯示或整理設定。</string>
+
+	<string name="txt_auto_sync">自動同步資料</string>
+
+	<string name="txt_volume">音量控制</string>
+	<string name="txt_volume_descr">按控制音量</string>
+	<string name="txt_volume_ringer">鈴聲音量</string>
+	<string name="txt_volume_notification">通知音量</string>
+	<string name="txt_volume_media">媒體音量</string>
+	<string name="txt_volume_alarm">鬧鈴音量</string>
+	<string name="txt_volume_voice_call">通話音量</string>
+	<string name="txt_volume_system">系統音量</string>
+	<string name="msg_zero_ringer_warning">因為鈴聲音量是0, 因此您可能會漏接電話。</string>
+	<string name="msg_zero_notification_warning">因為通知音量是0, 因此您可能會錯過通知。</string>
+	<string name="msg_not_silent_warning">您的手機不再靜音因為您調整鈴聲音量到 %d。</string>
+
+	<string name="msg_disabled_warning">2G/3G 連線和短信已禁用。\n\n如果您解除安裝了 Quick Settings
+		請不要忘記啟用資料連線。</string>
+	<string name="msg_switch_to_air_mode">您確定要啟用飛行模式並斷開全部無線連線麼?</string>
+	<string name="msg_cannot_init_setting">啊... 設定 "%s" 無法再您的手機上控制。</string>
+
+	<string name="menu_customize_settings">自訂</string>
+	<string name="menu_preferences">偏好</string>
+
+	<string name="txt_auto_rotate">自動旋轉</string>
+	<string name="txt_unlock_pattern">解鎖圖案</string>
+	<string name="txt_toolbar">工具列</string>
+
+	<string name="pref_common">常規</string>
+	<string name="pref_status_bar">狀態列捷徑</string>
+	<string name="pref_status_bar_descr">按啟用或禁用狀態列捷徑</string>
+	<string name="pref_view_mode">外觀</string>
+	<string name="pref_view_mode_descr">按選擇全螢幕或對話方塊外觀</string>
+	<string name="msg_tap_to_change_settings">按快速變更設定</string>
+
+	<string name="msg_reinstall_required">Quick Settings
+		程式沒有更新功能。請解除安裝並安裝新新版。\n\n我們對它造成的不便深表歉意。</string>
+
+	<string name="pref_about">關於</string>
+
+	<!-- 1.9.5 -->
+	<string name="txt_pattern">Pattern</string>
+	<string name="txt_pin">PIN</string>
+	<string name="txt_password">Password</string>
+	<string name="txt_wifi_hotspot">Wi-Fi hotspot</string>
+
+	<!-- 1.9.6 -->
+	<string name="txt_apn_control">網路資料 (APN)</string>
+	<string name="txt_mobile_data">網路資料</string>
+	<string name="txt_enable_data_access_first">Enable \"Mobile data\" in system settings first</string>
+	<string name="msg_enabling_mobile_data">Enabling mobile data</string>
+	<string name="msg_2g_hint">If connection does not establish, try to toggle
+		\"2G only\" checkbox in system settings to force modem to reconnect</string>
+	<string name="msg_use_mobile_data_hint">You should better use \"Mobile data\" setting
+		instead of \"Mobile data (APN)\" one</string>
+
+
+
 </resources>

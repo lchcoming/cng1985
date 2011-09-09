@@ -38,6 +38,7 @@ import org.adw.launcher2.settings.Preferences;
 import org.adw.launcher2.settings.LauncherSettings.Favorites;
 
 import com.ada.apps.Res;
+import com.bwx.bequick.ShowSettingsActivity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -906,18 +907,21 @@ public final class Launcher extends Activity
         int index = -1;
         if (v.getId() == Res.id.hotseat_left) {
             index = 0;
+         // reload these every tap; you never know when they might change
+            loadHotseats();
+            if (index >= 0 && index < mHotseats.length && mHotseats[index] != null) {
+                startActivitySafely(
+                    mHotseats[index],
+                    "hotseat"
+                );
+            }
         } else if (v.getId() == Res.id.hotseat_right) {
-            index = 1;
+            //index = 1;
+        	Intent intent=new Intent(this,ShowSettingsActivity.class);
+        	startActivity(intent);
         }
 
-        // reload these every tap; you never know when they might change
-        loadHotseats();
-        if (index >= 0 && index < mHotseats.length && mHotseats[index] != null) {
-            startActivitySafely(
-                mHotseats[index],
-                "hotseat"
-            );
-        }
+        
     }
 
     /**
