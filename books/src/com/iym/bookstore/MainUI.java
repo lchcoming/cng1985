@@ -104,6 +104,7 @@ public class MainUI extends Activity {
 				Animation animation = AnimationUtils.loadAnimation(MainUI.this,
 						R.anim.max);
 				v.startAnimation(animation);
+				openOnline();
 			}
 		});
 
