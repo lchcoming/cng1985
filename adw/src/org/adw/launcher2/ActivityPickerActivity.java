@@ -8,6 +8,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.ada.apps.Res;
+
 import android.app.ExpandableListActivity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -54,7 +56,7 @@ public class ActivityPickerActivity extends ExpandableListActivity {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-        setContentView(R.layout.activity_list);
+        setContentView(Res.layout.activity_list);
         getExpandableListView().setTextFilterEnabled(true);
         mPackageManager = getPackageManager();
         // Start async loading the data

@@ -20,6 +20,8 @@ import java.lang.ref.SoftReference;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -66,14 +68,14 @@ class LiveFolderAdapter extends CursorAdapter {
         final ViewHolder holder = new ViewHolder();
 
         if (!mIsList) {
-            view = mInflater.inflate(R.layout.application_boxed, parent, false);
+            view = mInflater.inflate(Res.layout.application_boxed, parent, false);
         } else {
-            view = mInflater.inflate(R.layout.application_list, parent, false);
-            holder.description = (TextView) view.findViewById(R.id.description);
-            holder.icon = (ImageView) view.findViewById(R.id.icon);
+            view = mInflater.inflate(Res.layout.application_list, parent, false);
+            holder.description = (TextView) view.findViewById(Res.id.description);
+            holder.icon = (ImageView) view.findViewById(Res.id.icon);
         }
 
-        holder.name = (TextView) view.findViewById(R.id.name);
+        holder.name = (TextView) view.findViewById(Res.id.name);
 
         holder.idIndex = cursor.getColumnIndexOrThrow(LiveFolders._ID);
         holder.nameIndex = cursor.getColumnIndexOrThrow(LiveFolders.NAME);

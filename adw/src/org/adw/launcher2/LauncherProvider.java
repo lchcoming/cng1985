@@ -24,6 +24,8 @@ import org.adw.launcher2.settings.LauncherSettings.Favorites;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import com.ada.apps.Res;
+
 import android.appwidget.AppWidgetHost;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
@@ -626,7 +628,7 @@ public class LauncherProvider extends ContentProvider {
             PackageManager packageManager = mContext.getPackageManager();
             int i = 0;
             try {
-                XmlResourceParser parser = mContext.getResources().getXml(R.xml.default_workspace);
+                XmlResourceParser parser = mContext.getResources().getXml(Res.xml.default_workspace);
                 AttributeSet attrs = Xml.asAttributeSet(parser);
                 XmlUtils.beginDocument(parser, TAG_FAVORITES);
 
@@ -643,17 +645,17 @@ public class LauncherProvider extends ContentProvider {
                     boolean added = false;
                     final String name = parser.getName();
 
-                    TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.Favorite);
+                    TypedArray a = mContext.obtainStyledAttributes(attrs, Res.styleable.Favorite);
 
                     values.clear();
                     values.put(LauncherSettings.Favorites.CONTAINER,
                             LauncherSettings.Favorites.CONTAINER_DESKTOP);
                     values.put(LauncherSettings.Favorites.SCREEN,
-                            a.getString(R.styleable.Favorite_screen));
+                            a.getString(Res.styleable.Favorite_screen));
                     values.put(LauncherSettings.Favorites.CELLX,
-                            a.getString(R.styleable.Favorite_x));
+                            a.getString(Res.styleable.Favorite_x));
                     values.put(LauncherSettings.Favorites.CELLY,
-                            a.getString(R.styleable.Favorite_y));
+                            a.getString(Res.styleable.Favorite_y));
 
                     if (TAG_FAVORITE.equals(name)) {
                         added = addAppShortcut(db, values, a, packageManager, intent);
@@ -684,8 +686,8 @@ public class LauncherProvider extends ContentProvider {
                 PackageManager packageManager, Intent intent) {
 
             ActivityInfo info = null;
-            String packageName = a.getString(R.styleable.Favorite_packageName);
-            String className = a.getString(R.styleable.Favorite_className);
+            String packageName = a.getString(Res.styleable.Favorite_packageName);
+            String className = a.getString(Res.styleable.Favorite_className);
             ComponentName cn = null;
             try {
                 cn = new ComponentName(packageName, className);
@@ -736,8 +738,8 @@ public class LauncherProvider extends ContentProvider {
         private boolean addAppWidget(SQLiteDatabase db, ContentValues values, TypedArray a,
                 PackageManager packageManager) {
 
-            String packageName = a.getString(R.styleable.Favorite_packageName);
-            String className = a.getString(R.styleable.Favorite_className);
+            String packageName = a.getString(Res.styleable.Favorite_packageName);
+            String className = a.getString(Res.styleable.Favorite_className);
 
             if (packageName == null || className == null) {
                 return false;
@@ -752,8 +754,8 @@ public class LauncherProvider extends ContentProvider {
             }
 
             if (hasPackage) {
-                int spanX = a.getInt(R.styleable.Favorite_spanX, 0);
-                int spanY = a.getInt(R.styleable.Favorite_spanY, 0);
+                int spanX = a.getInt(Res.styleable.Favorite_spanX, 0);
+                int spanY = a.getInt(Res.styleable.Favorite_spanY, 0);
                 return addAppWidget(db, values, cn, spanX, spanY);
             }
 
@@ -788,13 +790,13 @@ public class LauncherProvider extends ContentProvider {
                 TypedArray a) {
             Resources r = mContext.getResources();
 
-            final int iconResId = a.getResourceId(R.styleable.Favorite_icon, 0);
-            final int titleResId = a.getResourceId(R.styleable.Favorite_title, 0);
+            final int iconResId = a.getResourceId(Res.styleable.Favorite_icon, 0);
+            final int titleResId = a.getResourceId(Res.styleable.Favorite_title, 0);
 
             Intent intent;
             String uri = null;
             try {
-                uri = a.getString(R.styleable.Favorite_uri);
+                uri = a.getString(Res.styleable.Favorite_uri);
                 intent = Intent.parseUri(uri, 0);
             } catch (URISyntaxException e) {
                 Log.w(TAG, "Shortcut has malformed uri: " + uri);

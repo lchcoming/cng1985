@@ -37,6 +37,8 @@ import org.adw.launcher2.settings.LauncherSettings;
 import org.adw.launcher2.settings.Preferences;
 import org.adw.launcher2.settings.LauncherSettings.Favorites;
 
+import com.ada.apps.Res;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -256,7 +258,7 @@ public final class Launcher extends Activity
         checkForLocaleChange();
         setWallpaperDimension();
 
-        setContentView(R.layout.launcher);
+        setContentView(Res.layout.launcher);
         setupViews();
 
         registerContentObservers();
@@ -429,7 +431,7 @@ public final class Launcher extends Activity
     // Note: This doesn't do all the client-id magic that BrowserProvider does
     // in Browser. (http://b/2425179)
     private Uri getDefaultBrowserUri() {
-        String url = getString(R.string.default_browser_url);
+        String url = getString(Res.string.default_browser_url);
         if (url.indexOf("{CID}") != -1) {
             url = url.replace("{CID}", "android-google");
         }
@@ -442,7 +444,7 @@ public final class Launcher extends Activity
     // retain the ResolveActivity so the user can pick an app.
     private void loadHotseats() {
         if (mHotseatConfig == null) {
-            mHotseatConfig = getResources().getStringArray(R.array.hotseats);
+            mHotseatConfig = getResources().getStringArray(Res.array.hotseats);
             if (mHotseatConfig.length > 0) {
                 mHotseats = new Intent[mHotseatConfig.length];
                 mHotseatLabels = new CharSequence[mHotseatConfig.length];
@@ -453,7 +455,7 @@ public final class Launcher extends Activity
                 mHotseatLabels = null;
             }
 
-            TypedArray hotseatIconDrawables = getResources().obtainTypedArray(R.array.hotseat_icons);
+            TypedArray hotseatIconDrawables = getResources().obtainTypedArray(Res.array.hotseat_icons);
             for (int i=0; i<mHotseatConfig.length; i++) {
                 // load icon for this slot; currently unrelated to the actual activity
                 try {
@@ -472,7 +474,7 @@ public final class Launcher extends Activity
             if (mHotseatConfig[i].equals("*BROWSER*")) {
                 // magic value meaning "launch user's default web browser"
                 // replace it with a generic web request so we can see if there is indeed a default
-                String defaultUri = getString(R.string.default_browser_url);
+                String defaultUri = getString(Res.string.default_browser_url);
                 intent = new Intent(
                         Intent.ACTION_VIEW,
                         ((defaultUri != null)
@@ -495,7 +497,7 @@ public final class Launcher extends Activity
 
             if (intent == null) {
                 mHotseats[i] = null;
-                mHotseatLabels[i] = getText(R.string.activity_not_found);
+                mHotseatLabels[i] = getText(Res.string.activity_not_found);
                 continue;
             }
 
@@ -523,7 +525,7 @@ public final class Launcher extends Activity
                 mHotseats[i] = intent;
 
                 // set accessibility text to "Not installed"
-                mHotseatLabels[i] = getText(R.string.activity_not_found);
+                mHotseatLabels[i] = getText(Res.string.activity_not_found);
             } else {
                 boolean found = false;
                 for (ResolveInfo ri : allMatches) {
@@ -543,7 +545,7 @@ public final class Launcher extends Activity
                     mHotseats[i] = intent;
 
                     // set the accessibility text to "Select shortcut"
-                    mHotseatLabels[i] = getText(R.string.title_select_shortcut);
+                    mHotseatLabels[i] = getText(Res.string.title_select_shortcut);
                 } else {
                     // we have an app!
                     // now reconstruct the intent to launch it through the front
@@ -828,37 +830,37 @@ public final class Launcher extends Activity
     private void setupViews() {
         DragController dragController = mDragController;
 
-        mDragLayer = (DragLayer) findViewById(R.id.drag_layer);
+        mDragLayer = (DragLayer) findViewById(Res.id.drag_layer);
         mDragLayer.setDragController(dragController);
 
-        mAllAppsGrid = (AllAppsView)mDragLayer.findViewById(R.id.all_apps_view);
+        mAllAppsGrid = (AllAppsView)mDragLayer.findViewById(Res.id.all_apps_view);
         mAllAppsGrid.setLauncher(this);
         mAllAppsGrid.setDragController(dragController);
         ((View) mAllAppsGrid).setWillNotDraw(false); // We don't want a hole punched in our window.
         // Manage focusability manually since this thing is always visible
         ((View) mAllAppsGrid).setFocusable(false);
 
-        mWorkspace = (Workspace) mDragLayer.findViewById(R.id.workspace);
+        mWorkspace = (Workspace) mDragLayer.findViewById(Res.id.workspace);
         final Workspace workspace = mWorkspace;
         workspace.setHapticFeedbackEnabled(false);
 
-        DeleteZone deleteZone = (DeleteZone) mDragLayer.findViewById(R.id.delete_zone);
+        DeleteZone deleteZone = (DeleteZone) mDragLayer.findViewById(Res.id.delete_zone);
         mDeleteZone = deleteZone;
 
-        mHandleView = (HandleView) findViewById(R.id.all_apps_button);
+        mHandleView = (HandleView) findViewById(Res.id.all_apps_button);
         mHandleView.setLauncher(this);
         mHandleView.setOnClickListener(this);
         mHandleView.setOnLongClickListener(this);
 
-        ImageView hotseatLeft = (ImageView) findViewById(R.id.hotseat_left);
+        ImageView hotseatLeft = (ImageView) findViewById(Res.id.hotseat_left);
         hotseatLeft.setContentDescription(mHotseatLabels[0]);
         hotseatLeft.setImageDrawable(mHotseatIcons[0]);
-        ImageView hotseatRight = (ImageView) findViewById(R.id.hotseat_right);
+        ImageView hotseatRight = (ImageView) findViewById(Res.id.hotseat_right);
         hotseatRight.setContentDescription(mHotseatLabels[1]);
         hotseatRight.setImageDrawable(mHotseatIcons[1]);
 
-        mPreviousView = (ImageView) mDragLayer.findViewById(R.id.previous_screen);
-        mNextView = (ImageView) mDragLayer.findViewById(R.id.next_screen);
+        mPreviousView = (ImageView) mDragLayer.findViewById(Res.id.previous_screen);
+        mNextView = (ImageView) mDragLayer.findViewById(Res.id.next_screen);
 
         Drawable previous = mPreviousView.getDrawable();
         Drawable next = mNextView.getDrawable();
@@ -874,7 +876,7 @@ public final class Launcher extends Activity
 
         deleteZone.setLauncher(this);
         deleteZone.setDragController(dragController);
-        deleteZone.setHandle(findViewById(R.id.all_apps_button_cluster));
+        deleteZone.setHandle(findViewById(Res.id.all_apps_button_cluster));
 
         dragController.setDragScoller(workspace);
         dragController.setDragListener(deleteZone);
@@ -902,9 +904,9 @@ public final class Launcher extends Activity
         if (isAllAppsVisible()) return;
 
         int index = -1;
-        if (v.getId() == R.id.hotseat_left) {
+        if (v.getId() == Res.id.hotseat_left) {
             index = 0;
-        } else if (v.getId() == R.id.hotseat_right) {
+        } else if (v.getId() == Res.id.hotseat_right) {
             index = 1;
         }
 
@@ -926,7 +928,7 @@ public final class Launcher extends Activity
      * @return A View inflated from R.layout.application.
      */
     View createShortcut(ShortcutInfo info) {
-        return createShortcut(R.layout.application,
+        return createShortcut(Res.layout.application,
                 (ViewGroup) mWorkspace.getChildAt(mWorkspace.getCurrentScreen()), info);
     }
 
@@ -1271,7 +1273,7 @@ public final class Launcher extends Activity
         }
         super.onCreateOptionsMenu(menu);
 
-        menu.add(MENU_GROUP_ADD, MENU_ADD, 0, R.string.menu_add)
+        menu.add(MENU_GROUP_ADD, MENU_ADD, 0, Res.string.menu_add)
                 .setIcon(android.R.drawable.ic_menu_add)
                 .setAlphabeticShortcut('A');
 
@@ -1281,10 +1283,10 @@ public final class Launcher extends Activity
         menu.add(MENU_GROUP_DRAWER, MENU_DRAWER_ADD_FOLDER, 0, "Add Folder");
 
 
-        menu.add(MENU_GROUP_HOMESCREEN, MENU_WALLPAPER_SETTINGS, 0, R.string.menu_wallpaper)
+        menu.add(MENU_GROUP_HOMESCREEN, MENU_WALLPAPER_SETTINGS, 0, Res.string.menu_wallpaper)
                  .setIcon(android.R.drawable.ic_menu_gallery)
                  .setAlphabeticShortcut('W');
-        menu.add(MENU_GROUP_HOMESCREEN, MENU_SEARCH, 0, R.string.menu_search)
+        menu.add(MENU_GROUP_HOMESCREEN, MENU_SEARCH, 0, Res.string.menu_search)
                 .setIcon(android.R.drawable.ic_search_category_default)
                 .setAlphabeticShortcut(SearchManager.MENU_KEY);
 
@@ -1378,7 +1380,7 @@ public final class Launcher extends Activity
 
     void processShortcut(Intent intent) {
         // Handle case where user selected "Applications"
-        String applicationName = getResources().getString(R.string.group_applications);
+        String applicationName = getResources().getString(Res.string.group_applications);
         String shortcutName = intent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
 
         if (applicationName != null && applicationName.equals(shortcutName)) {
@@ -1387,7 +1389,7 @@ public final class Launcher extends Activity
 
             Intent pickIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
             pickIntent.putExtra(Intent.EXTRA_INTENT, mainIntent);
-            pickIntent.putExtra(Intent.EXTRA_TITLE, getText(R.string.title_select_application));
+            pickIntent.putExtra(Intent.EXTRA_TITLE, getText(Res.string.title_select_application));
             startActivityForResultSafely(pickIntent, REQUEST_PICK_APPLICATION);
         } else {
             startActivityForResultSafely(intent, REQUEST_CREATE_SHORTCUT);
@@ -1396,7 +1398,7 @@ public final class Launcher extends Activity
 
     void addLiveFolder(Intent intent, boolean toDrawer) {
         // Handle case where user selected "Folder"
-        String folderName = getResources().getString(R.string.group_folder);
+        String folderName = getResources().getString(Res.string.group_folder);
         String shortcutName = intent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
 
         if (folderName != null && folderName.equals(shortcutName)) {
@@ -1411,7 +1413,7 @@ public final class Launcher extends Activity
 
     void addFolder() {
         UserFolderInfo folderInfo = new UserFolderInfo();
-        folderInfo.setTitle(getText(R.string.folder_name));
+        folderInfo.setTitle(getText(Res.string.folder_name));
 
         CellLayout.CellInfo cellInfo = mAddItemCellInfo;
         cellInfo.screen = mWorkspace.getCurrentScreen();
@@ -1424,7 +1426,7 @@ public final class Launcher extends Activity
         sFolders.put(folderInfo.id, folderInfo);
 
         // Create the view
-        FolderIcon newFolder = FolderIcon.fromXml(R.layout.folder_icon, this,
+        FolderIcon newFolder = FolderIcon.fromXml(Res.layout.folder_icon, this,
                 (ViewGroup) mWorkspace.getChildAt(mWorkspace.getCurrentScreen()), folderInfo);
         mWorkspace.addInCurrentScreen(newFolder,
                 cellInfo.cellX, cellInfo.cellY, 1, 1, isWorkspaceLocked());
@@ -1450,7 +1452,7 @@ public final class Launcher extends Activity
         final LiveFolderInfo info = addLiveFolder(this, data, cellInfo, false);
 
         if (!mRestoring) {
-            final View view = LiveFolderIcon.fromXml(R.layout.live_folder_icon, this,
+            final View view = LiveFolderIcon.fromXml(Res.layout.live_folder_icon, this,
                 (ViewGroup) mWorkspace.getChildAt(mWorkspace.getCurrentScreen()), info);
             mWorkspace.addInCurrentScreen(view, cellInfo.cellX, cellInfo.cellY, 1, 1,
                     isWorkspaceLocked());
@@ -1481,7 +1483,7 @@ public final class Launcher extends Activity
         }
 
         if (icon == null) {
-            icon = context.getResources().getDrawable(R.drawable.ic_launcher_folder);
+            icon = context.getResources().getDrawable(Res.drawable.ic_launcher_folder);
         }
 
         final LiveFolderInfo info = new LiveFolderInfo();
@@ -1520,7 +1522,7 @@ public final class Launcher extends Activity
                     mSavedState.getBooleanArray(RUNTIME_STATE_PENDING_ADD_OCCUPIED_CELLS) : null;
             cellInfo = mWorkspace.findAllVacantCells(occupied);
             if (!cellInfo.findCellForSpan(xy, spanX, spanY)) {
-                Toast.makeText(this, getString(R.string.out_of_space), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(Res.string.out_of_space), Toast.LENGTH_SHORT).show();
                 return false;
             }
         }
@@ -1529,7 +1531,7 @@ public final class Launcher extends Activity
 
     private void addFolderToDrawer() {
     	UserFolderInfo folderInfo = new UserFolderInfo();
-        folderInfo.setTitle(getText(R.string.folder_name));
+        folderInfo.setTitle(getText(Res.string.folder_name));
 
     	mModel.addItemToDatabase(this, folderInfo, Favorites.CONTAINER_DRAWER, -1, 0, 0, false);
     	ArrayList<IconItemInfo> list = new ArrayList<IconItemInfo>();
@@ -1541,7 +1543,7 @@ public final class Launcher extends Activity
         closeAllApps(true);
         final Intent pickWallpaper = new Intent(Intent.ACTION_SET_WALLPAPER);
         Intent chooser = Intent.createChooser(pickWallpaper,
-                getText(R.string.chooser_wallpaper));
+                getText(Res.string.chooser_wallpaper));
         // NOTE: Adds a configure option to the chooser if the wallpaper supports it
         //       Removed in Eclair MR1
 //        WallpaperManager wm = (WallpaperManager)
@@ -1670,10 +1672,10 @@ public final class Launcher extends Activity
         try {
             startActivity(intent);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, Res.string.activity_not_found, Toast.LENGTH_SHORT).show();
             Log.e(TAG, "Unable to launch. tag=" + tag + " intent=" + intent, e);
         } catch (SecurityException e) {
-            Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, Res.string.activity_not_found, Toast.LENGTH_SHORT).show();
             Log.e(TAG, "Launcher does not have the permission to launch " + intent +
                     ". Make sure to create a MAIN intent-filter for the corresponding activity " +
                     "or use the exported attribute for this activity. "
@@ -1688,9 +1690,9 @@ public final class Launcher extends Activity
         try {
             startActivityForResult(intent, requestCode);
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, Res.string.activity_not_found, Toast.LENGTH_SHORT).show();
         } catch (SecurityException e) {
-            Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, Res.string.activity_not_found, Toast.LENGTH_SHORT).show();
             Log.e(TAG, "Launcher does not have the permission to launch " + intent +
                     ". Make sure to create a MAIN intent-filter for the corresponding activity " +
                     "or use the exported attribute for this activity.", e);
@@ -1822,16 +1824,16 @@ public final class Launcher extends Activity
         if (window != null) {
             window.setOnDismissListener(new PopupWindow.OnDismissListener() {
                 public void onDismiss() {
-                    ViewGroup group = (ViewGroup) v.getTag(R.id.workspace);
+                    ViewGroup group = (ViewGroup) v.getTag(Res.id.workspace);
                     int count = group.getChildCount();
                     for (int i = 0; i < count; i++) {
                         ((ImageView) group.getChildAt(i)).setImageDrawable(null);
                     }
-                    ArrayList<Bitmap> bitmaps = (ArrayList<Bitmap>) v.getTag(R.id.icon);
+                    ArrayList<Bitmap> bitmaps = (ArrayList<Bitmap>) v.getTag(Res.id.icon);
                     for (Bitmap bitmap : bitmaps) bitmap.recycle();
 
-                    v.setTag(R.id.workspace, null);
-                    v.setTag(R.id.icon, null);
+                    v.setTag(Res.id.workspace, null);
+                    v.setTag(Res.id.icon, null);
                     window.setOnDismissListener(null);
                 }
             });
@@ -1853,7 +1855,7 @@ public final class Launcher extends Activity
         float max = workspace.getChildCount();
 
         final Rect r = new Rect();
-        resources.getDrawable(R.drawable.preview_background).getPadding(r);
+        resources.getDrawable(Res.drawable.preview_background).getPadding(r);
         int extraW = (int) ((r.left + r.right) * max);
         int extraH = r.top + r.bottom;
 
@@ -1891,7 +1893,7 @@ public final class Launcher extends Activity
             c.translate(-cell.getLeftPadding(), -cell.getTopPadding());
             cell.dispatchDraw(c);
 
-            image.setBackgroundDrawable(resources.getDrawable(R.drawable.preview_background));
+            image.setBackgroundDrawable(resources.getDrawable(Res.drawable.preview_background));
             image.setImageBitmap(bitmap);
             image.setTag(i);
             image.setOnClickListener(handler);
@@ -1909,7 +1911,7 @@ public final class Launcher extends Activity
         p.setContentView(preview);
         p.setWidth((int) (sWidth * count + extraW));
         p.setHeight((int) (sHeight + extraH));
-        p.setAnimationStyle(R.style.AnimationPreview);
+        p.setAnimationStyle(Res.style.AnimationPreview);
         p.setOutsideTouchable(true);
         p.setFocusable(true);
         p.setBackgroundDrawable(new ColorDrawable(0));
@@ -1922,8 +1924,8 @@ public final class Launcher extends Activity
         });
 
         anchor.setTag(p);
-        anchor.setTag(R.id.workspace, preview);
-        anchor.setTag(R.id.icon, bitmaps);
+        anchor.setTag(Res.id.workspace, preview);
+        anchor.setTag(Res.id.icon, bitmaps);
     }
 
     class PreviewTouchHandler implements View.OnClickListener, Runnable, View.OnFocusChangeListener {
@@ -1973,7 +1975,7 @@ public final class Launcher extends Activity
                 break;
             case DIALOG_RENAME_FOLDER:
                 if (mFolderInfo != null) {
-                    EditText input = (EditText) dialog.findViewById(R.id.folder_name);
+                    EditText input = (EditText) dialog.findViewById(Res.id.folder_name);
                     final CharSequence text = mFolderInfo.getTitle(mIconCache);
                     input.setText(text);
                     input.setSelection(0, text.length());
@@ -1999,17 +2001,17 @@ public final class Launcher extends Activity
         Bundle bundle = new Bundle();
 
         ArrayList<String> shortcutNames = new ArrayList<String>();
-        shortcutNames.add(getString(R.string.group_applications));
+        shortcutNames.add(getString(Res.string.group_applications));
         bundle.putStringArrayList(Intent.EXTRA_SHORTCUT_NAME, shortcutNames);
 
         ArrayList<ShortcutIconResource> shortcutIcons = new ArrayList<ShortcutIconResource>();
         shortcutIcons.add(ShortcutIconResource.fromContext(Launcher.this,
-                        R.drawable.ic_launcher_application));
+                        Res.drawable.ic_launcher_application));
         bundle.putParcelableArrayList(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, shortcutIcons);
 
         Intent pickIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
         pickIntent.putExtra(Intent.EXTRA_INTENT, new Intent(Intent.ACTION_CREATE_SHORTCUT));
-        pickIntent.putExtra(Intent.EXTRA_TITLE, getText(R.string.title_select_shortcut));
+        pickIntent.putExtra(Intent.EXTRA_TITLE, getText(Res.string.title_select_shortcut));
         pickIntent.putExtras(bundle);
 
         startActivityForResult(pickIntent, REQUEST_PICK_SHORTCUT);
@@ -2020,26 +2022,26 @@ public final class Launcher extends Activity
 
         Dialog createDialog() {
         	mWaitingForResult = true;
-            final View layout = View.inflate(Launcher.this, R.layout.rename_folder, null);
-            mInput = (EditText) layout.findViewById(R.id.folder_name);
+            final View layout = View.inflate(Launcher.this, Res.layout.rename_folder, null);
+            mInput = (EditText) layout.findViewById(Res.id.folder_name);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(Launcher.this);
             builder.setIcon(0);
-            builder.setTitle(getString(R.string.rename_folder_title));
+            builder.setTitle(getString(Res.string.rename_folder_title));
             builder.setCancelable(true);
             builder.setOnCancelListener(new Dialog.OnCancelListener() {
                 public void onCancel(DialogInterface dialog) {
                     cleanup();
                 }
             });
-            builder.setNegativeButton(getString(R.string.cancel_action),
+            builder.setNegativeButton(getString(Res.string.cancel_action),
                 new Dialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         cleanup();
                     }
                 }
             );
-            builder.setPositiveButton(getString(R.string.rename_action),
+            builder.setPositiveButton(getString(Res.string.rename_action),
                 new Dialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         changeFolderName();
@@ -2105,20 +2107,20 @@ public final class Launcher extends Activity
         Bundle bundle = new Bundle();
 
         ArrayList<String> shortcutNames = new ArrayList<String>();
-        shortcutNames.add(getString(R.string.group_folder));
+        shortcutNames.add(getString(Res.string.group_folder));
         bundle.putStringArrayList(Intent.EXTRA_SHORTCUT_NAME, shortcutNames);
 
         ArrayList<ShortcutIconResource> shortcutIcons =
                 new ArrayList<ShortcutIconResource>();
         shortcutIcons.add(ShortcutIconResource.fromContext(Launcher.this,
-                R.drawable.ic_launcher_folder));
+                Res.drawable.ic_launcher_folder));
         bundle.putParcelableArrayList(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, shortcutIcons);
 
         Intent pickIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
         pickIntent.putExtra(Intent.EXTRA_INTENT,
                 new Intent(LiveFolders.ACTION_CREATE_LIVE_FOLDER));
         pickIntent.putExtra(Intent.EXTRA_TITLE,
-                getText(R.string.title_select_live_folder));
+                getText(Res.string.title_select_live_folder));
         pickIntent.putExtras(bundle);
 
         startActivityForResult(pickIntent, toDrawer ? REQUEST_PICK_LIVE_FOLDER_DRAWER : REQUEST_PICK_LIVE_FOLDER);
@@ -2204,7 +2206,7 @@ public final class Launcher extends Activity
             mAdapter = new AddAdapter(Launcher.this);
 
             final AlertDialog.Builder builder = new AlertDialog.Builder(Launcher.this);
-            builder.setTitle(getString(R.string.menu_item_add_item));
+            builder.setTitle(getString(Res.string.menu_item_add_item));
             builder.setAdapter(mAdapter, this);
 
             builder.setInverseBackgroundForced(true);
@@ -2376,7 +2378,7 @@ public final class Launcher extends Activity
                             false);
                     break;
                 case LauncherSettings.Favorites.ITEM_TYPE_USER_FOLDER:
-                    final FolderIcon newFolder = FolderIcon.fromXml(R.layout.folder_icon, this,
+                    final FolderIcon newFolder = FolderIcon.fromXml(Res.layout.folder_icon, this,
                             (ViewGroup) workspace.getChildAt(workspace.getCurrentScreen()),
                             (UserFolderInfo) item);
                     workspace.addInScreen(newFolder, item.screen, item.cellX, item.cellY, 1, 1,
@@ -2384,7 +2386,7 @@ public final class Launcher extends Activity
                     break;
                 case LauncherSettings.Favorites.ITEM_TYPE_LIVE_FOLDER:
                     final FolderIcon newLiveFolder = LiveFolderIcon.fromXml(
-                            R.layout.live_folder_icon, this,
+                            Res.layout.live_folder_icon, this,
                             (ViewGroup) workspace.getChildAt(workspace.getCurrentScreen()),
                             (LiveFolderInfo) item);
                     workspace.addInScreen(newLiveFolder, item.screen, item.cellX, item.cellY, 1, 1,
@@ -2549,7 +2551,7 @@ public final class Launcher extends Activity
 
         //a new QuickActionWindow object
         final QuickAction qa = new QuickAction(view);
-        view.setTag(org.adw.launcher2.R.id.TAG_PREVIEW, qa);
+        view.setTag(com.ada.apps.Res.id.TAG_PREVIEW, qa);
         if (onDismissListener != null) {
             qa.setOnDismissListener(onDismissListener);
         }
@@ -2605,15 +2607,15 @@ public final class Launcher extends Activity
         final int count=mWorkspace.getChildCount();
         //get icons properties
         final Resources r=getResources();
-        final int margintop=r.getDimensionPixelSize(R.dimen.icon_layout_marginTop);
-        final int marginbottom=r.getDimensionPixelSize(R.dimen.icon_layout_marginBottom);
-        final int marginleft=r.getDimensionPixelSize(R.dimen.icon_layout_marginLeft);
-        final int marginright=r.getDimensionPixelSize(R.dimen.icon_layout_marginRight);
-        final int paddingtop=r.getDimensionPixelSize(R.dimen.icon_paddingTop);
-        final int paddingbottom=r.getDimensionPixelSize(R.dimen.icon_paddingBottom);
-        final int paddingleft=r.getDimensionPixelSize(R.dimen.icon_paddingLeft);
-        final int paddingright=r.getDimensionPixelSize(R.dimen.icon_paddingRight);
-        final int drawablePadding=r.getDimensionPixelSize(R.dimen.icon_drawablePadding);
+        final int margintop=r.getDimensionPixelSize(Res.dimen.icon_layout_marginTop);
+        final int marginbottom=r.getDimensionPixelSize(Res.dimen.icon_layout_marginBottom);
+        final int marginleft=r.getDimensionPixelSize(Res.dimen.icon_layout_marginLeft);
+        final int marginright=r.getDimensionPixelSize(Res.dimen.icon_layout_marginRight);
+        final int paddingtop=r.getDimensionPixelSize(Res.dimen.icon_paddingTop);
+        final int paddingbottom=r.getDimensionPixelSize(Res.dimen.icon_paddingBottom);
+        final int paddingleft=r.getDimensionPixelSize(Res.dimen.icon_paddingLeft);
+        final int paddingright=r.getDimensionPixelSize(Res.dimen.icon_paddingRight);
+        final int drawablePadding=r.getDimensionPixelSize(Res.dimen.icon_drawablePadding);
 
         for(int i=0;i<count;i++){
             CellLayout screen= (CellLayout) mWorkspace.getChildAt(i);

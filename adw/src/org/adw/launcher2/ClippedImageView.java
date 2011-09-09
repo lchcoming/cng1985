@@ -16,6 +16,8 @@
 
 package org.adw.launcher2;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -32,9 +34,9 @@ public class ClippedImageView extends ImageView {
     public ClippedImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ClippedImageView, defStyle, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, Res.styleable.ClippedImageView, defStyle, 0);
 
-        mZone = a.getDimensionPixelSize(R.styleable.ClippedImageView_ignoreZone, 0);
+        mZone = a.getDimensionPixelSize(Res.styleable.ClippedImageView_ignoreZone, 0);
 
         a.recycle();
     }

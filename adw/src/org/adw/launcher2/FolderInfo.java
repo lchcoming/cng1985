@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 import org.adw.launcher2.settings.LauncherSettings.Favorites;
 
+import com.ada.apps.Res;
+
 import android.graphics.Bitmap;
 import android.view.View;
 
@@ -38,7 +40,7 @@ class FolderInfo extends IconItemInfo {
     public Bitmap getIcon(IconCache iconCache) {
     	if (mIcon == null)
     		return Utilities.createIconBitmap(
-    				iconCache.getContext().getResources().getDrawable(R.drawable.ic_launcher_folder),
+    				iconCache.getContext().getResources().getDrawable(Res.drawable.ic_launcher_folder),
     				iconCache.getContext());
     	return super.getIcon(iconCache);
     }

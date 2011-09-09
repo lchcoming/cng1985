@@ -18,6 +18,8 @@ package org.adw.launcher2;
 
 import org.adw.launcher2.settings.LauncherSettings;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
@@ -50,7 +52,7 @@ public class FolderIcon extends BubbleTextView implements DropTarget {
     	final Resources resources = mLauncher.getResources();
     	mCloseIcon = new FastBitmapDrawable(info.getIcon(iCache));
         if (info.usesDefaultIcon())
-        	mOpenIcon = resources.getDrawable(R.drawable.ic_launcher_folder_open);
+        	mOpenIcon = resources.getDrawable(Res.drawable.ic_launcher_folder_open);
         else
         	mOpenIcon = mCloseIcon;
         setCompoundDrawablesWithIntrinsicBounds(null, mCloseIcon, null, null);

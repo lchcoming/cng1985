@@ -1,6 +1,6 @@
 package org.adw.launcher2.settings;
 
-import org.adw.launcher2.R;
+import com.ada.apps.Res;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
@@ -11,7 +11,7 @@ public class SettingsActivity extends PreferenceActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		this.addPreferencesFromResource(R.xml.settings);
+		this.addPreferencesFromResource(Res.xml.settings);
 	}
 
 

@@ -17,6 +17,8 @@
 
 package org.adw.launcher2;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
@@ -42,11 +44,11 @@ public class HandleView extends ImageView {
     public HandleView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.HandleView, defStyle, 0);
-        mOrientation = a.getInt(R.styleable.HandleView_direction, ORIENTATION_HORIZONTAL);
+        TypedArray a = context.obtainStyledAttributes(attrs, Res.styleable.HandleView, defStyle, 0);
+        mOrientation = a.getInt(Res.styleable.HandleView_direction, ORIENTATION_HORIZONTAL);
         a.recycle();
 
-        setContentDescription(context.getString(R.string.all_apps_button_label));
+        setContentDescription(context.getString(Res.string.all_apps_button_label));
     }
 
     @Override

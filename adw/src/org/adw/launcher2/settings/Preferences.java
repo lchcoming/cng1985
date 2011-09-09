@@ -7,9 +7,10 @@ import java.util.Comparator;
 import org.adw.launcher2.IconCache;
 import org.adw.launcher2.IconItemInfo;
 import org.adw.launcher2.Launcher;
-import org.adw.launcher2.R;
 import org.adw.launcher2.ShortcutInfo;
 import org.adw.launcher2.appdb.AppDB;
+
+import com.ada.apps.Res;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -39,7 +40,7 @@ public class Preferences implements OnSharedPreferenceChangeListener {
 		} else if (launcher != null) {
 			mPreferences = PreferenceManager.getDefaultSharedPreferences(launcher);
 			mPreferences.registerOnSharedPreferenceChangeListener(this);
-			PreferenceManager.setDefaultValues(launcher, R.xml.settings, false);
+			PreferenceManager.setDefaultValues(launcher, Res.xml.settings, false);
 		}
 		mLauncher = launcher;
 	}

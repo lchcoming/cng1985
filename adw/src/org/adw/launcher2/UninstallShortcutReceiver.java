@@ -20,6 +20,8 @@ import java.net.URISyntaxException;
 
 import org.adw.launcher2.settings.LauncherSettings;
 
+import com.ada.apps.Res;
+
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -76,7 +78,7 @@ public class UninstallShortcutReceiver extends BroadcastReceiver {
 
             if (changed) {
                 cr.notifyChange(LauncherSettings.Favorites.CONTENT_URI, null);
-                Toast.makeText(context, context.getString(R.string.shortcut_uninstalled, name),
+                Toast.makeText(context, context.getString(Res.string.shortcut_uninstalled, name),
                         Toast.LENGTH_SHORT).show();
             }
         }

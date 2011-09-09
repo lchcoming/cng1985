@@ -16,6 +16,8 @@
 
 package org.adw.launcher2;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -71,7 +73,7 @@ public class BubbleTextView extends TextView {
         setBackgroundDrawable(null);
 
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPaint.setColor(getContext().getResources().getColor(R.color.bubble_dark_background));
+        mPaint.setColor(getContext().getResources().getColor(Res.color.bubble_dark_background));
 
         final float scale = getContext().getResources().getDisplayMetrics().density;
         mCornerRadius = CORNER_RADIUS * scale;

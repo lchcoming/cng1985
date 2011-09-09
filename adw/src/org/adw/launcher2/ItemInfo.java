@@ -23,6 +23,8 @@ import java.util.List;
 
 import org.adw.launcher2.settings.LauncherSettings;
 
+import com.ada.apps.Res;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -235,7 +237,7 @@ public class ItemInfo {
         {
             result.add(new EditAction(ACTION_DELETE,
                     android.R.drawable.ic_menu_delete,
-                    R.string.menu_delete));
+                    Res.string.menu_delete));
         }
         return result;
 	}
@@ -297,7 +299,7 @@ public class ItemInfo {
                         intent.setType("text/plain");
                         intent.putExtra(Intent.EXTRA_TEXT, ANDROID_MARKET_URI_BASE+appPackage);
                         ;
-                        launcher.startActivity(Intent.createChooser(intent, launcher.getString(R.string.menu_choose_share_app)));
+                        launcher.startActivity(Intent.createChooser(intent, launcher.getString(Res.string.menu_choose_share_app)));
                     }
                 }
                 catch (Exception e)
@@ -366,7 +368,7 @@ public class ItemInfo {
             if ( ((ItemPackage) this).getPackageName(launcher) != null )
             {
                 result.add(new EditAction(ACTION_MARKET, mMarketIcon,mMarketLabel));
-                result.add(new EditAction(ACTION_SHARE_APP, android.R.drawable.ic_menu_share, R.string.menu_share));
+                result.add(new EditAction(ACTION_SHARE_APP, android.R.drawable.ic_menu_share, Res.string.menu_share));
             }
         }
     }

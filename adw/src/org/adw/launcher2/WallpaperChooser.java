@@ -19,6 +19,8 @@ package org.adw.launcher2;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.ada.apps.Res;
+
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.content.res.Resources;
@@ -60,16 +62,16 @@ public class WallpaperChooser extends Activity implements AdapterView.OnItemSele
 
         findWallpapers();
 
-        setContentView(R.layout.wallpaper_chooser);
+        setContentView(Res.layout.wallpaper_chooser);
 
-        mGallery = (Gallery) findViewById(R.id.gallery);
+        mGallery = (Gallery) findViewById(Res.id.gallery);
         mGallery.setAdapter(new ImageAdapter(this));
         mGallery.setOnItemSelectedListener(this);
         mGallery.setCallbackDuringFling(false);
 
-        findViewById(R.id.set).setOnClickListener(this);
+        findViewById(Res.id.set).setOnClickListener(this);
 
-        mImageView = (ImageView) findViewById(R.id.wallpaper);
+        mImageView = (ImageView) findViewById(Res.id.wallpaper);
     }
 
     private void findWallpapers() {
@@ -81,10 +83,10 @@ public class WallpaperChooser extends Activity implements AdapterView.OnItemSele
         // com.android.launcher2; Resources needs the real package name,
         // com.android.launcher. So we ask Resources for what it thinks the
         // package name should be.
-        final String packageName = resources.getResourcePackageName(R.array.wallpapers);
+        final String packageName = resources.getResourcePackageName(Res.array.wallpapers);
 
-        addWallpapers(resources, packageName, R.array.wallpapers);
-        addWallpapers(resources, packageName, R.array.extra_wallpapers);
+        addWallpapers(resources, packageName, Res.array.wallpapers);
+        addWallpapers(resources, packageName, Res.array.extra_wallpapers);
     }
 
     private void addWallpapers(Resources resources, String packageName, int list) {
@@ -174,7 +176,7 @@ public class WallpaperChooser extends Activity implements AdapterView.OnItemSele
             ImageView image;
 
             if (convertView == null) {
-                image = (ImageView) mLayoutInflater.inflate(R.layout.wallpaper_item, parent, false);
+                image = (ImageView) mLayoutInflater.inflate(Res.layout.wallpaper_item, parent, false);
             } else {
                 image = (ImageView) convertView;
             }

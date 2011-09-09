@@ -18,6 +18,8 @@ package org.adw.launcher2;
 
 import java.util.ArrayList;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -71,20 +73,20 @@ public class AddAdapter extends BaseAdapter {
         // Create default actions
         Resources res = launcher.getResources();
 
-        mItems.add(new ListItem(res, R.string.group_shortcuts,
-                R.drawable.ic_launcher_shortcut, ITEM_SHORTCUT));
+        mItems.add(new ListItem(res, Res.string.group_shortcuts,
+                Res.drawable.ic_launcher_shortcut, ITEM_SHORTCUT));
 
-        mItems.add(new ListItem(res, R.string.group_shortcuts,
-                R.drawable.ic_launcher_shortcut, ITEM_ANYCUT));
+        mItems.add(new ListItem(res, Res.string.group_shortcuts,
+                Res.drawable.ic_launcher_shortcut, ITEM_ANYCUT));
 
-        mItems.add(new ListItem(res, R.string.group_widgets,
-                R.drawable.ic_launcher_appwidget, ITEM_APPWIDGET));
+        mItems.add(new ListItem(res, Res.string.group_widgets,
+                Res.drawable.ic_launcher_appwidget, ITEM_APPWIDGET));
 
-        mItems.add(new ListItem(res, R.string.group_live_folders,
-                R.drawable.ic_launcher_folder, ITEM_LIVE_FOLDER));
+        mItems.add(new ListItem(res, Res.string.group_live_folders,
+                Res.drawable.ic_launcher_folder, ITEM_LIVE_FOLDER));
 
-        mItems.add(new ListItem(res, R.string.group_wallpapers,
-                R.drawable.ic_launcher_wallpaper, ITEM_WALLPAPER));
+        mItems.add(new ListItem(res, Res.string.group_wallpapers,
+                Res.drawable.ic_launcher_wallpaper, ITEM_WALLPAPER));
 
     }
 
@@ -92,7 +94,7 @@ public class AddAdapter extends BaseAdapter {
         ListItem item = (ListItem) getItem(position);
 
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.add_list_item, parent, false);
+            convertView = mInflater.inflate(Res.layout.add_list_item, parent, false);
         }
 
         TextView textView = (TextView) convertView;

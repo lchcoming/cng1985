@@ -18,6 +18,8 @@ package org.adw.launcher2;
 
 import java.util.ArrayList;
 
+import com.ada.apps.Res;
+
 import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.res.Resources;
@@ -73,22 +75,22 @@ public class CellLayout extends ViewGroup {
 
     public CellLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CellLayout, defStyle, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, Res.styleable.CellLayout, defStyle, 0);
 
-        mCellWidth = a.getDimensionPixelSize(R.styleable.CellLayout_cellWidth, 10);
-        mCellHeight = a.getDimensionPixelSize(R.styleable.CellLayout_cellHeight, 10);
+        mCellWidth = a.getDimensionPixelSize(Res.styleable.CellLayout_cellWidth, 10);
+        mCellHeight = a.getDimensionPixelSize(Res.styleable.CellLayout_cellHeight, 10);
 
         mLongAxisStartPadding =
-            a.getDimensionPixelSize(R.styleable.CellLayout_longAxisStartPadding, 10);
+            a.getDimensionPixelSize(Res.styleable.CellLayout_longAxisStartPadding, 10);
         mLongAxisEndPadding =
-            a.getDimensionPixelSize(R.styleable.CellLayout_longAxisEndPadding, 10);
+            a.getDimensionPixelSize(Res.styleable.CellLayout_longAxisEndPadding, 10);
         mShortAxisStartPadding =
-            a.getDimensionPixelSize(R.styleable.CellLayout_shortAxisStartPadding, 10);
+            a.getDimensionPixelSize(Res.styleable.CellLayout_shortAxisStartPadding, 10);
         mShortAxisEndPadding =
-            a.getDimensionPixelSize(R.styleable.CellLayout_shortAxisEndPadding, 10);
+            a.getDimensionPixelSize(Res.styleable.CellLayout_shortAxisEndPadding, 10);
 
-        mShortAxisCells = a.getInt(R.styleable.CellLayout_shortAxisCells, 4);
-        mLongAxisCells = a.getInt(R.styleable.CellLayout_longAxisCells, 4);
+        mShortAxisCells = a.getInt(Res.styleable.CellLayout_shortAxisCells, 4);
+        mLongAxisCells = a.getInt(Res.styleable.CellLayout_longAxisCells, 4);
 
         a.recycle();
 
@@ -105,8 +107,8 @@ public class CellLayout extends ViewGroup {
         mWallpaperManager = WallpaperManager.getInstance(getContext());
     }
     public void reMeasure(Context context){
-        mCellWidth = context.getResources().getDimensionPixelSize(R.dimen.workspace_cell_width);
-        mCellHeight = context.getResources().getDimensionPixelSize(R.dimen.workspace_cell_height);
+        mCellWidth = context.getResources().getDimensionPixelSize(Res.dimen.workspace_cell_width);
+        mCellHeight = context.getResources().getDimensionPixelSize(Res.dimen.workspace_cell_height);
         //mLongAxisStartPadding =65;
         //mLongAxisEndPadding =65;
         //mShortAxisStartPadding =0;
@@ -746,8 +748,8 @@ public class CellLayout extends ViewGroup {
         // Always assume we're working with the smallest span to make sure we
         // reserve enough space in both orientations.
         final Resources resources = getResources();
-        int actualWidth = resources.getDimensionPixelSize(R.dimen.workspace_cell_width);
-        int actualHeight = resources.getDimensionPixelSize(R.dimen.workspace_cell_height);
+        int actualWidth = resources.getDimensionPixelSize(Res.dimen.workspace_cell_width);
+        int actualHeight = resources.getDimensionPixelSize(Res.dimen.workspace_cell_height);
         int smallerSize = Math.min(actualWidth, actualHeight);
 
         // Always round up to next largest cell

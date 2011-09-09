@@ -26,6 +26,8 @@ import org.adw.launcher2.settings.LauncherSettings;
 import org.adw.launcher2.settings.Preferences;
 import org.adw.launcher2.settings.LauncherSettings.Favorites;
 
+import com.ada.apps.Res;
+
 import android.app.Activity;
 import android.app.WallpaperManager;
 import android.appwidget.AppWidgetManager;
@@ -184,8 +186,8 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 
         mWallpaperManager = WallpaperManager.getInstance(context);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.Workspace, defStyle, 0);
-        mDefaultScreen = a.getInt(R.styleable.Workspace_defaultScreen, 1);
+        TypedArray a = context.obtainStyledAttributes(attrs, Res.styleable.Workspace, defStyle, 0);
+        mDefaultScreen = a.getInt(Res.styleable.Workspace_defaultScreen, 1);
         a.recycle();
 
         setHapticFeedbackEnabled(false);
@@ -1184,7 +1186,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
                 }
                 info = newShortcutInfo;
             }
-            view = mLauncher.createShortcut(R.layout.application, cellLayout, (ShortcutInfo)info);
+            view = mLauncher.createShortcut(Res.layout.application, cellLayout, (ShortcutInfo)info);
             break;
         case LauncherSettings.Favorites.ITEM_TYPE_USER_FOLDER:
         	if (info.container == Favorites.CONTAINER_DRAWER) {
@@ -1192,7 +1194,7 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
         		list.add((IconItemInfo)info);
         		mLauncher.getAllAppsView().removeApps(list);
         	}
-    		view = FolderIcon.fromXml(R.layout.folder_icon, mLauncher,
+    		view = FolderIcon.fromXml(Res.layout.folder_icon, mLauncher,
                     (ViewGroup) getChildAt(mCurrentScreen), ((UserFolderInfo) info));
             break;
         default:

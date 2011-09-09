@@ -1,6 +1,6 @@
 package org.adw.launcher2.quickactionbar;
 
-import org.adw.launcher2.R;
+import com.ada.apps.Res;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -144,7 +144,7 @@ public class CustomPopupWindow {
 	public void showDropDown(int xOffset, int yOffset) {
 		preShow();
 
-		window.setAnimationStyle(R.style.Animations_PopDownMenu);
+		window.setAnimationStyle(Res.style.Animations_PopDownMenu);
 
 		window.showAsDropDown(anchor, xOffset, yOffset);
 	}
@@ -167,7 +167,7 @@ public class CustomPopupWindow {
 	public void showLikeQuickAction(int xOffset, int yOffset) {
 		preShow();
 
-		window.setAnimationStyle(R.style.Animations_PopUpMenu_Center);
+		window.setAnimationStyle(Res.style.Animations_PopUpMenu_Center);
 
 		int[] location = new int[2];
 		anchor.getLocationOnScreen(location);
@@ -192,7 +192,7 @@ public class CustomPopupWindow {
 		if (rootHeight > anchorRect.top) {
 			yPos = anchorRect.bottom + yOffset;
 
-			window.setAnimationStyle(R.style.Animations_PopDownMenu_Center);
+			window.setAnimationStyle(Res.style.Animations_PopDownMenu_Center);
 		}
 
 		window.showAtLocation(anchor, Gravity.NO_GRAVITY, xPos, yPos);

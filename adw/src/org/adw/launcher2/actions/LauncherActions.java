@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.adw.launcher2.Launcher;
-import org.adw.launcher2.R;
+
+import com.ada.apps.Res;
 
 import android.content.Intent;
 import android.database.DataSetObserver;
@@ -104,7 +105,7 @@ public class LauncherActions {
 				if (convertView == null)
 				{
 					LayoutInflater li = mLauncher.getLayoutInflater();
-					convertView = li.inflate(R.layout.add_list_item, parent, false);
+					convertView = li.inflate(Res.layout.add_list_item, parent, false);
 
 				}
 				Action act = mActions.get(position);

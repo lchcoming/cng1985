@@ -18,6 +18,8 @@ package org.adw.launcher2;
 
 import org.adw.launcher2.settings.LauncherSettings;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Paint;
@@ -65,11 +67,11 @@ public class DeleteZone extends ImageView implements DropTarget, DragController.
     public DeleteZone(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        final int srcColor = context.getResources().getColor(R.color.delete_color_filter);
+        final int srcColor = context.getResources().getColor(Res.color.delete_color_filter);
         mTrashPaint.setColorFilter(new PorterDuffColorFilter(srcColor, PorterDuff.Mode.SRC_ATOP));
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DeleteZone, defStyle, 0);
-        mOrientation = a.getInt(R.styleable.DeleteZone_direction, ORIENTATION_HORIZONTAL);
+        TypedArray a = context.obtainStyledAttributes(attrs, Res.styleable.DeleteZone, defStyle, 0);
+        mOrientation = a.getInt(Res.styleable.DeleteZone_direction, ORIENTATION_HORIZONTAL);
         a.recycle();
     }
 

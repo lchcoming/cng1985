@@ -16,6 +16,8 @@
 
 package org.adw.launcher2;
 
+import com.ada.apps.Res;
+
 import android.appwidget.AppWidgetHostView;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -41,7 +43,7 @@ public class LauncherAppWidgetHostView extends AppWidgetHostView {
 
     @Override
     protected View getErrorView() {
-        return mInflater.inflate(R.layout.appwidget_error, this, false);
+        return mInflater.inflate(Res.layout.appwidget_error, this, false);
     }
 
     @Override

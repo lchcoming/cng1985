@@ -2,6 +2,8 @@ package org.adw.launcher2;
 
 import org.adw.launcher2.settings.LauncherSettings;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -27,7 +29,7 @@ public class UserFolder extends Folder implements DropTarget {
      * @return A new UserFolder.
      */
     static UserFolder fromXml(Context context) {
-        return (UserFolder) LayoutInflater.from(context).inflate(R.layout.user_folder, null);
+        return (UserFolder) LayoutInflater.from(context).inflate(Res.layout.user_folder, null);
     }
 
     public boolean acceptDrop(DragSource source, int x, int y, int xOffset, int yOffset,

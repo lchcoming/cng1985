@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.adw.launcher2.settings.LauncherSettings;
 
+import com.ada.apps.Res;
+
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -102,7 +104,7 @@ public abstract class IconItemInfo extends ItemInfo{
         List<EditAction> result = super.getAvailableActions(view, launcher);
 		result.add(new EditAction(ACTION_EDIT,
 				android.R.drawable.ic_menu_edit,
-				R.string.menu_edit));
+				Res.string.menu_edit));
 		return result;
 	}
 

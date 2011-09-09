@@ -4,8 +4,9 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 import org.adw.launcher2.Launcher;
-import org.adw.launcher2.R;
 import org.adw.launcher2.settings.SettingsActivity;
+
+import com.ada.apps.Res;
 
 import android.content.Intent;
 import android.view.Menu;
@@ -39,15 +40,15 @@ public class DefaultAction implements LauncherActions.Action {
 
 		switch(action) {
 			case ACTION_OPENCLOSE_DRAWER:
-				name = launcher.getString(R.string.action_opendrawer); break;
+				name = launcher.getString(Res.string.action_opendrawer); break;
 			case ACTION_SHOW_ADW_SETTINGS:
-				name = launcher.getString(R.string.action_adw_settings); break;
+				name = launcher.getString(Res.string.action_adw_settings); break;
 			case ACTION_SHOW_NOTIFICATIONS:
-				name = launcher.getString(R.string.menu_notifications); break;
+				name = launcher.getString(Res.string.menu_notifications); break;
 			case ACTION_MANAGE_APPS:
-				name = launcher.getString(R.string.menu_manage_apps); break;
+				name = launcher.getString(Res.string.menu_manage_apps); break;
 			case ACTION_SYSTEM_SETTINGS:
-				name = launcher.getString(R.string.menu_settings); break;
+				name = launcher.getString(Res.string.menu_settings); break;
 			default:
 				name = "";
 		}
@@ -92,11 +93,11 @@ public class DefaultAction implements LauncherActions.Action {
 			case ACTION_MANAGE_APPS:
 				return android.R.drawable.ic_menu_manage;
 			case ACTION_SHOW_NOTIFICATIONS:
-				return R.drawable.ic_menu_notifications;
+				return Res.drawable.ic_menu_notifications;
 			case ACTION_SYSTEM_SETTINGS:
 				return android.R.drawable.ic_menu_preferences;
 			default:
-				return R.drawable.ic_launcher_home;
+				return Res.drawable.ic_launcher_home;
 		}
 	}
 

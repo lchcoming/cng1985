@@ -18,6 +18,8 @@ package org.adw.launcher2;
 
 import java.util.ArrayList;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +45,7 @@ public class ShortcutsAdapter  extends ArrayAdapter<ShortcutInfo> {
         final ShortcutInfo info = getItem(position);
 
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.application_boxed, parent, false);
+            convertView = mInflater.inflate(Res.layout.application_boxed, parent, false);
         }
 
         final TextView textView = (TextView) convertView;

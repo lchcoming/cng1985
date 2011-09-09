@@ -16,6 +16,8 @@
 
 package org.adw.launcher2;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
@@ -66,11 +68,11 @@ public class Folder extends LinearLayout implements DragSource, OnItemLongClickL
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        mContent = (AbsListView) findViewById(R.id.folder_content);
+        mContent = (AbsListView) findViewById(Res.id.folder_content);
         mContent.setOnItemClickListener(this);
         mContent.setOnItemLongClickListener(this);
 
-        mCloseButton = (Button) findViewById(R.id.folder_close);
+        mCloseButton = (Button) findViewById(Res.id.folder_close);
         mCloseButton.setOnClickListener(this);
         mCloseButton.setOnLongClickListener(this);
     }

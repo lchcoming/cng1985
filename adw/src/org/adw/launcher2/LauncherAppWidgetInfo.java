@@ -20,6 +20,8 @@ import java.util.List;
 
 import org.adw.launcher2.settings.LauncherSettings;
 
+import com.ada.apps.Res;
+
 import android.appwidget.AppWidgetHostView;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.ContentValues;
@@ -89,7 +91,7 @@ class LauncherAppWidgetInfo extends ItemInfo implements ItemInfo.ItemPackage {
 
 		result.add(new EditAction(ACTION_RESIZE,
 				android.R.drawable.ic_menu_crop,
-				R.string.menu_resize));
+				Res.string.menu_resize));
         addAppInfoAction(view, result, launcher);
         addMarketActions(view, result, launcher);
 		return result;

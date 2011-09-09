@@ -19,6 +19,8 @@ package org.adw.launcher2;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -70,7 +72,7 @@ public final class Utilities {
         final int bitmapHeight = bitmap.getHeight();
 
         if (bitmapWidth < width || bitmapHeight < height) {
-            int color = context.getResources().getColor(R.color.window_background);
+            int color = context.getResources().getColor(Res.color.window_background);
 
             Bitmap centered = Bitmap.createBitmap(bitmapWidth < width ? width : bitmapWidth,
                     bitmapHeight < height ? height : bitmapHeight, Bitmap.Config.RGB_565);
@@ -265,7 +267,7 @@ public final class Utilities {
 
             final float paddingLeft = 2.0f * scale;
             final float paddingRight = 2.0f * scale;
-            final float cellWidth = resources.getDimension(R.dimen.title_texture_width);
+            final float cellWidth = resources.getDimension(Res.dimen.title_texture_width);
 
             RectF bubbleRect = mBubbleRect;
             bubbleRect.left = 0;

@@ -18,6 +18,8 @@ package org.adw.launcher2;
 
 import java.lang.ref.WeakReference;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -39,7 +41,7 @@ public class LiveFolder extends Folder {
 
     static LiveFolder fromXml(Context context, FolderInfo folderInfo) {
         final int layout = isDisplayModeList(folderInfo) ?
-                R.layout.live_folder_list : R.layout.live_folder_grid;
+                Res.layout.live_folder_list : Res.layout.live_folder_grid;
         return (LiveFolder) LayoutInflater.from(context).inflate(layout, null);
     }
 

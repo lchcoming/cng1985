@@ -18,6 +18,8 @@ package org.adw.launcher2;
 
 import org.adw.launcher2.settings.LauncherSettings;
 
+import com.ada.apps.Res;
+
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -69,16 +71,16 @@ public class InstallShortcutReceiver extends BroadcastReceiver {
             if (duplicate || !LauncherModel.shortcutExists(context, name, intent)) {
                 ((LauncherApplication)context.getApplicationContext()).getModel()
                         .addShortcut(context, data, cell, true);
-                Toast.makeText(context, context.getString(R.string.shortcut_installed, name),
+                Toast.makeText(context, context.getString(Res.string.shortcut_installed, name),
                         Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(context, context.getString(R.string.shortcut_duplicate, name),
+                Toast.makeText(context, context.getString(Res.string.shortcut_duplicate, name),
                         Toast.LENGTH_SHORT).show();
             }
 
             return true;
         } else {
-            Toast.makeText(context, context.getString(R.string.out_of_space),
+            Toast.makeText(context, context.getString(Res.string.out_of_space),
                     Toast.LENGTH_SHORT).show();
         }
 

@@ -20,6 +20,8 @@ import java.util.ArrayList;
 
 import org.adw.launcher2.quickactionbar.QuickAction;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -157,7 +159,7 @@ public class DragController {
     public DragController(Context context) {
         mContext = context;
         mHandler = new Handler();
-        mScrollZone = context.getResources().getDimensionPixelSize(R.dimen.scroll_zone);
+        mScrollZone = context.getResources().getDimensionPixelSize(Res.dimen.scroll_zone);
         mVibrator = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
@@ -172,7 +174,7 @@ public class DragController {
      */
     public void startDrag(View v, DragSource source, Object dragInfo, int dragAction) {
         mOriginator = v;
-        mTagPopup=v.getTag(R.id.TAG_PREVIEW);
+        mTagPopup=v.getTag(Res.id.TAG_PREVIEW);
         Bitmap b = getViewBitmap(v);
 
         if (b == null) {

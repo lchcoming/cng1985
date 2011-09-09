@@ -2,7 +2,7 @@ package org.adw.launcher2.quickactionbar;
 
 import java.util.ArrayList;
 
-import org.adw.launcher2.R;
+import com.ada.apps.Res;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -53,15 +53,15 @@ public class QuickAction extends CustomPopupWindow {
 		context		= anchor.getContext();
 		inflater 	= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-		root		= inflater.inflate(R.layout.popup, null);
+		root		= inflater.inflate(Res.layout.popup, null);
 
-		mArrowDown 	= (ImageView) root.findViewById(R.id.arrow_down);
-		mArrowUp 	= (ImageView) root.findViewById(R.id.arrow_up);
+		mArrowDown 	= (ImageView) root.findViewById(Res.id.arrow_down);
+		mArrowUp 	= (ImageView) root.findViewById(Res.id.arrow_up);
 
 		setContentView(root);
 
-		mTrack 			= (ViewGroup) root.findViewById(R.id.tracks);
-		scroller		= (ScrollView) root.findViewById(R.id.scroller);
+		mTrack 			= (ViewGroup) root.findViewById(Res.id.tracks);
+		scroller		= (ScrollView) root.findViewById(Res.id.scroller);
 		animStyle		= ANIM_AUTO;
 	}
 
@@ -145,7 +145,7 @@ public class QuickAction extends CustomPopupWindow {
 			}
 		}
 
-		showArrow(((onTop) ? R.id.arrow_down : R.id.arrow_up), anchorRect.centerX()-xPos);
+		showArrow(((onTop) ? Res.id.arrow_down : Res.id.arrow_up), anchorRect.centerX()-xPos);
 
 		setAnimationStyle(screenWidth, anchorRect.centerX(), onTop);
 
@@ -165,28 +165,28 @@ public class QuickAction extends CustomPopupWindow {
 
 		switch (animStyle) {
 		case ANIM_GROW_FROM_LEFT:
-			window.setAnimationStyle((onTop) ? R.style.Animations_PopUpMenu_Left : R.style.Animations_PopDownMenu_Left);
+			window.setAnimationStyle((onTop) ? Res.style.Animations_PopUpMenu_Left : Res.style.Animations_PopDownMenu_Left);
 			break;
 
 		case ANIM_GROW_FROM_RIGHT:
-			window.setAnimationStyle((onTop) ? R.style.Animations_PopUpMenu_Right : R.style.Animations_PopDownMenu_Right);
+			window.setAnimationStyle((onTop) ? Res.style.Animations_PopUpMenu_Right : Res.style.Animations_PopDownMenu_Right);
 			break;
 
 		case ANIM_GROW_FROM_CENTER:
-			window.setAnimationStyle((onTop) ? R.style.Animations_PopUpMenu_Center : R.style.Animations_PopDownMenu_Center);
+			window.setAnimationStyle((onTop) ? Res.style.Animations_PopUpMenu_Center : Res.style.Animations_PopDownMenu_Center);
 		break;
 
 		case ANIM_REFLECT:
-			window.setAnimationStyle((onTop) ? R.style.Animations_PopUpMenu_Reflect : R.style.Animations_PopDownMenu_Reflect);
+			window.setAnimationStyle((onTop) ? Res.style.Animations_PopUpMenu_Reflect : Res.style.Animations_PopDownMenu_Reflect);
 		break;
 
 		case ANIM_AUTO:
 			if (arrowPos <= screenWidth/4) {
-				window.setAnimationStyle((onTop) ? R.style.Animations_PopUpMenu_Left : R.style.Animations_PopDownMenu_Left);
+				window.setAnimationStyle((onTop) ? Res.style.Animations_PopUpMenu_Left : Res.style.Animations_PopDownMenu_Left);
 			} else if (arrowPos > screenWidth/4 && arrowPos < 3 * (screenWidth/4)) {
-				window.setAnimationStyle((onTop) ? R.style.Animations_PopUpMenu_Center : R.style.Animations_PopDownMenu_Center);
+				window.setAnimationStyle((onTop) ? Res.style.Animations_PopUpMenu_Center : Res.style.Animations_PopDownMenu_Center);
 			} else {
-				window.setAnimationStyle((onTop) ? R.style.Animations_PopUpMenu_Right : R.style.Animations_PopDownMenu_Right);
+				window.setAnimationStyle((onTop) ? Res.style.Animations_PopUpMenu_Right : Res.style.Animations_PopDownMenu_Right);
 			}
 
 			break;
@@ -225,10 +225,10 @@ public class QuickAction extends CustomPopupWindow {
 	 * @return action item {@link View}
 	 */
 	private View getActionItem(String title, Drawable icon, OnClickListener listener) {
-		LinearLayout container	= (LinearLayout) inflater.inflate(R.layout.action_item, null);
+		LinearLayout container	= (LinearLayout) inflater.inflate(Res.layout.action_item, null);
 
-		ImageView img			= (ImageView) container.findViewById(R.id.icon);
-		TextView text			= (TextView) container.findViewById(R.id.title);
+		ImageView img			= (ImageView) container.findViewById(Res.id.icon);
+		TextView text			= (TextView) container.findViewById(Res.id.title);
 
 		if (icon != null) {
 			img.setImageDrawable(icon);
@@ -252,8 +252,8 @@ public class QuickAction extends CustomPopupWindow {
 	 * @param requestedX distance from left screen
 	 */
 	private void showArrow(int whichArrow, int requestedX) {
-        final View showArrow = (whichArrow == R.id.arrow_up) ? mArrowUp : mArrowDown;
-        final View hideArrow = (whichArrow == R.id.arrow_up) ? mArrowDown : mArrowUp;
+        final View showArrow = (whichArrow == Res.id.arrow_up) ? mArrowUp : mArrowDown;
+        final View hideArrow = (whichArrow == Res.id.arrow_up) ? mArrowDown : mArrowUp;
 
         final int arrowWidth = mArrowUp.getMeasuredWidth();
 

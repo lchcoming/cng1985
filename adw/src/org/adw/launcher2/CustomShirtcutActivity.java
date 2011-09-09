@@ -12,6 +12,8 @@ import java.util.List;
 import org.adw.launcher2.actions.LauncherActions;
 import org.adw.launcher2.actions.RunActionActivity;
 
+import com.ada.apps.Res;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -104,19 +106,19 @@ public class CustomShirtcutActivity extends Activity implements OnClickListener 
 
         launcherApp = (LauncherApplication)this.getApplication();
 		mIconCache = launcherApp.getIconCache();
-		setContentView(R.layout.custom_shirtcuts);
-		btPickActivity=(Button) findViewById(R.id.pick_activity);
+		setContentView(Res.layout.custom_shirtcuts);
+		btPickActivity=(Button) findViewById(Res.id.pick_activity);
 		btPickActivity.setOnClickListener(this);
-		btPickIcon=(ImageButton) findViewById(R.id.pick_icon);
+		btPickIcon=(ImageButton) findViewById(Res.id.pick_icon);
 		btPickIcon.setOnClickListener(this);
 		btPickIcon.setEnabled(false);
-		btOk=(Button) findViewById(R.id.shirtcut_ok);
+		btOk=(Button) findViewById(Res.id.shirtcut_ok);
 		btOk.setEnabled(false);
 		btOk.setOnClickListener(this);
-        btRevert=(Button) findViewById(R.id.shirtcut_revert);
+        btRevert=(Button) findViewById(Res.id.shirtcut_revert);
         btRevert.setOnClickListener(this);
-		edLabel=(EditText) findViewById(R.id.shirtcut_label);
-		tvHead=(TextView)findViewById(R.id.header);
+		edLabel=(EditText) findViewById(Res.id.shirtcut_label);
+		tvHead=(TextView)findViewById(Res.id.header);
 		mPackageManager=getPackageManager();
 		mIconSize=(int) getResources().getDimension(android.R.dimen.app_icon_size);
 		loadFromShortcutInfo(getShortcutInfo());
@@ -158,7 +160,7 @@ public class CustomShirtcutActivity extends Activity implements OnClickListener 
 			mIntent = ((ShortcutInfo)info).intent;
 		else {
 			btPickActivity.setVisibility(View.GONE);
-			tvHead.setText(getString(R.string.shirtcut_header_folder));
+			tvHead.setText(getString(Res.string.shirtcut_header_folder));
 		}
 		btPickIcon.setImageBitmap(info.getIcon(mIconCache));
 		btPickIcon.setEnabled(true);
@@ -240,9 +242,9 @@ public class CustomShirtcutActivity extends Activity implements OnClickListener 
 				}
 				break;
 			case PICK_STANDARD_MENU:
-		        String applicationName = getResources().getString(R.string.group_applications);
-		        String activitiesName=getResources().getString(R.string.shirtcuts_activity);
-		        String launcheractionsName = getResources().getString(R.string.launcher_actions);
+		        String applicationName = getResources().getString(Res.string.group_applications);
+		        String activitiesName=getResources().getString(Res.string.shirtcuts_activity);
+		        String launcheractionsName = getResources().getString(Res.string.launcher_actions);
 		        String shortcutName = data.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
 
 		        if (applicationName != null && applicationName.equals(shortcutName)) {
@@ -258,7 +260,7 @@ public class CustomShirtcutActivity extends Activity implements OnClickListener 
 					startActivityForResult(picker,PICK_STANDARD_SHORTCUT);
 		        } else if (launcheractionsName != null && launcheractionsName.equals(shortcutName)) {
 		        	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		        	builder.setTitle(getString(R.string.launcher_actions));
+		        	builder.setTitle(getString(Res.string.launcher_actions));
 		        	final ListAdapter adapter = LauncherActions.getInstance().getSelectActionAdapter();
 		        	builder.setAdapter(adapter, new Dialog.OnClickListener() {
 								@Override
@@ -353,18 +355,18 @@ public class CustomShirtcutActivity extends Activity implements OnClickListener 
 		if(v.equals(btPickActivity)){
 	        Bundle bundle = new Bundle();
 	        ArrayList<String> shortcutNames = new ArrayList<String>();
-	        shortcutNames.add(getString(R.string.group_applications));
-	        shortcutNames.add(getString(R.string.shirtcuts_activity));
-	        shortcutNames.add(getString(R.string.launcher_actions));
+	        shortcutNames.add(getString(Res.string.group_applications));
+	        shortcutNames.add(getString(Res.string.shirtcuts_activity));
+	        shortcutNames.add(getString(Res.string.launcher_actions));
 	        bundle.putStringArrayList(Intent.EXTRA_SHORTCUT_NAME, shortcutNames);
 
 	        ArrayList<ShortcutIconResource> shortcutIcons = new ArrayList<ShortcutIconResource>();
 	        shortcutIcons.add(ShortcutIconResource.fromContext(CustomShirtcutActivity.this,
-	                        R.drawable.ic_launcher_application));
+	                        Res.drawable.ic_launcher_application));
 	        shortcutIcons.add(ShortcutIconResource.fromContext(CustomShirtcutActivity.this,
-                    R.drawable.ic_launcher_home));
+                    Res.drawable.ic_launcher_home));
 	        shortcutIcons.add(ShortcutIconResource.fromContext(CustomShirtcutActivity.this,
-	        		R.drawable.ic_launcher_home));
+	        		Res.drawable.ic_launcher_home));
 	        bundle.putParcelableArrayList(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, shortcutIcons);
 
 	        Intent pickIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
@@ -427,13 +429,13 @@ public class CustomShirtcutActivity extends Activity implements OnClickListener 
 		private ArrayAdapter<String> mAdapter;
 
 		Dialog createDialog() {
-		    mAdapter = new ArrayAdapter<String>(CustomShirtcutActivity.this, R.layout.add_list_item);
-		    mAdapter.add(getString(R.string.shirtcuts_select_picture));
-		    mAdapter.add(getString(R.string.shirtcuts_crop_picture));
-		    mAdapter.add(getString(R.string.shirtcuts_icon_packs));
+		    mAdapter = new ArrayAdapter<String>(CustomShirtcutActivity.this, Res.layout.add_list_item);
+		    mAdapter.add(getString(Res.string.shirtcuts_select_picture));
+		    mAdapter.add(getString(Res.string.shirtcuts_crop_picture));
+		    mAdapter.add(getString(Res.string.shirtcuts_icon_packs));
 
 		    final AlertDialog.Builder builder = new AlertDialog.Builder(CustomShirtcutActivity.this);
-		    builder.setTitle(getString(R.string.shirtcuts_select_icon_type));
+		    builder.setTitle(getString(Res.string.shirtcuts_select_icon_type));
 		    builder.setAdapter(mAdapter, this);
 
 		    builder.setInverseBackgroundForced(false);
@@ -477,7 +479,7 @@ public class CustomShirtcutActivity extends Activity implements OnClickListener 
 			case 2:
 				//Icon packs
 				Intent packIntent=new Intent(ACTION_ADW_PICK_ICON);
-				startActivityForResult(Intent.createChooser(packIntent, getString(R.string.shirtcuts_select_icon_pack)), PICK_FROM_ICON_PACK);
+				startActivityForResult(Intent.createChooser(packIntent, getString(Res.string.shirtcuts_select_icon_pack)), PICK_FROM_ICON_PACK);
 				break;
 
 			default:

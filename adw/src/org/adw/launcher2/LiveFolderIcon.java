@@ -16,6 +16,8 @@
 
 package org.adw.launcher2;
 
+import com.ada.apps.Res;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -37,7 +39,7 @@ public class LiveFolderIcon extends FolderIcon {
     	final Resources resources = mLauncher.getResources();
         Bitmap b = folderInfo.getIcon(mLauncher.getIconCache());
         if (b == null || folderInfo.usesDefaultIcon()) {
-            b = Utilities.createIconBitmap(resources.getDrawable(R.drawable.ic_launcher_folder),
+            b = Utilities.createIconBitmap(resources.getDrawable(Res.drawable.ic_launcher_folder),
             		mLauncher);
         }
         setCompoundDrawablesWithIntrinsicBounds(null, new FastBitmapDrawable(b), null, null);

@@ -21,6 +21,8 @@ import java.util.Collections;
 
 import org.adw.launcher2.settings.Preferences;
 
+import com.ada.apps.Res;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.res.Resources;
@@ -94,7 +96,7 @@ public class AllApps2D
             final IconItemInfo info = getItem(position);
 
             if (convertView == null) {
-                convertView = mInflater.inflate(R.layout.application_boxed, parent, false);
+                convertView = mInflater.inflate(Res.layout.application_boxed, parent, false);
             }
 
 //            if (!info.filtered) {
@@ -236,13 +238,13 @@ public class AllApps2D
             setVisibility(View.VISIBLE);
             mGrid.setAdapter(mAppsAdapter);
             if (animate) {
-                startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.all_apps_2d_fade_in));
+                startAnimation(AnimationUtils.loadAnimation(getContext(), Res.anim.all_apps_2d_fade_in));
             } else {
                 onAnimationEnd();
             }
         } else {
             if (animate) {
-                startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.all_apps_2d_fade_out));
+                startAnimation(AnimationUtils.loadAnimation(getContext(), Res.anim.all_apps_2d_fade_out));
             } else {
                 onAnimationEnd();
             }
