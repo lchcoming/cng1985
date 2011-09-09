@@ -30,6 +30,29 @@ import com.baoyi.adapter.BooksAdapter;
 import com.baoyi.widget.BookWidget;
 
 public class MainUI extends Activity {
+	private void chanageBg(View v) {
+		int id = v.getId();
+		switch (id) {
+		case R.id.imageButton1:
+			tushu.setImageResource(R.drawable.tushu1);
+			zuoze.setImageResource(R.drawable.zuoze2);
+			biaoti.setImageResource(R.drawable.biaoti2);
+			break;
+		case R.id.imageButton2:
+			tushu.setImageResource(R.drawable.tushu2);
+			zuoze.setImageResource(R.drawable.zuoze1);
+			biaoti.setImageResource(R.drawable.biaoti2);
+			break;
+		case R.id.imageButton3:
+			tushu.setImageResource(R.drawable.tushu2);
+			zuoze.setImageResource(R.drawable.zuoze2);
+			biaoti.setImageResource(R.drawable.biaoti1);
+			break;
+		default:
+			break;
+		}
+	}
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,22 +61,28 @@ public class MainUI extends Activity {
 		tushu = (ImageButton) findViewById(R.id.imageButton1);
 		zuoze = (ImageButton) findViewById(R.id.imageButton2);
 		biaoti = (ImageButton) findViewById(R.id.imageButton3);
+		tushuguan = (ImageButton) findViewById(R.id.imageButton4);
 		tushu.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-              Animation animation=AnimationUtils.loadAnimation(MainUI.this, R.anim.max);
-              v.startAnimation(animation);
+				Animation animation = AnimationUtils.loadAnimation(MainUI.this,
+						R.anim.max);
+				v.startAnimation(animation);
+				chanageBg(v);
 			}
+
 		});
 		zuoze.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-              Animation animation=AnimationUtils.loadAnimation(MainUI.this, R.anim.max);
-              v.startAnimation(animation);
+				Animation animation = AnimationUtils.loadAnimation(MainUI.this,
+						R.anim.max);
+				v.startAnimation(animation);
+				chanageBg(v);
 			}
 		});
 		biaoti.setOnClickListener(new OnClickListener() {
@@ -61,10 +90,23 @@ public class MainUI extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-              Animation animation=AnimationUtils.loadAnimation(MainUI.this, R.anim.max);
-              v.startAnimation(animation);
+				Animation animation = AnimationUtils.loadAnimation(MainUI.this,
+						R.anim.max);
+				v.startAnimation(animation);
+				chanageBg(v);
 			}
 		});
+		tushuguan.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Animation animation = AnimationUtils.loadAnimation(MainUI.this,
+						R.anim.max);
+				v.startAnimation(animation);
+			}
+		});
+
 		init();
 		aa();
 	}
@@ -72,6 +114,7 @@ public class MainUI extends Activity {
 	private ImageButton tushu;
 	private ImageButton zuoze;
 	private ImageButton biaoti;
+	private ImageButton tushuguan;
 
 	private void init() {
 		listView = (ListView) findViewById(R.id.listView1);
