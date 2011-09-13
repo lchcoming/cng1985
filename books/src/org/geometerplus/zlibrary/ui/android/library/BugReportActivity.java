@@ -49,7 +49,7 @@ public class BugReportActivity extends Activity {
 		reportTextView.setLongClickable(false);
 
 		final String versionName = getVersionName();
-		reportTextView.append("随便看小说 " + versionName + " has been crached, sorry. You can help to fix this bug by sending the report below to FBReader developers. The report will be sent by e-mail. Thank you in advance!\n\n");
+		reportTextView.append("安卓图书馆 " + versionName + " 除了，感谢你的反馈\n\n");
 		reportTextView.append(stackTrace);
 
 		findViewById(Res.id.send_report).setOnClickListener(
@@ -58,7 +58,7 @@ public class BugReportActivity extends Activity {
 					Intent sendIntent = new Intent(Intent.ACTION_SEND);
 					sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "735529126@qq.com" });
 					sendIntent.putExtra(Intent.EXTRA_TEXT, stackTrace);
-					sendIntent.putExtra(Intent.EXTRA_SUBJECT, "随便看小说 " + versionName + " exception report");
+					sendIntent.putExtra(Intent.EXTRA_SUBJECT, "安卓图书馆 " + versionName + " exception report");
 					sendIntent.setType("message/rfc822");
 					startActivity(sendIntent);
 					finish();
