@@ -1,11 +1,14 @@
 package com.iym.bookstore;
 
 import org.geometerplus.android.fbreader.BookInfoActivity;
+import org.geometerplus.android.fbreader.SQLiteBooksDatabase;
+import org.geometerplus.android.fbreader.library.InitializationService;
 import org.geometerplus.android.fbreader.library.LibraryBaseActivity;
 import org.geometerplus.android.fbreader.library.LibraryTopLevelActivity;
 import org.geometerplus.android.fbreader.network.NetworkLibraryActivity;
 import org.geometerplus.fbreader.library.Book;
 import org.geometerplus.fbreader.library.BookTree;
+import org.geometerplus.fbreader.library.BooksDatabase;
 import org.geometerplus.fbreader.library.Library;
 
 import android.app.Activity;
@@ -109,7 +112,8 @@ public class MainUI extends Activity {
 		});
 
 		init();
-		aa();
+		initData();
+		//aa();
 	}
 
 	private ImageButton tushu;
@@ -125,9 +129,16 @@ public class MainUI extends Activity {
 	BooksAdapter adapter;
 
 	private void initData() {
+		DatabaseInstance = SQLiteBooksDatabase.Instance();
+		if (DatabaseInstance == null) {
+			DatabaseInstance = new SQLiteBooksDatabase(this, "LIBRARY");
+		}
+	
+
 		adapter = new BooksAdapter(this);
 		// adapter.set
-		LibraryInstance = LibraryBaseActivity.LibraryInstance;
+		LibraryInstance = new Library();
+		LibraryInstance.synchronize();
 		try {
 			adapter.setDatas(LibraryInstance.byTitle());
 			listView.setAdapter(adapter);
@@ -160,7 +171,7 @@ public class MainUI extends Activity {
 	protected static final int BOOK_INFO_REQUEST = 1;
 
 	Library LibraryInstance;
-
+	static BooksDatabase DatabaseInstance;
 	private void aa() {
 		Intent intent = new Intent(this, LibraryTopLevelActivity.class);
 		startActivity(intent);
@@ -168,7 +179,7 @@ public class MainUI extends Activity {
 
 	@Override
 	protected void onResume() {
-		initData();
+		//initData();
 		super.onResume();
 	}
 

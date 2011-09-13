@@ -10,7 +10,7 @@
 			android:layout_width="fill_parent" android:layout_height="wrap_content"></ImageView>
 		<LinearLayout android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:orientation="horizontal"
-			 android:background="@drawable/bgdown">
+			android:background="@drawable/bgdown">
 			<ImageButton android:background="@null" android:id="@+id/imageButton1"
 				android:layout_height="wrap_content" android:layout_width="wrap_content"
 				android:src="@drawable/books_tushu"></ImageButton>
@@ -25,7 +25,9 @@
 				android:layout_height="wrap_content" android:id="@+id/imageButton4"></ImageButton>
 		</LinearLayout>
 		<ListView android:layout_height="wrap_content" android:id="@+id/listView1"
-			android:layout_width="fill_parent" android:background="#ffffffff"></ListView>
+			android:layout_width="fill_parent" android:background="@null"
+			android:layout_marginTop="-35dip"  android:choiceMode="none"
+				android:cacheColorHint="#00000000"></ListView>
 	</LinearLayout>
 	<include layout="@layout/common_ad_bottom" />
 </RelativeLayout>

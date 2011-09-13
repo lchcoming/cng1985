@@ -25,6 +25,7 @@ public class BooksAdapter extends BaseAdapter {
 			for (FBTree fbTree : datas) {
 				BookWidget item=new BookWidget(context);
 				item.setTitle(fbTree.getName());
+				item.setAuthor(fbTree.getSecondString());
 				widgets.add(item);
 			}
 		}
