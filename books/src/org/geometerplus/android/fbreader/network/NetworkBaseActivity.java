@@ -19,36 +19,37 @@
 
 package org.geometerplus.android.fbreader.network;
 
-import java.net.*;
-
-import android.app.*;
-import android.os.Bundle;
-import android.view.*;
-import android.widget.*;
-import android.content.Intent;
-import android.content.DialogInterface;
-import android.graphics.Bitmap;
-
-
-import org.geometerplus.zlibrary.core.resources.ZLResource;
+import org.geometerplus.android.fbreader.tree.ZLAndroidTree;
+import org.geometerplus.fbreader.network.NetworkTree;
+import org.geometerplus.fbreader.network.tree.AddCustomCatalogItemTree;
+import org.geometerplus.fbreader.network.tree.NetworkBookTree;
+import org.geometerplus.fbreader.network.tree.SearchItemTree;
 import org.geometerplus.zlibrary.core.image.ZLImage;
 import org.geometerplus.zlibrary.core.image.ZLLoadableImage;
-
-import org.geometerplus.zlibrary.ui.android.image.ZLAndroidImageManager;
+import org.geometerplus.zlibrary.core.resources.ZLResource;
 import org.geometerplus.zlibrary.ui.android.image.ZLAndroidImageData;
+import org.geometerplus.zlibrary.ui.android.image.ZLAndroidImageManager;
 import org.geometerplus.zlibrary.ui.android.network.SQLiteCookieDatabase;
 
-import org.geometerplus.fbreader.network.NetworkTree;
-import org.geometerplus.fbreader.network.tree.NetworkBookTree;
-import org.geometerplus.fbreader.network.tree.AddCustomCatalogItemTree;
-import org.geometerplus.fbreader.network.tree.SearchItemTree;
-
-import org.geometerplus.android.fbreader.tree.ZLAndroidTree;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.baoyi.apps.Res;
-import com.iym.bookstore.R;
+import com.iym.bookstore.NetBooksUI;
 
-abstract class NetworkBaseActivity extends ListActivity implements NetworkView.EventListener {
+abstract class NetworkBaseActivity extends NetBooksUI implements NetworkView.EventListener {
 	protected static final int BASIC_AUTHENTICATION_CODE = 1;
 	protected static final int CUSTOM_AUTHENTICATION_CODE = 2;
 	protected static final int SIGNUP_CODE = 3;

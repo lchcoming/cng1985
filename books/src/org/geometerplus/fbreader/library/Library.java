@@ -69,7 +69,7 @@ public final class Library {
 
 	public static ZLResourceFile getHelpFile() {
 		final ZLResourceFile file = ZLResourceFile.createResourceFile(
-			"data/help/MiniHelp." + Locale.getDefault().getLanguage() + ".fb2"
+			"data/help/about.epub"
 		);
 		if (file.exists()) {
 			return file;

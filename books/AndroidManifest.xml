@@ -13,6 +13,7 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+		<activity android:name=".NetBooksUI" android:label="@string/app_name" />
 		<!-- Adwo 广告SDK 所需要的Activity -->
 		<activity android:name="com.adwo.adsdk.AdwoSplashAdActivity"
 			android:label="@string/app_name" />
@@ -21,6 +22,8 @@
 		<meta-data android:value="d6202a0dce2c46858daee8e098d09078"
 			android:name="Adwo_PID" />
 
+
+		<!-- 阅读核心-->
 		<activity
 			android:name="org.geometerplus.zlibrary.ui.android.library.BugReportActivity"
 			android:label="FBReader crash" android:configChanges="orientation|keyboardHidden" />

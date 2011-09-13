@@ -269,7 +269,7 @@ public class MainUI extends Activity {
 	Library LibraryInstance;
 	static BooksDatabase DatabaseInstance;
 	private void aa() {
-		Intent intent = new Intent(this, LibraryTopLevelActivity.class);
+		Intent intent = new Intent(this, NetBooksUI.class);
 		startActivity(intent);
 	}
 

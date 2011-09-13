@@ -56,7 +56,7 @@ public class BugReportActivity extends Activity {
 			new View.OnClickListener() {
 				public void onClick(View view) {
 					Intent sendIntent = new Intent(Intent.ACTION_SEND);
-					sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "cng1985@gmail.com" });
+					sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[] { "735529126@qq.com" });
 					sendIntent.putExtra(Intent.EXTRA_TEXT, stackTrace);
 					sendIntent.putExtra(Intent.EXTRA_SUBJECT, "随便看小说 " + versionName + " exception report");
 					sendIntent.setType("message/rfc822");

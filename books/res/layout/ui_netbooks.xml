@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:myapp="http://schemas.android.com/apk/res/com.baoyi.novels"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@drawable/mainbg">
+	<LinearLayout android:orientation="vertical"
+		android:layout_width="fill_parent" android:layout_height="fill_parent"
+		android:background="@null">
+		<ImageView android:src="@drawable/toptitle"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"></ImageView>
+		<ListView android:layout_height="wrap_content" android:id="@+id/listView1"
+			android:layout_width="fill_parent" android:background="@null"
+			android:layout_marginTop="2dip" android:choiceMode="none"
+			android:cacheColorHint="#00000000" ></ListView>
+	</LinearLayout>
+	<include layout="@layout/common_ad_bottom" />
+</RelativeLayout>
