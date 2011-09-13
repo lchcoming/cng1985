@@ -14,9 +14,11 @@ import com.baoyi.widget.BookWidget;
 
 public class BooksAdapter extends BaseAdapter {
  private Context context;
+ private int imagesourceid;
  private List<BookWidget> widgets=new ArrayList<BookWidget>();
-	public BooksAdapter(Context c){
+	public BooksAdapter(Context c,int imageid){
 		context=c;
+		imagesourceid=imageid;
 	}
 	public void setDatas(FBTree fbs){
 		datas=	fbs.subTrees();
@@ -26,6 +28,7 @@ public class BooksAdapter extends BaseAdapter {
 				BookWidget item=new BookWidget(context);
 				item.setTitle(fbTree.getName());
 				item.setAuthor(fbTree.getSecondString());
+				item.setImage(imagesourceid);
 				widgets.add(item);
 			}
 		}

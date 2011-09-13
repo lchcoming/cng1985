@@ -2,14 +2,15 @@ package com.iym.bookstore;
 
 import org.geometerplus.android.fbreader.BookInfoActivity;
 import org.geometerplus.android.fbreader.SQLiteBooksDatabase;
-import org.geometerplus.android.fbreader.library.InitializationService;
-import org.geometerplus.android.fbreader.library.LibraryBaseActivity;
 import org.geometerplus.android.fbreader.library.LibraryTopLevelActivity;
 import org.geometerplus.android.fbreader.network.NetworkLibraryActivity;
+import org.geometerplus.fbreader.library.AuthorTree;
 import org.geometerplus.fbreader.library.Book;
 import org.geometerplus.fbreader.library.BookTree;
 import org.geometerplus.fbreader.library.BooksDatabase;
 import org.geometerplus.fbreader.library.Library;
+import org.geometerplus.fbreader.library.TagTree;
+import org.geometerplus.fbreader.tree.FBTree;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -74,6 +75,7 @@ public class MainUI extends Activity {
 						R.anim.max);
 				v.startAnimation(animation);
 				chanageBg(v);
+				initDataByTitle();
 			}
 
 		});
@@ -86,6 +88,7 @@ public class MainUI extends Activity {
 						R.anim.max);
 				v.startAnimation(animation);
 				chanageBg(v);
+				initDataByAuthor();
 			}
 		});
 		biaoti.setOnClickListener(new OnClickListener() {
@@ -96,7 +99,9 @@ public class MainUI extends Activity {
 				Animation animation = AnimationUtils.loadAnimation(MainUI.this,
 						R.anim.max);
 				v.startAnimation(animation);
+				initDataByTag();
 				chanageBg(v);
+				
 			}
 		});
 		tushuguan.setOnClickListener(new OnClickListener() {
@@ -108,11 +113,13 @@ public class MainUI extends Activity {
 						R.anim.max);
 				v.startAnimation(animation);
 				openOnline();
+			
 			}
 		});
 
 		init();
-		initData();
+		chanageBg(tushu);
+		initDataByTitle();
 		//aa();
 	}
 
@@ -128,14 +135,14 @@ public class MainUI extends Activity {
 
 	BooksAdapter adapter;
 
-	private void initData() {
+	private void initDataByTitle() {
 		DatabaseInstance = SQLiteBooksDatabase.Instance();
 		if (DatabaseInstance == null) {
 			DatabaseInstance = new SQLiteBooksDatabase(this, "LIBRARY");
 		}
 	
 
-		adapter = new BooksAdapter(this);
+		adapter = new BooksAdapter(this,R.drawable.ic_list_library_books);
 		// adapter.set
 		LibraryInstance = new Library();
 		LibraryInstance.synchronize();
@@ -160,7 +167,96 @@ public class MainUI extends Activity {
 		}
 
 	}
+	private void initDataByTag() {
+		DatabaseInstance = SQLiteBooksDatabase.Instance();
+		if (DatabaseInstance == null) {
+			DatabaseInstance = new SQLiteBooksDatabase(this, "LIBRARY");
+		}
+	
 
+		adapter = new BooksAdapter(this,R.drawable.ic_list_library_tag);
+		// adapter.set
+		LibraryInstance = new Library();
+		LibraryInstance.synchronize();
+		try {
+			adapter.setDatas(LibraryInstance.byTag());
+			listView.setAdapter(adapter);
+			listView.setOnItemClickListener(new OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1,
+						int arg2, long arg3) {
+					BookWidget book = (BookWidget) arg1;
+					Object item = adapter.getItem(arg2);
+					if (item instanceof TagTree) {
+						TagTree fb = (TagTree) item;
+						showAuthor(fb);
+					}
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	private void initDataByAuthor() {
+		DatabaseInstance = SQLiteBooksDatabase.Instance();
+		if (DatabaseInstance == null) {
+			DatabaseInstance = new SQLiteBooksDatabase(this, "LIBRARY");
+		}
+	
+
+		adapter = new BooksAdapter(this,R.drawable.ic_list_library_author);
+		// adapter.set
+		LibraryInstance = new Library();
+		LibraryInstance.synchronize();
+		try {
+			adapter.setDatas(LibraryInstance.byAuthor());
+			listView.setAdapter(adapter);
+			listView.setOnItemClickListener(new OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1,
+						int arg2, long arg3) {
+					BookWidget book = (BookWidget) arg1;
+					Object item = adapter.getItem(arg2);
+					if (item instanceof AuthorTree) {
+						AuthorTree fb = (AuthorTree) item;
+						showAuthor(fb);
+						//showBookInfo(fb.Book);
+					}
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	protected void showAuthor(FBTree tree) {
+		adapter = new BooksAdapter(this,R.drawable.ic_list_library_books);
+		// adapter.set
+		LibraryInstance = new Library();
+		LibraryInstance.synchronize();
+		try {
+			adapter.setDatas(tree);
+			listView.setAdapter(adapter);
+			listView.setOnItemClickListener(new OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1,
+						int arg2, long arg3) {
+					BookWidget book = (BookWidget) arg1;
+					Object item = adapter.getItem(arg2);
+					if (item instanceof BookTree) {
+						BookTree fb = (BookTree) item;
+						showBookInfo(fb.Book);
+					}
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	protected void showBookInfo(Book book) {
 		startActivityForResult(new Intent(getApplicationContext(),
 				BookInfoActivity.class).putExtra(
