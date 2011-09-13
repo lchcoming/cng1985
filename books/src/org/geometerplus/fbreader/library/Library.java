@@ -69,7 +69,7 @@ public final class Library {
 
 	public static ZLResourceFile getHelpFile() {
 		final ZLResourceFile file = ZLResourceFile.createResourceFile(
-			"data/help/about.epub"
+			"data/help/about.fb2"
 		);
 		if (file.exists()) {
 			return file;

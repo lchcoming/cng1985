@@ -5,13 +5,13 @@
 	android:background="@drawable/mainbg">
 	<LinearLayout android:orientation="vertical"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
-		android:background="@null">
+		android:background="@null" android:layout_marginBottom="45dip">
 		<ImageView android:src="@drawable/toptitle"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"></ImageView>
 		<ListView android:layout_height="wrap_content" android:id="@+id/listView1"
 			android:layout_width="fill_parent" android:background="@null"
 			android:layout_marginTop="2dip" android:choiceMode="none"
-			android:cacheColorHint="#00000000" ></ListView>
+			android:cacheColorHint="#00000000"></ListView>
 	</LinearLayout>
 	<include layout="@layout/common_ad_bottom" />
 </RelativeLayout>

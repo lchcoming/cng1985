@@ -5,7 +5,7 @@
 	android:background="@drawable/mainbg">
 	<LinearLayout android:orientation="vertical"
 		android:layout_width="fill_parent" android:layout_height="fill_parent"
-		android:background="@null">
+		android:background="@null" android:layout_marginBottom="45dip">
 		<ImageView android:src="@drawable/bgon"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"></ImageView>
 		<LinearLayout android:layout_width="fill_parent"

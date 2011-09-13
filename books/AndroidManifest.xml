@@ -19,6 +19,7 @@
 			android:label="@string/app_name" />
 		<activity android:name="com.adwo.adsdk.AdwoAdBrowserActivity"
 			android:label="@string/app_name" />
+			
 		<meta-data android:value="d6202a0dce2c46858daee8e098d09078"
 			android:name="Adwo_PID" />
 

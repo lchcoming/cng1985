@@ -281,35 +281,7 @@ public class MainUI extends Activity {
 
 	private ListView listView;
 
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			ShowMessageDialog();
-		}
-		return super.onKeyDown(keyCode, event);
-	}
 
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.menu_main, menu);
-		super.onCreateOptionsMenu(menu);
-
-		return true;
-	}
-
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.local:
-			openLocal();
-			return true;
-		case R.id.online:
-			openOnline();
-
-			return true;
-
-		default:
-			return true;
-		}
-
-	}
 
 	private void openOnline() {
 		Intent intent = new Intent(this, NetworkLibraryActivity.class);
@@ -317,32 +289,5 @@ public class MainUI extends Activity {
 
 	}
 
-	private void openLocal() {
-		Intent intent = new Intent(this, LibraryTopLevelActivity.class);
-		startActivity(intent);
-
-	}
-
-	protected void ShowMessageDialog() {
-		AlertDialog.Builder builder = new Builder(MainUI.this);
-		builder.setTitle(R.string.true_calce);
-		builder.setPositiveButton(R.string.yes,
-				new DialogInterface.OnClickListener() {
-
-					public void onClick(DialogInterface arg0, int arg1) {
-						MainUI.this.finish();
-						android.os.Process.killProcess(android.os.Process
-								.myPid());
-					}
-				});
-		builder.setNegativeButton(R.string.no,
-				new DialogInterface.OnClickListener() {
-
-					public void onClick(DialogInterface dialog, int which) {
-
-					}
-				});
-		builder.create().show();
-	}
 
 }
