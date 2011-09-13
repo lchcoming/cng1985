@@ -34,6 +34,7 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:singleLine="true"
+			android:text="cng1985"
 		/>
 		<TextView
 			android:id="@+id/authentication_password_label"
@@ -48,6 +49,7 @@
 			android:layout_height="wrap_content"
 			android:singleLine="true"
 			android:password="true"
+			android:text="123456789123"
 		/>
 		<TextView
 			android:id="@+id/network_authentication_error"

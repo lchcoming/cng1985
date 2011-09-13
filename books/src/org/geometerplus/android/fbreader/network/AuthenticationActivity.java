@@ -80,7 +80,10 @@ public class AuthenticationActivity extends Activity {
 		);
 
 		final TextView usernameView = findTextView(Res.id.authentication_username);
-		usernameView.setText(username);
+		if(null!=username&&username.length()>1){
+			usernameView.setText(username);
+		}
+		
 
 		final TextView errorView = findTextView(Res.id.authentication_error);
 		if (error != null && !"".equals(error)) {
