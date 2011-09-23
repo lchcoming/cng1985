@@ -1,6 +1,7 @@
 package com.baoyi.widget;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,5 +30,7 @@ public class BookWidget extends LinearLayout{
 	public void setImage(int id){
 		imageView.setImageResource(id);
 	}
+	
+	
 
 }
