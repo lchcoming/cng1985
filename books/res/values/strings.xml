@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, MainUI!</string>
-    <string name="app_name">安卓图书馆</string>
+    <string name="app_name">安卓看书</string>
     <string name="empty_string"></string>
     <string name="true_calce">您确定要退出吗?</string>
 	<string name="yes">确定</string>
